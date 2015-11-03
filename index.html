@@ -25,6 +25,7 @@
   
     makeBg();
     makeApl();
+    makeBskt();
         
         
         
@@ -53,6 +54,19 @@
                          }
         
      }   
+        
+        
+     //------------------------make basket----------
+     function makeBskt()
+     {
+         var bsktImg = new Image();
+         bsktImg.src = 'img/bskt.png';
+         bsktImg.onload = function()
+                        {
+                            context.drawImage(bsktImg, 0, 0, 137, 149);
+                        }
+     }
+        
         
 
     </script>
