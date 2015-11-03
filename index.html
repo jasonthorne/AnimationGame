@@ -13,7 +13,7 @@
 
   <body>
 
-    <canvas id="canvas" width="795" height="937" ></canvas>
+    <canvas id="canvas" width="795" height="937"></canvas>
 
     <script type="text/javascript">
         
@@ -21,9 +21,15 @@
     var canvas = document.getElementById("canvas"),
     context = canvas.getContext('2d');
         
+    
+  
+    makeBg();
+    makeApl();
         
-    makeBg();  
         
+        
+        
+    //------------------------make background----------
      function makeBg()
      {
          var bgImg = new Image();
@@ -35,6 +41,18 @@
      }
         
     
+       
+    //----------------------make apple----------------
+     function makeApl()
+     {
+         var aplImg = new Image();
+         aplImg.src = 'img/apl.png';
+         aplImg.onload = function()
+                         {
+                             context.drawImage(aplImg, 0, 0, 89, 90);
+                         }
+        
+     }   
         
 
     </script>
