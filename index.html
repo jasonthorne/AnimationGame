@@ -1,13 +1,44 @@
 <!DOCTYPE html>
+
 <html>
+
   <head>
-    ...
-    <style type="text/css"></style>
+    <meta charset="UTF-8">
+    <title>Apple Catch</title>
+
+    <style type="text/css">
+    </style>
+
   </head>
+
   <body>
-    ...
+
+    <canvas id="canvas" width="795" height="937" ></canvas>
+
     <script type="text/javascript">
-      ...
+        
+        
+    var canvas = document.getElementById("canvas"),
+    context = canvas.getContext('2d');
+        
+        
+    makeBg();  
+        
+     function makeBg()
+     {
+         var bgImg = new Image();
+         bgImg.src = 'img/bgImg.png';
+         bgImg.onload = function()
+                        {
+                            context.drawImage(bgImg, 0, 0, 795, 937);
+                        }
+     }
+        
+    
+        
+
     </script>
+
   </body>
+
 </html>
