@@ -13,7 +13,7 @@
 
   <body>
 
-    <canvas id="canvas" width="795" height="937"></canvas>
+    <canvas id="canvas" width="400" height="500"></canvas>
 
     <script type="text/javascript">
         
@@ -30,6 +30,7 @@
         
         
         
+        
     //------------------------make background----------
      function makeBg()
      {
@@ -37,7 +38,7 @@
          bgImg.src = 'img/bgImg.png';
          bgImg.onload = function()
                         {
-                            context.drawImage(bgImg, 0, 0, 795, 937);
+                            context.drawImage(bgImg, 0, 0, 400, 500);
                         }
      }
         
@@ -50,7 +51,7 @@
          aplImg.src = 'img/apl.png';
          aplImg.onload = function()
                          {
-                             context.drawImage(aplImg, 0, 0, 89, 90);
+                             context.drawImage(aplImg, 0, 0, 45, 45);
                          }
         
      }   
@@ -62,9 +63,9 @@
          var bsktImg = new Image();
          bsktImg.src = 'img/bskt.png';
          bsktImg.onload = function()
-                        {
-                            context.drawImage(bsktImg, 0, 0, 137, 149);
-                        }
+                          {
+                               context.drawImage(bsktImg, 0, 0, 70, 75);
+                          }
      }
         
         
