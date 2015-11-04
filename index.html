@@ -13,7 +13,7 @@
 
   <body>
 
-    <canvas id="canvas" width="540" height="640"></canvas>
+    <canvas id="canvas" width="550" height="650"></canvas>
 
     <script type="text/javascript">
            
@@ -38,6 +38,31 @@
     var aplW = 60; //width of apple
     var aplH = 60; //height of apple
         
+    var maxApls = 10;
+    var i = 0;    
+        
+    //-------------------------------------------
+        
+    var apls = [];
+    
+    function innitApls()
+    {
+        for (i=0; i<maxApls; i++)
+        {
+            apls[i] = new Image();
+            apl.src = 'img/apl.png';
+            
+             console.log("apple number" + " " + i + " " + "made"); //+++++++++++++++++++++DELETE!!
+        }
+        
+       
+    }
+        
+        
+    innitApls();
+        
+    //------------------------------------------
+        
     
     //make basket
     var bsk = new Image(); //make basket variable
@@ -53,10 +78,10 @@
                 {
                     ctx.drawImage(bg, bgX, bgY, bgW, bgH);
                    //apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
-                    apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
+                    /*apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
                                  {
                                         ctx.drawImage(apl, aplX, aplY, aplW, aplH);
-                                 }
+                                 }*/
         
                   
                     bsk.src = 'img/bsk.png';
@@ -77,12 +102,12 @@
 
             if (event.keyCode == 37) //if left is pressed
             {
-              bskX -= 35; 
-              console.log("left pressed"); ////////////////////////////////DELETE
+              bskX -= 40;
+                console.log("left pressed"); ////////////////////////////////DELETE 
             }
             else if (event.keyCode == 39) //if right is pressed
             {
-              bskX += 35;
+              bskX += 40;
               console.log("right pressed"); ////////////////////////////////DELETE
             }
         
@@ -102,7 +127,7 @@
        
         ctx.clearRect(0, 0, canvas.width, canvas.height);   
         
-         aplY += 8; //want this to be random.+++++++++++++++++++++++ 
+         aplY += 10; //want this to be random.+++++++++++++++++++++++ 
         
         draw();
         
