@@ -60,6 +60,7 @@
         
         
     innitApls();
+        loop();
         
     //------------------------------------------
         
@@ -103,12 +104,10 @@
             if (event.keyCode == 37) //if left is pressed
             {
               bskX -= 40;
-                console.log("left pressed"); ////////////////////////////////DELETE 
             }
             else if (event.keyCode == 39) //if right is pressed
             {
               bskX += 40;
-              console.log("right pressed"); ////////////////////////////////DELETE
             }
         
             draw();
@@ -118,7 +117,7 @@
 //--------------------------------------------------------------------
         
         
-    repeatMe();
+    //repeatMe();
     
         
     function repeatMe() 
@@ -130,6 +129,7 @@
          aplY += 10; //want this to be random.+++++++++++++++++++++++ 
         
         draw();
+        
         
         window.requestAnimationFrame(repeatMe);
     }
@@ -145,6 +145,58 @@
          ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket 
     }    
       
+        
+  //----------------------------------------------------------------------  
+        
+        
+    function dropApl()
+    {
+        
+        console.log("dropApl has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+        var randApl = Math.floor(Math.random() * ((10 - 1) + 1)) + 1; //pick a random apple to drop
+        console.log("randApl is: " + randApl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+        var randY = Math.floor(Math.random() * ((30 - 8) + 1)) + 8; //pick a random drop time
+         console.log("randY is: " + randY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+        
+        
+        for (i=1; i<maxApls; i++)
+        {
+            
+            console.log("Apple is: " + i); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+            
+            if (i == randApl) //if target apple found
+            {
+                
+                apl = apls[i];
+                console.log("apl is: " + apl);
+                
+                console.log("MATCH FOUND!! Apple is: " + i + " " + "randApl is: " + randApl);  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+                
+                
+                aplY = randY;
+                
+                console.log("aplyis: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+                
+                repeatMe();
+                
+            }
+        }
+    }
+       
+    
+    //---------------------------------------------------------------------
+    
+    function loop()
+    {
+        console.log("loop has been called");
+        var rand = Math.round(Math.random() * (3000 - 5000)) + 5000; //between 3 - 5 seconds
+        setTimeout(function()
+                   {
+                        dropApl();
+                        loop();
+            
+                   },rand);
+    }    
         
         
     </script>
