@@ -44,7 +44,7 @@
     var bskW = 100; //width of basket
     var bskH = 100; //height of basket
     var bskX = (canvas.width - bskW) /2; //x pos of basket
-    var bskY = (canvas.height - bskH) - 6; //y pos of basket
+    var bskY = (canvas.height - bskH) - 10; //y pos of basket
    
         
         
@@ -66,28 +66,59 @@
                                         ctx.drawImage(bsk, bskX, bskY, bskW, bskH);
                                  }
                 }
+    
+    //--------------------------------------------------------------------
+    
+    
+    window.addEventListener("keydown", function(event) 
+    { 
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+             
 
-   
+            if (event.keyCode == 37) //if left is pressed
+            {
+              bskX -= 35; 
+              console.log("left pressed"); ////////////////////////////////DELETE
+            }
+            else if (event.keyCode == 39) //if right is pressed
+            {
+              bskX += 35;
+              console.log("right pressed"); ////////////////////////////////DELETE
+            }
+        
+            draw();
     
-   repeatMe();
+    });
+        
+//--------------------------------------------------------------------
+        
+        
+    repeatMe();
     
-     
         
     function repeatMe() 
     {
         
        
-        ctx.clearRect(0, 0, canvas.width, canvas.height);   //want this triggered at a random time+++++++++++++
+        ctx.clearRect(0, 0, canvas.width, canvas.height);   
         
-         aplY += 7; //want this to be random.+++++++++++++++++++++++ 
+         aplY += 8; //want this to be random.+++++++++++++++++++++++ 
         
-         ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
-         ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple
-         ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket ////////////////////////remove later!!+++++++++++++++++++++++++ 
+        draw();
         
         window.requestAnimationFrame(repeatMe);
     }
         
+        
+ //--------------------------------------------------------------------
+        
+        
+    function draw()
+    {
+         ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
+         ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple
+         ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket 
+    }    
       
         
         
