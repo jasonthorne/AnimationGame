@@ -13,41 +13,65 @@
 
   <body>
 
-    <canvas id="canvas" width="400" height="500"></canvas>
+    <canvas id="canvas" width="540" height="640"></canvas>
 
     <script type="text/javascript">
            
     var canvas = document.getElementById("canvas"),
     ctx = canvas.getContext("2d");
         
-  
-    //var aplImg;
-        
-        
-    var y = 0;
-        
-    var aplImg = new Image();
-     aplImg.src = 'img/apl.png';
-    ctx.drawImage(aplImg, 0, y, 45, 45);
-        
-     /*aplImg.onload = function()
-     {
-            ctx.drawImage(aplImg, 0, apl.position.y, 45, 45);
-         
-         return aplImg;
-     }*/
-     
-    
-    
-        
-    //makeBg();
-    //makeApl();
-    //makeBskt();  
    
-
-  
-    repeatMe();
+    //make image
+    var bg = new Image(); //make background variable
+    bg.src = 'img/bg.png'; //give image source
+    var bgX  = 0 //x pos of background 
+    var bgY  = 0; //y pos of background 
+    var bgW  = canvas.width; //width of background 
+    var bgH  = canvas.height; //height of background  
+        
+        
+    //make apple
+    var apl = new Image(); //make apple variable
+    apl.src = 'img/apl.png'; //give image source
+    var aplX = 110 //x pos of apple
+    var aplY = 69; //y pos of apple
+    var aplW = 60; //width of apple
+    var aplH = 60; //height of apple
+        
     
+    //make basket
+    var bsk = new Image(); //make basket variable
+    var bskW = 100; //width of basket
+    var bskH = 100; //height of basket
+    var bskX = (canvas.width - bskW) /2; //x pos of basket
+    var bskY = (canvas.height - bskH) - 6; //y pos of basket
+   
+        
+        
+    //load and draw tree image, then basket
+    bg.onload = function()
+                {
+                    ctx.drawImage(bg, bgX, bgY, bgW, bgH);
+                   //apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
+                    apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
+                                 {
+                                        ctx.drawImage(apl, aplX, aplY, aplW, aplH);
+                                 }
+        
+                  
+                    bsk.src = 'img/bsk.png';
+                    bsk.onload = function()
+                                 {
+                                        
+                                        ctx.drawImage(bsk, bskX, bskY, bskW, bskH);
+                                 }
+                }
+
+   
+    
+   repeatMe();
+    
+     
         
     function repeatMe() 
     {
@@ -55,96 +79,18 @@
        
         ctx.clearRect(0, 0, canvas.width, canvas.height);   //want this triggered at a random time+++++++++++++
         
-        y += 7; //want this to be random.+++++++++++++++++++++++ 
+         aplY += 7; //want this to be random.+++++++++++++++++++++++ 
         
-        ctx.drawImage(aplImg, 0, y, 45, 45);
+         ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
+         ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple
+         ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket ////////////////////////remove later!!+++++++++++++++++++++++++ 
         
         window.requestAnimationFrame(repeatMe);
     }
         
       
-   
-     /*function repeatme()
-    {   
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-         var x += 200;
-         var y += 10;
-        ctx.beginPath();
-        ctx.drawImage(aplImg, x, y, 45, 45);
         
         
-        window.requestAnimationFrame(repeatme);
-        
-    }
-        
-     window.requestAnimationFrame(repeatme);*/   
-    
-   
-   /* function repeatme()
-    {
-        //clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        
-        //update y location of apple
-        apl.velocity.x += apl.acceleration.y;
-        apl.position.x += apl.velocity.x;
-        apl.position.y += apl.velocity.y;
-        
-        //redraw apple
-        aplImg.drawImage(aplImg, apl.position.x, apl.position.y, 45, 45););
-        
-        window.requestAnimationFrame(repeatme);    
-        
-    }*/
-   
-        
-    // Get the animation going.    
-   //window.requestAnimationFrame(repeatme);    
-        
-        
-        
-    //------------------------make background----------
-     /*function makeBg()
-     {
-         var bgImg = new Image();
-         bgImg.src = 'img/bgImg.png';
-         bgImg.onload = function()
-                        {
-                            ctx.drawImage(bgImg, 0, 0, 400, 500);
-                        }
-     }*/
-        
-    
-       
-    //----------------------make apple----------------
-     /*function makeApl()
-     {
-         var aplImg = new Image();
-         aplImg.src = 'img/apl.png';
-         aplImg.onload = function()
-                         {
-                             ctx.drawImage(aplImg, x, y, 45, 45);
-                         }
-         
-         return aplImg;
-        
-     }*/
-        
-        
-     //------------------------make basket----------
-     /*function makeBskt()
-     {
-         var bsktImg = new Image();
-         bsktImg.src = 'img/bskt.png';
-         bsktImg.onload = function()
-                          {
-                               ctx.drawImage(bsktImg, 0, 0, 70, 75);
-                          }
-     }*/
-        
-        
-
     </script>
 
   </body>
