@@ -39,6 +39,7 @@
         var aplX = [110, 40, 83, 59, 54, 145, 25, 44, 58, 180]; //holds x pos of apples    //////////////////////////////////////ARRANGE THESE BETTER!!! 
         var aplY = [60, 40, 30, 20, 80, 20, 70, 40, 60, 80]; //holds y pos of apples       //////////////////////////////////////ARRANGE THESE BETTER!!! 
         var canDrop = [false, false, false, false, false, false, false, false, false, false]; //holds which apples can drop
+        var randY = 0; //random y ammonut to add to 
         
         
         //basket variables
@@ -157,7 +158,8 @@
         {
 
             
-            waitToPick();
+           waitToPick();
+            ///////////pickApl();  
             
             console.log("in repeatMe"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -168,13 +170,18 @@
             for(i=0; i<MAX_APLS; i++)
             {
                 
+                
                 if(canDrop[i] == true)
                 {
-                    apls[i].yPos +=5;
+                   //////////////////////////apls[i].yPos +=5;
                     
-                    if(apls[i].yPos >= (canvas.height - aplH))
+                    apls[i].yPos += randY;
+                        
+                    if(apls[i].yPos >= (canvas.height - aplH)) //detect if apple has hit bottom of canvas
                     {
-                        apls[i].yPos = aplY[i]
+                        
+                        apls[i].yPos = aplY[i] //reset position if so
+                        canDrop[i] = false; //return to wait
                        
                     }
                 }
@@ -233,7 +240,9 @@
         
         function pickApl()
         {
+            
             var randApl = Math.floor(Math.random() * ((10 - 1) + 1)) + 1; //pick a random apple to drop
+            randY = Math.floor(Math.random() * ((10 - 4) + 1)) + 4; //pick a random y pos to drop by
             
             for(i=0; i<MAX_APLS; i++)
             {
@@ -264,7 +273,7 @@
             
              setTimeout(function()
              {
-                            pickApl();          
+                    pickApl();          
 
              },randNum);
             
