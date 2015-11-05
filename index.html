@@ -17,188 +17,288 @@
 
     <script type="text/javascript">
            
-    var canvas = document.getElementById("canvas"),
-    ctx = canvas.getContext("2d");
-        
-   
-    //make image
-    var bg = new Image(); //make background variable
-    bg.src = 'img/bg.png'; //give image source
-    var bgX  = 0 //x pos of background 
-    var bgY  = 0; //y pos of background 
-    var bgW  = canvas.width; //width of background 
-    var bgH  = canvas.height; //height of background  
-        
-        
-    //make apple
-    var apl = new Image(); //make apple variable
-    apl.src = 'img/apl.png'; //give image source
-    var aplX = 110 //x pos of apple
-    var aplY = 69; //y pos of apple
-    var aplW = 60; //width of apple
-    var aplH = 60; //height of apple
-        
-    var maxApls = 10;
-    var i = 0;    
-        
-    //-------------------------------------------
-        
-    var apls = [];
-    
-    function innitApls()
-    {
-        for (i=0; i<maxApls; i++)
-        {
-            apls[i] = new Image();
-            apl.src = 'img/apl.png';
-            
-             console.log("apple number" + " " + i + " " + "made"); //+++++++++++++++++++++DELETE!!
-        }
-        
-       
-    }
-        
-        
-    innitApls();
-        loop();
-        
-    //------------------------------------------
-        
-    
-    //make basket
-    var bsk = new Image(); //make basket variable
-    var bskW = 100; //width of basket
-    var bskH = 100; //height of basket
-    var bskX = (canvas.width - bskW) /2; //x pos of basket
-    var bskY = (canvas.height - bskH) - 10; //y pos of basket
-   
-        
-        
-    //load and draw tree image, then basket
-    bg.onload = function()
-                {
-                    ctx.drawImage(bg, bgX, bgY, bgW, bgH);
-                   //apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
-                    /*apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
-                                 {
-                                        ctx.drawImage(apl, aplX, aplY, aplW, aplH);
-                                 }*/
-        
-                  
-                    bsk.src = 'img/bsk.png';
-                    bsk.onload = function()
-                                 {
-                                        
-                                        ctx.drawImage(bsk, bskX, bskY, bskW, bskH);
-                                 }
-                }
-    
-    //--------------------------------------------------------------------
-    
-    
-    window.addEventListener("keydown", function(event) 
-    { 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-             
+        var canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d");
 
-            if (event.keyCode == 37) //if left is pressed
-            {
-              bskX -= 40;
-            }
-            else if (event.keyCode == 39) //if right is pressed
-            {
-              bskX += 40;
-            }
-        
-            draw();
-    
-    });
-        
-//--------------------------------------------------------------------
-        
-        
-    //repeatMe();
-    
-        
-    function repeatMe() 
-    {
-        
-       
-        ctx.clearRect(0, 0, canvas.width, canvas.height);   
-        
-         aplY += 10; //want this to be random.+++++++++++++++++++++++ 
-        
-        draw();
-        
-        
-        window.requestAnimationFrame(repeatMe);
-    }
-        
-        
- //--------------------------------------------------------------------
-        
-        
-    function draw()
-    {
-         ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
-         ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple
-         ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket 
-    }    
-      
-        
-  //----------------------------------------------------------------------  
-        
-        
-    function dropApl()
-    {
-        
-        console.log("dropApl has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-        var randApl = Math.floor(Math.random() * ((10 - 1) + 1)) + 1; //pick a random apple to drop
-        console.log("randApl is: " + randApl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-        var randY = Math.floor(Math.random() * ((30 - 8) + 1)) + 8; //pick a random drop time
-         console.log("randY is: " + randY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-        
-        
-        for (i=1; i<maxApls; i++)
+
+        //make image
+        var bg = new Image(); //make background variable
+        bg.src = 'img/bg.png'; //give image source
+        var bgX  = 0 //x pos of background 
+        var bgY  = 0; //y pos of background 
+        var bgW  = canvas.width; //width of background 
+        var bgH  = canvas.height; //height of background  
+
+
+        //make apple
+        var apl = new Image(); //make apple variable
+        apl.src = 'img/apl.png'; //give image source
+        var aplX = 110 //x pos of apple
+        var aplY = 60; //y pos of apple
+        var aplW = 60; //width of apple
+        var aplH = 60; //height of apple
+
+        var maxApls = 10;
+        var i = 0;    
+
+
+        //++++++++++++++++++++++++
+             var counter = 0;
+        //++++++++++++++++++++++=
+
+
+
+        //////////var aplX = [110, 40, 83, 59, 54, 145, 25, 44, 58, 180];
+        //////////var aplY = [60, 40, 30, 20, 80, 20, 70, 40, 60, 80];
+
+        //-------------------------------------------
+
+        /*var apls = new Array();
+
+        function innitApls()
         {
-            
-            console.log("Apple is: " + i); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-            
-            if (i == randApl) //if target apple found
+            for (i=0; i<maxApls; i++)
             {
+                apls[i] = 
+                {
+                    image: new Image(),
+                    src: 'img/apl.png',
+                    xPos: aplX[i]
+                    
+                }    
                 
-                apl = apls[i];
-                console.log("apl is: " + apl);
-                
-                console.log("MATCH FOUND!! Apple is: " + i + " " + "randApl is: " + randApl);  //+++++++++++++++++++++++++++++++++++++++++++++++++++
-                
-                
-                aplY = randY;
-                
-                console.log("aplyis: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-                
-                repeatMe();
-                
+
+                 console.log("apple number" + " " + i + " " + "made"); //+++++++++++++++++++++DELETE!!
             }
+
+
+        }*/
+        
+        
+        
+       var apls = new Array();
+
+        function innitApls()
+        {
+            for (i=0; i<maxApls; i++)
+            {
+                apls[i] = new Image();
+                apls[i].src = 'img/apl.png';
+                ctx.drawImage(apls[i], aplX, aplY, aplW, aplH); //draw apple //+++++++++++++++++++++DELETE!!
+
+                 //console.log("apple number" + " " + i + " " + "made"); //+++++++++++++++++++++DELETE!!
+            }
+
+
         }
-    }
-       
-    
-    //---------------------------------------------------------------------
-    
-    function loop()
-    {
-        console.log("loop has been called");
-        var rand = Math.round(Math.random() * (3000 - 5000)) + 5000; //between 3 - 5 seconds
-        setTimeout(function()
-                   {
-                        dropApl();
-                        loop();
-            
-                   },rand);
-    }    
+
+
+       innitApls();
+
+
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            /*var apl1 = new Image(); //make apple variable
+            apl1.src = 'img/apl.png'; //give image source
+            var apl2 = new Image(); //make apple variable
+            apl2.src = 'img/apl.png'; //give image source*/
+
+
+
+            //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+           loop();
+
+        //------------------------------------------
+
+
+        //make basket
+        var bsk = new Image(); //make basket variable
+        var bskW = 100; //width of basket
+        var bskH = 100; //height of basket
+        var bskX = (canvas.width - bskW) /2; //x pos of basket
+        var bskY = (canvas.height - bskH) - 10; //y pos of basket
+
+
+
+        //load and draw tree image, then basket
+        bg.onload = function()
+                    {
+                        ctx.drawImage(bg, bgX, bgY, bgW, bgH);
+                       /*apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
+                        apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
+                                     {
+                                            ctx.drawImage(apl, aplX, aplY, aplW, aplH);
+                                     }*/
+
+
+                        bsk.src = 'img/bsk.png';
+                        bsk.onload = function()
+                                     {
+
+                                            ctx.drawImage(bsk, bskX, bskY, bskW, bskH);
+                                     }
+                    }
+
+        //--------------------------------------------------------------------
+
+
+        window.addEventListener("keydown", function(event) 
+        { 
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+
+                if (event.keyCode == 37) //if left is pressed
+                {
+                  bskX -= 40;
+                }
+                else if (event.keyCode == 39) //if right is pressed
+                {
+                  bskX += 40;
+                }
+
+                draw();
+
+        });
+
+    //--------------------------------------------------------------------
+
+
+        //repeatMe();
+
+
+        function repeatMe() 
+        {
+
+            console.log("in repeatMe"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);   
+
+             //ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            aplY += 10; /////////////////////////MAKE THIS RANDOM FOR EACH APPLE
+
+
+            console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+            draw();
+
+
+
+
+//            while(counter < 10)
+//            {
+//                counter++;
+
+                if (aplY > 200)
+                {
+                    aplY = 69
+                }
+
+                window.requestAnimationFrame(repeatMe);
+            //}
+
+
+        }
+
+
+     //--------------------------------------------------------------------
+
+
+        function draw()
+        {
+
+            console.log("draw has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+            console.log(apl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+            ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
+            ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple++++++++++++++++++++++++++++ //for loop here for drawing ALL apples
+            ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket 
+        }    
+
+
+      //----------------------------------------------------------------------  
+
+
+        function dropApl()
+        {
+
+            console.log("dropApl has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+            var randApl = Math.floor(Math.random() * ((10 - 1) + 1)) + 1; //pick a random apple to drop
+            console.log("randApl is: " + randApl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+          
+
+//            for (i=1; i<maxApls; i++)
+//            {
+//
+//                console.log("Apple is: " + i); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+//
+////                if (i == randApl) //if target apple found
+////                {
+
+                    apl.value = apls[randApl];
+                    
+                    console.log("apl is: " + apl);
+
+                   // break;
+
+                   
+
+                    //console.log("MATCH FOUND!! Apple is: " + i + " " + "randApl is: " + randApl);  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+                    ///aplY = randY;
+                    //ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+                    //console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                    //repeatMe()
+//
+//                }
+//             }
+
+
+                //console.log("broke for loop");  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+                //console.log("apl is: " + apl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                    //console.log("MATCH FOUND!! Apple is: " + i + " " + "randApl is: " + randApl);  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+                    ///aplY = randY;
+                    //ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+                    //console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+                    repeatMe()
+
+
+
+        }
+
+
+        //---------------------------------------------------------------------http://stackoverflow.com/questions/17883692/how-to-set-time-delay-in-javascript
+        //http://stackoverflow.com/questions/17883692/how-to-set-time-delay-in-javascript
         
         
+        function loop()
+        {
+            console.log("loop has been called");
+            var rand = Math.round(Math.random() * (2000 - 5000)); //+ 5000; //between 3 - 5 seconds
+            console.log("RAND IS: " + rand);  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+
+            setTimeout(function()
+                      {
+                            dropApl();
+                            loop();
+
+                      },rand);
+        }    
+
+
     </script>
 
   </body>
