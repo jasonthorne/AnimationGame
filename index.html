@@ -7,12 +7,32 @@
     <title>Apple Catch</title>
 
     <style type="text/css">
+    
+    #container
+    {
+        width: auto;
+        height: auto;
+        position: absolute;
+        
+    }
+        
+    #span
+    {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    
     </style>
 
   </head>
 
   <body>
-
+    <!--<div id="gameTxt"></div>-->
+      <div id="container">
+            <span id="timer"></span>
+      </div>
+      
     <canvas id="canvas" width="550" height="650"></canvas>
     <script type="text/javascript">
            
@@ -60,18 +80,42 @@
         };
         
         
-        var ctr = new Image(); //counter image
+       /* var ctr = new Image(); //counter image
         var ctrX = 15;/////////////////(canvas.width - bskW) /2; //x pos of basket
-        var ctrY = 15;///////////////////////////(canvas.height - bskH) - 10; //y pos of basket*/
+        var ctrY = 15;///////////////////////////(canvas.height - bskH) - 10; //y pos of basket
         var ctrW = 80; //width of counter
-        var ctrH = 80; //height of counter
-       
+        var ctrH = 80; //height of counter*/
         
+        //--------------------------------------------
+        
+        var cnt = 15;
+        var cntr = setInterval(timer, 1000); 
 
+        function timer()
+        {
+            cnt = cnt -1;
+            if (cnt <= 0)
+            {
+                 clearInterval(cntr);
+                 //count ended, tell user game is over++++++++++++++++++++++
+                 return;
+            }
+
+            document.getElementById("timer").innerHTML = cnt + " secs"; 
+        }
+       
+        //--------------------------------------------
+        
         //other variables
         var i = 0; //for loops 
         var hits = 0; //hit counter
-      
+        
+        /* var txt = document.getElementById("gameTxt").innerHTML = hits;
+                txt.style.position = "absolute";
+                txt.style.left = 50;
+                txt.style.top = 50;
+        */
+        
     
     
         //onload events. loads and draw tree image, then basket
@@ -94,17 +138,19 @@
                 ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght);
             }
             
-            ctr.src = 'img/ctr.png';
+           /* ctr.src = 'img/ctr.png';
             ctr.onload = function()
             {
                 ctx.drawImage(ctr, ctrX, ctrY, ctrW, ctrH);
-            }
+                
+            }*/
             
         }
     
         
-  
+      
         
+       
         //---------------------------MAKE APPLE ARRAY-------------------------------------
         function makeApls()
         {
@@ -134,14 +180,14 @@
 
         window.addEventListener("keydown", function(event) 
         { 
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ///////////////ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
                 if (event.keyCode == 37) //if left is pressed
                 {
                   bskObj.xPos -= 20;
                     
-                    if(bskObj.xPos < (canvas.width - (bskW /2)))
+                    if(bskObj.xPos < (canvas.width - (bskW /2)))///////////////////////////WRONG!!!! FIX THIS
                     {
                         ////////////////////////////////////console.log("too far left");
                     }
@@ -185,50 +231,15 @@
         function repeatMe() 
         {
 
+            waitToPick();
             
-           waitToPick();
-            ///////////pickApl();  
-            
-            //////////console.log("in repeatMe"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);   
+            //ctx.clearRect(0, 0, canvas.width, canvas.height);   
 
             dropApl();
             
-            /*for(i=0; i<MAX_APLS; i++)
-            {
-                
-                
-                if(canDrop[i] == true)
-                {
-                   //////////////////////////apls[i].yPos +=5;
-                    
-                    apls[i].yPos += randY;
-                    
-                    
-                        
-                    if(apls[i].yPos >= (canvas.height - aplH)) //detect if apple has hit bottom of canvas
-                    {
-                        
-                        apls[i].yPos = aplY[i] //reset position if so
-                        canDrop[i] = false; //return to wait
-                       
-                    }
-                }
-                
-                /////////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
-            }*/
-            
-
-            ////////////console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
             draw();
             
-            
-
-
-                window.requestAnimationFrame(repeatMe);
-    
-
+            window.requestAnimationFrame(repeatMe);
 
          }
 
@@ -246,7 +257,7 @@
                ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght); 
            }
             
-           ctx.drawImage(ctr, ctrX, ctrY, ctrW, ctrH);
+           //ctx.drawImage(ctr, ctrX, ctrY, ctrW, ctrH);
            ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
             
         }    
@@ -264,7 +275,6 @@
                 if(canDrop[i] == true) //check if apple can be dropped
                 {
                 
-                    
                     apls[i].yPos += randY; //drop by randomised ammount
                     
                     
@@ -313,6 +323,7 @@
                 }
                 
                  ////////////////// console.log(canDrop); ////////////////////////////////////////////
+                
                 ////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
             }
             
