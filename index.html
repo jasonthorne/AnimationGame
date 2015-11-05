@@ -52,7 +52,7 @@
         //other variables
         var i = 0;    
         //++++++++++++++++++++++++
-             var counter = 0;
+        var counter = 0;
         //+++++++++++++++++++++++/////////////////may not need
     
         
@@ -148,20 +148,22 @@
     //--------------------------------------------------------------------
 
         makeApls(); //////////////////////Probably doesnt need to be in a function!!
-        pickApl();
+        //dropApl();
+        //pickApl();
         repeatMe();
 
 
         function repeatMe() 
         {
 
+            
+            waitToPick();
+            
             console.log("in repeatMe"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);   
 
-             //ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple //+++++++++++++++++++++++++++++++++++++++++++++++++++
-
-            /////////////aplY += 1; /////////////////////////MAKE THIS RANDOM FOR EACH APPLE
+           
             
             for(i=0; i<MAX_APLS; i++)
             {
@@ -169,19 +171,25 @@
                 if(canDrop[i] == true)
                 {
                     apls[i].yPos +=5;
+                    
+                    if(apls[i].yPos >= (canvas.height - aplH))
+                    {
+                        apls[i].yPos = aplY[i]
+                       
+                    }
                 }
-                
-                
-                ////apls[i].yPos += 5;
                 
                 /////////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
             }
+            
 
             console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
             draw();
-
-
-
+            
+            
+            
+            
+            
           /*  while(counter < 10)
            {
                counter++;
@@ -192,10 +200,10 @@
                 }*/
 
                 window.requestAnimationFrame(repeatMe);
-            }
+            //}
 
 
-          //}
+         }
 
 
      //--------------------------------------------------------------------
@@ -204,18 +212,20 @@
         function draw()
         {
 
-            console.log("draw has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-            console.log(apl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-            ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
+           console.log("draw has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
           
-            for(i=0; i<MAX_APLS; i++)
+           ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
+          
+           for(i=0; i<MAX_APLS; i++) //draw apples
             {
                 
                 ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
             }
             
-            //ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple++++++++++++++++++++++++++++ //for loop here for drawing ALL apples
+            
             ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket 
+            
+          
         }    
 
 
@@ -239,6 +249,8 @@
                 ////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
             }
             
+            ///////////draw();///////////++++++++++++++++
+            
         }
         
         
@@ -246,21 +258,16 @@
       //-----------------------------------------------------
 
 
-        function dropApl()
+        function waitToPick()
         {
+            var randNum = Math.round(Math.random() * (1000 - 4000)); //+ 5000; //between 3 - 5 seconds
+            
+             setTimeout(function()
+             {
+                            pickApl();          
 
-            console.log("dropApl has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-            var randApl = Math.floor(Math.random() * ((10 - 1) + 1)) + 1; //pick a random apple to drop
-            console.log("randApl is: " + randApl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-          
-
-                    apl.value = apls[randApl];
-                    
-                    console.log("apl is: " + apl);
-                    repeatMe()
-
-
-
+             },randNum);
+            
         }
 
 
