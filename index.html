@@ -20,7 +20,6 @@
         ctx = canvas.getContext("2d");
        
         
-
         //background variables 
         var bg = new Image(); //background image
         bg.src = 'img/bg.png'; //source for background image.
@@ -35,10 +34,10 @@
         apl.src = 'img/apl.png'; /////////////////////////////////MAYBE DELETE (if showing apples onload)
         var apls = new Array(); //array for apples
         var MAX_APLS = 10; //ammount of apples
-        var aplW = 60; //width of apple
-        var aplH = 60; //height of apple
         var aplX = [30, 100, 150, 200, 250, 300, 350, 400, 450, 180]; //holds x pos of apples    //////////////////////////////////////ARRANGE THESE BETTER!!! 
         var aplY = [60, 40, 30, 20, 80, 20, 70, 40, 60, 100]; //holds y pos of apples       //////////////////////////////////////ARRANGE THESE BETTER!!! 
+        var aplW = 60; //width of apple
+        var aplH = 60; //height of apple
         var canDrop = [false, false, false, false, false, false, false, false, false, false]; //holds which apples can drop
         var randY = 0; //holds random y pos
         
@@ -50,6 +49,7 @@
         var bskX = (canvas.width - bskW) /2; //x pos of basket
         var bskY = (canvas.height - bskH) - 10; //y pos of basket
         
+        
         //basket object
         var bskObj =
         {
@@ -58,6 +58,15 @@
                  wdth: bskW,
                  hght: bskH       
         };
+        
+        
+        var ctr = new Image(); //counter image
+        var ctrX = 15;/////////////////(canvas.width - bskW) /2; //x pos of basket
+        var ctrY = 15;///////////////////////////(canvas.height - bskH) - 10; //y pos of basket*/
+        var ctrW = 80; //width of counter
+        var ctrH = 80; //height of counter
+       
+        
 
         //other variables
         var i = 0; //for loops 
@@ -65,8 +74,6 @@
       
     
     
-        
-
         //onload events. loads and draw tree image, then basket
         bg.onload = function()
         {
@@ -87,30 +94,15 @@
                 ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght);
             }
             
+            ctr.src = 'img/ctr.png';
+            ctr.onload = function()
+            {
+                ctx.drawImage(ctr, ctrX, ctrY, ctrW, ctrH);
+            }
+            
         }
     
         
-        
-        /*/////////////////////////////////WORKS. JUST TRYING THE OTHER FOR X AND Y USE
-       var apls = new Array();
-
-        function innitApls()
-        {
-            for (i=0; i<maxApls; i++)
-            {
-                apls[i] = new Image();
-                apls[i].src = 'img/apl.png';
-                ctx.drawImage(apls[i], aplX, aplY, aplW, aplH); //draw apple //+++++++++++++++++++++DELETE!!
-
-                 //console.log("apple number" + " " + i + " " + "made"); //+++++++++++++++++++++DELETE!!
-            }
-
-
-        }*/
-
-
-
-          ////////////////////////// loop();
   
         
         //---------------------------MAKE APPLE ARRAY-------------------------------------
@@ -136,8 +128,7 @@
         }
         
 
-    
-        //==========================================
+
         //--------------------------------------------------------------------
 
 
@@ -248,20 +239,16 @@
         function draw()
         {
 
-           ///////////////console.log("draw has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
-          
            ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
           
            for(i=0; i<MAX_APLS; i++) //draw apples
-            {
-                
-                ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght);
-            }
+           {
+               ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght); 
+           }
             
+           ctx.drawImage(ctr, ctrX, ctrY, ctrW, ctrH);
+           ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
             
-            ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
-            
-          
         }    
 
         
@@ -276,35 +263,20 @@
                 
                 if(canDrop[i] == true) //check if apple can be dropped
                 {
-                   //////////////////////////apls[i].yPos +=5;
+                
                     
                     apls[i].yPos += randY; //drop by randomised ammount
                     
                     
-                    /*if(apls[i].yPos == bskObj.xPos) //check if apple has hit basket
-                    {
-                       console.log("Hit basket!!"); /////////////////////////////////////////////////
-                       apls[i].yPos = aplY[i] //reset position if so
-                       canDrop[i] = false; //return to wait
-                        
-                    }*/
-                    
-                    
-                    //===============================================================
-                    ///////console.log("Hit basket!!");////////////////
-                    
                     if(hitApl(apls[i], bskObj)) //check if apple hit basket
                     {
                         console.log("Hit basket!!"); /////////////////////////////////////////////////DELETE!!
-                        hits++; //add to hit count
-                        apls[i].yPos = aplY[i] //reset position if so
-                        canDrop[i] = false; //return to wait
+                        hits++; //add to hit counter
+                        apls[i].yPos = aplY[i] //reset position 
+                        canDrop[i] = false; //return to waiting
                     }
                     
                     
-                    
-                    //===============================================================
-                        
                     if(apls[i].yPos >= (canvas.height - aplH)) //check if apple has hit bottom of canvas
                     {
                         
@@ -312,9 +284,10 @@
                         canDrop[i] = false; //return to wait
                        
                     }
+                    
                 }
                 
-                /////////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
+
             }   
             
         }
@@ -354,7 +327,7 @@
 
         function waitToPick()
         {
-            var randNum = Math.round(Math.random() * (1000 - 4000)); //+ 5000; //between 3 - 5 seconds
+            var randNum = Math.round(Math.random() * (1000 - 4000)) + 1000; //between 1 - 4 seconds
             
              setTimeout(function()
              {
