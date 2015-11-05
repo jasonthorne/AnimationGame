@@ -18,6 +18,7 @@
            
         var canvas = document.getElementById("canvas"),
         ctx = canvas.getContext("2d");
+       
         
 
         //background variables 
@@ -36,25 +37,33 @@
         var MAX_APLS = 10; //ammount of apples
         var aplW = 60; //width of apple
         var aplH = 60; //height of apple
-        var aplX = [110, 40, 83, 59, 54, 145, 25, 44, 58, 180]; //holds x pos of apples    //////////////////////////////////////ARRANGE THESE BETTER!!! 
-        var aplY = [60, 40, 30, 20, 80, 20, 70, 40, 60, 80]; //holds y pos of apples       //////////////////////////////////////ARRANGE THESE BETTER!!! 
+        var aplX = [30, 100, 150, 200, 250, 300, 350, 400, 450, 180]; //holds x pos of apples    //////////////////////////////////////ARRANGE THESE BETTER!!! 
+        var aplY = [60, 40, 30, 20, 80, 20, 70, 40, 60, 100]; //holds y pos of apples       //////////////////////////////////////ARRANGE THESE BETTER!!! 
         var canDrop = [false, false, false, false, false, false, false, false, false, false]; //holds which apples can drop
-        var randY = 0; //random y ammonut to add to 
+        var randY = 0; //holds random y pos
         
         
         //basket variables
-        var bsk = new Image(); //make basket variable
+        var bsk = new Image(); //basket image
         var bskW = 100; //width of basket
         var bskH = 100; //height of basket
         var bskX = (canvas.width - bskW) /2; //x pos of basket
         var bskY = (canvas.height - bskH) - 10; //y pos of basket
-
         
+        //basket object
+        var bskObj =
+        {
+                 xPos: bskX,
+                 yPos: bskY,
+                 wdth: bskW,
+                 hght: bskH       
+        };
+
         //other variables
-        var i = 0;    
-        //++++++++++++++++++++++++
-        var counter = 0;
-        //+++++++++++++++++++++++/////////////////may not need
+        var i = 0; //for loops 
+        var hits = 0; //hit counter
+      
+    
     
         
 
@@ -62,7 +71,7 @@
         bg.onload = function()
         {
             ctx.drawImage(bg, bgX, bgY, bgW, bgH); 
-            /*//apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
+           /*apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
             apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
             {
                          for (i=0; i<MAX_APLS; i++) ///////////////Incase we want an initial draw! can use to layout apples
@@ -75,7 +84,7 @@
             bsk.src = 'img/bsk.png';
             bsk.onload = function()
             {
-                ctx.drawImage(bsk, bskX, bskY, bskW, bskH);
+                ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght);
             }
             
         }
@@ -113,18 +122,22 @@
                 {
 
                     xPos: aplX[i],
-                    yPos: aplY[i]
+                    yPos: aplY[i],
+                    wdth: aplW,
+                    hght: aplH  
 
                 }; 
 
-
-               console.log(apls[i], apls[i].xPos, apls[i].yPos, aplW, aplH); //++++++++++++++++++++++++++DELETE
+               ////////////////console.log(apls[i], apls[i].xPos, apls[i].yPos, aplW, aplH); //++++++++++++++++++++++++++DELETE
                //ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);////////////////////////++++++++++++++++++DELETE(maybe!)
             }
+            
+         
         }
         
 
-
+    
+        //==========================================
         //--------------------------------------------------------------------
 
 
@@ -135,13 +148,37 @@
 
                 if (event.keyCode == 37) //if left is pressed
                 {
-                  bskX -= 40;
+                  bskObj.xPos -= 20;
+                    
+                    if(bskObj.xPos < (canvas.width - (bskW /2)))
+                    {
+                        ////////////////////////////////////console.log("too far left");
+                    }
                 }
                 else if (event.keyCode == 39) //if right is pressed
                 {
-                  bskX += 40;
+                  bskObj.xPos += 20;
                 }
-
+            
+              /*  if (bskX > (canvas.width - bskW))
+                {
+                    bskX -= 5; //(canvas.width - bskW);
+                    console.log("too far this way");
+                }
+                                
+                else if (bskX < (canvas.width - bskW))
+                {
+                    bskX += 5; //(canvas.width - bskW);
+                    console.log("too far that way!!");
+                }*/
+        
+            /*
+                if(apls[i].yPos >= (canvas.height - aplH)) //detect if apple has hit bottom of canvas
+                    {
+                        
+                        apls[i].yPos = aplY[i] //reset position if so
+                        canDrop[i] = false; //return to wait
+*/
                 draw();
 
         });
@@ -151,7 +188,7 @@
         makeApls(); //////////////////////Probably doesnt need to be in a function!!
         //dropApl();
         //pickApl();
-        repeatMe();
+       repeatMe();///////////////////////
 
 
         function repeatMe() 
@@ -161,13 +198,13 @@
            waitToPick();
             ///////////pickApl();  
             
-            console.log("in repeatMe"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+            //////////console.log("in repeatMe"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
             ctx.clearRect(0, 0, canvas.width, canvas.height);   
 
-           
+            dropApl();
             
-            for(i=0; i<MAX_APLS; i++)
+            /*for(i=0; i<MAX_APLS; i++)
             {
                 
                 
@@ -176,6 +213,8 @@
                    //////////////////////////apls[i].yPos +=5;
                     
                     apls[i].yPos += randY;
+                    
+                    
                         
                     if(apls[i].yPos >= (canvas.height - aplH)) //detect if apple has hit bottom of canvas
                     {
@@ -187,27 +226,17 @@
                 }
                 
                 /////////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
-            }
+            }*/
             
 
-            console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+            ////////////console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
             draw();
             
             
-            
-            
-            
-          /*  while(counter < 10)
-           {
-               counter++;
-*/
-                /*if(aplY > 200)
-                {
-                    aplY = 69
-                }*/
+
 
                 window.requestAnimationFrame(repeatMe);
-            //}
+    
 
 
          }
@@ -219,29 +248,85 @@
         function draw()
         {
 
-           console.log("draw has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
+           ///////////////console.log("draw has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
           
            ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
           
            for(i=0; i<MAX_APLS; i++) //draw apples
             {
                 
-                ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
+                ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght);
             }
             
             
-            ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket 
+            ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
             
           
         }    
 
+        
+        
+      //--------------------------------------------------------------------
+        
+        function dropApl()
+        {
+            
+            for(i=0; i<MAX_APLS; i++) 
+            {
+                
+                if(canDrop[i] == true) //check if apple can be dropped
+                {
+                   //////////////////////////apls[i].yPos +=5;
+                    
+                    apls[i].yPos += randY; //drop by randomised ammount
+                    
+                    
+                    /*if(apls[i].yPos == bskObj.xPos) //check if apple has hit basket
+                    {
+                       console.log("Hit basket!!"); /////////////////////////////////////////////////
+                       apls[i].yPos = aplY[i] //reset position if so
+                       canDrop[i] = false; //return to wait
+                        
+                    }*/
+                    
+                    
+                    //===============================================================
+                    ///////console.log("Hit basket!!");////////////////
+                    
+                    if(hitApl(apls[i], bskObj)) //check if apple hit basket
+                    {
+                        console.log("Hit basket!!"); /////////////////////////////////////////////////DELETE!!
+                        hits++; //add to hit count
+                        apls[i].yPos = aplY[i] //reset position if so
+                        canDrop[i] = false; //return to wait
+                    }
+                    
+                    
+                    
+                    //===============================================================
+                        
+                    if(apls[i].yPos >= (canvas.height - aplH)) //check if apple has hit bottom of canvas
+                    {
+                        
+                        apls[i].yPos = aplY[i] //reset position if so
+                        canDrop[i] = false; //return to wait
+                       
+                    }
+                }
+                
+                /////////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
+            }   
+            
+        }
+        
+        
 
       //---------------------------------------------------------------------- 
         
         function pickApl()
         {
             
-            var randApl = Math.floor(Math.random() * ((10 - 1) + 1)) + 1; //pick a random apple to drop
+            var randApl = Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick a random apple to drop
             randY = Math.floor(Math.random() * ((10 - 4) + 1)) + 4; //pick a random y pos to drop by
             
             for(i=0; i<MAX_APLS; i++)
@@ -250,11 +335,11 @@
                 if (randApl == i)
                 {
                     canDrop[i] = true;
-                       console.log("i is: " + i); ////////////////////////////////////////////
-                      console.log(canDrop[i]); ////////////////////////////////////////////
+                     //////////  console.log("i is: " + i); ////////////////////////////////////////////
+                      ///////////console.log(canDrop[i]); ////////////////////////////////////////////
                 }
                 
-                  console.log(canDrop); ////////////////////////////////////////////
+                 ////////////////// console.log(canDrop); ////////////////////////////////////////////
                 ////////ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
             }
             
@@ -278,26 +363,26 @@
              },randNum);
             
         }
-
-
-        //---------------------------------------------------------------------http://stackoverflow.com/questions/17883692/how-to-set-time-delay-in-javascript
-        //http://stackoverflow.com/questions/17883692/how-to-set-time-delay-in-javascript
         
         
-        function loop()
+        
+        function hitApl(a, b) 
         {
-            console.log("loop has been called");
-            var rand = Math.round(Math.random() * (2000 - 5000)); //+ 5000; //between 3 - 5 seconds
-            console.log("RAND IS: " + rand);  //+++++++++++++++++++++++++++++++++++++++++++++++++++
+             return a.xPos < b.xPos + b.wdth &&
+             a.xPos + a.wdth > b.xPos &&
+             a.yPos < b.yPos + b.hght &&
+             a.yPos + a.hght > b.yPos;
+        }
+        
 
-            setTimeout(function()
-                      {
-                            dropApl();
-                            loop();
 
-                      },rand);
-        }    
-
+        /*
+        LINKS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//////////////////////////////////////////////////////
+        
+        http://stackoverflow.com/questions/17883692/how-to-set-time-delay-in-javascript
+        */
+       
+    
 
     </script>
 
