@@ -31,12 +31,21 @@
 
         //apple variables
         var apl = new Image(); //apple image
+        apl.src = 'img/apl.png'; /////////////////////////////////
         var apls = new Array(); //array for apples
         var MAX_APLS = 10; //ammount of apples
         var aplW = 60; //width of apple
         var aplH = 60; //height of apple
         var aplX = [110, 40, 83, 59, 54, 145, 25, 44, 58, 180]; //holds x pos of apples    //////////////////////////////////////ARRANGE THESE BETTER!!! 
         var aplY = [60, 40, 30, 20, 80, 20, 70, 40, 60, 80]; //holds y pos of apples       //////////////////////////////////////ARRANGE THESE BETTER!!! 
+
+        
+        //basket variables
+        var bsk = new Image(); //make basket variable
+        var bskW = 100; //width of basket
+        var bskH = 100; //height of basket
+        var bskX = (canvas.width - bskW) /2; //x pos of basket
+        var bskY = (canvas.height - bskH) - 10; //y pos of basket
 
         
         var i = 0;    
@@ -46,9 +55,6 @@
              var counter = 0;
         //+++++++++++++++++++++++/////////////////may not need
     
-        
-       
-            
         
 
         //-------------------------------------------
@@ -80,20 +86,14 @@
         //------------------------------------------
 
 
-        //make basket
-        var bsk = new Image(); //make basket variable
-        var bskW = 100; //width of basket
-        var bskH = 100; //height of basket
-        var bskX = (canvas.width - bskW) /2; //x pos of basket
-        var bskY = (canvas.height - bskH) - 10; //y pos of basket
-
+      
 
 
         //load and draw tree image, then apples and basket
         bg.onload = function()
         {
             ctx.drawImage(bg, bgX, bgY, bgW, bgH); 
-            apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
+           /* apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
             apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
             {
                     for (i=0; i<MAX_APLS; i++)
@@ -111,14 +111,33 @@
                        ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);////////////////////////++++++++++++++++++DELETE(maybe!)
                     }
 
-            }
+            }*/
             
             bsk.src = 'img/bsk.png';
             bsk.onload = function()
             {
                 ctx.drawImage(bsk, bskX, bskY, bskW, bskH);
             }
+            
         }
+        
+        
+        //---------------------------MAKE APPLE ARRAY-------------------------------------
+        for (i=0; i<MAX_APLS; i++)
+         {
+                apls[i] = 
+                {
+
+                    xPos: aplX[i],
+                    yPos: aplY[i]
+
+                }; 
+
+
+           console.log(apls[i], apls[i].xPos, apls[i].yPos, aplW, aplH); //++++++++++++++++++++++++++DELETE
+           ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);////////////////////////++++++++++++++++++DELETE(maybe!)
+        }
+
 
         //--------------------------------------------------------------------
 
@@ -144,7 +163,7 @@
     //--------------------------------------------------------------------
 
  
-        //repeatMe();
+        repeatMe();
 
 
         function repeatMe() 
@@ -152,35 +171,39 @@
 
             console.log("in repeatMe"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-
-
             ctx.clearRect(0, 0, canvas.width, canvas.height);   
 
              //ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple //+++++++++++++++++++++++++++++++++++++++++++++++++++
 
-            aplY += 10; /////////////////////////MAKE THIS RANDOM FOR EACH APPLE
-
+            /////////////aplY += 1; /////////////////////////MAKE THIS RANDOM FOR EACH APPLE
+            
+             for(i=0; i<MAX_APLS; i++)
+            {
+                
+                apls[i].yPos += 5;
+                
+                ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
+            }
 
             console.log("aplY is: " + aplY); //+++++++++++++++++++++++++++++++++++++++++++++++++++
             draw();
 
 
 
-
-            while(counter < 10)
+          /*  while(counter < 10)
            {
                counter++;
-
-                if(aplY > 200)
+*/
+                /*if(aplY > 200)
                 {
                     aplY = 69
-                }
+                }*/
 
                 window.requestAnimationFrame(repeatMe);
             }
 
 
-          }
+          //}
 
 
      //--------------------------------------------------------------------
@@ -192,7 +215,16 @@
             console.log("draw has been called"); //+++++++++++++++++++++++++++++++++++++++++++++++++++
             console.log(apl); //+++++++++++++++++++++++++++++++++++++++++++++++++++
             ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
-            ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple++++++++++++++++++++++++++++ //for loop here for drawing ALL apples
+          
+            for(i=0; i<MAX_APLS; i++)
+            {
+                //aplX = apls[i].xPos;
+                //aplY = apls[i].yPos;
+                
+                ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);
+            }
+            
+            //ctx.drawImage(apl, aplX, aplY, aplW, aplH); //draw apple++++++++++++++++++++++++++++ //for loop here for drawing ALL apples
             ctx.drawImage(bsk, bskX, bskY, bskW, bskH); //draw basket 
         }    
 
