@@ -13,8 +13,8 @@
         width: auto;
         height: auto;
         position: absolute;
-        left: 50px;
-        top: 80px;
+        left: 58px;
+        top: 75px;
     }    
         
     #container2
@@ -22,8 +22,8 @@
         width: auto;
         height: auto;
         position: absolute;
-        left: 30px;
-        top: 20px;
+        left: 43px;
+        top: 45px;
     }
         
     #span
@@ -52,8 +52,7 @@
         ctx = canvas.getContext("2d");
         
         var i = 0; //for loops 
-        var hits = 0; //hit counter 
-        /////////////var play = true; //playing game//////////////////////////////////////////////////////////////
+        var hits = 0; //hit counter
             
         //game timer
         var cnt = 0; //time
@@ -64,7 +63,7 @@
         document.getElementById("hits").style.fontFamily = "Comic Sans MS"; //font family  
         
         //styles for timer
-        document.getElementById("timer").style.fontSize = "x-large"; //font size
+        document.getElementById("timer").style.fontSize = "large"; //font size
         document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
        
         
@@ -91,8 +90,8 @@
         var MAX_APLS = 10; //ammount of apples
         var apls = [MAX_APLS]; //array for apples 
         var canDrop = [MAX_APLS]; //holds which apples can drop
-        var aplX = [30, 100, 150, 200, 250, 300, 350, 400, 450, 180]; //holds x pos of apples    //////////////////////////////////////ARRANGE THESE BETTER!!! 
-        var aplY = [60, 40, 30, 20, 80, 20, 70, 40, 60, 100]; //holds y pos of apples       //////////////////////////////////////ARRANGE THESE BETTER!!! 
+        var aplX = [50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    //////////////////////////////////////ARRANGE THESE BETTER!!! 
+        var aplY = [280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples       //////////////////////////////////////ARRANGE THESE BETTER!!! 
         var aplW = 60; //width of apple
         var aplH = 60; //height of apple
         var randY = 0; //holds random y pos 
@@ -112,7 +111,8 @@
         {
             ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
            
-           /*apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
+            /////////////////////////
+        /* apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
             apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
             {
                          for (i=0; i<MAX_APLS; i++) ///////////////Incase we want an initial draw! can use to layout apples
@@ -120,7 +120,15 @@
                              
                               ctx.drawImage(apl, aplX[i], aplY[i], aplW, aplH);////////////////////////++++++++++++++++++DELETE(maybe!)
                          }
-            }*/
+            }
+            
+            "15 secs"
+            "Ready!?"
+            document.getElementById("hits").style.fontSize = "x-large"; //font size
+            document.getElementById("timer").style.fontSize = "large"; //font size
+            document.getElementById("hits").innerHTML = "75"; //set value of hits 
+            document.getElementById("timer").innerHTML = "15 secs";//"Ready!?"; //set start message 
+            ////////////////////////////*/
             
             bsk.src = 'img/bsk.png'; //basket image source 
             bsk.onload = function() //load basket
@@ -138,10 +146,10 @@
          //-----------------------------------------------------
         
         
-        //++++++++++++++++++++++++++++++++++++++++++
-        innit(); //initialise variables
-        playGame(); //play game
-        //++++++++++++++++++++++++++++++++++++++++++   
+       //++++++++++++++++++++++++++++++++++++++++++
+       innit(); //initialise variables
+       playGame(); //play game
+       ///++++++++++++++++++++++++++++++++++++++++++   
     
             
         function innit() //initialise variables
@@ -149,9 +157,9 @@
             
             hits = 0; //set hit counter 
             cntr = setInterval(timer, 1000); //make counter
-            cnt = 11; //set time counter/////////////////////////////////////////////////////////////////////////CHANGE THIS BACK!!
+            cnt = 16; //set time counter/////////////////////////////////////////////////////////////////////////CHANGE THIS BACK!!
             document.getElementById("hits").innerHTML = hits; //set value of hits 
-            document.getElementById("timer").innerHTML = "Go!"; //set start message 
+            document.getElementById("timer").innerHTML = "Ready!?"; //set start message 
             randY = 0; //set y pos
             
             //set basket
@@ -201,24 +209,24 @@
             
         function gameEnd() //game ended
         {
-            var low = 30; //low score range
-            var med = 60; //avg score range
-            var bad = "You need more practice!"; //msg for low score
-            var ok = "Great job!"; //msg for avg score
-            var good = "You're a pro!!"; //msg for pro score
+            var low = 40; //low score range
+            var med = 70; //avg score range
+            var msgBd = "You need more practice!"; //msg for low score
+            var msgOk = "Great job!"; //msg for avg score
+            var msgGd = "You're a pro!!"; //msg for good score
             var msg = null; //holds score msg
         
             if (hits <= low) //check for low score
             {
-                msg = bad;   
+                msg = msgBd;   
             }
             else if (hits <= med) //check for med score
             {
-                msg = ok;        
+                msg = msgOk;        
             }
             else //high score
             {
-                msg = good;
+                msg = msgGd;
             }
               
             //print end of game message
