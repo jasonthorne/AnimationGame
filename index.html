@@ -8,12 +8,22 @@
 
     <style type="text/css">
     
-    #container
+    #container1
     {
         width: auto;
         height: auto;
         position: absolute;
+        left: 50px;
+        top: 80px;
+    }    
         
+    #container2
+    {
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 30px;
+        top: 20px;
     }
         
     #span
@@ -28,16 +38,31 @@
   </head>
 
   <body>
-    <!--<div id="gameTxt"></div>-->
-      <div id="container">
-            <span id="timer"></span>
-      </div>
+        <div id="container1">
+            <span id="hits"></span> <!--shows hits-->
+        </div>
+        <div id="container2">
+            <span id="timer"></span> <!--shows timer-->
+        </div>
       
-    <canvas id="canvas" width="550" height="650"></canvas>
-    <script type="text/javascript">
+        <canvas id="canvas" width="550" height="650"></canvas>
+        <script type="text/javascript">
            
         var canvas = document.getElementById("canvas"),
         ctx = canvas.getContext("2d");
+        
+        var i = 0; //for loops 
+        var hits = 0; //hit counter
+       
+        //styles for hits
+        document.getElementById("hits").style.fontSize = "x-large";
+        document.getElementById("hits").style.fontFamily = "Comic Sans MS";
+        document.getElementById("hits").innerHTML = hits;    
+        
+        //styles for timer
+        document.getElementById("timer").style.fontSize = "x-large";
+        document.getElementById("timer").style.fontFamily = "Comic Sans MS";
+        document.getElementById("timer").innerHTML = "Go!";
        
         
         //background variables 
@@ -73,55 +98,70 @@
         //basket object
         var bskObj =
         {
-                 xPos: bskX,
-                 yPos: bskY,
-                 wdth: bskW,
-                 hght: bskH       
+            xPos: bskX,
+            yPos: bskY,
+            wdth: bskW,
+            hght: bskH       
         };
         
-        
-       /* var ctr = new Image(); //counter image
-        var ctrX = 15;/////////////////(canvas.width - bskW) /2; //x pos of basket
-        var ctrY = 15;///////////////////////////(canvas.height - bskH) - 10; //y pos of basket
-        var ctrW = 80; //width of counter
-        var ctrH = 80; //height of counter*/
-        
-        //--------------------------------------------
-        
-        var cnt = 15;
+    
+    
+        //game timer
+        var cnt = 16;
         var cntr = setInterval(timer, 1000); 
 
         function timer()
         {
-            cnt = cnt -1;
+            cnt--;
+            
             if (cnt <= 0)
             {
+        
+                /* document.getElementById("timer").innerHTML = cnt + " secs"; 
                  clearInterval(cntr);
-                 //count ended, tell user game is over++++++++++++++++++++++
+                 var gameOvr = gameEnd();*/
                  return;
             }
 
             document.getElementById("timer").innerHTML = cnt + " secs"; 
         }
+            
+              
+        function gameEnd()
+        {
+            if(confirm("Game over. Play again?")) ////add the score to message///////////////////////////////////////
+            {
+                //end repeat me, then start again+++++++++++++++++++++++++++++++++++++++++++++++++
+                repeatMe();
+            }
+            else
+            {
+                alert("Thanks for playing!")
+                //////////////////////////////////CODE HERE TO MAKE APPLES STOP FALLING :D (stop repeatme) 
+            }
+            
+        }
        
+    
+        //-----------------------------------------------
+        
+        var crl = new Image(); //circle image
+        var crlX = 15;/////////////////(canvas.width - bskW) /2; //x pos of circle
+        var crlY = 15;///////////////////////////(canvas.height - bskH) - 10; //y pos of circle
+        var crlW = 100; //width of circle
+        var crlH = 100; //height of circle
+        
         //--------------------------------------------
         
-        //other variables
-        var i = 0; //for loops 
-        var hits = 0; //hit counter
-        
-        /* var txt = document.getElementById("gameTxt").innerHTML = hits;
-                txt.style.position = "absolute";
-                txt.style.left = 50;
-                txt.style.top = 50;
-        */
         
     
     
         //onload events. loads and draw tree image, then basket
         bg.onload = function()
         {
-            ctx.drawImage(bg, bgX, bgY, bgW, bgH); 
+            ctx.drawImage(bg, bgX, bgY, bgW, bgH);
+           
+            
            /*apl.src = 'img/apl.png'; /////////////////////////////////////DELETE++++++++++++++++++++++
             apl.onload = function() ///////////////////////DELETE. no initial draw, so that apple location is hidden b4 drop+++++++++++++++
             {
@@ -135,22 +175,21 @@
             bsk.src = 'img/bsk.png';
             bsk.onload = function()
             {
-                ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght);
+                ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght);  
+                
             }
             
-           /* ctr.src = 'img/ctr.png';
-            ctr.onload = function()
+            crl.src = 'img/crl.png';
+            crl.onload = function()
             {
-                ctx.drawImage(ctr, ctrX, ctrY, ctrW, ctrH);
+                ctx.drawImage(crl, crlX, crlY, crlW, crlH);
                 
-            }*/
+            }
             
         }
     
         
       
-        
-       
         //---------------------------MAKE APPLE ARRAY-------------------------------------
         function makeApls()
         {
@@ -158,28 +197,24 @@
             {
                 apls[i] = 
                 {
-
                     xPos: aplX[i],
                     yPos: aplY[i],
                     wdth: aplW,
                     hght: aplH  
-
                 }; 
 
-               ////////////////console.log(apls[i], apls[i].xPos, apls[i].yPos, aplW, aplH); //++++++++++++++++++++++++++DELETE
-               //ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, aplW, aplH);////////////////////////++++++++++++++++++DELETE(maybe!)
             }
             
-         
         }
         
 
 
         //--------------------------------------------------------------------
+        
+        
 
-
-        window.addEventListener("keydown", function(event) 
-        { 
+       window.addEventListener("keydown", function(event) 
+       { 
                 ///////////////ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
@@ -187,16 +222,17 @@
                 {
                   bskObj.xPos -= 20;
                     
-                    if(bskObj.xPos < (canvas.width - (bskW /2)))///////////////////////////WRONG!!!! FIX THIS
+                   /* if(bskObj.xPos < (canvas.width - (bskW /2)))///////////////////////////WRONG!!!! FIX THIS
                     {
                         ////////////////////////////////////console.log("too far left");
-                    }
+                    }*/
                 }
                 else if (event.keyCode == 39) //if right is pressed
                 {
-                  bskObj.xPos += 20;
+                   bskObj.xPos += 20;
                 }
             
+           
               /*  if (bskX > (canvas.width - bskW))
                 {
                     bskX -= 5; //(canvas.width - bskW);
@@ -225,7 +261,7 @@
         makeApls(); //////////////////////Probably doesnt need to be in a function!!
         //dropApl();
         //pickApl();
-       repeatMe();///////////////////////
+        repeatMe();///////////////////////
 
 
         function repeatMe() 
@@ -249,6 +285,8 @@
 
         function draw()
         {
+            
+           ctx.clearRect(0, 0, canvas.width, canvas.height);   
 
            ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
           
@@ -257,7 +295,7 @@
                ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght); 
            }
             
-           //ctx.drawImage(ctr, ctrX, ctrY, ctrW, ctrH);
+           ctx.drawImage(crl, crlX, crlY, crlW, crlH);
            ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
             
         }    
@@ -272,7 +310,7 @@
             for(i=0; i<MAX_APLS; i++) 
             {
                 
-                if(canDrop[i] == true) //check if apple can be dropped
+                if(canDrop[i]) //check if apple can be dropped
                 {
                 
                     apls[i].yPos += randY; //drop by randomised ammount
@@ -282,6 +320,7 @@
                     {
                         console.log("Hit basket!!"); /////////////////////////////////////////////////DELETE!!
                         hits++; //add to hit counter
+                        document.getElementById("hits").innerHTML = hits; //update hir counter
                         apls[i].yPos = aplY[i] //reset position 
                         canDrop[i] = false; //return to waiting
                     }
@@ -318,6 +357,9 @@
                 if (randApl == i)
                 {
                     canDrop[i] = true;
+                    
+                    ///dropApl();
+                    
                      //////////  console.log("i is: " + i); ////////////////////////////////////////////
                       ///////////console.log(canDrop[i]); ////////////////////////////////////////////
                 }
@@ -330,7 +372,6 @@
             ///////////draw();///////////++++++++++++++++
             
         }
-        
         
         
       //-----------------------------------------------------
@@ -349,7 +390,6 @@
         }
         
         
-        
         function hitApl(a, b) 
         {
              return a.xPos < b.xPos + b.wdth &&
@@ -358,16 +398,7 @@
              a.yPos + a.hght > b.yPos;
         }
         
-
-
-        /*
-        LINKS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//////////////////////////////////////////////////////
-        
-        http://stackoverflow.com/questions/17883692/how-to-set-time-delay-in-javascript
-        */
        
-    
-
     </script>
 
   </body>
