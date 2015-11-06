@@ -149,7 +149,7 @@
             
             hits = 0; //set hit counter 
             cntr = setInterval(timer, 1000); //make counter
-            cnt = 16; //set time counter/////////////////////////////////////////////////////////////////////////CHANGE THIS BACK!!
+            cnt = 16; //set time counter
             document.getElementById("hits").innerHTML = hits; //set value of hits 
             document.getElementById("timer").innerHTML = "Ready!?"; //set start message 
             randY = 0; //set y pos
@@ -227,10 +227,20 @@
             if (event.keyCode == 37) //if left is pressed
             {
               bskObj.xPos -= 20; //decrease x pos
+                
+                if(bskObj.xPos <0) //check for canvas collision
+                {
+                    bskObj.xPos = 0; 
+                }
             }
             else if (event.keyCode == 39) //if right is pressed
             {
                bskObj.xPos += 20; //increase x pos
+                
+                if(bskObj.xPos > (canvas.width - bskObj.wdth)) //check for canvas collision
+                {
+                    bskObj.xPos = canvas.width - bskObj.wdth;
+                }
             }
 
             draw(); //draw changes
