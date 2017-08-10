@@ -53,6 +53,7 @@
         
         var i = 0; //for loops 
         var hits = 0; //hit counter
+		var key = []; //for keycode values
             
         //game timer
         var cnt = 0; //time
@@ -104,7 +105,21 @@
         var bskX = (canvas.width - bskW) /2; //x pos of basket 
         var bskY = (canvas.height - bskH) - 10; //y pos of basket 
         var bskObj = null; //basket object 
-            
+		
+		
+		///////////+++++++++++++++++++++++++++++++++++++
+		
+		
+		
+		
+         (function () 
+		 {
+			var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+			window.requestAnimationFrame = requestAnimationFrame;
+		 })();
+		 
+		 ///////////+++++++++++++++++++++++++++++++++++++
+   
             
         //onload events
         bg.onload = function() //load background
@@ -122,7 +137,7 @@
             {
                 ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle   
             }   
-         }    
+        }    
             
 
         
@@ -142,7 +157,7 @@
             alert("Welcome to Apple Catch!\n\nCatch as many apples as you can before the time runs out.\nUse the left and right arrow keys to move your basket.\n\nGoodluck!");
         }    
             
-  //-----------------------------------------------------METHODS-----------------------------------------------------
+  //-----------------------------------------------------FUNCTIONS-----------------------------------------------------
             
         function innit() //initialise variables
         {
@@ -209,21 +224,23 @@
             waitToPick(); //apples wait to be picked
 
             dropApl(); //apples are dropped
-
+			
+			moveBsk(); //basket moved on keypress
+			
             draw(); //canvas redrawn
 
-            window.requestAnimationFrame(playGame); //game continues
+            ///////////////////////window.requestAnimationFrame(playGame); //game continues
+			requestAnimationFrame(playGame); //game continues
             
         }
 
 
     //-----------------------------------------------------
-    
-        
-
-       window.addEventListener("keydown", function(event) //listens for keystrokes
+	
+		/*
+		window.addEventListener("keydown", function(event) //listens for keystrokes
        { 
-               
+               ///////////////////////////////
             if (event.keyCode == 37) //if left is pressed
             {
               bskObj.xPos -= 20; //decrease x pos
@@ -244,10 +261,54 @@
             }
 
             draw(); //draw changes
-
+//////////////////////////////////////////////
         });
+		*/
+		
+    
+	
+        
 
-            
+       window.addEventListener("keydown", function(event) //listens for key press, adds its keycode
+       { 
+            key[event.keyCode] = true;   
+       });
+	   
+	   
+	   window.addEventListener("keyup", function(e) //listens for key release, removes its keycode
+       { 
+            key[e.keyCode] = false;   
+       });
+
+      //-----------------------------------------------------
+	  
+	 
+	   function moveBsk()  //move basket according to user's key press
+	   {
+	   
+			if (key[37]) //if left is pressed
+            {
+              bskObj.xPos -= 20; //decrease x pos
+                
+                if(bskObj.xPos <0) //check for canvas collision
+                {
+                    bskObj.xPos = 0; 
+                }
+            }
+            else if (key[39]) //if right is pressed
+            {
+               bskObj.xPos += 20; //increase x pos
+                
+                if(bskObj.xPos > (canvas.width - bskObj.wdth)) //check for canvas collision
+                {
+                    bskObj.xPos = canvas.width - bskObj.wdth;
+                }
+            }
+			
+			draw(); //draw changes
+	   }
+
+		
     //-----------------------------------------------------
 
 
@@ -310,7 +371,7 @@
         
         function pickApl() //picks a random apple to drop
         {
-            
+		
             var randApl = Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick pos of random apple to drop
             randY = Math.floor(Math.random() * ((10 - 4) + 1)) + 4; //pick a random y pos to drop by
             
@@ -322,7 +383,7 @@
                 }         
            
             }   
-         }
+        }
         
         
       //-----------------------------------------------------
