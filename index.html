@@ -106,20 +106,14 @@
         var bskY = (canvas.height - bskH) - 10; //y pos of basket 
         var bskObj = null; //basket object 
 		
-		
-		///////////+++++++++++++++++++++++++++++++++++++
-		
-		
-		
-		
+	
+	//animation frame	
          (function () 
-		 {
-			var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-			window.requestAnimationFrame = requestAnimationFrame;
-		 })();
+	 {
+	    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	    window.requestAnimationFrame = requestAnimationFrame;
+	  })();
 		 
-		 ///////////+++++++++++++++++++++++++++++++++++++
-   
             
         //onload events
         bg.onload = function() //load background
@@ -149,8 +143,6 @@
        playGame(); //play game
             
         //****************************************************************************************
-            
-
             
         function strtMsg() //welcome message
         {
@@ -229,46 +221,14 @@
 			
             draw(); //canvas redrawn
 
-            ///////////////////////window.requestAnimationFrame(playGame); //game continues
-			requestAnimationFrame(playGame); //game continues
+            //window.requestAnimationFrame(playGame); //game continues
+	    requestAnimationFrame(playGame); //game continues
             
         }
 
 
     //-----------------------------------------------------
 	
-		/*
-		window.addEventListener("keydown", function(event) //listens for keystrokes
-       { 
-               ///////////////////////////////
-            if (event.keyCode == 37) //if left is pressed
-            {
-              bskObj.xPos -= 20; //decrease x pos
-                
-                if(bskObj.xPos <0) //check for canvas collision
-                {
-                    bskObj.xPos = 0; 
-                }
-            }
-            else if (event.keyCode == 39) //if right is pressed
-            {
-               bskObj.xPos += 20; //increase x pos
-                
-                if(bskObj.xPos > (canvas.width - bskObj.wdth)) //check for canvas collision
-                {
-                    bskObj.xPos = canvas.width - bskObj.wdth;
-                }
-            }
-
-            draw(); //draw changes
-//////////////////////////////////////////////
-        });
-		*/
-		
-    
-	
-        
-
        window.addEventListener("keydown", function(event) //listens for key press, adds its keycode
        { 
             key[event.keyCode] = true;   
