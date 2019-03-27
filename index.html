@@ -8,13 +8,15 @@
 
     <style type="text/css">
     
-    #container1 
+    #hitsCounterDiv 
     {
         width: auto;
         height: auto;
         position: absolute;
-        left: 58px;
-        top: 75px;
+		left: 75px; 
+        top: 50px; 
+        <!--left: 58px; -->
+        <!--top: 75px;  -->
     }    
         
     #container2
@@ -38,7 +40,7 @@
   </head>
 
   <body>
-        <div id="container1">
+        <div id="hitsCounterDiv">
             <span id="hits"></span> <!--shows hits-->
         </div>
 		
@@ -74,7 +76,7 @@
         
         //background variables 
         var bg = new Image(); //background image
-        bg.src = 'img/bgTest3.png'; //image source //++++++++++++++++++=
+        bg.src = 'img/bg.png'; //image source //++++++++++++++++++=
         var bgX  = 0 //x pos of background 
         var bgY  = 0; //y pos of background 
         var bgW  = canvas.width; //width of background 
@@ -130,11 +132,12 @@
                 ctx.drawImage(bsk, bskX, bskY, bskW, bskH);  //draw basket    
             }
             
+			/*
             crl.src = 'img/crl.png'; //circle image source 
             crl.onload = function() //load circle
             {
                 ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle   
-            }   
+            }*/   
         }    
             
 
@@ -142,7 +145,7 @@
        //*********************************GAME IS STARTED HERE************************************
         
        //START GAME
-       ////////////////////////strtMsg(); //welcome player
+       ////////////////////////strtMsg(); //welcome player +++++++++++++++++++++++
        innit(); //initialise variables
        playGame(); //play game
             
@@ -203,7 +206,7 @@
             {
                 //////////document.getElementById("timer").innerHTML = cnt + " secs"; //update time  ///+++++++++++++++
                 clearInterval(cntr); //clear interval
-                //gameEnd(); //end game  
+                //gameEnd(); //end game  //+++++++++++++++++++++++++
                 return;
             }
 
@@ -291,7 +294,7 @@
             
            ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
             
-           ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle
+           ////ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle +++++++++++++++++++++++++++
             
         }    
 
