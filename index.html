@@ -45,7 +45,7 @@
             <span id="timer"></span> <!--shows timer-->
         </div>
       
-        <canvas id="canvas" width="873" height="640"></canvas>
+        <canvas id="canvas" width="873" height="640"></canvas> 
 		<!--<canvas id="canvas" width="550" height="650"></canvas>-->
         <script type="text/javascript">
         
@@ -71,11 +71,22 @@
         
         //background variables 
         var bg = new Image(); //background image
-        bg.src = 'img/bgTest1.png'; //image source ////////////////////
+        bg.src = 'img/bgTest2.png'; //image source ///////+++++++++++++++
         var bgX  = 0 //x pos of background 
         var bgY  = 0; //y pos of background 
         var bgW  = canvas.width; //width of background 
-        var bgH  = canvas.height; //height of background  
+        var bgH  = canvas.height; //height of background 
+
+		//+++++++++++++++++++++++++++++
+		//Trees:
+		/*
+		var treeTest = new Image();
+		var treeX  = 0 //x pos of background 
+        var treeY  = 0; //y pos of background 
+        var treeW  = 873; //width of background 
+        var treeH  = 650; //height of background 
+		*/
+		//+++++++++++++++++++++++++++++
             
             
         //circle variables
@@ -120,6 +131,13 @@
         bg.onload = function() //load background
         {
             ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
+			
+			/*
+			treeTest.src = 'img/treeTest.png';
+			treeTest.onload = function() 
+            {
+				ctx.drawImage(treeTest, treeX, treeY, treeW, treeH);///////+++++++++++++++
+			}*/
             
             bsk.src = 'img/bsk.png'; //basket image source 
             bsk.onload = function() //load basket
