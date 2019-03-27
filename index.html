@@ -45,7 +45,8 @@
             <span id="timer"></span> <!--shows timer-->
         </div>
       
-        <canvas id="canvas" width="550" height="650"></canvas>
+        <canvas id="canvas" width="873" height="640"></canvas>
+		<!--<canvas id="canvas" width="550" height="650"></canvas>-->
         <script type="text/javascript">
         
         var canvas = document.getElementById("canvas"),
@@ -70,7 +71,7 @@
         
         //background variables 
         var bg = new Image(); //background image
-        bg.src = 'img/bg.png'; //image source
+        bg.src = 'img/bgTest1.png'; //image source ////////////////////
         var bgX  = 0 //x pos of background 
         var bgY  = 0; //y pos of background 
         var bgW  = canvas.width; //width of background 
@@ -138,7 +139,7 @@
        //*********************************GAME IS STARTED HERE************************************
         
        //START GAME
-       strtMsg(); //welcome player
+       ////////////////////////strtMsg(); //welcome player
        innit(); //initialise variables
        playGame(); //play game
             
@@ -199,7 +200,7 @@
             {
                 document.getElementById("timer").innerHTML = cnt + " secs"; //update time 
                 clearInterval(cntr); //clear interval
-                gameEnd(); //end game  
+                //gameEnd(); //end game  
                 return;
             }
 
