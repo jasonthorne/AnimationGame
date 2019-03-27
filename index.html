@@ -44,7 +44,7 @@
             <span id="hits"></span> <!--shows hits-->
         </div>
 		
-		<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++-->
+		<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++https://javascript.info/js-animation-->
         <!--<div id="container2">-->
             <!--<span id="timer"></span> <!--shows timer-->
         <!--</div>-->
@@ -256,7 +256,8 @@
 	   
 			if (key[37]) //if left is pressed
             {
-              bskObj.xPos -= 20; //decrease x pos
+              //bskObj.xPos -= 20; //decrease x pos
+			  bskObj.xPos -= 30; //decrease x pos
                 
                 if(bskObj.xPos <0) //check for canvas collision
                 {
@@ -265,7 +266,8 @@
             }
             else if (key[39]) //if right is pressed
             {
-               bskObj.xPos += 20; //increase x pos
+               //bskObj.xPos += 20; //increase x pos
+			   bskObj.xPos += 30; //increase x pos
                 
                 if(bskObj.xPos > (canvas.width - bskObj.wdth)) //check for canvas collision
                 {
