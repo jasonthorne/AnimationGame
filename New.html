@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Apple Catch</title>
+    <style type="text/css">
+	
+		#timerCounterDiv{
+			width: auto;
+			height: auto;
+			position: absolute;
+			left: 43px;
+			top: 45px;
+		}
+    
+		#hitsCounterDiv {
+			width: auto;
+			height: auto;
+			position: absolute;
+			left: 75px; 
+			top: 50px; 
+		}    
+			
+		#span{
+			position: absolute;
+			right: 20px;
+			top: 20px;
+		}
+    
+    </style>
+  </head>
+  <body>
+        <div id="hitsCounterDiv">
+            <span id="hits"></span> <!--shows hits-->
+        </div>
+		
+	<canvas id="canvas" width="873" height="640"></canvas> 
+        <script type="text/javascript">
+			
+			//create canvas:
+			var canvas = document.getElementById("canvas"),
+			ctx = canvas.getContext("2d");
+			
+			//background vars: 
+			var background = new Image(); //background image
+			background.src = 'img/bg.png'; //image source
+			var backgroundX  = 0 //x pos of background 
+			var backgroundY  = 0; //y pos of background 
+			var backgroundW  = canvas.width; //width of background 
+			var backgroundH  = canvas.height; //height of background 
+			
+			//basket vars:
+			var basket = new Image(); //basket image
+			var basketW = 100; //width of basket
+			var basketH = 100; //height of basket
+			var basketX = (canvas.width - basketW) /2; //x pos of basket 
+			var basketY = (canvas.height - basketH) - 10; //y pos of basket 
+			var basketObj = null;  //basket object
+			
+			var i = 0; //for loops 
+			var hits = 0; //hit counter
+            var key = []; //for keycode values   
+			
+			//game timer
+			var time = 0; //time
+			var timer = null; //counter
+			
+			//animation frame:	
+			(function () {
+			var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+			window.requestAnimationFrame = requestAnimationFrame;
+			})();
+	
+			//onload events:
+			background.onload = function() {
+				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
+				
+				//basket image source (assigned here so that background is drawn first)
+				basket.src = 'img/bsk.png'; 
+				
+				//load and draw basket:
+				basket.onload = function(){
+					ctx.drawImage(basket, basketX, basketY, basketW, basketH);    
+				}
+			}
+			
+			//event listeners:
+			window.addEventListener("keydown", function(event){ //listens for key press, adds its keycode 
+				key[event.keyCode] = true; 		
+			});
+	   
+		    window.addEventListener("keyup", function(e){ //listens for key release, removes its keycode
+				key[e.keyCode] = false;
+		    });
+			
+			
+			//*********************************GAME IS STARTED HERE************************************
+			//innit(); //initialise variables
+			playGame(); //play game
+			//****************************************************************************************
+
+			//initialise variables:
+			function innit() 
+			{
+				
+				/*
+				//hits = 0; //set hit counter 
+				timer = setInterval(setTimer, 1000); //make counter
+				time = 16; //set time counter
+				document.getElementById("hits").innerHTML = hits; //set value of hits 
+				//document.getElementById("timer").innerHTML = "Ready!?"; //set start message //++++++++++++++++++++++++++
+				randY = 0; //set y pos*/
+				
+				//set basket:
+				bskObj = 
+				{
+					xPos: bskX,
+					yPos: bskY,
+					wdth: bskW,
+					hght: bskH       
+				};
+					
+			} 
+			
+			function playGame(){
+				
+				//waitToPick(); //apples wait to be picked
+
+				//dropApl(); //apples are dropped
+				
+				//moveBsk(); //basket moved on keypress
+				
+				//draw(); //canvas redrawn
+
+				requestAnimationFrame(playGame); //game continues
+				
+			}
+			
+			
+			
+			
+		</script>
+		
+		
+		
+  </body>
+</html>

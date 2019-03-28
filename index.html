@@ -110,7 +110,13 @@
         var bskH = 100; //height of basket
         var bskX = (canvas.width - bskW) /2; //x pos of basket 
         var bskY = (canvas.height - bskH) - 10; //y pos of basket 
-        var bskObj = null; //basket object 
+        var bskObj =  {
+                xPos: bskX,
+                yPos: bskY,
+                wdth: bskW,
+                hght: bskH       
+            };
+           
 		
 	
 	//animation frame	
@@ -168,6 +174,7 @@
             //document.getElementById("timer").innerHTML = "Ready!?"; //set start message //++++++++++++++++++++++++++
             randY = 0; //set y pos
             
+			/*
             //set basket
             bskObj = 
             {
@@ -175,7 +182,7 @@
                 yPos: bskY,
                 wdth: bskW,
                 hght: bskH       
-            };
+            };*/
             
             //set apples and drop array
             for (i=0; i<MAX_APLS; i++)
