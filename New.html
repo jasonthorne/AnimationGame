@@ -10,8 +10,8 @@
 			width: auto;
 			height: auto;
 			position: absolute;
-			left: 43px;
-			top: 45px;
+			left: 73px;
+			top: 50px;
 		}
     
 		#hitsCounterDiv {
@@ -31,6 +31,11 @@
     </style>
   </head>
   <body>
+  
+		<div id="timerCounterDiv">
+           <span id="timer"></span> <!--shows timer-->
+        </div>
+  
         <div id="hitsCounterDiv">
             <span id="hits"></span> <!--shows hits-->
         </div>
@@ -58,22 +63,45 @@
 			var basketY = (canvas.height - basketH) - 10; //y pos of basket 
 			var basketObj = null;  //basket object
 			
+			//apple vars:
+			var apple = new Image(); //apple image
+			apple.src = 'img/apl.png'; //image source
+			//var MAX_APLS = 10; //amount of apples
+			//var apls = [MAX_APLS]; //array for apples 
+			//var canDrop = [MAX_APLS]; //holds which apples can drop
+			var appleX = 50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
+			var appleY = 280; //[280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples     
+			var appleW = 60; //width of apple
+			var appleH = 60; //height of apple
+			var appleObj = null; //apple object
+			
+			
+			//var randY = 0; //holds random y pos //+++++++++++++ 
+			
 			var i = 0; //for loops 
 			var hits = 0; //hit counter
             var key = []; //for keycode values   
 			
-			//game timer
+			//game timer:
 			var time = 0; //time
 			var timer = null; //counter
 			
+			//styles for hits:
+			document.getElementById("hits").style.fontSize = "x-large"; //font size
+			document.getElementById("hits").style.fontFamily = "Comic Sans MS"; //font family
+			
+			//styles for timer
+			document.getElementById("timer").style.fontSize = "x-large"; //font size
+			document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
+			
 			//animation frame:	
-			(function () {
+			(function (){
 			var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 			window.requestAnimationFrame = requestAnimationFrame;
 			})();
 	
 			//onload events:
-			background.onload = function() {
+			background.onload = function(){
 				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
 				
 				//basket image source (assigned here so that background is drawn first)
@@ -83,6 +111,7 @@
 				basket.onload = function(){
 					ctx.drawImage(basket, basketX, basketY, basketW, basketH);    
 				}
+				
 			}
 			
 			//event listeners:
@@ -96,34 +125,40 @@
 			
 			
 			//*********************************GAME IS STARTED HERE************************************
-			//innit(); //initialise variables
+			innit(); //initialise variables
 			playGame(); //play game
 			//****************************************************************************************
 
 			//initialise variables:
-			function innit() 
-			{
+			function innit(){
 				
-				/*
+				
 				//hits = 0; //set hit counter 
-				timer = setInterval(setTimer, 1000); //make counter
-				time = 16; //set time counter
-				document.getElementById("hits").innerHTML = hits; //set value of hits 
+				time = 16; //set time
+				timer = setInterval(runTimer, 1000); //run timer
+				//document.getElementById("hits").innerHTML = hits; //set value of hits 
 				//document.getElementById("timer").innerHTML = "Ready!?"; //set start message //++++++++++++++++++++++++++
-				randY = 0; //set y pos*/
+				document.getElementById("timer").innerHTML = time; // + " secs"; //set start message //++++++++++++++++++++++++++
+				////randY = 0; //set y pos*/
 				
 				//set basket:
-				bskObj = 
-				{
-					xPos: bskX,
-					yPos: bskY,
-					wdth: bskW,
-					hght: bskH       
+				basketObj = {
+					xPos: basketX,
+					yPos: basketY,
+					width: basketW,
+					hight: basketH       
 				};
-					
+				
+				
+				
 			} 
 			
 			function playGame(){
+			
+				
+				//makeApple(); //=======================+++++++++++++++++++++++
+					
+				draw();
 				
 				//waitToPick(); //apples wait to be picked
 
@@ -135,6 +170,41 @@
 
 				requestAnimationFrame(playGame); //game continues
 				
+			}
+			
+			//timer
+			function runTimer(){
+			
+				time--; //reduce timer
+				
+				//check if timer ended:
+				if (time <= 0){
+					document.getElementById("timer").innerHTML = time; // + " secs"; //update time  ///+++++++++++++++
+					clearInterval(time); //clear interval
+					//gameEnd(); //end game  //+++++++++++++++++++++++++
+					//innit();
+				}
+
+				document.getElementById("timer").innerHTML = time; // + " secs"; //update timer ///++++++++++++++=
+			}
+			
+			
+			
+			function makeApple(){ //+++++++++++++++++++++++++++++++++++
+			
+				appleObj = {
+					xPos: appleX,
+                    yPos: appleY,
+                    width: appleW,
+                    hight: appleH  
+				};	
+			}
+			
+			
+			function draw(){ //+++++++++++++++++++++++++++++++++++
+			
+				ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.hight);
+			
 			}
 			
 			
