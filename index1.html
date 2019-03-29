@@ -8,15 +8,13 @@
 
     <style type="text/css">
     
-    #hitsCounterDiv 
+    #container1 
     {
         width: auto;
         height: auto;
         position: absolute;
-		left: 75px; 
-        top: 50px; 
-        <!--left: 58px; -->
-        <!--top: 75px;  -->
+        left: 58px;
+        top: 75px;
     }    
         
     #container2
@@ -40,18 +38,14 @@
   </head>
 
   <body>
-        <div id="hitsCounterDiv">
+        <div id="container1">
             <span id="hits"></span> <!--shows hits-->
         </div>
-		
-		<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++https://javascript.info/js-animation-->
-        <!--<div id="container2">-->
-            <!--<span id="timer"></span> <!--shows timer-->
-        <!--</div>-->
-		<!--+++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+        <div id="container2">
+            <span id="timer"></span> <!--shows timer-->
+        </div>
       
-        <canvas id="canvas" width="873" height="640"></canvas> 
-		<!--<canvas id="canvas" width="550" height="650"></canvas>--> 
+        <canvas id="canvas" width="550" height="650"></canvas>
         <script type="text/javascript">
         
         var canvas = document.getElementById("canvas"),
@@ -70,18 +64,18 @@
         document.getElementById("hits").style.fontFamily = "Comic Sans MS"; //font family  
         
         //styles for timer
-        /////////+++++++++document.getElementById("timer").style.fontSize = "large"; //font size
-        /////////+++++++++document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
+        document.getElementById("timer").style.fontSize = "large"; //font size
+        document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
        
         
         //background variables 
         var bg = new Image(); //background image
-        bg.src = 'img/bg.png'; //image source //++++++++++++++++++=
+        bg.src = 'img/bg.png'; //image source
         var bgX  = 0 //x pos of background 
         var bgY  = 0; //y pos of background 
         var bgW  = canvas.width; //width of background 
-        var bgH  = canvas.height; //height of background 
-
+        var bgH  = canvas.height; //height of background  
+            
             
         //circle variables
         var crl = new Image(); //circle image
@@ -94,7 +88,7 @@
         //apple variables
         var apl = new Image(); //apple image
         apl.src = 'img/apl.png'; //image source
-        var MAX_APLS = 10; //ammount of apples
+        var MAX_APLS = 10; //amount of apples
         var apls = [MAX_APLS]; //array for apples 
         var canDrop = [MAX_APLS]; //holds which apples can drop
         var aplX = [50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
@@ -110,40 +104,33 @@
         var bskH = 100; //height of basket
         var bskX = (canvas.width - bskW) /2; //x pos of basket 
         var bskY = (canvas.height - bskH) - 10; //y pos of basket 
-        var bskObj =  {
-                xPos: bskX,
-                yPos: bskY,
-                wdth: bskW,
-                hght: bskH       
-            };
-           
+        var bskObj = null; //basket object 
 		
 	
-	//animation frame	
-         (function () 
-	 {
+		//animation frame	
+        (function () 
+		{
 	    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
 	    window.requestAnimationFrame = requestAnimationFrame;
-	  })();
+		})();
 		 
             
         //onload events
         bg.onload = function() //load background
         {
             ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
-			
+            
             bsk.src = 'img/bsk.png'; //basket image source 
             bsk.onload = function() //load basket
             {
                 ctx.drawImage(bsk, bskX, bskY, bskW, bskH);  //draw basket    
             }
             
-			/*
             crl.src = 'img/crl.png'; //circle image source 
             crl.onload = function() //load circle
             {
                 ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle   
-            }*/   
+            }   
         }    
             
 
@@ -151,7 +138,7 @@
        //*********************************GAME IS STARTED HERE************************************
         
        //START GAME
-       ////////////////////////strtMsg(); //welcome player +++++++++++++++++++++++
+       //strtMsg(); //welcome player+++++++++++++++++++++++++++++
        innit(); //initialise variables
        playGame(); //play game
             
@@ -171,10 +158,9 @@
             cntr = setInterval(timer, 1000); //make counter
             cnt = 16; //set time counter
             document.getElementById("hits").innerHTML = hits; //set value of hits 
-            //document.getElementById("timer").innerHTML = "Ready!?"; //set start message //++++++++++++++++++++++++++
+            document.getElementById("timer").innerHTML = "Ready!?"; //set start message 
             randY = 0; //set y pos
             
-			/*
             //set basket
             bskObj = 
             {
@@ -182,7 +168,7 @@
                 yPos: bskY,
                 wdth: bskW,
                 hght: bskH       
-            };*/
+            };
             
             //set apples and drop array
             for (i=0; i<MAX_APLS; i++)
@@ -203,21 +189,19 @@
             
     //-----------------------------------------------------
             
-            
-            
         function timer() //timer
         {
             cnt--; //reduce timer
             
             if (cnt <= 0) //check if timer ended
             {
-                //////////document.getElementById("timer").innerHTML = cnt + " secs"; //update time  ///+++++++++++++++
+                document.getElementById("timer").innerHTML = cnt + " secs"; //update time 
                 clearInterval(cntr); //clear interval
-                //gameEnd(); //end game  //+++++++++++++++++++++++++
+                gameEnd(); //end game  
                 return;
             }
 
-            /////document.getElementById("timer").innerHTML = cnt + " secs"; //update timer ///++++++++++++++=
+            document.getElementById("timer").innerHTML = cnt + " secs"; //update timer
          }
             
             
@@ -229,7 +213,7 @@
             
             waitToPick(); //apples wait to be picked
 
-            dropApl(); //apples are dropped
+			//dropApl(); //apples are dropped //////////////////////////WHY HERE!!??? 
 			
 			moveBsk(); //basket moved on keypress
 			
@@ -245,14 +229,13 @@
 	
        window.addEventListener("keydown", function(event) //listens for key press, adds its keycode
        { 
-            key[event.keyCode] = true; 		
-			
+            key[event.keyCode] = true;   
        });
 	   
 	   
 	   window.addEventListener("keyup", function(e) //listens for key release, removes its keycode
        { 
-            key[e.keyCode] = false;
+            key[e.keyCode] = false;   
        });
 
       //-----------------------------------------------------
@@ -263,8 +246,7 @@
 	   
 			if (key[37]) //if left is pressed
             {
-              //bskObj.xPos -= 20; //decrease x pos
-			  bskObj.xPos -= 30; //decrease x pos
+              bskObj.xPos -= 20; //decrease x pos
                 
                 if(bskObj.xPos <0) //check for canvas collision
                 {
@@ -273,8 +255,7 @@
             }
             else if (key[39]) //if right is pressed
             {
-               //bskObj.xPos += 20; //increase x pos
-			   bskObj.xPos += 30; //increase x pos
+               bskObj.xPos += 20; //increase x pos
                 
                 if(bskObj.xPos > (canvas.width - bskObj.wdth)) //check for canvas collision
                 {
@@ -303,7 +284,7 @@
             
            ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
             
-           ////ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle +++++++++++++++++++++++++++
+           ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle
             
         }    
 
@@ -311,18 +292,28 @@
         
      //-----------------------------------------------------
         
+		
         function dropApl() //drops apple
         {
-            
+            	
             for(i=0; i<MAX_APLS; i++) 
             {
                 
                 if(canDrop[i]) //check if apple can be dropped
                 {
+				
+				
+					//++++++++++++++++
+					randY = 8;//Math.floor(Math.random() * (1000 - 2000)) + 1000;
+					//randY = Math.floor(Math.random() * (1000 - 2000)) + 1000;
+					
+					
+					apls[i].yPos += randY; //drop by randomised amount
+					//++++++++++++++++
                 
-                    apls[i].yPos += randY; //drop by randomised ammount
-                    
-                    if(hitApl(apls[i], bskObj)) //check if apple hit basket
+				
+                    	
+                    if(hitApl(apls[i], bskObj)) //check if apple hit basket //+++++++++++ANOMNMOUSLY CALLS THE FUNCTION!
                     {
                         hits++; //add to hit counter
                         document.getElementById("hits").innerHTML = hits; //update hit counter
@@ -338,28 +329,81 @@
                     }
                     
                 }
+				
                 
-            }   
-            
+            }
+		
+		}
+			
+		/*	
+		function dropApl(appleNum) //drops apple
+        {
+		
+			var num = appleNum;
+			randY = 5; //Math.random() * (1000 - 2000)) + 1000;
+			
+			//do 
+			//{
+				
+			//}
+			//while (apls[i].yPos != (canvas.height - aplH)); //(!(apls[i].yPos == canvas.height - aplH));
+			
+			for(i=0; i<5; i++)
+            {  
+				apls[num].yPos += i; //drop by randomised amount
+			}
+
+			
         }
-        
+        */
         
       //-----------------------------------------------------
         
         function pickApl() //picks a random apple to drop
         {
 		
-            var randApl = Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick pos of random apple to drop
+		    var randApl = Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick pos of random apple to drop
+            /////var randApl = 5 //Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick pos of random apple to drop
             randY = Math.floor(Math.random() * ((10 - 4) + 1)) + 4; //pick a random y pos to drop by
             
+			canDrop[randApl] = true;
+			
+			dropApl();
+			
+			
+			//============================================
+			
+			/*
+			randY = 8;//Math.floor(Math.random() * (1000 - 2000)) + 1000;
+					//randY = Math.floor(Math.random() * (1000 - 2000)) + 1000;
+			
+			while(!(apls[randApl].yPos >= (canvas.height - aplH))){
+			
+					apls[randApl].yPos += 5; //randY; //drop by randomised amount
+			
+			}
+			
+			//if(apls[i].yPos >= (canvas.height - aplH)) //check if apple has hit bottom of canvas
+                 ///   {
+                        //apls[randApl].yPos = aplY[i] //reset y position //HOW TO DO THIS WITHOUT A LOOP BEING PRESENT!!!?? 
+                       // canDrop[randApl] = false; //return to waiting  
+                  //  }
+			
+			//============================================*/
+			
+			/*
             for(i=0; i<MAX_APLS; i++)
             {     
                 if (randApl == i) //find matching apple
                 {
                     canDrop[i] = true; //allow apple to drop 
+					
+					///////////////////////////+++++++++++++++++++++++++++++++++Call can drop here!! 
+					//dropApl();
+					///////////////////////////+++++++++++++++++++++++++++++++++
                 }         
            
-            }   
+            } */ 
         }
         
         
@@ -368,7 +412,8 @@
 
         function waitToPick() //waits a random time to pick apple
         {
-             var randNum = Math.floor(Math.random() * (1000 - 4000)) + 1000; //between 1 - 4 seconds
+             //var randNum = Math.floor(Math.random() * (1000 - 4000)) + 1000; //between 1 - 4 seconds
+			 var randNum = Math.floor(Math.random() * (1000 - 4000)) + 1000; //between 1 - 4 seconds
             
              setTimeout(function()
              {
@@ -416,8 +461,11 @@
                 msg = msgGd; //assign good msg 
             }
               
+			  
+			 /* ++++++++++++++++++++++++++++++++++++++++++++++++ 
             //print end of game message
             alert("Time's up!\n\nYou caught " + hits + " Apples.\n" + msg + "\n\nClick 'OK' to play again.");
+			*/
             innit(); //initialise variables
         }
             
