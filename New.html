@@ -162,13 +162,12 @@
 				this.yPos = appleY;
 				this.width = appleW;
 				this.hight = appleH; 
-			
 			}
 			
 			
 			AppleObj.prototype = {
 			
-				draw: function(){
+				boop: function(){
 					clearCanvas(); //clear and redraw canvas
 					ctx.drawImage(apple, apple.xPos, apple.yPos, apple.width, apple.hight); 
 					
@@ -188,6 +187,10 @@
 				//waitToPick(); //apples wait to be picked
 
 				//dropApl(); //apples are dropped
+				
+				////////////////new AppleObj().boop();
+				
+			
 				
 				moveBasket(); //basket moved on keypress
 				
