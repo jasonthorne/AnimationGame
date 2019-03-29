@@ -66,8 +66,8 @@
 			//apple vars:
 			var apple = new Image(); //apple image
 			apple.src = 'img/apl.png'; //image source
-			//var MAX_APLS = 10; //amount of apples
-			//var apls = [MAX_APLS]; //array for apples 
+			var MAX_APLS = 10; //amount of apples
+			var apls = [MAX_APLS]; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = 50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
 			var appleY = 280; //[280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples     
@@ -75,11 +75,9 @@
 			var appleH = 60; //height of apple
 			var appleObj = null; //apple object
 			
-			
 			//var randY = 0; //holds random y pos //+++++++++++++ 
 			
 			let apples = new Map();
-			
 			
 			var i = 0; //for loops 
 			var hits = 0; //hit counter
@@ -117,6 +115,7 @@
 				
 			}
 			
+			
 			//event listeners:
 			window.addEventListener("keydown", function(event){ //listens for key press, adds its keycode 
 				key[event.keyCode] = true; 		
@@ -152,9 +151,32 @@
 					hight: basketH       
 				};
 				
-				//https://stackoverflow.com/questions/30578195/how-to-make-multiple-balls-drop-on-click
+				//https://stackoverflow.com/questions/30578195/how-to-make-multiple-balls-drop-on-click		
 				
-			} 
+			}
+
+			//*****************************************
+			function AppleObj(){ 
+			
+				this.xPos = appleX;				
+				this.yPos = appleY;
+				this.width = appleW;
+				this.hight = appleH; 
+			
+			}
+			
+			
+			AppleObj.prototype = {
+			
+				draw: function(){
+					clearCanvas(); //clear and redraw canvas
+					ctx.drawImage(apple, apple.xPos, apple.yPos, apple.width, apple.hight); 
+					
+				}
+			
+			}
+			
+			//*****************************************
 			
 			function playGame(){
 			
@@ -180,20 +202,21 @@
 			
 				time--; //reduce timer
 				
-				document.getElementById("timer").innerHTML = time; //update time
-				
 				if (time <= 0){ //check if timer ended
+					document.getElementById("timer").innerHTML = time; //update time
 					clearInterval(time); //clear interval
 					//gameEnd(); //end game  //+++++++++++++++++++++++++
 					innit(); //+++++++++++++++++++REMOVE LATER!!
 				}
+				
+				document.getElementById("timer").innerHTML = time; //update time
 			}
 			
 			
-			function draw() { //draws to canvas
+			function draw(){ //draws to canvas
 				  
 			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-			   
+			
 			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background 
 			  
 			  /*
@@ -208,7 +231,7 @@
 
 			
 			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++888888888888888888888888888888888
-			function clearCanvas() { //clears canvas, and redraws background
+			function clearCanvas(){ //clears canvas, and redraws background
 				  
 			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
 			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //redraw background 
@@ -240,8 +263,8 @@
 				clearCanvas(); //clear canvas
 				ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
 					
-			} 
-			
+			}
+		 
 			
 			/*
 			function makeApple(){ //+++++++++++++++++++++++++++++++++++
