@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Apple Catch</title>
+
+    <style type="text/css">
+    
+    #hitsCounterDiv 
+    {
+        width: auto;
+        height: auto;
+        position: absolute;
+		left: 75px; 
+        top: 50px; 
+        <!--left: 58px; -->
+        <!--top: 75px;  -->
+    }    
+        
+    #container2
+    {
+        width: auto;
+        height: auto;
+        position: absolute;
+        left: 43px;
+        top: 45px;
+    }
+        
+    #span
+    {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+    
+    </style>
+
+  </head>
+
+  <body>
+        <div id="hitsCounterDiv">
+            <span id="hits"></span> <!--shows hits-->
+        </div>
+		
+		<!-- +++++++++++++++++++++++++++++++++++++++++++++++++++https://javascript.info/js-animation-->
+        <!--<div id="container2">-->
+            <!--<span id="timer"></span> <!--shows timer-->
+        <!--</div>-->
+		<!--+++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      
+        <canvas id="canvas" width="873" height="640"></canvas> 
+		<!--<canvas id="canvas" width="550" height="650"></canvas>--> 
+        <script type="text/javascript">
+        
+        var canvas = document.getElementById("canvas"),
+        ctx = canvas.getContext("2d");
+        
+        var i = 0; //for loops 
+        var hits = 0; //hit counter
+		var key = []; //for keycode values
+            
+        //game timer
+        var cnt = 0; //time
+        var cntr = null; //counter
+       
+        //styles for hits
+        document.getElementById("hits").style.fontSize = "x-large"; //font size
+        document.getElementById("hits").style.fontFamily = "Comic Sans MS"; //font family  
+        
+        //styles for timer
+        /////////+++++++++document.getElementById("timer").style.fontSize = "large"; //font size
+        /////////+++++++++document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
+       
+        
+        //background variables 
+        var bg = new Image(); //background image
+        bg.src = 'img/bg.png'; //image source //++++++++++++++++++=
+        var bgX  = 0 //x pos of background 
+        var bgY  = 0; //y pos of background 
+        var bgW  = canvas.width; //width of background 
+        var bgH  = canvas.height; //height of background 
+
+            
+        //circle variables
+        var crl = new Image(); //circle image
+        var crlX = 15; //x pos of circle
+        var crlY = 15; //y pos of circle
+        var crlW = 100; //width of circle
+        var crlH = 100; //height of circle
+
+
+        //apple variables
+        var apl = new Image(); //apple image
+        apl.src = 'img/apl.png'; //image source
+        var MAX_APLS = 10; //ammount of apples
+        var apls = [MAX_APLS]; //array for apples 
+        var canDrop = [MAX_APLS]; //holds which apples can drop
+        var aplX = [50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
+        var aplY = [280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples     
+        var aplW = 60; //width of apple
+        var aplH = 60; //height of apple
+        var randY = 0; //holds random y pos 
+        
+        
+        //basket variables
+        var bsk = new Image(); //basket image
+        var bskW = 100; //width of basket
+        var bskH = 100; //height of basket
+        var bskX = (canvas.width - bskW) /2; //x pos of basket 
+        var bskY = (canvas.height - bskH) - 10; //y pos of basket 
+        var bskObj =  {
+                xPos: bskX,
+                yPos: bskY,
+                wdth: bskW,
+                hght: bskH       
+            };
+           
+		
+	
+	//animation frame	
+         (function () 
+	 {
+	    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+	    window.requestAnimationFrame = requestAnimationFrame;
+	  })();
+		 
+            
+        //onload events
+        bg.onload = function() //load background
+        {
+            ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background
+			
+            bsk.src = 'img/bsk.png'; //basket image source 
+            bsk.onload = function() //load basket
+            {
+                ctx.drawImage(bsk, bskX, bskY, bskW, bskH);  //draw basket    
+            }
+            
+			/*
+            crl.src = 'img/crl.png'; //circle image source 
+            crl.onload = function() //load circle
+            {
+                ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle   
+            }*/   
+        }    
+            
+
+        
+       //*********************************GAME IS STARTED HERE************************************
+        
+       //START GAME
+       ////////////////////////strtMsg(); //welcome player +++++++++++++++++++++++
+       innit(); //initialise variables
+       playGame(); //play game
+            
+        //****************************************************************************************
+            
+        function strtMsg() //welcome message
+        {
+            alert("Welcome to Apple Catch!\n\nCatch as many apples as you can before the time runs out.\nUse the left and right arrow keys to move your basket.\n\nGoodluck!");
+        }    
+            
+  //-----------------------------------------------------FUNCTIONS-----------------------------------------------------
+            
+        function innit() //initialise variables
+        {
+            
+            hits = 0; //set hit counter 
+            cntr = setInterval(timer, 1000); //make counter
+            cnt = 16; //set time counter
+            document.getElementById("hits").innerHTML = hits; //set value of hits 
+            //document.getElementById("timer").innerHTML = "Ready!?"; //set start message //++++++++++++++++++++++++++
+            randY = 0; //set y pos
+            
+			/*
+            //set basket
+            bskObj = 
+            {
+                xPos: bskX,
+                yPos: bskY,
+                wdth: bskW,
+                hght: bskH       
+            };*/
+            
+            //set apples and drop array
+            for (i=0; i<MAX_APLS; i++)
+            {
+                apls[i] = 
+                {
+                    xPos: aplX[i],
+                    yPos: aplY[i],
+                    wdth: aplW,
+                    hght: aplH  
+                }; 
+                
+                canDrop[i] = false;  
+            }   
+              
+        }    
+            
+            
+    //-----------------------------------------------------
+            
+            
+            
+        function timer() //timer
+        {
+            cnt--; //reduce timer
+            
+            if (cnt <= 0) //check if timer ended
+            {
+                //////////document.getElementById("timer").innerHTML = cnt + " secs"; //update time  ///+++++++++++++++
+                clearInterval(cntr); //clear interval
+                //gameEnd(); //end game  //+++++++++++++++++++++++++
+                return;
+            }
+
+            /////document.getElementById("timer").innerHTML = cnt + " secs"; //update timer ///++++++++++++++=
+         }
+            
+            
+     //-----------------------------------------------------       
+            
+    
+        function playGame() //plays game
+        {
+            
+            waitToPick(); //apples wait to be picked
+
+            dropApl(); //apples are dropped
+			
+			moveBsk(); //basket moved on keypress
+			
+            draw(); //canvas redrawn
+
+            //window.requestAnimationFrame(playGame); //game continues
+			requestAnimationFrame(playGame); //game continues
+            
+        }
+
+
+    //-----------------------------------------------------
+	
+       window.addEventListener("keydown", function(event) //listens for key press, adds its keycode
+       { 
+            key[event.keyCode] = true; 		
+			
+       });
+	   
+	   
+	   window.addEventListener("keyup", function(e) //listens for key release, removes its keycode
+       { 
+            key[e.keyCode] = false;
+       });
+
+      //-----------------------------------------------------
+	  
+	 
+	   function moveBsk()  //move basket according to user's key press
+	   {
+	   
+			if (key[37]) //if left is pressed
+            {
+              //bskObj.xPos -= 20; //decrease x pos
+			  bskObj.xPos -= 30; //decrease x pos
+                
+                if(bskObj.xPos <0) //check for canvas collision
+                {
+                    bskObj.xPos = 0; 
+                }
+            }
+            else if (key[39]) //if right is pressed
+            {
+               //bskObj.xPos += 20; //increase x pos
+			   bskObj.xPos += 30; //increase x pos
+                
+                if(bskObj.xPos > (canvas.width - bskObj.wdth)) //check for canvas collision
+                {
+                    bskObj.xPos = canvas.width - bskObj.wdth;
+                }
+            }
+			
+			/////////////////draw(); //draw changes
+	   }
+
+		
+    //-----------------------------------------------------
+
+
+        function draw() //draws to canvas
+        {
+              
+           ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+           
+           ctx.drawImage(bg, bgX, bgY, bgW, bgH); //draw background 
+          
+           for(i=0; i<MAX_APLS; i++) //draw apples
+           {
+               ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght); 
+           }
+            
+           ctx.drawImage(bsk, bskObj.xPos, bskObj.yPos, bskObj.wdth, bskObj.hght); //draw basket 
+            
+           ////ctx.drawImage(crl, crlX, crlY, crlW, crlH); //draw circle +++++++++++++++++++++++++++
+            
+        }    
+
+        
+        
+     //-----------------------------------------------------
+        
+        function dropApl() //drops apple
+        {
+            
+            for(i=0; i<MAX_APLS; i++) 
+            {
+                
+                if(canDrop[i]) //check if apple can be dropped
+                {
+				
+					//randY = Math.floor(Math.random() * ((10 - 4) + 1)) + 4; //pick a random y pos to drop by
+                
+                    apls[i].yPos += 15;//randY; //drop by randomised ammount
+                    
+                    if(hitApl(apls[i], bskObj)) //check if apple hit basket
+                    {
+                        hits++; //add to hit counter
+                        document.getElementById("hits").innerHTML = hits; //update hit counter
+                        apls[i].yPos = aplY[i] //reset y position 
+                        canDrop[i] = false; //return to waiting
+                    }
+                    
+                    
+                    if(apls[i].yPos >= (canvas.height - aplH)) //check if apple has hit bottom of canvas
+                    {
+                        apls[i].yPos = aplY[i] //reset y position
+                        canDrop[i] = false; //return to waiting  
+                    }
+                    
+                }
+                
+            }   
+            
+        }
+        
+        
+      //-----------------------------------------------------
+        
+        function pickApl() //picks a random apple to drop
+        {
+		
+		/*
+            var randApl = Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick pos of random apple to drop
+            //randY = Math.floor(Math.random() * ((10 - 4) + 1)) + 4; //pick a random y pos to drop by
+            
+            for(i=0; i<MAX_APLS; i++)
+            {     
+                if (randApl == i) //find matching apple
+                {
+                    canDrop[i] = true; //allow apple to drop 
+					
+                }         
+           
+            }
+
+
+		*/
+		
+			var randApl = Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick pos of random apple to drop
+            /////var randApl = 5 //Math.floor(Math.random() * ((10 - 0) + 1)) + 0; //pick pos of random apple to drop
+            randY = Math.floor(Math.random() * ((10 - 4) + 1)) + 4; //pick a random y pos to drop by
+            
+			canDrop[randApl] = true;
+			
+			dropApl();
+		
+		
+        }
+        
+        
+      //-----------------------------------------------------
+
+
+        function waitToPick() //waits a random time to pick apple
+        {
+             var randNum = Math.floor(Math.random() * (5000 - 15000)) + 1000; //between 1 - 4 seconds
+            
+             setTimeout(function()
+             {
+                 pickApl(); //pick apple
+				console.log(randNum)				 
+
+             },randNum);
+            
+        }
+            
+            
+      //-----------------------------------------------------
+        
+        
+        function hitApl(a, b) //checks for collision
+        {
+            //return if apple has hit basket
+             return a.xPos < b.xPos + b.wdth && 
+             a.xPos + a.wdth > b.xPos &&
+             a.yPos < b.yPos + b.hght &&
+             a.yPos + a.hght > b.yPos;
+        }
+            
+            
+      //-----------------------------------------------------      
+                
+        function gameEnd() //game ended
+        {
+            var low = 40; //low score range
+            var med = 70; //avg score range
+            var msgBd = "You need more practice!"; //msg for low score
+            var msgOk = "Great job!"; //msg for avg score
+            var msgGd = "You're a pro!!"; //msg for good score
+            var msg = null; //holds score msg
+        
+            if (hits <= low) //check for low score
+            {
+                msg = msgBd; //assign bad msg  
+            }
+            else if (hits <= med) //check for med score
+            {
+                msg = msgOk; //assign ok msg        
+            }
+            else //high score
+            {
+                msg = msgGd; //assign good msg 
+            }
+              
+            //print end of game message
+            alert("Time's up!\n\nYou caught " + hits + " Apples.\n" + msg + "\n\nClick 'OK' to play again.");
+            innit(); //initialise variables
+        }
+            
+        //-----------------------------------------------------
+        
+       
+    </script>
+
+  </body>
+
+</html>
