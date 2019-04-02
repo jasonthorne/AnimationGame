@@ -124,8 +124,8 @@
 				key[event.keyCode] = true; 		
 			});
 	   
-		    window.addEventListener("keyup", function(e){ //listens for key release, removes its keycode
-				key[e.keyCode] = false;
+		    window.addEventListener("keyup", function(event){ //listens for key release, removes its keycode
+				key[event.keyCode] = false;
 		    });
 			
 			
