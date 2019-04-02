@@ -40,7 +40,7 @@
             <span id="hits"></span> <!--shows hits-->
         </div>
 		
-	<canvas id="canvas" width="873" height="640"></canvas> 
+		<canvas id="canvas" width="873" height="640"></canvas> 
         <script type="text/javascript">
 			
 			//create canvas:
@@ -95,11 +95,14 @@
 			document.getElementById("timer").style.fontSize = "x-large"; //font size
 			document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
 			
-			//animation frame:	
+			//animation frame:	//++++++++++++++++++++
+			/*
 			(function (){
-			var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-			window.requestAnimationFrame = requestAnimationFrame;
+				var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+				window.requestAnimationFrame = requestAnimationFrame;
 			})();
+			*/
+			
 	
 			//onload events:
 			background.onload = function(){
@@ -205,11 +208,12 @@
 			
 				time--; //reduce timer
 				
-				if (time <= 0){ //check if timer ended
-					document.getElementById("timer").innerHTML = time; //update time
-					clearInterval(time); //clear interval
+				if (time < 0){ //check if timer ended
+					///////////////////////////////////////////document.getElementById("timer").innerHTML = time; //update time
+					clearInterval(timer); //clear interval
 					//gameEnd(); //end game  //+++++++++++++++++++++++++
 					innit(); //+++++++++++++++++++REMOVE LATER!!
+					
 				}
 				
 				document.getElementById("timer").innerHTML = time; //update time
@@ -237,7 +241,7 @@
 			function clearCanvas(){ //clears canvas, and redraws background
 				  
 			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //redraw background 
+			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //redraw background
 			 
 			}
 			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++888888888888888888888888888888888			
