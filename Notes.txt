@@ -1,0 +1,6 @@
++ add apple coordinates (stored in array) to apple object during creation. 
++ also add drop method. 
+	- with maybe a reset method??
++ maybe make it hold a speed var, which is asigned a random number once picked??
++ add apple objs to an array for random picking of them.  
+
