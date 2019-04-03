@@ -77,8 +77,6 @@
 			
 			//var randY = 0; //holds random y pos //+++++++++++++ 
 			
-			let apples = new Map();
-			
 			var i = 0; //for loops 
 			var hits = 0; //hit counter
             var key = []; //for keycode values   
@@ -86,6 +84,8 @@
 			//game timer:
 			var time = 0; //time
 			var timer = null; //counter
+			
+			var test;
 			
 			//styles for hits:
 			document.getElementById("hits").style.fontSize = "x-large"; //font size
@@ -121,11 +121,16 @@
 			
 			//event listeners:
 			window.addEventListener("keydown", function(event){ //listens for key press, adds its keycode 
-				key[event.keyCode] = true; 		
+				key[event.keyCode] = true; 
+				
+				test = event.keyCode;
+					
 			});
 	   
 		    window.addEventListener("keyup", function(event){ //listens for key release, removes its keycode
 				key[event.keyCode] = false;
+				
+				test = event.keyCode;
 		    });
 			
 			
@@ -158,27 +163,7 @@
 				
 			}
 
-			//*****************************************
-			function AppleObj(){ 
 			
-				this.xPos = appleX;				
-				this.yPos = appleY;
-				this.width = appleW;
-				this.hight = appleH; 
-			}
-			
-			
-			AppleObj.prototype = {
-			
-				boop: function(){
-					clearCanvas(); //clear and redraw canvas
-					ctx.drawImage(apple, apple.xPos, apple.yPos, apple.width, apple.hight); 
-					
-				}
-			
-			}
-			
-			//*****************************************
 			
 			function playGame(){
 			
@@ -195,9 +180,12 @@
 				
 			
 				
-				moveBasket(); //basket moved on keypress
+				//moveBasket(); //basket moved on keypress
 				
-				//draw(); //canvas redrawn
+				
+			
+				
+				draw(); //canvas redrawn
 
 				requestAnimationFrame(playGame); //game continues
 				
@@ -221,9 +209,8 @@
 			
 			
 			function draw(){ //draws to canvas
-				  
+				
 			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-			
 			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background 
 			  
 			  /*
@@ -232,18 +219,29 @@
 				   ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght); 
 			   }*/
 				
-			   ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
+				moveBasket(); ///////////////////////
+				
+				
+				
+				//clearCanvas(); //clear canvas
+				//ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
+					
+			
+				
+			    ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
 					
 			}
 
 			
 			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++888888888888888888888888888888888
+			/*
 			function clearCanvas(){ //clears canvas, and redraws background
 				  
 			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
 			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //redraw background
 			 
 			}
+			*/
 			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++888888888888888888888888888888888			
 			
 			
@@ -267,31 +265,11 @@
 					}
 				}
 			
-				clearCanvas(); //clear canvas
-				ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
+				//clearCanvas(); //clear canvas
+				//ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
 					
 			}
 		 
-			//
-			/*
-			function makeApple(){ //+++++++++++++++++++++++++++++++++++
-			
-				appleObj = {
-					xPos: appleX,
-                    yPos: appleY,
-                    width: appleW,
-                    hight: appleH  
-				};	
-			}*/
-			
-			/*
-			function draw(){ //+++++++++++++++++++++++++++++++++++
-			
-				ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.hight);
-			
-			}*/
-			
-			
 			
 			
 		</script>
