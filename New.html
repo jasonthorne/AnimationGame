@@ -67,7 +67,7 @@
 			var apple = new Image(); //apple image
 			apple.src = 'img/apl.png'; //image source
 			var MAX_APLS = 2; //////////////10; //amount of apples
-			var applesArray = [MAX_APLS]; //array for apples 
+			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = [50, 100]; //50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
 			var appleY = [280, 200]; //280; //[280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples     
@@ -114,18 +114,19 @@
 						 
 					};
 					this.fall = function falling(){
-						this.yPos += 15;
-												console.log("yo");
-						//ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); 
-						ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-					ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
-					ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); ///???????
-						
-						requestAnimationFrame(falling);
+						this.yPos ++;
+							console.log("yo");
+						while(!this.yPos >= canvas.height - appleH){
+							requestAnimationFrame(falling);
+						}
+						console.log("boom");
 					};
+					this.returnObj = function(){
+						return this;
+					}
 					
 					
-					this.waitToFall();
+					//this.waitToFall(); ////////============
 					
 					
 				}
@@ -137,7 +138,7 @@
 				testApple.waitToFall();
 				testArray[0].waitToFall();
 				*/
-				
+				var test;
 				//++++++++++++++++++++
 			
 			//=========================================
@@ -225,7 +226,7 @@
 				
 				}
 				
-				//applesArray[0].waitToFall();
+				applesArray[0].waitToFall();
 				
 				/*
 				for (i=0; i<MAX_APLS; i++){
@@ -285,10 +286,10 @@
 				}*/
 				
 				
-				/*
-				appleObj = {
-					xPos: appleX,
-					yPos: appleY,
+				
+				appleObj2 = {
+					xPos: 50,
+					yPos: 300,
 					width: appleW,
 					height: appleH,
 					waitToFall: function(){
@@ -297,13 +298,13 @@
 						randNum = Math.floor(Math.random() * (3000 - 9000)) + 1000; //between 1 - 4 seconds
 						console.log(randNum);
 						
-						ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
+						//ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
             
 						 setTimeout(function(){
 						 
 						 console.log("there");
 							 	///appleObj.yPos += 15;
-								appleObj.fall();
+								appleObj2.fall();
 								
 
 						 },randNum);
@@ -311,17 +312,56 @@
 					},
 					
 					fall: function falling(){
-						appleObj.yPos += 15;
+						appleObj2.yPos += 1;
 						
-						ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
-						
+						ctx.drawImage(apple, appleObj2.xPos, appleObj2.yPos, appleObj2.width, appleObj2.height); 
+						 console.log("bum");
 						requestAnimationFrame(falling);
 					}
 				};
 				
-				appleObj.waitToFall();
-				*/
+				appleObj2.waitToFall();
 				
+				
+				//''''''''''''''''''''''''''''''''
+				appleObj3 = {
+					xPos: 300,
+					yPos: 20,
+					width: appleW,
+					height: appleH,
+					waitToFall: function(){
+					
+					console.log("hi");
+						randNum = Math.floor(Math.random() * (3000 - 9000)) + 1000; //between 1 - 4 seconds
+						console.log(randNum);
+						
+						//ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
+            
+						 setTimeout(function(){
+						 
+						 console.log("there");
+							 	///appleObj.yPos += 15;
+								appleObj3.fall();
+								
+
+						 },randNum);
+						 
+					},
+					
+					fall: function falling(){
+						appleObj3.yPos += 10;
+						
+						ctx.drawImage(apple, appleObj3.xPos, appleObj3.yPos, appleObj3.width, appleObj3.height); 
+						 console.log("bum");
+						requestAnimationFrame(falling);
+					}
+				};
+				
+				appleObj3.waitToFall();
+				
+				
+				
+				//##################################
 			
 				//each apple has a timer, which is fired upon apple creation
 				//when timer is reached, it calls its own drop method, with a random time.
@@ -344,8 +384,11 @@
 				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
 					
 				//=============================================
-				//////////////////////////////ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
-				//appleObj.waitToFall();
+				//ctx.drawImage(apple, appleObj2.xPos, appleObj2.yPos, appleObj2.width, appleObj2.height); 
+				//appleObj2.waitToFall();
+				//test = applesArray[0];
+				//test.waitToFall();
+				////////////////console.log(test);
 				//=============================================
 				 
 				
