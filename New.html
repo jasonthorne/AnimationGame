@@ -95,15 +95,6 @@
 			document.getElementById("timer").style.fontSize = "x-large"; //font size
 			document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
 			
-			//animation frame:	//++++++++++++++++++++
-			/*
-			(function (){
-				var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-				window.requestAnimationFrame = requestAnimationFrame;
-			})();
-			*/
-			
-	
 			//onload events:
 			background.onload = function(){
 				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
@@ -119,24 +110,19 @@
 			}
 			
 			
-			//event listeners:
+			//key event listeners:
 			window.addEventListener("keydown", function(event){ //listens for key press, adds its keycode 
 				key[event.keyCode] = true; 
-				
-				test = event.keyCode;
-					
 			});
 	   
 		    window.addEventListener("keyup", function(event){ //listens for key release, removes its keycode
 				key[event.keyCode] = false;
-				
-				test = event.keyCode;
 		    });
 			
 			
 			//*********************************GAME IS STARTED HERE************************************
 			innit(); //initialise variables
-			playGame(); //play game
+			//playGame(); //play game
 			//****************************************************************************************
 
 			//initialise variables:
@@ -156,38 +142,42 @@
 					xPos: basketX,
 					yPos: basketY,
 					width: basketW,
-					hight: basketH       
+					hight: basketH,
+					move: function(){
+					
+						if (key[37]){ //if left is pressed
+							basketObj.xPos -=30; //decrease x pos
+							
+							if(basketObj.xPos <0){ //check for canvas collision
+								basketObj.xPos = 0; //stop at screen edge
+							}
+						}else if (key[39]){ //if right is pressed
+							basketObj.xPos += 30; //increase x pos
+					
+							if(basketObj.xPos > (canvas.width - basketObj.width)){ //check for canvas collision
+								basketObj.xPos = canvas.width - basketObj.width; //stop at screen edge
+							}
+						}
+						
+						ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
+					}
 				};
 				
 				//https://stackoverflow.com/questions/30578195/how-to-make-multiple-balls-drop-on-click		
 				
+				animate(); //animate game
 			}
 
 			
 			
-			function playGame(){
+			function animate(){
 			
+				ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background 
 				
-				//makeApple(); //=======================+++++++++++++++++++++++
-					
-				//draw();
+				basketObj.move(); //moveBasket();
 				
-				//waitToPick(); //apples wait to be picked
-
-				//dropApl(); //apples are dropped
-				
-				////////////////new AppleObj().boop();
-				
-			
-				
-				//moveBasket(); //basket moved on keypress
-				
-				
-			
-				
-				draw(); //canvas redrawn
-
-				requestAnimationFrame(playGame); //game continues
+				requestAnimationFrame(animate); //game continues
 				
 			}
 			
@@ -208,6 +198,8 @@
 			}
 			
 			
+			
+			/*
 			function draw(){ //draws to canvas
 				
 			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
@@ -218,7 +210,7 @@
 			   {
 				   ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght); 
 			   }*/
-				
+				/*
 				moveBasket(); ///////////////////////
 				
 				
@@ -230,47 +222,8 @@
 				
 			    ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
 					
-			}
-
-			
-			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++888888888888888888888888888888888
-			/*
-			function clearCanvas(){ //clears canvas, and redraws background
-				  
-			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //redraw background
-			 
-			}
-			*/
-			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++888888888888888888888888888888888			
-			
-			
-			function moveBasket(){ //move basket according to user's key press
-			
-				if (key[37]){ //if left is pressed
-
-					basketObj.xPos -=30;
-					
-					if(basketObj.xPos <0){ //check for canvas collision
-						basketObj.xPos = 0; //stop at screen edge
-					}
-				}
-				else if (key[39]){ //if right is pressed
-				
-				   //bskObj.xPos += 20; //increase x pos
-				   basketObj.xPos += 30; //increase x pos
-					
-					if(basketObj.xPos > (canvas.width - basketObj.width)){ //check for canvas collision
-						basketObj.xPos = canvas.width - basketObj.width; //stop at screen edge
-					}
-				}
-			
-				//clearCanvas(); //clear canvas
-				//ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
-					
-			}
-		 
-			
+			}*/
+		
 			
 		</script>
 		
