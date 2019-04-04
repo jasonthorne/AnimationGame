@@ -66,7 +66,7 @@
 			//apple vars:
 			var apple = new Image(); //apple image
 			apple.src = 'img/apl.png'; //image source
-			var MAX_APLS = 10; //amount of apples
+			var MAX_APLS = 2;//10; //amount of apples
 			var apls = [MAX_APLS]; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = 50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
@@ -81,11 +81,14 @@
 			var hits = 0; //hit counter
             var key = []; //for keycode values   
 			
-			//game timer:
+			//game timer: ////////////////////////////CAN PROBABLY BE LOCAL +++++++++++++++++++++
 			var time = 0; //time
 			var timer = null; //counter
 			
-			var test;
+			//==========================================
+			var randNum;
+			
+			//=========================================
 			
 			//styles for hits:
 			document.getElementById("hits").style.fontSize = "x-large"; //font size
@@ -128,7 +131,6 @@
 			//initialise variables:
 			function innit(){
 				
-				
 				//hits = 0; //set hit counter 
 				time = 16; //set time
 				timer = setInterval(runTimer, 1000); //run timer
@@ -142,7 +144,7 @@
 					xPos: basketX,
 					yPos: basketY,
 					width: basketW,
-					hight: basketH,
+					height: basketH,
 					move: function(){
 					
 						if (key[37]){ //if left is pressed
@@ -159,11 +161,64 @@
 							}
 						}
 						
-						ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
+						ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.height); //draw basket 
 					}
 				};
 				
-				//https://stackoverflow.com/questions/30578195/how-to-make-multiple-balls-drop-on-click		
+				
+				//=====================================
+				
+				for (i=0; i<MAX_APLS; i++){
+				
+					appleObj = {
+					xPos: appleX,
+					yPos: appleY,
+					width: appleW,
+					height: appleH,
+					waitToFall: function(){
+					
+					console.log("hi");
+						randNum = Math.floor(Math.random() * (3000 - 9000)) + 1000; //between 1 - 4 seconds
+						console.log(randNum);
+						
+						ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
+            
+						 setTimeout(function(){
+						 
+						 console.log("there");
+							 	///appleObj.yPos += 15;
+								appleObj.fall();
+								
+
+						 },randNum);
+						 
+					},
+					
+					fall: function falling(){
+						appleObj.yPos += 15;
+						
+						ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
+						
+						requestAnimationFrame(falling);
+					}
+				};
+				
+				appleObj.waitToFall();
+				
+				}//for
+            
+				
+
+				
+				//each apple has a timer, which is fired upon apple creation
+				//when timer is reached, it calls its own drop method, with a random time.
+				//drop method checks if apple has hit basket or floor;
+				//resets itself if hit either, and starts a new timer
+				//=====================================
+				
+				
+				
+				//https://stackoverflow.com/questions/30578195/how-to-make-multiple-balls-drop-on-click	+++++++++++++++++++++++++	
 				
 				animate(); //animate game
 			}
@@ -173,7 +228,12 @@
 			function animate(){
 			
 				ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background 
+				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
+					
+				//=============================================
+				ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
+				//appleObj.waitToFall();
+				//=============================================
 				
 				basketObj.move(); //moveBasket();
 				
@@ -187,7 +247,6 @@
 				time--; //reduce timer
 				
 				if (time < 0){ //check if timer ended
-					///////////////////////////////////////////document.getElementById("timer").innerHTML = time; //update time
 					clearInterval(timer); //clear interval
 					//gameEnd(); //end game  //+++++++++++++++++++++++++
 					innit(); //+++++++++++++++++++REMOVE LATER!!
