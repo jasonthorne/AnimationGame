@@ -117,13 +117,16 @@
 						this.yPos += 15;
 												console.log("yo");
 						//ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); 
+						ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+					ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
+					ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); ///???????
 						
 						requestAnimationFrame(falling);
 					};
 					
 					
 					this.waitToFall();
-						ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); ///???????
+					
 					
 				}
 				
@@ -344,6 +347,7 @@
 				//////////////////////////////ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
 				//appleObj.waitToFall();
 				//=============================================
+				 
 				
 				basketObj.move(); //moveBasket();
 				
