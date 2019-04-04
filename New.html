@@ -89,15 +89,51 @@
 			var randNum;
 			
 			//+++++++++++++++++++
-				function appleObj(x, y){
-				
-					this.xPos = x;
-					this.yPos = y;
+				function appleObj(xPos, yPos){
+					this.xPos = xPos;
+					this.yPos = yPos;
 					this.width = appleW;
 					this.height = appleH;
-					//this.move = function
+					this.waitToFall = function(){
+						console.log("hi");
+						//randNum = Math.floor(Math.random() * (3000 - 9000)) + 1000; //between 1 - 4 seconds
+						//console.log(randNum);
+						
+						//return randNum; ///+++++++++++
+						this.fall();
+						/*
+						ctx.drawImage(apple, apls[i].xPos, apls[i].yPos, apls[i].width, apls[i].height); 
+            
+						 setTimeout(function(){
+						 
+						 console.log("there");
+							 	///appleObj.yPos += 15;
+								apls[i].fall(); //++++++++++++++++++++
+								
+						 },randNum);*/
+						 
+					};
+					this.fall = function falling(){
+						this.yPos += 15;
+												console.log("yo");
+						//ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); 
+						
+						requestAnimationFrame(falling);
+					};
+					
+					
+					this.waitToFall();
+						ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); ///???????
 					
 				}
+				
+				/*
+				var testArray = [];
+				var testApple = new appleObj(4, 5);
+				testArray.push(testApple)
+				testApple.waitToFall();
+				testArray[0].waitToFall();
+				*/
 				
 				//++++++++++++++++++++
 			
@@ -186,11 +222,23 @@
 				
 				}
 				
-				for (i=0; i<applesArray.length; i++){
-					
-					console.log(applesArray[i]);
+				//applesArray[0].waitToFall();
 				
-				}
+				/*
+				for (i=0; i<MAX_APLS; i++){
+					
+					console.log(applesArray[i].waitToFall());
+					
+					var test = applesArray[i];
+					
+					console.log(test); //////////????????????
+					est = applesArray[i];
+					
+					for (var key in test){ //go through each key in student
+						console.log(test[key]); //print the key values
+					}
+				
+				}*/
 				
 				
 				
@@ -299,6 +347,8 @@
 				
 				basketObj.move(); //moveBasket();
 				
+				
+				
 				requestAnimationFrame(animate); //game continues
 				
 			}
@@ -311,7 +361,7 @@
 				if (time < 0){ //check if timer ended
 					clearInterval(timer); //clear interval
 					//gameEnd(); //end game  //+++++++++++++++++++++++++
-					innit(); //+++++++++++++++++++REMOVE LATER!!
+					//innit(); //+++++++++++++++++++REMOVE LATER!!
 					
 				}
 				
