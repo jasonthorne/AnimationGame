@@ -66,11 +66,11 @@
 			//apple vars:
 			var appleImg = new Image(); //apple image
 			appleImg.src = 'img/apl.png'; //image source
-			var MAX_APLS = 2; //////////////10; //amount of apples
+			var MAX_APLS = 10; //////////////10; //amount of apples
 			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
-			var appleX = [50, 100]; //50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples   // 
-			var appleY = [280, 200]; //280; // [280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples  [  
+			var appleX = [50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples  
+			var appleY = [280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples   
 			var appleW = 60; //width of apple
 			var appleH = 60; //height of apple
 			////////////////////////var Apple = null; //apple object
@@ -97,7 +97,13 @@
 				this.height = appleH;
 				this.speed = randNum;
 				this.fall = function(){
-						this.yPos += this.speed; //drop apple
+					this.yPos += this.speed; //drop apple
+					
+					if(this.yPos >= (canvas.height - this.height)){ //check if apple has hit bottom of canvas
+						this.yPos = yPos //reset y position
+						this.speed = Math.floor(Math.random() * 10) + 1; ////assign a new random speed
+					}
+						
 				};
 			}
 			/*
@@ -241,10 +247,10 @@
 				//=============================================
 				
 				
-				for (var i=0, AppleI; AppleI = applesArray[i];i++){
+				for (var i=0, AppleI; AppleI=applesArray[i]; i++){ //grab each Apple in array
 				
-					AppleI.fall();
-					ctx.drawImage(appleImg, AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height);
+					AppleI.fall(); //invoke fall
+					ctx.drawImage(appleImg, AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple 
 				}
 				
 					//=============================================
