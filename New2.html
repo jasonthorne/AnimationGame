@@ -67,7 +67,7 @@
 			var apple = new Image(); //apple image
 			apple.src = 'img/apl.png'; //image source
 			var MAX_APLS = 2; //////////////10; //amount of apples
-			var applesArray = [MAX_APLS]; //array for apples 
+			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = [50, 100]; //50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
 			var appleY = [280, 200]; //280; //[280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples     
@@ -87,7 +87,7 @@
 			
 			//==========================================
 			var randNum;
-			
+			var test;
 			//+++++++++++++++++++
 			function AppleObj(xPos, yPos){
 				this.xPos = xPos;
@@ -96,10 +96,15 @@
 				this.height = appleH;
 			}
 			
-			AppleObj.prototype = {
-				waitToFall: function(){
+			AppleObj.prototype.waitToFall = function(){
 					console.log("hi");
-				}
+					this.yPos += 1;
+					//animate();
+					//updateApples();
+					//ctx.drawImage(apple, AppleObj.xPos, AppleObj.yPos, AppleObj.width, AppleObj.height);
+					//requestAnimationFrame(AppleObj.prototype.waitToFall);
+					//ctx.beginPath();
+					
 			};
 			
 			
@@ -187,16 +192,32 @@
 				//=====================================
 				
 				for (i=0; i<MAX_APLS; i++){
-					//var test = new appleObj(appleX[i], appleY[i]);
-					//test.waitToFall();
-					applesArray.push(new AppleObj(appleX[i], appleY[i]));
+					test = new AppleObj(appleX[i], appleY[i]);
+					test.waitToFall();
+					//console.log(test.yPos);
+					applesArray.push(test);
+					//applesArray.push(new AppleObj(appleX[i], appleY[i]));
 					//console.log(applesArray[i]);
 				}
 				
+			
+				/*
+				for (i=0; i<MAX_APLS; i++){
+					test = applesArray[i];
+					
+					
+					test.waitToFall();
+					
+					console.log(applesArray[i]);
+					console.log("Yo");
+				}*/
+				
+				//ctx.drawImage(apple, test.xPos, test.yPos, test.width, test.height);
+				/*
 				for (var i = 0, apl; apl = applesArray[i]; i++){
 					console.log("erer")
 					apl.waitToFall();
-				}
+				}*/
 				
 
 			
@@ -214,17 +235,24 @@
 			}
 
 			
-			
 			function animate(){
 			
 				ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
 				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
 					
 				//=============================================
-				//////////////////////////////ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
+				for (i=0; i<MAX_APLS; i++){
+					
+					//console.log(applesArray[i]);
+					var test = applesArray[i];
+					
+					ctx.drawImage(apple, test.xPos, test.yPos, test.width, test.height);
+					
+				}
+				//ctx.drawImage(apple, AppleObj.xPos, AppleObj.yPos, AppleObj.width, AppleObj.height); 
+				//ctx.drawImage(apple, test.xPos, test.yPos, test.width, test.height);
 				//appleObj.waitToFall();
 				//=============================================
-				 
 				
 				basketObj.move(); //moveBasket();
 			
@@ -248,7 +276,6 @@
 			}
 			
 			
-			
 			/*
 			function draw(){ //draws to canvas
 				
@@ -263,8 +290,7 @@
 				/*
 				moveBasket(); ///////////////////////
 				
-				
-				
+	
 				//clearCanvas(); //clear canvas
 				//ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
 					
