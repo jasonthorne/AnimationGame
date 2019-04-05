@@ -86,8 +86,32 @@
 			var timer = null; //counter
 			
 			//==========================================
-			//var randNum;
-			////var test;
+			
+			//++++++++++++++++++++
+			
+			var testPic1 = new Image();
+			testPic1.src = 'img/apl1.png';
+			var testPic2 = new Image();
+			testPic2.src = 'img/apl2.png';
+			var testPic3 = new Image();
+			testPic3.src = 'img/apl3.png';
+			var testPic4 = new Image();
+			testPic4.src = 'img/apl4.png';
+			var testPic5 = new Image();
+			testPic5.src = 'img/apl5.png';
+			var testPic6 = new Image();
+			testPic6.src = 'img/apl6.png';
+			var testPic7 = new Image();
+			testPic7.src = 'img/apl7.png';
+			var testPic8 = new Image();
+			testPic8.src = 'img/apl8.png';
+			var testPic9 = new Image();
+			testPic9.src = 'img/apl9.png';
+			var testPic10 = new Image();
+			testPic10.src = 'img/apl10.png';
+			
+			var testPicsArray = [testPic1, testPic2, testPic3, testPic4, testPic5, testPic6, testPic7, testPic8, testPic9, testPic10];
+			
 			//+++++++++++++++++++
 			
 			function Apple(xPos, yPos, randNum){
@@ -247,9 +271,9 @@
 				
 				
 				for (var i=0, AppleI; AppleI=applesArray[i]; i++){ //grab each Apple in array
-				
 					AppleI.fall(); //invoke fall
-					ctx.drawImage(appleImg, AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple 
+					//ctx.drawImage(appleImg, AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple
+					ctx.drawImage(testPicsArray[i], AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple					
 				}
 				
 					//=============================================
