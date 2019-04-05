@@ -98,7 +98,6 @@
 				this.speed = randNum;
 				this.fall = function(){
 					this.yPos += this.speed; //drop apple
-					
 					if(this.yPos >= (canvas.height - this.height)){ //check if apple has hit bottom of canvas
 						this.yPos = yPos //reset y position
 						this.speed = Math.floor(Math.random() * 10) + 1; ////assign a new random speed
@@ -220,8 +219,8 @@
 				for (i=0; i<MAX_APLS; i++){
 				
 					randNum = Math.floor(Math.random() * 10) + 1; //make random number between 1 and 10
-					console.log(randNum);
-					applesArray.push(new Apple(appleX[i], appleY[i], randNum));
+					
+					applesArray.push(new Apple(appleX[i], appleY[i], randNum)); //add Apple to array 
 				}
 				
 			
