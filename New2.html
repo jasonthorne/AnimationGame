@@ -48,29 +48,29 @@
 			ctx = canvas.getContext("2d");
 			
 			//background vars: 
-			var background = new Image(); //background image
-			background.src = 'img/bg.png'; //image source
+			var backgroundImg = new Image(); //background image
+			backgroundImg.src = 'img/bg.png'; //image source
 			var backgroundX  = 0 //x pos of background 
 			var backgroundY  = 0; //y pos of background 
 			var backgroundW  = canvas.width; //width of background 
 			var backgroundH  = canvas.height; //height of background 
 			
 			//basket vars:
-			var basket = new Image(); //basket image
+			var basketImg = new Image(); //basket image
 			var basketW = 100; //width of basket
 			var basketH = 100; //height of basket
 			var basketX = (canvas.width - basketW) /2; //x pos of basket 
 			var basketY = (canvas.height - basketH) - 10; //y pos of basket 
-			var basketObj = null;  //basket object
+			var basketObj = null;  //basket object //+++++++++++++++++++++++++++++++++can maybe go!
 			
 			//apple vars:
-			var apple = new Image(); //apple image
-			apple.src = 'img/apl.png'; //image source
+			var appleImg = new Image(); //apple image
+			appleImg.src = 'img/apl.png'; //image source
 			var MAX_APLS = 2; //////////////10; //amount of apples
 			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
-			var appleX = [50, 100]; //50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples    
-			var appleY = [280, 200]; //280; //[280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples     
+			var appleX = [50, 100]; //50; //[50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples   // 
+			var appleY = [280, 200]; //280; // [280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples  [  
 			var appleW = 60; //width of apple
 			var appleH = 60; //height of apple
 			////////////////////////var appleObj = null; //apple object
@@ -108,22 +108,44 @@
 					
 			};*/
 			
+			
 			function AppleObj(xPos, yPos){
 				this.xPos = xPos;
 				this.yPos = yPos;
 				this.width = appleW;
 				this.height = appleH;
-				}
+				this.waitToFall = function(i){
+						//ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height);
+						if (i==0)
+						{
+							this.yPos += 1;
+						}else if (i==1)
+						{
+							this.yPos += 8;
+						}
+				};
+			}
+			/*
+			function AppleObj(xPos, yPos){
+				this.xPos = xPos;
+				this.yPos = yPos;
+				this.width = appleW;
+				this.height = appleH;
+			}*/
 			
+			/*
 			AppleObj.prototype.waitToFall = function(i){
-						console.log("hi");
+						console.log("bb");
 						
 						if (i==0)
 						{
 							this.yPos += 1;
 						}else if (i==1)
 						{
-							this.yPos += 5;
+							this.yPos += 8;
+						}
+						else{
+							this.yPos += 3;
 						}
 						//this.yPos += 1;
 						//animate();
@@ -132,7 +154,7 @@
 						//requestAnimationFrame(AppleObj.prototype.waitToFall);
 						//ctx.beginPath();
 						
-				};
+				};*/
 			
 			//++++++++++++++++++++
 			
@@ -147,15 +169,15 @@
 			document.getElementById("timer").style.fontFamily = "Comic Sans MS"; //font family
 			
 			//onload events:
-			background.onload = function(){
-				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
+			backgroundImg.onload = function(){
+				ctx.drawImage(backgroundImg, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
 				
 				//basket image source (assigned here so that background is drawn first)
-				basket.src = 'img/bsk.png'; 
+				basketImg.src = 'img/bsk.png'; 
 				
 				//load and draw basket:
-				basket.onload = function(){
-					ctx.drawImage(basket, basketX, basketY, basketW, basketH);    
+				basketImg.onload = function(){
+					ctx.drawImage(basketImg, basketX, basketY, basketW, basketH);    
 				}
 				
 			}
@@ -194,7 +216,6 @@
 					width: basketW,
 					height: basketH,
 					move: function(){
-					
 						if (key[37]){ //if left is pressed
 							basketObj.xPos -=30; //decrease x pos
 							
@@ -208,8 +229,7 @@
 								basketObj.xPos = canvas.width - basketObj.width; //stop at screen edge
 							}
 						}
-						
-						ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.height); //draw basket 
+						ctx.drawImage(basketImg, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.height); //draw basket 
 					}
 				};
 				
@@ -297,16 +317,20 @@
 			function animate(){
 			
 				ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
+				ctx.drawImage(backgroundImg, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
 					
 				//=============================================
 				
-				for (i=0; i<MAX_APLS; i++){
-					
+				//for (i=0; i<MAX_APLS; i++){
+				for (var i = 0, Appl; Appl = applesArray[i]; i++){
 					//console.log(applesArray[i]);
-					test = applesArray[i];
-					test.waitToFall(i);
-					ctx.drawImage(apple, test.xPos, test.yPos, test.width, test.height);
+					//test = applesArray[i];
+					//test.waitToFall(i);
+					Appl.waitToFall(i);
+					////////////applesArray[i].waitToFall(i);
+					//ctx.drawImage(apple, test.xPos, test.yPos, test.width, test.height);
+					ctx.drawImage(appleImg, Appl.xPos, Appl.yPos, Appl.width, Appl.height);
+					/////////ctx.drawImage(apple, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height);
 					
 				}
 				
@@ -348,31 +372,6 @@
 				document.getElementById("timer").innerHTML = time; //update time
 			}
 			
-			
-			/*
-			function draw(){ //draws to canvas
-				
-			   ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-			   ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background 
-			  
-			  /*
-			   for(i=0; i<MAX_APLS; i++) //draw apples
-			   {
-				   ctx.drawImage(apl, apls[i].xPos, apls[i].yPos, apls[i].wdth, apls[i].hght); 
-			   }*/
-				/*
-				moveBasket(); ///////////////////////
-				
-	
-				//clearCanvas(); //clear canvas
-				//ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
-					
-			
-				
-			    ctx.drawImage(basket, basketObj.xPos, basketObj.yPos, basketObj.width, basketObj.hight); //draw basket 
-					
-			}*/
-		
 			
 		</script>
 		
