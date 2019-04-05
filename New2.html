@@ -89,56 +89,22 @@
 			var randNum;
 			
 			//+++++++++++++++++++
-				function appleObj(xPos, yPos){
-					this.xPos = xPos;
-					this.yPos = yPos;
-					this.width = appleW;
-					this.height = appleH;
-					this.waitToFall = function(){
-						console.log("hi");
-						//randNum = Math.floor(Math.random() * (3000 - 9000)) + 1000; //between 1 - 4 seconds
-						//console.log(randNum);
-						
-						//return randNum; ///+++++++++++
-						this.fall();
-						/*
-						ctx.drawImage(apple, apls[i].xPos, apls[i].yPos, apls[i].width, apls[i].height); 
-            
-						 setTimeout(function(){
-						 
-						 console.log("there");
-							 	///appleObj.yPos += 15;
-								apls[i].fall(); //++++++++++++++++++++
-								
-						 },randNum);*/
-						 
-					};
-					this.fall = function falling(){
-						this.yPos += 15;
-												console.log("yo");
-						//ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); 
-						ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-					ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
-					ctx.drawImage(apple, this.xPos, this.yPos, this.width, this.height); ///???????
-						
-						requestAnimationFrame(falling);
-					};
-					
-					
-					this.waitToFall();
-					
-					
+			function AppleObj(xPos, yPos){
+				this.xPos = xPos;
+				this.yPos = yPos;
+				this.width = appleW;
+				this.height = appleH;
+			}
+			
+			AppleObj.prototype = {
+				waitToFall: function(){
+					console.log("hi");
 				}
-				
-				/*
-				var testArray = [];
-				var testApple = new appleObj(4, 5);
-				testArray.push(testApple)
-				testApple.waitToFall();
-				testArray[0].waitToFall();
-				*/
-				
-				//++++++++++++++++++++
+			};
+			
+			
+			
+			//++++++++++++++++++++
 			
 			//=========================================
 			
@@ -223,107 +189,16 @@
 				for (i=0; i<MAX_APLS; i++){
 					//var test = new appleObj(appleX[i], appleY[i]);
 					//test.waitToFall();
-					applesArray.push(new appleObj(appleX[i], appleY[i]));
+					applesArray.push(new AppleObj(appleX[i], appleY[i]));
 					//console.log(applesArray[i]);
 				}
 				
-				//applesArray[0].waitToFall();
+				for (var i = 0, apl; apl = applesArray[i]; i++){
+					console.log("erer")
+					apl.waitToFall();
+				}
 				
-				/*
-				for (i=0; i<MAX_APLS; i++){
-					
-					console.log(applesArray[i].waitToFall());
-					
-					var test = applesArray[i];
-					
-					console.log(test); //////////????????????
-					est = applesArray[i];
-					
-					for (var key in test){ //go through each key in student
-						console.log(test[key]); //print the key values
-					}
-				
-				}*/
-				
-				
-				
-				/*
-				for (i=0; i<MAX_APLS; i++){
-				
-					apls[i] = {
-					xPos: appleX,
-					yPos: appleY,
-					width: appleW,
-					height: appleH,
-					waitToFall: function(){
-					
-					console.log("hi");
-						randNum = Math.floor(Math.random() * (3000 - 9000)) + 1000; //between 1 - 4 seconds
-						console.log(randNum);
-						
-						ctx.drawImage(apple, apls[i].xPos, apls[i].yPos, apls[i].width, apls[i].height); 
-            
-						 setTimeout(function(){
-						 
-						 console.log("there");
-							 	///appleObj.yPos += 15;
-								apls[i].fall(); //++++++++++++++++++++
-								
-						 },randNum);
-						 
-					},
-					
-					fall: function falling(){
-						apls[i].yPos += 15;
-						
-						ctx.drawImage(apple, apls[i].xPos, apls[i].yPos, apls[i].width, apls[i].height); 
-						
-						requestAnimationFrame(falling);
-					}
-				};
-				
-				apls[i].waitToFall();
-				
-				}*/
-				
-				
-				/*
-				appleObj = {
-					xPos: appleX,
-					yPos: appleY,
-					width: appleW,
-					height: appleH,
-					waitToFall: function(){
-					
-					console.log("hi");
-						randNum = Math.floor(Math.random() * (3000 - 9000)) + 1000; //between 1 - 4 seconds
-						console.log(randNum);
-						
-						ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
-            
-						 setTimeout(function(){
-						 
-						 console.log("there");
-							 	///appleObj.yPos += 15;
-								appleObj.fall();
-								
 
-						 },randNum);
-						 
-					},
-					
-					fall: function falling(){
-						appleObj.yPos += 15;
-						
-						ctx.drawImage(apple, appleObj.xPos, appleObj.yPos, appleObj.width, appleObj.height); 
-						
-						requestAnimationFrame(falling);
-					}
-				};
-				
-				appleObj.waitToFall();
-				*/
-				
 			
 				//each apple has a timer, which is fired upon apple creation
 				//when timer is reached, it calls its own drop method, with a random time.
