@@ -89,6 +89,7 @@
 			var randNum;
 			var test;
 			//+++++++++++++++++++
+			/*
 			function AppleObj(xPos, yPos){
 				this.xPos = xPos;
 				this.yPos = yPos;
@@ -105,7 +106,7 @@
 					//requestAnimationFrame(AppleObj.prototype.waitToFall);
 					//ctx.beginPath();
 					
-			};
+			};*/
 			
 			
 			
@@ -191,6 +192,27 @@
 				
 				//=====================================
 				
+				
+				function AppleObj(xPos, yPos){
+				this.xPos = xPos;
+				this.yPos = yPos;
+				this.width = appleW;
+				this.height = appleH;
+				}
+			
+				AppleObj.prototype.waitToFall = function(){
+						console.log("hi");
+						this.yPos += 1;
+						//animate();
+						//updateApples();
+						testFunc();
+						//requestAnimationFrame(AppleObj.prototype.waitToFall);
+						//ctx.beginPath();
+						
+				};
+				
+				
+				
 				for (i=0; i<MAX_APLS; i++){
 					test = new AppleObj(appleX[i], appleY[i]);
 					test.waitToFall();
@@ -199,6 +221,13 @@
 					//applesArray.push(new AppleObj(appleX[i], appleY[i]));
 					//console.log(applesArray[i]);
 				}
+				
+				function testFunct(){
+				
+				//INVOKE FALL METHOD HERE!!
+				
+				}
+				
 				
 			
 				/*
