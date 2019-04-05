@@ -108,7 +108,31 @@
 					
 			};*/
 			
+			function AppleObj(xPos, yPos){
+				this.xPos = xPos;
+				this.yPos = yPos;
+				this.width = appleW;
+				this.height = appleH;
+				}
 			
+			AppleObj.prototype.waitToFall = function(i){
+						console.log("hi");
+						
+						if (i==0)
+						{
+							this.yPos += 1;
+						}else if (i==1)
+						{
+							this.yPos += 5;
+						}
+						//this.yPos += 1;
+						//animate();
+						//updateApples();
+						//testFunct();
+						//requestAnimationFrame(AppleObj.prototype.waitToFall);
+						//ctx.beginPath();
+						
+				};
 			
 			//++++++++++++++++++++
 			
@@ -192,7 +216,7 @@
 				
 				//=====================================
 				
-				
+				/*0000000000000000000000
 				function AppleObj(xPos, yPos){
 				this.xPos = xPos;
 				this.yPos = yPos;
@@ -200,6 +224,7 @@
 				this.height = appleH;
 				}
 			
+				
 				AppleObj.prototype.waitToFall = function(){
 						console.log("hi");
 						this.yPos += 1;
@@ -210,30 +235,32 @@
 						//ctx.beginPath();
 						
 				};
-				
+				*/000000000000000000
 				
 				
 				for (i=0; i<MAX_APLS; i++){
-					test = new AppleObj(appleX[i], appleY[i]);
+					//test = new AppleObj(appleX[i], appleY[i]);
 					//test.waitToFall();
 					//console.log(test.yPos);
-					applesArray.push(test);
-					//applesArray.push(new AppleObj(appleX[i], appleY[i]));
+					//applesArray.push(test);
+					applesArray.push(new AppleObj(appleX[i], appleY[i]));
 					//console.log(applesArray[i]);
 				}
 				
+				/* 88888888888888888888888888888888
 				(function testFunct(){
 				
 					for (i=0; i<MAX_APLS; i++){
 						test = applesArray[i];
 						test.waitToFall();
 					}
+					
 				
 					requestAnimationFrame(testFunct);
-				})();
+				})();*/
 				
 				
-				/*
+				/*88888888888888888888888888888888888
 				for (i=0; i<MAX_APLS; i++){
 					test = applesArray[i];
 					
@@ -273,14 +300,28 @@
 				ctx.drawImage(background, backgroundX, backgroundY, backgroundW, backgroundH); //draw background
 					
 				//=============================================
+				
 				for (i=0; i<MAX_APLS; i++){
 					
 					//console.log(applesArray[i]);
-					var test = applesArray[i];
-					
+					test = applesArray[i];
+					test.waitToFall(i);
 					ctx.drawImage(apple, test.xPos, test.yPos, test.width, test.height);
 					
 				}
+				
+				/*
+				(function testFunct(){
+				
+					for (i=0; i<MAX_APLS; i++){
+						test = applesArray[i];
+						test.waitToFall();
+					}
+					
+				
+					requestAnimationFrame(testFunct);
+				})();*/
+				
 				//ctx.drawImage(apple, AppleObj.xPos, AppleObj.yPos, AppleObj.width, AppleObj.height); 
 				//ctx.drawImage(apple, test.xPos, test.yPos, test.width, test.height);
 				//appleObj.waitToFall();
@@ -297,7 +338,7 @@
 			
 				time--; //reduce timer
 				
-				if (time < 0){ //check if timer ended
+				if (time <=0){ //check if timer ended
 					clearInterval(timer); //clear interval
 					//gameEnd(); //end game  //+++++++++++++++++++++++++
 					//innit(); //+++++++++++++++++++REMOVE LATER!!
