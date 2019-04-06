@@ -4,3 +4,7 @@
 + maybe make it hold a speed var, which is asigned a random number once picked??
 + add apple objs to an array for random picking of them.  
 
+#######
+change collison points for basket (no handle collison), and ground (somewhere before very bottom of canvas)
+
+- think about changing basket size

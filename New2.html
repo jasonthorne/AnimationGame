@@ -50,7 +50,7 @@
 			//background vars: 
 			var backgroundImg = new Image(); //background image
 			backgroundImg.src = 'img/bg.png'; //image source
-			var backgroundX  = 0 //x pos of background 
+			var backgroundX  = 0; //x pos of background 
 			var backgroundY  = 0; //y pos of background 
 			var backgroundW  = canvas.width; //width of background 
 			var backgroundH  = canvas.height; //height of background 
@@ -66,13 +66,14 @@
 			//apple vars:
 			var appleImg = new Image(); //apple image
 			appleImg.src = 'img/apl.png'; //image source
-			var MAX_APLS = 10; //////////////10; //amount of apples
+			var MAX_APLS = 10; //amount of apples
 			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = [50, 100, 100, 200, 220, 260, 350, 400, 450, 300]; //holds x pos of apples  
 			var appleY = [280, 200, 100, 20, 150, 60, 120, 140, 240, 20]; //holds y pos of apples   
 			var appleW = 60; //width of apple
 			var appleH = 60; //height of apple
+			var appleSpeedsArray = [3, 6, 12]; //hold apple drop speeds
 			////////////////////////var Apple = null; //apple object
 			
 			//var randY = 0; //holds random y pos //+++++++++++++ 
@@ -114,55 +115,6 @@
 			
 			//+++++++++++++++++++
 			
-			function Apple(xPos, yPos, randNum){
-				this.xPos = xPos;
-				this.yPos = yPos;
-				this.width = appleW;
-				this.height = appleH;
-				this.speed = randNum;
-				this.fall = function(){
-					this.yPos += this.speed; //drop apple
-					if(this.yPos >= (canvas.height - this.height)){ //check if apple has hit bottom of canvas
-						this.yPos = yPos //reset y position
-						this.speed = Math.floor(Math.random() * 10) + 1; ////assign a new random speed
-					}
-						
-				};
-			}
-			/*
-			function AppleObj(xPos, yPos){
-				this.xPos = xPos;
-				this.yPos = yPos;
-				this.width = appleW;
-				this.height = appleH;
-			}*/
-			
-			/*
-			AppleObj.prototype.waitToFall = function(i){
-						console.log("bb");
-						
-						if (i==0)
-						{
-							this.yPos += 1;
-						}else if (i==1)
-						{
-							this.yPos += 8;
-						}
-						else{
-							this.yPos += 3;
-						}
-						//this.yPos += 1;
-						//animate();
-						//updateApples();
-						//testFunct();
-						//requestAnimationFrame(AppleObj.prototype.waitToFall);
-						//ctx.beginPath();
-						
-				};*/
-			
-			//++++++++++++++++++++
-			
-			//=========================================
 			
 			//styles for hits:
 			document.getElementById("hits").style.fontSize = "x-large"; //font size
@@ -195,6 +147,33 @@
 		    window.addEventListener("keyup", function(event){ //listens for key release, removes its keycode
 				key[event.keyCode] = false;
 		    });
+			
+			//=========================================
+			//prototype method added to Array class, to allow random picking of elements:
+			Array.prototype.pickRandomElement = function(){ 
+				return this[Math.floor(Math.random()*this.length)]; //return a random element
+			}
+			
+			//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
+			
+			function Apple(xPos, yPos, i){ ////////////////////////REMOVE THIS LATER!!! ++++++++++++
+			//function Apple(xPos, yPos){
+				this.name = i; ////////////////////////REMOVE THIS LATER!!! ++++++++++++
+				this.xPos = xPos;
+				this.yPos = yPos;
+				this.width = appleW;
+				this.height = appleH;
+				this.speed = appleSpeedsArray.pickRandomElement(); //pick a speed for apple to drop by
+				this.fall = function(){
+					this.yPos += this.speed; //drop apple
+					//console.log("Apple: " + this.name + ".Drop speed: " + this.speed); ////REMOVE THIS LATER!!! ++++++++++++
+					if(this.yPos >= ((canvas.height) - this.height)){ //check if apple has hit bottom of canvas
+						this.yPos = yPos //reset y position
+						this.speed = appleSpeedsArray.pickRandomElement(); //assign a new random speed
+					}	
+				};
+			}
+			//=========================================
 			
 			
 			//*********************************GAME IS STARTED HERE************************************
@@ -237,14 +216,12 @@
 					}
 				};
 				
-				var randNum; //holds random number below
 				
 				//create and store Apples:
 				for (i=0; i<MAX_APLS; i++){
 				
-					randNum = Math.floor(Math.random() * 10) + 1; //make random number between 1 and 10
-					
-					applesArray.push(new Apple(appleX[i], appleY[i], randNum)); //add Apple to array 
+					applesArray.push(new Apple(appleX[i], appleY[i], i+1)); ////REMOVE THIS LATER!!! ++++++++++
+					//applesArray.push(new Apple(appleX[i], appleY[i])); //add Apple to array 
 				}
 				
 			
@@ -260,8 +237,8 @@
 				
 				animate(); //animate game
 			}
-
 			
+		
 			function animate(){
 			
 				ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
@@ -272,6 +249,7 @@
 				
 				for (var i=0, AppleI; AppleI=applesArray[i]; i++){ //grab each Apple in array
 					AppleI.fall(); //invoke fall
+					//AppleI.pickSpeed(); //////////////////////////+++++++++++++++++++++++++++++++++++
 					//ctx.drawImage(appleImg, AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple
 					ctx.drawImage(testPicsArray[i], AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple					
 				}
