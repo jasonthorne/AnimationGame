@@ -66,7 +66,7 @@
 			//apple vars:
 			var appleImg = new Image(); //apple image
 			appleImg.src = 'img/apl.png'; //image source
-			var MAX_APLS = 10; //amount of apples
+			var MAX_APLS = 2; //amount of apples
 			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = [50, 130, 200, 260, 350, 450, 600, 610, 550, 750]; //holds x pos of apples  
@@ -166,17 +166,23 @@
 				this.speed = appleSpeedsArray.pickRandomElement(); //pick a speed for apple to drop by
 				this.fall = function(){
 					this.yPos += this.speed; //drop apple
+					
+					if(hitApple(this, Basket)){ //check if apple hit basket
+						//reset apple
+                    }
 					//console.log("Apple: " + this.name + ".Drop speed: " + this.speed); ////REMOVE THIS LATER!!! ++++++++++++
 					if(this.yPos >= (canvas.height - this.height)){ //check if apple has hit bottom of canvas
 						this.yPos = yPos //reset y position
 						this.speed = appleSpeedsArray.pickRandomElement(); //assign a new random speed
 					}
 					
+					
+					
 				};
 			}
 			
 			//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-			
+			/*
 			function Basket(){
 					this.xPos = basketX;
 					this.yPos = basketY;
@@ -198,7 +204,7 @@
 						}//else: pause game and remind user of key controls //+++++++++++++++++++++++++++++DONT FORGET THIS!!!! 
 						ctx.drawImage(basketImg, this.xPos, this.yPos, this.width, this.height); //draw basket 
 					};
-			}
+			}*/
 			
 			
 			//=========================================
@@ -220,7 +226,7 @@
 				document.getElementById("timer").innerHTML = time; // + " secs"; //set start message //++++++++++++++++++++++++++
 				////randY = 0; //set y pos*/
 				
-				/*
+				
 				//set basket:
 				Basket = {
 					xPos: basketX,
@@ -244,8 +250,8 @@
 						ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket 
 					}
 				};
-				*/
-				test = new Basket();
+				
+				///////////////////test = new Basket(); //////////++++++++++
 				
 				//create and store Apples:
 				for (i=0; i<MAX_APLS; i++){
@@ -283,21 +289,21 @@
 					ctx.drawImage(testPicsArray[i], AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple
 
 					//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-					if(hitApl(applesArray[i], test)){ //check if apple hit basket
+					/*if(hitApl(applesArray[i], test)){ //check if apple hit basket
 						console.log("we got em!");
                     }//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-				}
+					*/
+				}	
 				
 				//=============================================
 				
-				//Basket.move(); //moveBasket();
-				test.move(); //+++++++++++++++++++++++++++++++++++++++++++++++++
+				Basket.move(); //moveBasket();
 			
 				requestAnimationFrame(animate); //game continues
 				
 			}
 			
-			//timer
+			//game timer:
 			function runTimer(){
 			
 				time--; //reduce timer
@@ -312,25 +318,12 @@
 				document.getElementById("timer").innerHTML = time; //update time
 			}
 			
-			
-			function hitApple(Apple,Basket){
-			//console.log(Apple);
-			//console.log(Basket);
-            //return if apple has hit basket
-             return Apple.xPos < Basket.xPos + Basket.width && 
-             Apple.xPos + Apple.width > Basket.xPos &&
-             Apple.yPos < Basket.yPos + Basket.hight &&
-             Apple.yPos + Apple.hight > Basket.yPos;
-			}
-			
-			
-			function hitApl(a, b) //checks for collision
-			{
-            //return if apple has hit basket
-             return a.xPos < b.xPos + b.wdth && 
-             a.xPos + a.wdth > b.xPos &&
-             a.yPos < b.yPos + b.hght &&
-             a.yPos + a.hght > b.yPos;
+			//check for collision:
+			function hitApple(Apple,Basket){ 
+				 return Apple.xPos < Basket.xPos + Basket.width && //return if apple has hit basket
+				 Apple.xPos + Apple.width > Basket.xPos &&
+				 Apple.yPos < Basket.yPos + Basket.height &&
+				 Apple.yPos + Apple.height > Basket.yPos;
 			}
 			
 		</script>
