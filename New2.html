@@ -18,8 +18,8 @@
 			width: auto;
 			height: auto;
 			position: absolute;
-			left: 75px; 
-			top: 50px; 
+			left: 424px; 
+			top: 412px; 
 		}    
 			
 		#span{
@@ -66,7 +66,7 @@
 			//apple vars:
 			var appleImg = new Image(); //apple image
 			appleImg.src = 'img/apl.png'; //image source
-			var MAX_APLS = 2; //amount of apples
+			var MAX_APLS = 10; //amount of apples
 			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = [50, 130, 200, 260, 350, 450, 600, 610, 550, 750]; //holds x pos of apples  
@@ -87,7 +87,7 @@
 			var timer = null; //counter
 			
 			//==========================================
-			var test;
+			var test;//////////DELETE LATER!
 			//++++++++++++++++++++
 			
 			var testPic1 = new Image();
@@ -164,19 +164,22 @@
 				this.width = appleW;
 				this.height = appleH;
 				this.speed = appleSpeedsArray.pickRandomElement(); //pick a speed for apple to drop by
+				this.reset = function(){
+					this.yPos = yPos; //reset y position
+					this.speed = appleSpeedsArray.pickRandomElement(); //assign a new random speed
+				};
 				this.fall = function(){
 					this.yPos += this.speed; //drop apple
 					
 					if(hitApple(this, Basket)){ //check if apple hit basket
-						//reset apple
+						hits++; //add to hit counter
+						document.getElementById("hits").innerHTML = hits; //update hit counter
+						this.reset(); //reset apple
                     }
 					//console.log("Apple: " + this.name + ".Drop speed: " + this.speed); ////REMOVE THIS LATER!!! ++++++++++++
 					if(this.yPos >= (canvas.height - this.height)){ //check if apple has hit bottom of canvas
-						this.yPos = yPos //reset y position
-						this.speed = appleSpeedsArray.pickRandomElement(); //assign a new random speed
+						this.reset(); //reset apple
 					}
-					
-					
 					
 				};
 			}
@@ -218,12 +221,11 @@
 			//initialise the game:
 			function innit(){
 				
-				//hits = 0; //set hit counter 
+				hits = 0; //set hit counter 
 				time = 16; //set time
 				timer = setInterval(runTimer, 1000); //run timer
-				//document.getElementById("hits").innerHTML = hits; //set value of hits 
-				//document.getElementById("timer").innerHTML = "Ready!?"; //set start message //++++++++++++++++++++++++++
-				document.getElementById("timer").innerHTML = time; // + " secs"; //set start message //++++++++++++++++++++++++++
+				document.getElementById("timer").innerHTML = time; //set timer element
+				document.getElementById("hits").innerHTML = hits; //set hits element
 				////randY = 0; //set y pos*/
 				
 				
@@ -297,7 +299,7 @@
 				
 				//=============================================
 				
-				Basket.move(); //moveBasket();
+				Basket.move(); //move basket
 			
 				requestAnimationFrame(animate); //game continues
 				
