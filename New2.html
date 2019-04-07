@@ -81,7 +81,7 @@
 			var i = 0; //for loops 
 			var hits = 0; //hit counter
             var key = []; //for keycode values   
-			
+			//var key = 0; //+++++++++++++ 
 			//game timer: ////////////////////////////CAN PROBABLY BE LOCAL +++++++++++++++++++++
 			var time = 0; //time
 			var timer = null; //counter
@@ -142,31 +142,31 @@
 			//key event listeners:
 			window.addEventListener("keydown", function(event){ //listens for key press, adds its keycode 
 				key[event.keyCode] = true; 
+				///////////key = event.keyCode; ++++++++++++++++++++++
 			});
 	   
 		    window.addEventListener("keyup", function(event){ //listens for key release, removes its keycode
 				key[event.keyCode] = false;
+				//////////key = 0; ++++++++++++++++++++++
 		    });
 			
 			//=========================================
 			//prototype method added to Array class, to allow random picking of elements:
-			Array.prototype.pickRandomElement = function(){ 
+			Array.prototype.pickElement = function(){ 
 				return this[Math.floor(Math.random()*this.length)]; //return a random element
-			}
+			}//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
 			
-			//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
 			
-			function Apple(xPos, yPos, i){ ////////////////////////REMOVE THIS LATER!!! ++++++++++++
-			//function Apple(xPos, yPos){
-				this.name = i; ////////////////////////REMOVE THIS LATER!!! ++++++++++++
+			
+			function Apple(xPos, yPos){
 				this.xPos = xPos;
 				this.yPos = yPos;
 				this.width = appleW;
 				this.height = appleH;
-				this.speed = appleSpeedsArray.pickRandomElement(); //pick a speed for apple to drop by
+				this.speed = appleSpeedsArray.pickElement(); //pick a speed for apple to drop by
 				this.reset = function(){
 					this.yPos = yPos; //reset y position
-					this.speed = appleSpeedsArray.pickRandomElement(); //assign a new random speed
+					this.speed = appleSpeedsArray.pickElement(); //assign a new random speed
 				};
 				this.fall = function(){
 					this.yPos += this.speed; //drop apple
@@ -176,7 +176,7 @@
 						document.getElementById("hits").innerHTML = hits; //update hit counter
 						this.reset(); //reset apple
                     }
-					//console.log("Apple: " + this.name + ".Drop speed: " + this.speed); ////REMOVE THIS LATER!!! ++++++++++++
+					
 					if(this.yPos >= (canvas.height - this.height)){ //check if apple has hit bottom of canvas
 						this.reset(); //reset apple
 					}
@@ -249,21 +249,51 @@
 								Basket.xPos = canvas.width - Basket.width; //stop at screen edge
 							}
 						}//else: pause game and remind user of key controls //+++++++++++++++++++++++++++++DONT FORGET THIS!!!! 
+						
+						/*
+						switch(key) {
+							
+							case key[37]: //left key was pressed
+								console.log("left pressed");
+								
+								Basket.xPos -=30; //decrease x pos
+							
+								if(Basket.xPos <0){ //check for canvas collision
+									Basket.xPos = 0; //stop at screen edge
+								}
+								break;
+							case key[39]: //right key was pressed
+								console.log("right pressed");
+								
+								Basket.xPos += 30; //increase x pos
+					
+								if(Basket.xPos > (canvas.width - Basket.width)){ //check for canvas collision
+									Basket.xPos = canvas.width - Basket.width; //stop at screen edge
+								}
+							
+							break;
+							case 0: //no key currently pressed
+								console.log("no key");
+								break;
+							default: //any other key was pressed
+								console.log("another key");
+						}*/
+						
+						//console.log(key);
+						
 						ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket 
 					}
 				};
 				
-				///////////////////test = new Basket(); //////////++++++++++
 				
 				//create and store Apples:
 				for (i=0; i<MAX_APLS; i++){
-				
-					applesArray.push(new Apple(appleX[i], appleY[i], i+1)); ////REMOVE THIS LATER!!! ++++++++++
-					//applesArray.push(new Apple(appleX[i], appleY[i])); //add Apple to array 
+					applesArray.push(new Apple(appleX[i], appleY[i])); //add Apple to array 
 				}
 				
 			
 				//each apple has a timer, which is fired upon apple creation
+				//https://www.w3schools.com/jsref/met_win_settimeout.asp
 				//when timer is reached, it calls its own drop method, with a random time.
 				//drop method checks if apple has hit basket or floor;
 				//resets itself if hit either, and starts a new timer
@@ -278,7 +308,7 @@
 			
 			
 			
-		
+			//animate game:
 			function animate(){
 			
 				ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
@@ -290,16 +320,12 @@
 					//ctx.drawImage(appleImg, AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple
 					ctx.drawImage(testPicsArray[i], AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple
 
-					//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-					/*if(hitApl(applesArray[i], test)){ //check if apple hit basket
-						console.log("we got em!");
-                    }//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-					*/
 				}	
 				
 				//=============================================
 				
 				Basket.move(); //move basket
+				
 			
 				requestAnimationFrame(animate); //game continues
 				
