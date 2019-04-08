@@ -66,7 +66,7 @@
 			//apple vars:
 			var appleImg = new Image(); //apple image
 			appleImg.src = 'img/apl.png'; //image source
-			var MAX_APLS = 10; //amount of apples
+			var MAX_APLS = 1; //amount of apples
 			var applesArray = []; //array for apples 
 			//var canDrop = [MAX_APLS]; //holds which apples can drop
 			var appleX = [50, 130, 200, 260, 350, 450, 600, 610, 550, 750]; //holds x pos of apples  
@@ -84,7 +84,7 @@
 			//var key = 0; //+++++++++++++ 
 			//game timer: ////////////////////////////CAN PROBABLY BE LOCAL +++++++++++++++++++++
 			var time = 0; //time
-			var timer = null; //counter
+			var timer;  ///////////////= null; //counter
 			
 			//==========================================
 			var test;//////////DELETE LATER!
@@ -169,6 +169,13 @@
 					this.speed = appleSpeedsArray.pickElement(); //assign a new random speed
 				};
 				this.fall = function(){
+				
+					/*
+					setInterval(function(){
+					console.log("Hello"); 
+					//this.fall();
+					}, 3000);*/
+					
 					this.yPos += this.speed; //drop apple
 					
 					if(hitApple(this, Basket)){ //check if apple hit basket
@@ -181,7 +188,18 @@
 						this.reset(); //reset apple
 					}
 					
+					
+					
 				};
+				/*
+				this.prepApple = function(){
+					setInterval(function(){
+					console.log("Hello"); 
+					//this.fall();
+					}, 3000);
+					
+					
+				};*/
 			}
 			
 			//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -223,6 +241,7 @@
 				
 				hits = 0; //set hit counter 
 				time = 16; //set time
+				////timer = setInterval(new Timer(), 1000); //run timer
 				timer = setInterval(runTimer, 1000); //run timer
 				document.getElementById("timer").innerHTML = time; //set timer element
 				document.getElementById("hits").innerHTML = hits; //set hits element
@@ -317,6 +336,8 @@
 				//=============================================
 				for (var i=0, AppleI; AppleI=applesArray[i]; i++){ //grab each Apple in array
 					AppleI.fall(); //invoke fall
+					
+					//AppleI.prepApple();
 					//ctx.drawImage(appleImg, AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple
 					ctx.drawImage(testPicsArray[i], AppleI.xPos, AppleI.yPos, AppleI.width, AppleI.height); //draw Apple
 
@@ -330,6 +351,7 @@
 				requestAnimationFrame(animate); //game continues
 				
 			}
+			
 			
 			//game timer:
 			function runTimer(){
@@ -345,6 +367,21 @@
 				
 				document.getElementById("timer").innerHTML = time; //update time
 			}
+			
+			/*
+			function Timer(time){
+				console.log("Yo");
+				this.time--; //reduce timer
+				
+				if (this.time <=0){ //check if timer ended
+					clearInterval(timer); //clear interval
+					//gameEnd(); //end game  //+++++++++++++++++++++++++
+					//innit(); //+++++++++++++++++++REMOVE LATER!!
+					
+				}
+				
+				document.getElementById("timer").innerHTML = this.time; //update time
+			}*/
 			
 			//check for collision:
 			function hitApple(Apple,Basket){ 
