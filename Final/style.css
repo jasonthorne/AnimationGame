@@ -1,0 +1,16 @@
+
+p{
+	color: red;
+}
+
+canvas{
+	
+	height: 640px;
+	width: 873px;
+	background-color: blue;
+}
+
+.canvasWrapper canvas{
+	display: block;
+    margin: auto;
+}
