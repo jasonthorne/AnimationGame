@@ -2,10 +2,10 @@
 
 console.log("Yo");
 
-var canvas = document.getElementById("canvas");
+var canvas = document.getElementById("canvasId");
 var ctx = canvas.getContext("2d");
 
-var canvasBounds = canvas.getBoundingClientRect();
+
 
 var backgroundImg = new Image(); //background image
 
@@ -15,28 +15,31 @@ var backgroundImg = new Image(); //background image
 var basketImg = new Image(); //basket image
 //var basketW = 100; //width of basket
 //var basketH = 100; //height of basket
-//var basketX = (canvas.width - basketW) /2; //x pos of basket 
-//var basketY = (canvas.height - basketH) - 10; //y pos of basket 
+//var basketX = (canvasBounds.width - basketW)/2; //x pos of basket 
+//var basketY = (canvasBounds.height - basketImg.naturalWidth) - 10; //y pos of basket 
 
 
+    
 
+//var canvasBounds = canvas.getBoundingClientRect();
+
+backgroundImg.src = 'img/background.png'; //image source
 
 //onload events:
-window.onload = function(){
-
-    backgroundImg.src = 'img/background.png'; //image source
-
-    backgroundImg.onload = function(){
-        ctx.drawImage(backgroundImg, canvasBounds.x, canvasBounds.y, canvasBounds.width, canvasBounds.height); //draw background
-    }
+backgroundImg.onload = function(){
    
-
-    //basket image source (assigned here so that background is drawn first)
-    basketImg.src = 'img/basket.png';
-
+    ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //   canvasBounds.width, canvasBounds.height); //draw background
+       
+    basketImg.src = 'img/basket.png'; //basket image source (assigned here so that background is drawn first)
+    
     //load and draw basket:
     basketImg.onload = function(){
-        ctx.drawImage(basketImg, 0, 0, basketImg.naturalWidth, basketImg.naturalHeight);   
+        ctx.drawImage(basketImg, (canvas.width - basketImg.width)/2, (canvas.height - basketImg.height) - 10, basketImg.width, basketImg.height);   
     }
     
+    
+	document.getElementById("timerId").innerHTML = 0; //set timer element
+    document.getElementById("scoreId").innerHTML = 0; //set hits element
+
+
 }

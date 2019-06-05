@@ -3,19 +3,48 @@ body{
 	margin: 0; 
 }
 
-canvas{
-	/*
-	width: 873px;
-	height: 640px;
-	background: url("img/background.png");
-	background-size: 873px 640px;*/
-}
 
-.canvasWrapper canvas{
-
+.contentWrapper canvas{
+	padding-top: 7px;
 	display: block;
 	margin: auto;
-	
 }
 
+/*--------------------------------------------------------*/
+
+.scoreWrapper{
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: 50%; 
+	top: 50%; 
+} 
+
+
+.scoreWrapper #scoreId{
+	width: auto;
+	height: auto;
+	position: absolute;
+	left: 50%; 
+	top: 50%; 
+} 
+
+
+.timerWrapper #timerId{
+	width: auto;
+	height: auto;
+	position: absolute;
+	left: 73px;
+	top: 50px;
+}
+
+
+
+
+	
+#span{
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
 

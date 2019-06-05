@@ -3,14 +3,27 @@
     <head>
 		<meta charset="UTF=8">
 		<title>Apple Catch</title>
-		<link rel="stylesheet" href="style.css">
-		<script src="script.js" defer></script> <!-- 'defer' waits until page is loaded before execution-->
+		<link type="text/css" rel="stylesheet" href="style.css">
+		<script type="text/javascript" src="script.js" defer > </script> <!-- 'defer' waits until page is loaded before execution-->
+		
 	</head>
 	
     <body>
 
-	   <div class="canvasWrapper">
-		 <canvas id="canvas" width="873" height="640"> </canvas>
+		
+	   <div class="contentWrapper">
+
+		<div class="timerWrapper">
+				<div id="timerId"></div>
+		</div>
+		
+		<div class="scoreWrapper">
+			<div id="scoreId"></div>
+		</div>
+
+		 <canvas id="canvasId"  width="873" height="640"> 
+		 </canvas>
+
 	   </div>
 	   
 	   
