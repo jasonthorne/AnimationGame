@@ -4,11 +4,11 @@ body{
 }
 
 canvas{
-
+	/*
 	width: 873px;
 	height: 640px;
 	background: url("img/background.png");
-	background-size: 873px 640px;
+	background-size: 873px 640px;*/
 }
 
 .canvasWrapper canvas{
@@ -17,4 +17,5 @@ canvas{
 	margin: auto;
 	
 }
+
 
