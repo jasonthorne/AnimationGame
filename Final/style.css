@@ -10,7 +10,7 @@ body{
 	margin: auto;
 }
 
-/*--------------------------------------------------------*/
+/*-----------------FIX THIS MESS!!---------------------*/
 
 .scoreWrapper{
 	width: 20px;
@@ -38,13 +38,11 @@ body{
 	top: 50px;
 }
 
-
-
-
 	
-#span{
+#timerId, #scoreId {
 	position: absolute;
 	right: 20px;
 	top: 20px;
 }
 
+/*------------------------------------------*/
