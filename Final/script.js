@@ -85,12 +85,17 @@ var Basket = {
 var applesArray = []; //array for holding apples 
 var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
 var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
+var appleSpeeds = [3, 6, 12]; //holds apple drop speeds
 
+//prototype method added to Array class, to allow random picking of elements:
+Array.prototype.pickElement = function(){ 
+    return this[Math.floor(Math.random()*this.length)]; //return a random element
+}//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
 
 var appleImg = new Image(); //apple image
 appleImg.src = 'img/apple.png'; //image source
 
-function makeApple(xPos, yPos){
+function Apple(xPos, yPos){
    this.img = (function(){ //apple image
         var foo =  new Image();
         foo.src = 'img/apple.png';
@@ -100,20 +105,30 @@ function makeApple(xPos, yPos){
     this.yPos = yPos;
     this.width = 60;
     this.height = 60;
-    this.speed = (function(){
-        var speeds = [3, 6, 12]; //hold apple drop speeds
-        return speeds[Math.floor(Math.random() * speeds.length)];
-    }());
+    this.speed = appleSpeeds.pickElement(); //pick a drop speed
+    this.reset = function(){
+        this.yPos = yPos; //reset y pos
+        this.speed = appleSpeeds.pickElement(); //reset drop speed
+    };
+    this.fall = function(){
+        this.yPos += this.speed; //drop apple
+
+    };
 
 
 }
 
+ //++++++++++++++++++++
+var test1 = new Apple(50, 180);
+console.log("A is: " + test1.speed);
+test1.reset();
+console.log("A reset is: " + test1.speed);
 
-var test1 = new makeApple(50, 180);
-console.log("test1 is " + test1.speed);
-var test2 = new makeApple(50, 180);
-console.log("test2 is " + test2.speed);
-
+var test2 = new Apple(130, 100);
+console.log("B is: " + test2.speed);
+test2.reset();
+console.log("B reset is: " + test2.speed);
+ //++++++++++++++++++++
 //----------------------------------------------------------------------------------------------------
 //animate game:
 function animate(){
@@ -122,6 +137,13 @@ function animate(){
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     Basket.move(); //move basket
     //ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+
+    //++++++++++++++++++++
+    test1.fall();
+    test2.fall();
+    ctx.drawImage(test1.img, test1.xPos, test1.yPos, test1.width, test1.height);
+    ctx.drawImage(test2.img, test2.xPos, test2.yPos, test2.width, test2.height);
+     //++++++++++++++++++++
 
     requestAnimationFrame(animate); //continue animation
 }
