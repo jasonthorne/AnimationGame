@@ -10,37 +10,32 @@ var ctx = canvas.getContext("2d");
 
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/background.png'; //image source
+
 var basketImg = new Image(); //basket image
-//var basketX; //x pos of basket 
-//var basketY; //y pos of basket 
-
-//var basketW = basketImg.width; //width of basket
-//var basketH = basketImg.height; //height of basket
-
-
-var key = []; //for keycode values 
-
-
+basketImg.src = 'img/basket.png'; //image source
+var basketW = 110, basketH = basketW; //width & height of basket
 
 
 //----------------------------------------------------------------------------------------------------
+/*
 //onload events:
 backgroundImg.onload = function(){
     
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
-       
+      
     basketImg.src = 'img/basket.png'; //basket image source (assigned here so that background is drawn first)
     
     //load and draw basket:
     basketImg.onload = function(){
-
-         ctx.drawImage(basketImg, (canvas.width - basketImg.width)/2, (canvas.height - basketImg.height)-10, basketImg.width, basketImg.height); 
+         ctx.drawImage(basketImg, (canvas.width - basketW) /2, (canvas.height - basketH) - 10, basketW, basketH); 
     }
     
 }
-
+*/
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
+
+var key = []; //for holding keycode values 
 window.addEventListener("keydown", function(event){ //listens for key press, adds its keycode 
     key[event.keyCode] = true; 
 });
@@ -52,33 +47,31 @@ window.addEventListener("keyup", function(event){ //listens for key release, rem
 //----------------------------------------------------------------------------------------------------
 //create basket:
 var Basket = {
-    xPos: (canvas.width - basketImg.width)/2, //x pos of basket ,
-    yPos: (canvas.height - basketImg.height)-10,
-    width: basketImg.width, //maybe change this to a percentage of viewport +++++++++++++
-    height: basketImg.height, //maybe change this to a percentage of viewport ++++++++++
+    xPos: (canvas.width - basketW) /2, //x pos of basket
+    yPos: (canvas.height - basketH) - 10, //y pos of basket
+    width: basketW, //width of basket
+    height: basketH, //height of basket
     move: function(){
         if (key[37]){ //if left is pressed
-            Basket.xPos -=30; //decrease x pos
+            this.xPos -=30; //decrease x pos
             
-            if(Basket.xPos <0){ //check for canvas collision
-                Basket.xPos = 0; //stop at screen edge
+            if(this.xPos <0){ //check for canvas collision
+                this.xPos = 0; //stop at screen edge
             }
         }else if (key[39]){ //if right is pressed
-            Basket.xPos += 30; //increase x pos
-           
-            if(Basket.xPos > (canvas.width - Basket.width)){ //check for canvas collision
-                Basket.xPos = canvas.width - Basket.width; //stop at screen edge
+            this.xPos += 30; //increase x pos
+          
+            if(this.xPos > (canvas.width - this.width)){ //check for canvas collision
+                this.xPos = canvas.width - this.width; //stop at screen edge
             }
         }
-
-        //ctx.drawImage(basketImg, this.xPos, this.yPos, basketImg.width, basketImg.height);    
-        ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height);  
+       ctx.drawImage(basketImg, this.xPos, this.yPos, this.width, this.height); //draw moved basket
     }
 
 }
 
 //----------------------------------------------------------------------------------------------------
-//create apple:
+//create apples:
 
 
 
@@ -89,10 +82,11 @@ function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     Basket.move(); //move basket
+    //ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
-    ///ctx.drawImage(basketImg, this.xPos, this.yPos, this.width, this.height);  
-
-    requestAnimationFrame(animate); //game continues
+    requestAnimationFrame(animate); //continue animation
 }
 
+//================================
 animate();
+//================================
