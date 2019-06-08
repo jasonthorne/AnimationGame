@@ -51,7 +51,7 @@ window.addEventListener("keyup", function(event){ //listens for key release, rem
 var basketW = 110, basketH = basketW; //width & height of basket
 
 var Basket = {
-    img: (function(){
+    img: (function(){ //basket image
        var foo =  new Image();
         foo.src = 'img/basket.png';
         return foo;
@@ -82,12 +82,37 @@ var Basket = {
 //----------------------------------------------------------------------------------------------------
 //create apples:
 
+var applesArray = []; //array for holding apples 
+var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
+var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
+
+
 var appleImg = new Image(); //apple image
 appleImg.src = 'img/apple.png'; //image source
 
-function makeApple(){
+function makeApple(xPos, yPos){
+   this.img = (function(){ //apple image
+        var foo =  new Image();
+        foo.src = 'img/apple.png';
+        return foo;
+    }());
+    this.xPos = xPos;
+    this.yPos = yPos;
+    this.width = 60;
+    this.height = 60;
+    this.speed = (function(){
+        var speeds = [3, 6, 12]; //hold apple drop speeds
+        return speeds[Math.floor(Math.random() * speeds.length)];
+    }());
+
 
 }
+
+
+var test1 = new makeApple(50, 180);
+console.log("test1 is " + test1.speed);
+var test2 = new makeApple(50, 180);
+console.log("test2 is " + test2.speed);
 
 //----------------------------------------------------------------------------------------------------
 //animate game:
