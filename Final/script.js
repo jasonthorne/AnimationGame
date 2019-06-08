@@ -149,15 +149,34 @@ function animate(){
     //ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
     //++++++++++++++++++++
+    /*
     test1.fall();
     test2.fall();
     ctx.drawImage(test1.img, test1.xPos, test1.yPos, test1.width, test1.height);
     ctx.drawImage(test2.img, test2.xPos, test2.yPos, test2.width, test2.height);
-     //++++++++++++++++++++
+    */
 
+   for (var i=0; i<applesArray.length; i++){
+       ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
+    }
+     //++++++++++++++++++++
+    
     requestAnimationFrame(animate); //continue animation
 }
 
-//================================
-animate();
-//================================
+
+//----------------------------------------------------------------------------------------------------
+//initialise the game:
+
+var init = (function(){
+
+    //create and store Apples:
+    for (var i=0; i<3; i++){
+        applesArray.push(new Apple(appleX[i], appleY[i])); //add Apple to array 
+    }
+
+    //================================
+    animate();
+    //================================
+
+}());
