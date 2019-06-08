@@ -157,6 +157,7 @@ function animate(){
     */
 
    for (var i=0; i<applesArray.length; i++){
+       applesArray[i].fall(); //invoke fall
        ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
     }
      //++++++++++++++++++++
