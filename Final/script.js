@@ -11,13 +11,14 @@ var ctx = canvas.getContext("2d");
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/background.png'; //image source
 
-var basketImg = new Image(); //basket image
-basketImg.src = 'img/basket.png'; //image source
-var basketW = 110, basketH = basketW; //width & height of basket
+
 
 
 //----------------------------------------------------------------------------------------------------
 /*
+
+//var basketImg = new Image(); //basket image
+
 //onload events:
 backgroundImg.onload = function(){
     
@@ -46,7 +47,15 @@ window.addEventListener("keyup", function(event){ //listens for key release, rem
 
 //----------------------------------------------------------------------------------------------------
 //create basket:
+
+var basketW = 110, basketH = basketW; //width & height of basket
+
 var Basket = {
+    img: (function(){
+       var foo =  new Image();
+        foo.src = 'img/basket.png';
+        return foo;
+    }()),
     xPos: (canvas.width - basketW) /2, //x pos of basket
     yPos: (canvas.height - basketH) - 10, //y pos of basket
     width: basketW, //width of basket
@@ -57,6 +66,7 @@ var Basket = {
             
             if(this.xPos <0){ //check for canvas collision
                 this.xPos = 0; //stop at screen edge
+                ////////////this.img.src = 'img/apple.png'; ++++++++++++++++++++++++++
             }
         }else if (key[39]){ //if right is pressed
             this.xPos += 30; //increase x pos
@@ -65,15 +75,19 @@ var Basket = {
                 this.xPos = canvas.width - this.width; //stop at screen edge
             }
         }
-       ctx.drawImage(basketImg, this.xPos, this.yPos, this.width, this.height); //draw moved basket
+       ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw moved basket
     }
-
-}
+};
 
 //----------------------------------------------------------------------------------------------------
 //create apples:
 
+var appleImg = new Image(); //apple image
+appleImg.src = 'img/apple.png'; //image source
 
+function makeApple(){
+
+}
 
 //----------------------------------------------------------------------------------------------------
 //animate game:
