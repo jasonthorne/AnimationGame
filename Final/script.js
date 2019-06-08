@@ -52,9 +52,9 @@ var basketW = 110, basketH = basketW; //width & height of basket
 
 var Basket = {
     img: (function(){ //basket image
-       var foo =  new Image();
-        foo.src = 'img/basket.png';
-        return foo;
+       var img =  new Image(110, 110);
+       img.src = 'img/basket.png';
+        return img;
     }()),
     xPos: (canvas.width - basketW) /2, //x pos of basket
     yPos: (canvas.height - basketH) - 10, //y pos of basket
@@ -87,7 +87,7 @@ var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples
 var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
 var appleSpeeds = [3, 6, 12]; //holds apple drop speeds
 
-//prototype method added to Array class, to allow random picking of elements:
+//prototype function added to Array class, to allow random picking of elements:
 Array.prototype.pickElement = function(){ 
     return this[Math.floor(Math.random()*this.length)]; //return a random element
 }//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
@@ -97,27 +97,37 @@ appleImg.src = 'img/apple.png'; //image source
 
 function Apple(xPos, yPos){
    this.img = (function(){ //apple image
-        var foo =  new Image();
-        foo.src = 'img/apple.png';
-        return foo;
+        var img =  new Image();
+        img.src = 'img/apple.png';
+        return img;
     }());
-    this.xPos = xPos;
-    this.yPos = yPos;
-    this.width = 60;
-    this.height = 60;
+    this.xPos = xPos; //x pos of apple
+    this.yPos = yPos; //y pos of apple
+    this.width = 60; //width of apple
+    this.height = 60; //height of apple
     this.speed = appleSpeeds.pickElement(); //pick a drop speed
-    this.reset = function(){
+    this.reset = function(){ 
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset drop speed
     };
     this.fall = function(){
         this.yPos += this.speed; //drop apple
 
+        //check for collison with Basket:
+        if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
+            && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos){
+            console.log("boom!!"); //+++++++++++++++++++++++++++
+            this.reset(); //reset apple
+        }
+        //check if apple has hit bottom of canvas:
+        if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
+            this.reset(); //reset apple
+        }
     };
-
 
 }
 
+	
  //++++++++++++++++++++
 var test1 = new Apple(50, 180);
 console.log("A is: " + test1.speed);

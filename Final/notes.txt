@@ -1,3 +1,7 @@
 http://javascript.info/coordinates
 
 https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
+
+Google web fonts:
+
+Wendy One
