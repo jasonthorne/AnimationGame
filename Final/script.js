@@ -12,7 +12,7 @@ var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/background.png'; //image source
 
 
-
+var score = 0;
 
 //----------------------------------------------------------------------------------------------------
 /*
@@ -53,7 +53,7 @@ var basketW = 110, basketH = basketW; //width & height of basket
 var Basket = {
     img: (function(){ //basket image
        var img =  new Image(110, 110);
-       img.src = 'img/basket.png';
+       img.src = 'img/baskets/basket0.png';
         return img;
     }()),
     xPos: (canvas.width - basketW) /2, //x pos of basket
@@ -66,7 +66,6 @@ var Basket = {
             
             if(this.xPos <0){ //check for canvas collision
                 this.xPos = 0; //stop at screen edge
-                ////////////this.img.src = 'img/apple.png'; ++++++++++++++++++++++++++
             }
         }else if (key[39]){ //if right is pressed
             this.xPos += 30; //increase x pos
@@ -75,7 +74,7 @@ var Basket = {
                 this.xPos = canvas.width - this.width; //stop at screen edge
             }
         }
-       ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw moved basket
+       //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw moved basket
     }
 };
 
@@ -116,8 +115,14 @@ function Apple(xPos, yPos){
         //check for collison with Basket:
         if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
             && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos){
-            console.log("boom!!"); //+++++++++++++++++++++++++++
             this.reset(); //reset apple
+            score ++; //add to score 
+            console.log(score); //+++++++++++++++++++++++++++
+            if (score < 8) {
+               Basket.img.src='img/baskets/basket' + score.toString() + '.png';  
+           }
+            
+            
         }
         //check if apple has hit bottom of canvas:
         if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
@@ -146,7 +151,7 @@ function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     Basket.move(); //move basket
-    //ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
     //++++++++++++++++++++
     /*
@@ -169,7 +174,7 @@ function animate(){
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
-var init = (function(){
+var innit = (function(){
 
     //create and store Apples:
     for (var i=0; i<3; i++){

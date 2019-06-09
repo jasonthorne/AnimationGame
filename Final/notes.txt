@@ -5,3 +5,9 @@ https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-
 Google web fonts:
 
 Wendy One
+
+
+bounceTuts:
+http://cssdeck.com/labs/lets-make-a-bouncing-ball-in-html5-canvas
+
+http://codetheory.in/basics-of-implementing-gravity-with-html5-canvas/
