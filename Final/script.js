@@ -80,16 +80,7 @@ var Basket = {
 
 //----------------------------------------------------------------------------------------------------
 //create apples:
-
-/*
-$(document).ready(function(){
-    $("button").click(function(){
-      $("#div1").fadeOut();
-      $("#div2").fadeOut("slow");
-      $("#div3").fadeOut(3000);
-    });
-  });*/
-
+var testArray = []; //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var applesArray = []; //array for holding apples 
 var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
 var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
@@ -103,19 +94,19 @@ Array.prototype.pickElement = function(){
 var appleImg = new Image(); //apple image
 appleImg.src = 'img/apple.png'; //image source
 
-function Apple(xPos, yPos){
+function Apple(xPos, yPos, id){
    this.img = (function(){ //apple image
         var img =  new Image();
         img.src = 'img/apple.png';
         img.className = "test"; ///////////////////////////////////////
         return img;
     }());
+    this.id = id; /////////////////////////////////////////
     this.xPos = xPos; //x pos of apple
     this.yPos = yPos; //y pos of apple
     this.width = 60; //width of apple
     this.height = 60; //height of apple
     this.speed = appleSpeeds.pickElement(); //pick a drop speed
-    //this.speed = 3;
     this.reset = function(){ 
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset drop speed
@@ -158,23 +149,26 @@ function Apple(xPos, yPos){
         if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
            //this.reset(); //reset apple
             this.yPos = (canvas.height - 10) - this.height; //repostion at bottom of canvas
-            //this.vy *= -this.bounceFactor;
-            this.speed *= -this.bounce; 
+            this.speed *= -this.bounce;
             
             //fade out apple
              //this.reset(); //reset apple
              
-               //this.img.style.opacity = 0.00;
+              //=============pop it out of array and THEN do timed fade on it, then pop it back in
+
+              //var testOld = this.speed;
+
+              // console.log(this.speed);
                console.log(this.speed);
-                if(this.speed < -1 ){
+
+                //this.speed *= -this.bounce; 
+            
+              
+                /*if(this.speed = 0.05454545454545454 ){ //< -1
                     console.log("woop");
-                    setTimeout( this.reset(), 1000); //reset apple
-                }
-                /*
-                $(document).ready(function(){
-                    $("#test").fadeOut();
-                });
-               */
+                    this.reset()
+                }*/
+               
         
              
             //reset apple after fade
@@ -184,20 +178,6 @@ function Apple(xPos, yPos){
 
 }
 
-
-function fade(el) {
-    var op = 1;
-    var timer = setInterval(function () {
-      if (op <= 0.1){
-        clearInterval(timer);
-        el.style.display = 'none';
-      }
-      el.style.opacity = op;
-      op -= op * 0.1;
-    }, 50);
-  }
-
-	
  //++++++++++++++++++++
 var test1 = new Apple(50, 180);
 console.log("A is: " + test1.speed);
@@ -240,15 +220,15 @@ function animate(){
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
-var innit = (function(){
+//////var innit = (function(){
 
     //create and store Apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
     for (var i=0; i<1; i++){
-        applesArray.push(new Apple(appleX[i], appleY[i])); //add Apple to array 
+        applesArray.push(new Apple(appleX[i], appleY[i], i)); //add Apple to array 
     }
 
     //================================
     animate();
     //================================
 
-}());
+/////}());
