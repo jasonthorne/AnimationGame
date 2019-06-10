@@ -81,6 +81,15 @@ var Basket = {
 //----------------------------------------------------------------------------------------------------
 //create apples:
 
+/*
+$(document).ready(function(){
+    $("button").click(function(){
+      $("#div1").fadeOut();
+      $("#div2").fadeOut("slow");
+      $("#div3").fadeOut(3000);
+    });
+  });*/
+
 var applesArray = []; //array for holding apples 
 var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
 var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
@@ -98,6 +107,7 @@ function Apple(xPos, yPos){
    this.img = (function(){ //apple image
         var img =  new Image();
         img.src = 'img/apple.png';
+        img.className = "test"; ///////////////////////////////////////
         return img;
     }());
     this.xPos = xPos; //x pos of apple
@@ -105,6 +115,7 @@ function Apple(xPos, yPos){
     this.width = 60; //width of apple
     this.height = 60; //height of apple
     this.speed = appleSpeeds.pickElement(); //pick a drop speed
+    //this.speed = 3;
     this.reset = function(){ 
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset drop speed
@@ -113,16 +124,14 @@ function Apple(xPos, yPos){
     //this.vx = 0;
     //this.vy = 12; //this is speed! ++++++++++++++++
     this.gravity = 0.3;
-    this.bounceForce = 0.1;
+    this.bounce = 0.1;
      //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     this.fall = function(){
         //this.yPos += this.speed; //drop apple +++++++++++++++++++++++++++
 
         //++++++++++++++++++++++++++++++++++++++
-        //this.speed = 12;
-        this.yPos += this.speed;//this.vy;
-        //this.vy += this.gravity;
-        this.speed += this.gravity;
+        this.yPos += this.speed; //drop apple
+        this.speed += this.gravity; //add gravity to drop speed
         //++++++++++++++++++++++++++++++++++++++
 
 
@@ -145,21 +154,48 @@ function Apple(xPos, yPos){
           //++++++++++++++++++++++++++++++++++++++
 
         
-        //check if apple has hit bottom of canvas:
+        //check if apple has hit bottom of canvas: //APPLE MAY STILL BE ABLE TO BE PICKED DURING BOUNCE (maybe use a boolean here to prevent!)
         if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
-            //this.reset(); //reset apple
+           //this.reset(); //reset apple
             this.yPos = (canvas.height - 10) - this.height; //repostion at bottom of canvas
             //this.vy *= -this.bounceFactor;
-            this.speed *= -this.bounceForce; 
+            this.speed *= -this.bounce; 
             
             //fade out apple
-
+             //this.reset(); //reset apple
+             
+               //this.img.style.opacity = 0.00;
+               console.log(this.speed);
+                if(this.speed < -1 ){
+                    console.log("woop");
+                    setTimeout( this.reset(), 1000); //reset apple
+                }
+                /*
+                $(document).ready(function(){
+                    $("#test").fadeOut();
+                });
+               */
+        
+             
             //reset apple after fade
 
         }
     };
 
 }
+
+
+function fade(el) {
+    var op = 1;
+    var timer = setInterval(function () {
+      if (op <= 0.1){
+        clearInterval(timer);
+        el.style.display = 'none';
+      }
+      el.style.opacity = op;
+      op -= op * 0.1;
+    }, 50);
+  }
 
 	
  //++++++++++++++++++++
@@ -207,7 +243,7 @@ function animate(){
 var innit = (function(){
 
     //create and store Apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
-    for (var i=0; i<3; i++){
+    for (var i=0; i<1; i++){
         applesArray.push(new Apple(appleX[i], appleY[i])); //add Apple to array 
     }
 
