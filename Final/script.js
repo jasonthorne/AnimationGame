@@ -1,6 +1,4 @@
 
-
-console.log("Yo");
 //var canvasBounds = canvas.getBoundingClientRect(); //+++++++++++++++++++++++
 
 var canvas = document.getElementById("canvasId");
@@ -80,7 +78,6 @@ var Basket = {
 
 //----------------------------------------------------------------------------------------------------
 //create apples:
-var testArray = []; //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 var applesArray = []; //array for holding apples 
 var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
 var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
@@ -98,58 +95,47 @@ function Apple(xPos, yPos, id){
    this.img = (function(){ //apple image
         var img =  new Image();
         img.src = 'img/apple.png';
-        img.className = "test"; ///////////////////////////////////////
         return img;
     }());
-    this.id = id; /////////////////////////////////////////
+    this.id = id; ///////////////////////////////////////
+    this.canDrop = true;
     this.xPos = xPos; //x pos of apple
     this.yPos = yPos; //y pos of apple
     this.width = 60; //width of apple
     this.height = 60; //height of apple
+    this.gravity = 0.3; //gravity force
+    this.bounce = 0.1; //bounce factor
     this.speed = appleSpeeds.pickElement(); //pick a drop speed
+    this.canScore = true; //if apple can score
     this.reset = function(){ 
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset drop speed
+        this.canScore = true; //reset ability to score
     };
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    //this.vx = 0;
-    //this.vy = 12; //this is speed! ++++++++++++++++
-    this.gravity = 0.3;
-    this.bounce = 0.1;
-     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     this.fall = function(){
-        //this.yPos += this.speed; //drop apple +++++++++++++++++++++++++++
-
-        //++++++++++++++++++++++++++++++++++++++
         this.yPos += this.speed; //drop apple
         this.speed += this.gravity; //add gravity to drop speed
-        //++++++++++++++++++++++++++++++++++++++
-
 
         //check for collison with Basket:
         if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
-            && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos){
+            && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
+            && this.canScore){
             this.reset(); //reset apple
-            score ++; //add to score 
-            console.log(score); //+++++++++++++++++++++++++++
+            score++; //add to score 
+            console.log(score);
             if (score < 8) {
                Basket.img.src='img/baskets/basket' + score.toString() + '.png';  
            }
-            
-            
         }
 
-          //++++++++++++++++++++++++++++++++++++++
-         // if (this.yPos >= ((canvas.height - 10) - this.height))
-         //
-          //++++++++++++++++++++++++++++++++++++++
-
-        
         //check if apple has hit bottom of canvas: //APPLE MAY STILL BE ABLE TO BE PICKED DURING BOUNCE (maybe use a boolean here to prevent!)
         if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
            //this.reset(); //reset apple
+            this.canScore = false;
             this.yPos = (canvas.height - 10) - this.height; //repostion at bottom of canvas
             this.speed *= -this.bounce;
+
+
             
             //fade out apple
              //this.reset(); //reset apple
@@ -159,76 +145,99 @@ function Apple(xPos, yPos, id){
               //var testOld = this.speed;
 
               // console.log(this.speed);
-               console.log(this.speed);
-
+              //this.reset()
                 //this.speed *= -this.bounce; 
-            
-              
-                /*if(this.speed = 0.05454545454545454 ){ //< -1
-                    console.log("woop");
-                    this.reset()
-                }*/
+             //this.canDrop = false;
+
+             /*
+                if(this.speed < -1) { // = 0.05454545454545454 ){ //< -1
+
+                    for(var i = 0; i < applesArray.length; i++){ 
+                        if (applesArray[i].id == this.id) {
+                           
+                            applesArray.splice(i, 1); 
+                            //console.log(applesArray);
+                          }
+                      }
+                   
+                }()*/
                
-        
+              //console.log(applesArray);
+
+              //console.log(this.id);
+           
              
+              
+              
+              //console.log(applesArray);
+              //console.log(testArray);
             //reset apple after fade
 
         }
+
+        /*
+        if (this.canDrop == false){
+            console.log("yo");
+            //this.reset();
+        }*/
+
+        //this.canDrop = true;
+        //this.reset();
+        //console.log(this.canScore)
+              //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
     };
 
 }
 
- //++++++++++++++++++++
-var test1 = new Apple(50, 180);
-console.log("A is: " + test1.speed);
-test1.reset();
-console.log("A reset is: " + test1.speed);
-
-var test2 = new Apple(130, 100);
-console.log("B is: " + test2.speed);
-test2.reset();
-console.log("B reset is: " + test2.speed);
- //++++++++++++++++++++
 //----------------------------------------------------------------------------------------------------
 //animate game:
 function animate(){
 
-    
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
+    
+    //drop and draw apples:
+    for (var i=0; i<applesArray.length; i++){
+            applesArray[i].fall(); //invoke fall
+       ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
+    }
+
     Basket.move(); //move basket
     ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
-    //++++++++++++++++++++
-    /*
-    test1.fall();
-    test2.fall();
-    ctx.drawImage(test1.img, test1.xPos, test1.yPos, test1.width, test1.height);
-    ctx.drawImage(test2.img, test2.xPos, test2.yPos, test2.width, test2.height);
-    */
-
-   for (var i=0; i<applesArray.length; i++){
-       applesArray[i].fall(); //invoke fall
-       ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
-    }
-     //++++++++++++++++++++
-    
-     requestAnimationFrame(animate); //continue animation
+    requestAnimationFrame(animate); //continue animation
 }
 
+/*
+function test(){
 
+    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+    ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
+    ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    for (var i=0; i<applesArray.length; i++){
+
+        ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
+        if (applesArray[i].canDrop == true){
+            applesArray[i].fall(); //invoke fall
+        }
+       
+     }
+
+    requestAnimationFrame(test); //continue animation
+}*/
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
 //////var innit = (function(){
 
     //create and store Apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
-    for (var i=0; i<1; i++){
+    for (var i=0; i<3; i++){
         applesArray.push(new Apple(appleX[i], appleY[i], i)); //add Apple to array 
     }
 
     //================================
     animate();
+    ////////////test();
     //================================
 
 /////}());
