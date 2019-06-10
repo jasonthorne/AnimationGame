@@ -109,8 +109,22 @@ function Apple(xPos, yPos){
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset drop speed
     };
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    //this.vx = 0;
+    //this.vy = 12; //this is speed! ++++++++++++++++
+    this.gravity = 0.3;
+    this.bounceForce = 0.1;
+     //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     this.fall = function(){
-        this.yPos += this.speed; //drop apple
+        //this.yPos += this.speed; //drop apple +++++++++++++++++++++++++++
+
+        //++++++++++++++++++++++++++++++++++++++
+        //this.speed = 12;
+        this.yPos += this.speed;//this.vy;
+        //this.vy += this.gravity;
+        this.speed += this.gravity;
+        //++++++++++++++++++++++++++++++++++++++
+
 
         //check for collison with Basket:
         if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
@@ -124,9 +138,24 @@ function Apple(xPos, yPos){
             
             
         }
+
+          //++++++++++++++++++++++++++++++++++++++
+         // if (this.yPos >= ((canvas.height - 10) - this.height))
+         //
+          //++++++++++++++++++++++++++++++++++++++
+
+        
         //check if apple has hit bottom of canvas:
         if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
-            this.reset(); //reset apple
+            //this.reset(); //reset apple
+            this.yPos = (canvas.height - 10) - this.height; //repostion at bottom of canvas
+            //this.vy *= -this.bounceFactor;
+            this.speed *= -this.bounceForce; 
+            
+            //fade out apple
+
+            //reset apple after fade
+
         }
     };
 
@@ -148,6 +177,7 @@ console.log("B reset is: " + test2.speed);
 //animate game:
 function animate(){
 
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     Basket.move(); //move basket
@@ -167,7 +197,7 @@ function animate(){
     }
      //++++++++++++++++++++
     
-    requestAnimationFrame(animate); //continue animation
+     requestAnimationFrame(animate); //continue animation
 }
 
 
@@ -176,7 +206,7 @@ function animate(){
 
 var innit = (function(){
 
-    //create and store Apples:
+    //create and store Apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
     for (var i=0; i<3; i++){
         applesArray.push(new Apple(appleX[i], appleY[i])); //add Apple to array 
     }
