@@ -9,7 +9,6 @@ var ctx = canvas.getContext("2d");
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/background.png'; //image source
 
-
 var score = 0;
 
 //----------------------------------------------------------------------------------------------------
@@ -45,13 +44,13 @@ window.addEventListener("keyup", function(event){ //listens for key release, rem
 
 //----------------------------------------------------------------------------------------------------
 //create basket:
-
 var basketW = 110, basketH = basketW; //width & height of basket
 
 var Basket = {
     img: (function(){ //basket image
        var img =  new Image(110, 110);
        img.src = 'img/baskets/basket0.png';
+       //////////////////////////////////img.style.opacity = 0.5;
         return img;
     }()),
     xPos: (canvas.width - basketW) /2, //x pos of basket
@@ -90,60 +89,45 @@ Array.prototype.pickElement = function(){
 
 
 //var loopMe = true; ////////////////////////////////////////////
-
+var num = 0;
 Apple.prototype.fall = function(){
 
-        this.yPos += this.speed; //drop apple
-        this.speed += this.gravity; //add gravity to drop speed
+    this.yPos += this.speed; //drop apple
+    this.speed += this.gravity; //add gravity to drop speed
     
-            //check for collison with Basket:
-            if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
-                && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
-                && this.canScore){
-                this.reset(); //reset apple
-                score++; //add to score 
-                console.log(score);
-                if (score < 8) {
-                   Basket.img.src='img/baskets/basket' + score.toString() + '.png';  
-               }
-            }
-    
-            //check if apple has hit bottom of canvas: //APPLE MAY STILL BE ABLE TO BE PICKED DURING BOUNCE (maybe use a boolean here to prevent!)
-            if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
-               //this.reset(); //reset apple
-                this.canScore = false;
-                this.yPos = (canvas.height - 10) - this.height; //repostion at bottom of canvas
-                this.speed *= -this.bounce;
-    
-                //this.reset();
-                //if(this.speed = 0.05454545454545454 ){
-                // cancelAnimationFrame(animate);
-                //}
-            }
+    //check for collison with Basket:
+    if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
+        && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
+        && this.canScore){
+        this.reset(); //reset apple
+        score++; //add to score 
+        console.log(score);
+        if (score < 8) {
+            Basket.img.src='img/baskets/basket' + score.toString() + '.png';  
+        }
+    }
 
-            if(this.speed == -0.05454545454545454){
-            //fade here, then reset //++++++++++++++++++++++++++++++++++
-                this.reset();
-            }else{
-                ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
-            }
-    
-            
-           // this.drawApple;
-            
+    //check if apple has hit bottom of canvas:
+    if(this.yPos >= ((canvas.height - 10) - this.height)){  //'canvas height -10' to make contact level with basket
+        //this.reset(); //reset apple
+        this.canScore = false; //prevent scoring 
+        this.yPos = (canvas.height - 10) - this.height; //repostion at bottom of canvas
+        this.speed *= -this.bounce;
+    }
+
+    if(this.speed == -0.05454545454545454){
+    //fade here, then reset //++++++++++++++++++++++++++++++++++
+        this.canFall = false;
+        //num++;
+        //console.log(num);
+        /////////////this.img.src='img/baskets/basket0.png';  //++++++++++++++++++++++++++
+        //this.img.style.opacity = parseFloat(this.img.style.opacity) - 0.5;
+        //we need to invoke a DRAw func Here )TO DRAw this image AND the others +++++++++++++++++++++++++++++++++00000000000000000000000000!!!
+        //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
+        ////////////////drawApple(this);
+        // this.reset();
+    }//else{
            
-
-            /*
-            if(this.speed = 0.05454545454545454 ){
-                this.canDrop = false;
-            }*/
-                //this.drawApple;
-                 // ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-                 // ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
-                //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
-                //requestAnimationFrame(Apple.prototype.fall);
-   // }//loopMe
-   
 };
 
 /*
@@ -162,20 +146,22 @@ function Apple(xPos, yPos){
         return img;
     }());
     ///////////////this.id = id; ///////////////////////////////////////
-    this.canDrop = true; ///////////////////////////////////////
+   
     this.xPos = xPos; //x pos of apple
     this.yPos = yPos; //y pos of apple
     this.width = 60; //width of apple
     this.height = 60; //height of apple
     this.gravity = 0.3; //gravity force
     this.bounce = 0.1; //bounce factor
-    this.speed = appleSpeeds.pickElement(); //pick a drop speed
+    this.speed = appleSpeeds.pickElement(); //picks a speed
+    this.canFall = true; //if apple can drop
     this.canScore = true; //if apple can score
     this.reset = function(){ 
         console.log("hi"); //////////////////////////////////////////////////
         this.yPos = yPos; //reset y pos
-        this.speed = appleSpeeds.pickElement(); //reset drop speed
+        this.speed = appleSpeeds.pickElement(); //reset speed
         this.canScore = true; //reset ability to score
+        this.canFall = true;
     };
 
 /*
@@ -265,16 +251,21 @@ function animate(){
         }
 
         */
-       
-        applesArray[i].fall(); //invoke fall
-        console.log(applesArray[i].speed);
-        /*
-        if(applesArray[i].speed !== -0.05454545454545454){
-          
-            ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
-        }else{
-            applesArray[i].reset();
-        }*/
+       ////////////console.log(applesArray[i].speed);
+       if (applesArray[i].canFall == true){
+            applesArray[i].fall(); //invoke fall
+            //drawApple(applesArray[i]);
+       }
+       //ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+       else{
+        //applesArray[i].img.src='img/baskets/basket0.png';
+        //applesArray[i].img.style.opacity -= 0.1;//parseFloat(this.img.style.opacity) - 0.5;
+        //console.log(applesArray[i].img.style.opacity);
+       }
+
+       ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+       //drawApple(applesArray[i]);
+
 
     }
     
@@ -291,10 +282,14 @@ function moveBasket(){
     requestAnimationFrame(moveBasket);
 }
 
-function draw(){
+function draw(){ //mabye this recieves an apple(s???) to draw?????
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+}
+
+function drawApple(Apple){
+    ctx.drawImage(Apple.img, Apple.xPos, Apple.yPos, Apple.width, Apple.height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
 }
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
