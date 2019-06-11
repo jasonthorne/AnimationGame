@@ -22,3 +22,7 @@ https://stackoverflow.com/questions/3051114/value-of-variable-has-changed-or-not
 
 canvas animations:
 https://www.kirupa.com/html5/animating_many_things_on_a_canvas.htm
+
+
+preLoading images:
+https://www.techrepublic.com/article/preloading-and-the-javascript-image-object/

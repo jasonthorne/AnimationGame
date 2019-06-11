@@ -30,6 +30,7 @@ backgroundImg.onload = function(){
     
 }
 */
+
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
 
@@ -81,6 +82,7 @@ var applesArray = []; //array for holding apples
 var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
 var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
 var appleSpeeds = [3, 6, 12]; //holds apple drop speeds
+var checkSpeed = 0;
 
 //prototype function added to Array class, to allow random picking of elements:
 Array.prototype.pickElement = function(){ 
@@ -103,7 +105,7 @@ Apple.prototype.fall = function(){
         score++; //add to score 
         console.log(score);
         if (score < 8) {
-            Basket.img.src='img/baskets/basket' + score.toString() + '.png';  
+          Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
         }
     }
 
@@ -115,6 +117,17 @@ Apple.prototype.fall = function(){
         this.speed *= -this.bounce;
     }
 
+    /*
+    if(this.speed < checkSpeed){
+        checkSpeed = this.speed;
+    }
+
+    if(this.speed == checkSpeed){
+        this.canFall = false;
+    }
+    */
+
+    
     if(this.speed == -0.05454545454545454){
     //fade here, then reset //++++++++++++++++++++++++++++++++++
         this.canFall = false;
@@ -127,7 +140,7 @@ Apple.prototype.fall = function(){
         ////////////////drawApple(this);
         // this.reset();
     }//else{
-           
+          
 };
 
 /*
@@ -136,17 +149,15 @@ Apple.prototype.drawApple = function(){
     ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
 };*/
 
-var appleImg = new Image(); //apple image
-appleImg.src = 'img/apple.png'; //image source
-
+//var appleImg = new Image(); //apple image
+//appleImg.src = 'img/apple.png'; //image source
 function Apple(xPos, yPos){
    this.img = (function(){ //apple image
         var img =  new Image();
         img.src = 'img/apple.png';
+        /////////////////img.style.opacity = 0;
         return img;
     }());
-    ///////////////this.id = id; ///////////////////////////////////////
-   
     this.xPos = xPos; //x pos of apple
     this.yPos = yPos; //y pos of apple
     this.width = 60; //width of apple
@@ -163,6 +174,8 @@ function Apple(xPos, yPos){
         this.canScore = true; //reset ability to score
         this.canFall = true;
     };
+
+   
 
 /*
     this.fall = function(){
@@ -240,17 +253,6 @@ function animate(){
     //drop and draw apples:
     for (var i=0; i<applesArray.length; i++){
 
-        /*
-        var test = applesArray[i];
-        test.fall();
-        console.log(test.speed);
-        if (test.speed != -0.05454545454545454){
-            ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple / 
-        }else{
-            applesArray[i].reset();
-        }
-
-        */
        ////////////console.log(applesArray[i].speed);
        if (applesArray[i].canFall == true){
             applesArray[i].fall(); //invoke fall
@@ -271,6 +273,7 @@ function animate(){
     
     Basket.move(); //move basket
     ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    //ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
     requestAnimationFrame(animate); //continue animation
 }
