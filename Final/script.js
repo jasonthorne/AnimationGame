@@ -92,8 +92,6 @@ Array.prototype.pickElement = function(){
 //var loopMe = true; ////////////////////////////////////////////
 
 Apple.prototype.fall = function(){
-    
-   // if (this.canDrop){
 
         this.yPos += this.speed; //drop apple
         this.speed += this.gravity; //add gravity to drop speed
@@ -122,11 +120,18 @@ Apple.prototype.fall = function(){
                 // cancelAnimationFrame(animate);
                 //}
             }
+
+            if(this.speed == -0.05454545454545454){
+            //fade here, then reset //++++++++++++++++++++++++++++++++++
+                this.reset();
+            }else{
+                ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
+            }
     
             
            // this.drawApple;
             
-            //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
+           
 
             /*
             if(this.speed = 0.05454545454545454 ){
@@ -141,11 +146,11 @@ Apple.prototype.fall = function(){
    
 };
 
-
+/*
 Apple.prototype.drawApple = function(){
     draw();
     ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
-};
+};*/
 
 var appleImg = new Image(); //apple image
 appleImg.src = 'img/apple.png'; //image source
@@ -167,12 +172,13 @@ function Apple(xPos, yPos){
     this.speed = appleSpeeds.pickElement(); //pick a drop speed
     this.canScore = true; //if apple can score
     this.reset = function(){ 
+        console.log("hi"); //////////////////////////////////////////////////
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset drop speed
         this.canScore = true; //reset ability to score
     };
 
-    /*
+/*
     this.fall = function(){
         this.yPos += this.speed; //drop apple
         this.speed += this.gravity; //add gravity to drop speed
@@ -211,18 +217,7 @@ function Apple(xPos, yPos){
              //this.canDrop = false;
 
              
-               // if(this.speed < -1) { // = 0.05454545454545454 ){ //< -1
-
-                    for(var i = 0; i < applesArray.length; i++){ 
-                        if (applesArray[i].id == this.id) {
-                           
-                            applesArray.splice(i, 1); 
-                            //console.log(applesArray);
-                          }
-                      }
-                   
-                }()
-               
+              
               //console.log(applesArray);
 
               //console.log(this.id);
@@ -256,20 +251,41 @@ function animate(){
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     
-    
     //drop and draw apples:
     for (var i=0; i<applesArray.length; i++){
+
+        /*
+        var test = applesArray[i];
+        test.fall();
+        console.log(test.speed);
+        if (test.speed != -0.05454545454545454){
+            ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple / 
+        }else{
+            applesArray[i].reset();
+           
+        }
+
+        */
+       
         applesArray[i].fall(); //invoke fall
-        ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+        console.log(applesArray[i].speed);
+        /*
+        if(applesArray[i].speed !== -0.05454545454545454){
+          
+            ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+        }else{
+            applesArray[i].reset();
+        }*/
+
     }
     
-   
     Basket.move(); //move basket
-    //ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
     requestAnimationFrame(animate); //continue animation
 }
 
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function moveBasket(){
     draw();
     Basket.move(); //move basket
@@ -281,6 +297,7 @@ function draw(){
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 }
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 /*
 function testLoop(){
