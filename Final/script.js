@@ -262,7 +262,6 @@ function animate(){
             ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple / 
         }else{
             applesArray[i].reset();
-           
         }
 
         */
