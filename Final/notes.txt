@@ -26,3 +26,8 @@ https://www.kirupa.com/html5/animating_many_things_on_a_canvas.htm
 
 preLoading images:
 https://www.techrepublic.com/article/preloading-and-the-javascript-image-object/
+
+
+transparency:
+http://zetcode.com/gfx/html5canvas/transparency/
+https://html5.litten.com/using-multiple-html5-canvases-as-layers/
