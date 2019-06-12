@@ -5,7 +5,7 @@
 		<title>Apple Catch</title>
 		<link type="text/css" rel="stylesheet" href="style.css">
 		<script type="text/javascript" src="script.js" defer > </script> <!-- 'defer' waits until page is loaded before execution-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> <!-- JQuery Google CDN-->
+		<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js" defer></script> <!-- JQuery Google CDN-->
 		
 	</head>
 	
@@ -14,15 +14,23 @@
 	   <div class="contentWrapper">
 
 		<div class="timerWrapper">
-				<div id="timerId"></div>
+			<div id="timerId"></div>
 		</div>
 		
 		<div class="scoreWrapper">
 			<div id="scoreId"></div>
 		</div>
 
-		 <canvas id="canvasId"  width="873" height="640"> 
-		 </canvas>
+		 
+		<!--<canvas id="canvasId"  width="873" height="640"> -->
+
+		<canvas id="bgCanvas"  width="873" height="640"> 
+		</canvas>
+		<canvas id="apple1Canvas"  width="873" height="640"> 
+		</canvas>
+		
+
+		
 
 	   </div>
 	   

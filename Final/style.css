@@ -4,12 +4,25 @@ body{
 }
 
 
-.contentWrapper canvas{
-	padding-top: 7px;
+.contentWrapper #bgCanvas{
+	/*padding-top: 7px;
 	display: block;
-	margin: auto;
+	margin: auto;*/
+
+	position:absolute;
+	left:0px;
+	top:0px;
 }
 
+
+.contentWrapper #apple1Canvas{
+	/*padding-top: 7px;
+	display: block;
+	margin: auto;*/
+	position:absolute;
+	left:0px;
+	top:0px;
+}
 /*-----------------FIX THIS MESS!!---------------------*/
 
 .scoreWrapper{
