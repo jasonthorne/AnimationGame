@@ -9,11 +9,14 @@ var ctx = canvas.getContext("2d");
 var apple1Canvas = document.getElementById("apple1Canvas");
 var apple1Ctx = apple1Canvas.getContext("2d"); //add these to an array???????????
 
+var apple2Canvas = document.getElementById("apple1Canvas");
+var apple2Ctx = apple1Canvas.getContext("2d"); //add these to an array???????????
+
 //var basketCanvas = document.getElementById("basketCanvas");
 //var basketCtx = basketCanvas.getContext("2d"); //add these to an array???????????
 
 
-var applesCtx = [apple1Ctx];
+var applesCtx = [apple1Ctx, apple2Ctx];
 
 //======================================================
 
@@ -176,7 +179,7 @@ function Apple(xPos, yPos){
 
 //----------------------------------------------------------------------------------------------------
 //animate game:
-function animate(){
+function animate(){ //CLEAR RECT MEANS EACH CANVAS NEDS TO BE ON ITS OWN ANIMATION FRAME
 
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
@@ -185,6 +188,10 @@ function animate(){
     //???????????????DONT FORGET TO CHANGE THE WIDTH & HEIGHT PROPERITES OF THESE OTHER CANVASES!!!
     apple1Ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     apple1Ctx.drawImage(applesArray[0].img, applesArray[0].xPos, applesArray[0].yPos, applesArray[0].width, applesArray[0].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++//(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
+
+
+   apple2Ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+    apple2Ctx.drawImage(applesArray[1].img, applesArray[1].xPos, applesArray[1].yPos, applesArray[1].width, applesArray[1].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++//(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
     //??????????????????????
 
     //moveBasket();
@@ -288,7 +295,7 @@ function drawApples(){
 //////var innit = (function(){
 
     //create and store Apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
-    for (var i=0; i<1; i++){
+    for (var i=0; i<2; i++){
       applesArray.push(new Apple(appleX[i], appleY[i], i)); //add Apple to array 
     }
 
