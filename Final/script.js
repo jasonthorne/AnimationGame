@@ -60,7 +60,7 @@ var Basket = {
     height: basketH, //height of basket
     move: function(){
         if (key[37]){ //if left is pressed
-            this.xPos -=30; //decrease x pos
+            this.xPos -=30; //decrease x pos 
             
             if(this.xPos <0){ //check for canvas collision
                 this.xPos = 0; //stop at screen edge
@@ -131,43 +131,41 @@ Apple.prototype.fall = function(){
     if(this.speed == -0.05454545454545454){
     //fade here, then reset //++++++++++++++++++++++++++++++++++
         this.canFall = false;
-        //$(this).fadeOut("slow");
-       // draw();
-        //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
-
-        /*
-        function moveBasket(){
-            draw();
-            Basket.move(); //move basket
-            requestAnimationFrame(moveBasket);
-        }*/
-        var count = 0;
+        console.log("Hi");
+       
+        var thisApple = this;
+     
+        //var count = 0;
 
         (function animateFade(){
-            count++;
+            
+            //count++;
+           //console.log(count);
+           $(thisApple).fadeOut("slow", function(){
+            console.log("hello!");
+                cancelAnimationFrame(animateFade);
+           });
+           
 
-            console.log(count);
+          ////////////// thisApple.img.src='img/baskets/basket0.png';
+            //draw();
+            ////drawApple(testApple);
+            //ctx.drawImage(testApple.img, testApple.xPos, testApple.yPos, testApple.width, testApple.height); //draw Apple
+           /*
+            if(count < 100){
 
-            $(this).fadeOut("slow");
-            draw();
-            ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
-
-            if(count < 200){
+               // thisApple.img.src='img/baskets/basket' + count.toString() + '.png'; 
                 requestAnimationFrame(animateFade);
             }else{
                 cancelAnimationFrame(animateFade);
             }
+            */
 
-          
-            
+        }(thisApple));
+        
 
-        }(this));
-
-        //num++;
-        //console.log(num);
         /////////////this.img.src='img/baskets/basket0.png';  //++++++++++++++++++++++++++
         //this.img.style.opacity = parseFloat(this.img.style.opacity) - 0.5;
-        //we need to invoke a DRAw func Here )TO DRAw this image AND the others +++++++++++++++++++++++++++++++++00000000000000000000000000!!!
         //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
         ////////////////drawApple(this);
         ///////////////////////////////////////this.reset();
@@ -279,19 +277,37 @@ function Apple(xPos, yPos){
 //animate game:
 function animate(){
 
-    //ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-   // ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
-   draw();
-    
-    //drop and draw apples:
-    for (var i=0; i<applesArray.length; i++){
+    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+    ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
+    //drawApples(); //draw apples +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-       ////////////console.log(applesArray[i].speed);
-       if (applesArray[i].canFall == true){
-            applesArray[i].fall(); //invoke fall
-            drawApple(applesArray[i]);
-            ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
-       }
+    
+    //draw apples:
+    for (var i=0; i<applesArray.length; i++){
+        ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+    }
+
+
+    Basket.move(); //move basket
+    ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    ////////////draw();
+    //
+
+
+
+    //update apples:
+    for (var i=0; i<applesArray.length; i++){
+    ////////////console.log(applesArray[i].speed);
+        if (applesArray[i].canFall == true){
+         applesArray[i].fall(); //invoke fall
+        ////////////////////////++++++++++++++++++++++ drawApple(applesArray[i]); make another loop for printing!!! +++++++++
+         //ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+        }
+
+    }
+   
+    
+    
        //ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
        /*else{
         //applesArray[i].img.src='img/baskets/basket0.png';
@@ -304,11 +320,15 @@ function animate(){
 
       //ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
        //drawApple(applesArray[i]);
+     
+       //drawApples();
 
+      
+       //ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
-    }
     
-    Basket.move(); //move basket
+    
+    //Basket.move(); //move basket
     //ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
   
     
@@ -320,11 +340,12 @@ function animate(){
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 /*
 function moveBasket(){
-    draw();
+    //draw();
     Basket.move(); //move basket
-    requestAnimationFrame(moveBasket);
-}
-*/
+    ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    //requestAnimationFrame(moveBasket);
+}*/
+
 function draw(){ //mabye this recieves an apple(s???) to draw?????
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
@@ -333,6 +354,12 @@ function draw(){ //mabye this recieves an apple(s???) to draw?????
 
 function drawApple(Apple){
     ctx.drawImage(Apple.img, Apple.xPos, Apple.yPos, Apple.width, Apple.height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+}
+
+function drawApples(){
+    for (var i=0; i<applesArray.length; i++){
+        ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+    }
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
