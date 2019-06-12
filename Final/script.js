@@ -131,6 +131,38 @@ Apple.prototype.fall = function(){
     if(this.speed == -0.05454545454545454){
     //fade here, then reset //++++++++++++++++++++++++++++++++++
         this.canFall = false;
+        //$(this).fadeOut("slow");
+       // draw();
+        //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
+
+        /*
+        function moveBasket(){
+            draw();
+            Basket.move(); //move basket
+            requestAnimationFrame(moveBasket);
+        }*/
+        var count = 0;
+
+        (function animateFade(){
+            count++;
+
+            console.log(count);
+
+            $(this).fadeOut("slow");
+            draw();
+            ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
+
+            if(count < 200){
+                requestAnimationFrame(animateFade);
+            }else{
+                cancelAnimationFrame(animateFade);
+            }
+
+          
+            
+
+        }(this));
+
         //num++;
         //console.log(num);
         /////////////this.img.src='img/baskets/basket0.png';  //++++++++++++++++++++++++++
@@ -138,7 +170,7 @@ Apple.prototype.fall = function(){
         //we need to invoke a DRAw func Here )TO DRAw this image AND the others +++++++++++++++++++++++++++++++++00000000000000000000000000!!!
         //ctx.drawImage(this.img, this.xPos, this.yPos, this.width, this.height); //draw Apple
         ////////////////drawApple(this);
-        // this.reset();
+        ///////////////////////////////////////this.reset();
     }//else{
           
 };
@@ -168,7 +200,7 @@ function Apple(xPos, yPos){
     this.canFall = true; //if apple can drop
     this.canScore = true; //if apple can score
     this.reset = function(){ 
-        console.log("hi"); //////////////////////////////////////////////////
+        //console.log("hi"); //////////////////////////////////////////////////
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset speed
         this.canScore = true; //reset ability to score
@@ -247,8 +279,9 @@ function Apple(xPos, yPos){
 //animate game:
 function animate(){
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-    ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
+    //ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
+   // ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
+   draw();
     
     //drop and draw apples:
     for (var i=0; i<applesArray.length; i++){
@@ -256,35 +289,42 @@ function animate(){
        ////////////console.log(applesArray[i].speed);
        if (applesArray[i].canFall == true){
             applesArray[i].fall(); //invoke fall
-            //drawApple(applesArray[i]);
+            drawApple(applesArray[i]);
+            ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
        }
        //ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
-       else{
+       /*else{
         //applesArray[i].img.src='img/baskets/basket0.png';
-        //applesArray[i].img.style.opacity -= 0.1;//parseFloat(this.img.style.opacity) - 0.5;
+        
+        //applesArray[i].img.style.opacity = parseFloat(applesArray[i].img.style.opacity) - 0.5;
+        $(applesArray[i]).fadeOut();
+        drawApple(applesArray[i]);
         //console.log(applesArray[i].img.style.opacity);
-       }
+       }*/
 
-       ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
+      //ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
        //drawApple(applesArray[i]);
 
 
     }
     
     Basket.move(); //move basket
-    ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    //ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+  
+    
     //ctx.drawImage(basketImg, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
 
     requestAnimationFrame(animate); //continue animation
 }
 
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+/*
 function moveBasket(){
     draw();
     Basket.move(); //move basket
     requestAnimationFrame(moveBasket);
 }
-
+*/
 function draw(){ //mabye this recieves an apple(s???) to draw?????
     ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
     ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
@@ -294,30 +334,8 @@ function draw(){ //mabye this recieves an apple(s???) to draw?????
 function drawApple(Apple){
     ctx.drawImage(Apple.img, Apple.xPos, Apple.yPos, Apple.width, Apple.height); //draw Apple //+++++++++++++++++++++++++++++++++++++++
 }
+
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-/*
-function testLoop(){
-
-    //ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-   // ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
-   // ctx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
-   draw();
-    for (var i=0; i<applesArray.length; i++){
-        var apple = applesArray[i]; //+++++++++++++++++++++++++++++++++++++++
-        apple.fall(); //+++++++++++++++++++++++++++++++++++++++
-        //applesArray[i].fall(); //invoke fall
-       // apple.drawApple();//ctx.drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
-       
-     }
-    
-    requestAnimationFrame(testLoop); //continue animation
-}*/
-
-
-
-
-
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
