@@ -26,7 +26,7 @@ var canvasH = bgCanvas.height; //canvas height
 //store appleLayer ctxs
 var applesCtx = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx, apple6Ctx, apple7Ctx];
 
-
+const MAX_APPLES = 5;
 //======================================================
 
 //document.getElementById("timerId").innerHTML = 0; //set timer element //+++++++++++++++++++
@@ -38,24 +38,43 @@ backgroundImg.src = 'img/background.png'; //image source
 var score = 0;
 
 //----------------------------------------------------------------------------------------------------
-/*
+//var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
+//var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
+var testPic1 = new Image();
+testPic1.src = 'img/apl1.png';
+var testPic2 = new Image();
+testPic2.src = 'img/apl2.png';
+var testPic3 = new Image();
+testPic3.src = 'img/apl3.png';
+var testPic4 = new Image();
+testPic4.src = 'img/apl4.png';
+var testPic5 = new Image();
+testPic5.src = 'img/apl5.png';
+var testPicsArray = [testPic1, testPic2, testPic3, testPic4, testPic5];
 
-//var basketImg = new Image(); //basket image
+
+var basketImg = new Image(); //basket image
 
 //onload events:
 backgroundImg.onload = function(){
     
-    ctx.drawImage(backgroundImg, 0, 0, canvas.width, canvas.height);  //draw background
+    bgCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
       
-    basketImg.src = 'img/basket.png'; //basket image source (assigned here so that background is drawn first)
+    basketImg.src = 'img/baskets/basket0.png'; //basket image source (assigned here so that background is drawn first)
     
     //load and draw basket:
     basketImg.onload = function(){
-         ctx.drawImage(basketImg, (canvas.width - basketW) /2, (canvas.height - basketH) - 10, basketW, basketH); 
+        //basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
+
+        for (let i=0; i<5; i++){
+            basketCtx.drawImage(testPicsArray[i], applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
+            }
     }
+
+    
     
 }
-*/
+
 
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
@@ -190,13 +209,14 @@ function Apple(xPos, yPos){
 }
 
 //----------------------------------------------------------------------------------------------------
+
 //animate game:
 function animate(){ 
 
     drawBackground();
     drawBasket();
     drawApples();
-
+    
     requestAnimationFrame(animate); //continue animation
 }
 
@@ -245,13 +265,15 @@ function drawBasket(){
 //////var innit = (function(){
 
     //create and store Apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
-    for (let i=0; i<2; i++){
+    for (let i=0; i<MAX_APPLES; i++){
       applesArray.push(new Apple(appleX[i], appleY[i], i)); //add Apple to array 
     }
 
-    //testLoop();
-   animate();
-//moveBasket();
+    //=============================
+    //animate(); //=====================================
+    //=============================
+
+
    
 
 /////}());
