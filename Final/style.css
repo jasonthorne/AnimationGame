@@ -7,25 +7,56 @@ body{
 	background-image: url('img/background.png');
 }
 
-.contentWrapper #bgCanvas{
+/*
+.contentWrapper {
+	padding-top: 7px;
+	display: block;
+	margin: auto;
+}
+*/
+
+#basketCanvas{
 	/*padding-top: 7px;
 	display: block;
 	margin: auto;*/
-
 	position:absolute;
 	left:0px;
 	top:0px;
+	z-index: 4;
 }
 
-
-.contentWrapper #apple1Canvas{
+#apple2Canvas{
 	/*padding-top: 7px;
 	display: block;
 	margin: auto;*/
 	position:absolute;
 	left:0px;
 	top:0px;
+	z-index: 3;
 }
+
+#apple1Canvas{
+	/*padding-top: 7px;
+	display: block;
+	margin: auto;*/
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index: 2;
+}
+
+#bgCanvas{
+	/*padding-top: 7px;
+	display: block;
+	margin: auto;*/
+	position:absolute;
+	left:0px;
+	top:0px;
+	z-index: 1;
+}
+
+
+
 /*-----------------FIX THIS MESS!!---------------------*/
 
 .scoreWrapper{
