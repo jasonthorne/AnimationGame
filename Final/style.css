@@ -15,15 +15,23 @@ body{
 }
 */
 
-#basketCanvas{
-	/*padding-top: 7px;
-	display: block;
-	margin: auto;*/
+.layer{
 	position:absolute;
 	left:0px;
 	top:0px;
-	z-index: 4;
 }
+
+#background{z-index: 1;}
+#apple7{z-index: 2;}
+#apple6{z-index: 3;}
+#apple5{z-index: 4;}
+#apple4{z-index: 5;}
+#apple3{z-index: 6;}
+#apple2{z-index: 7;}
+#apple1{z-index: 8;}
+#basket{z-index: 9;}
+
+
 
 #apple2Canvas{
 	/*padding-top: 7px;
