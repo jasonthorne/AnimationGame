@@ -12,19 +12,14 @@ var apple4Canvas = document.getElementById("apple4");
 var apple4Ctx = apple4Canvas.getContext("2d"); 
 var apple5Canvas = document.getElementById("apple5");
 var apple5Ctx = apple5Canvas.getContext("2d"); 
-var apple6Canvas = document.getElementById("apple6");
-var apple6Ctx = apple6Canvas.getContext("2d"); 
-var apple7Canvas = document.getElementById("apple7");
-var apple7Ctx = apple7Canvas.getContext("2d");
 var basketCanvas = document.getElementById("basket");
 var basketCtx = basketCanvas.getContext("2d"); 
-
 
 var canvasW = bgCanvas.width; //canvas width
 var canvasH = bgCanvas.height; //canvas height
 
 //store appleLayer ctxs
-var applesCtx = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx, apple6Ctx, apple7Ctx];
+var applesCtx = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx];
 
 const MAX_APPLES = 5;
 //======================================================
@@ -40,6 +35,8 @@ var score = 0;
 //----------------------------------------------------------------------------------------------------
 //var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
 //var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
+
+/*
 var testPic1 = new Image();
 testPic1.src = 'img/apl1.png';
 var testPic2 = new Image();
@@ -74,7 +71,7 @@ backgroundImg.onload = function(){
     
     
 }
-
+*/
 
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
@@ -123,8 +120,8 @@ var Basket = {
 //----------------------------------------------------------------------------------------------------
 //create apples:
 var applesArray = []; //array for holding apples 
-var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
-var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
+var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
+var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
 var appleSpeeds = [3, 6, 12]; //holds apple drop speeds
 ///////////var checkSpeed = 0;
 
@@ -133,7 +130,6 @@ Array.prototype.pickElement = function(){
     return this[Math.floor(Math.random()*this.length)]; //return a random element
 }//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
 
-var count = 0;
 Apple.prototype.fall = function(){
 
     this.yPos += this.speed; //drop apple
@@ -149,32 +145,20 @@ Apple.prototype.fall = function(){
         if (score < 8) {
           Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
         }
-        
     }
 
     //check if apple has hit bottom of canvas:
-    if(this.yPos >= ((canvasH - 10) - this.height)){  //'canvas height -10' to make contact level with basket
+    if(this.yPos >= ((canvasH - 10) - this.height)){  //'canvas height -10' to make level with basket
         //this.reset(); //reset apple
         this.canScore = false; //prevent scoring 
         this.yPos = (canvasH - 10) - this.height; //repostion at bottom of canvas
-        this.speed *= -this.bounce;
+        this.speed *= -this.bounce; //bounce apple
     }
 
-    /*
-    if(this.speed < checkSpeed){
-        checkSpeed = this.speed;
-    }
-
-    if(this.speed == checkSpeed){
-        this.canFall = false;
-    }
-    */
-
-    if(this.speed == -0.05454545454545454){
-        this.canFall = false;
+    if(this.speed == -0.05454545454545454){ //apple has stopped bouncing
+        this.canFall = false; //prevent falling
     }
        
- 
 }          
 
 
@@ -237,12 +221,12 @@ function drawApples(){
     for (let i=0; i<applesArray.length; i++){
         ////////////console.log(applesArray[i].speed);
         if (applesArray[i].canFall == true){
-            applesArray[i].fall();
+            applesArray[i].fall(); //allow apple to fall
         }else{
-            applesCtx[i].globalAlpha += -0.02;
+            applesCtx[i].globalAlpha += -0.02; //fade opacity
             ////////////console.log("num:" +  applesCtx[i].globalAlpha);
 
-            if(applesCtx[i].globalAlpha == 0.019999999999999383){
+            if(applesCtx[i].globalAlpha == 0.019999999999999383){ //when opacity is faded
                  //console.log("bum");
                  applesCtx[i].globalAlpha =1;
                  applesArray[i].reset(); //reset apple
@@ -270,7 +254,7 @@ function drawBasket(){
     }
 
     //=============================
-    //animate(); //=====================================
+    animate(); //=====================================
     //=============================
 
 
