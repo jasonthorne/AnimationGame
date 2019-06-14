@@ -34,9 +34,13 @@ backgroundImg.src = 'img/background.png'; //image source
 //=================
 var score = 0;
 var time = 16;
-document.getElementById("timerId").innerHTML = time; //set timer element
+var x = setInterval(function(){
+    time--;
+    document.getElementById("timerId").innerHTML = time;
+}, 1000); //run timer
+ //set timer element
 //=================
-
+//document.getElementById("timerId").innerHTML = time;
 
 //----------------------------------------------------------------------------------------------------
 //var appleX = [120, 273, 518, 632, 720]; 
@@ -218,7 +222,7 @@ function drawBackground(){
 function drawBasket(){
     basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
     Basket.move(); //move basket
-    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
  }
 
 /*
