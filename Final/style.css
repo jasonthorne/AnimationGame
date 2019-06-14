@@ -22,13 +22,13 @@ body{
 	top:0px;
 }
 
-#backgroundId{z-index: 1;}
-#apple5Id{z-index: 2;}
-#apple4Id{z-index: 3;}
-#apple3Id{z-index: 4;}
-#apple2Id{z-index: 5;}
-#apple1Id{z-index: 6;}
-#basketId{z-index: 7;}
+#background{z-index: 1;}
+#apple5{z-index: 2;}
+#apple4{z-index: 3;}
+#apple3{z-index: 4;}
+#apple2{z-index: 5;}
+#apple1{z-index: 6;}
+#basket{z-index: 7;}
 
 
 
