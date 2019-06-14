@@ -1,30 +1,30 @@
 
 //canvas layers and their context: 
-var bgCanvas = document.getElementById("background");
-var bgCtx = bgCanvas.getContext("2d");
-var apple1Canvas = document.getElementById("apple1");
+var backgroundCanvas = document.getElementById("backgroundId");
+var backgroundCtx = backgroundCanvas.getContext("2d");
+var apple1Canvas = document.getElementById("apple1Id");
 var apple1Ctx = apple1Canvas.getContext("2d"); 
-var apple2Canvas = document.getElementById("apple2");
+var apple2Canvas = document.getElementById("apple2Id");
 var apple2Ctx = apple2Canvas.getContext("2d"); 
-var apple3Canvas = document.getElementById("apple3");
+var apple3Canvas = document.getElementById("apple3Id");
 var apple3Ctx = apple3Canvas.getContext("2d"); 
-var apple4Canvas = document.getElementById("apple4");
+var apple4Canvas = document.getElementById("apple4Id");
 var apple4Ctx = apple4Canvas.getContext("2d"); 
-var apple5Canvas = document.getElementById("apple5");
+var apple5Canvas = document.getElementById("apple5Id");
 var apple5Ctx = apple5Canvas.getContext("2d"); 
-var basketCanvas = document.getElementById("basket");
+var basketCanvas = document.getElementById("basketId");
 var basketCtx = basketCanvas.getContext("2d"); 
 
-var canvasW = bgCanvas.width; //canvas width
-var canvasH = bgCanvas.height; //canvas height
+var canvasW = backgroundCanvas.width; //canvas width
+var canvasH = backgroundCanvas.height; //canvas height
 
 //store appleLayer ctxs
 var applesCtx = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx];
 
-const MAX_APPLES = 5;
+const MAX_APPLES = 5; //max apples
 //======================================================
 
-//document.getElementById("timerId").innerHTML = 0; //set timer element //+++++++++++++++++++
+document.getElementById("timerId").innerHTML = 0; //set timer element //+++++++++++++++++++
 //document.getElementById("scoreId").innerHTML = 0; //set hits element //+++++++++++++++++++
 
 var backgroundImg = new Image(); //background image
@@ -33,9 +33,8 @@ backgroundImg.src = 'img/background.png'; //image source
 var score = 0;
 
 //----------------------------------------------------------------------------------------------------
-//var appleX = [50, 130, 200, 260, 350, 450, 600]; //x pos of apples  
-//var appleY = [180, 100, 180, 80, 150, 220, 40]; //y pos of apples  
-
+//var appleX = [120, 273, 518, 632, 720]; 
+//var appleY = [176, 132, 231, 119, 188];
 /*
 var testPic1 = new Image();
 testPic1.src = 'img/apl1.png';
@@ -55,7 +54,7 @@ var basketImg = new Image(); //basket image
 //onload events:
 backgroundImg.onload = function(){
     
-    bgCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
+    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
       
     basketImg.src = 'img/baskets/basket0.png'; //basket image source (assigned here so that background is drawn first)
     
@@ -119,6 +118,7 @@ var Basket = {
 
 //----------------------------------------------------------------------------------------------------
 //create apples:
+
 var applesArray = []; //array for holding apples 
 var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
 var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
@@ -193,8 +193,8 @@ function Apple(xPos, yPos){
 }
 
 //----------------------------------------------------------------------------------------------------
-
 //animate game:
+
 function animate(){ 
 
     drawBackground();
@@ -204,11 +204,16 @@ function animate(){
     requestAnimationFrame(animate); //continue animation
 }
 
-//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 function drawBackground(){
-    bgCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-    bgCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
+    backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
 }
+
+function drawBasket(){
+    basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    Basket.move(); //move basket
+    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+ }
 
 /*
 function drawApple1(){
@@ -237,10 +242,16 @@ function drawApples(){
     }
 }
 
-function drawBasket(){
-   basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-   Basket.move(); //move basket
-   basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw moved basket
+
+//----------------------------------------------------------------------------------------------------
+//timer:
+
+function Timer(time){
+    this.time = time;
+    this.countDown = function(){
+        time--; //reduce time
+
+    };
 }
 
 //----------------------------------------------------------------------------------------------------
