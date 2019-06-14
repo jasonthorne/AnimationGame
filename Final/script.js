@@ -24,13 +24,19 @@ var applesCtx = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx];
 const MAX_APPLES = 5; //max apples
 //======================================================
 
-document.getElementById("timerId").innerHTML = 0; //set timer element //+++++++++++++++++++
+//document.getElementById("timerId").innerHTML = 0; //set timer element //+++++++++++++++++++
 //document.getElementById("scoreId").innerHTML = 0; //set hits element //+++++++++++++++++++
 
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/background.png'; //image source
 
+
+//=================
 var score = 0;
+var time = 16;
+document.getElementById("timerId").innerHTML = time; //set timer element
+//=================
+
 
 //----------------------------------------------------------------------------------------------------
 //var appleX = [120, 273, 518, 632, 720]; 
@@ -86,6 +92,7 @@ window.addEventListener("keyup", function(event){ //listens for key release, rem
 
 //----------------------------------------------------------------------------------------------------
 //create basket:
+
 var basketW = 110, basketH = basketW; //width & height of basket
 
 var Basket = {
@@ -123,7 +130,6 @@ var applesArray = []; //array for holding apples
 var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
 var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
 var appleSpeeds = [3, 6, 12]; //holds apple drop speeds
-///////////var checkSpeed = 0;
 
 //prototype function added to Array class, to allow random picking of elements:
 Array.prototype.pickElement = function(){ 
@@ -241,7 +247,6 @@ function drawApples(){
         applesCtx[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); 
     }
 }
-
 
 //----------------------------------------------------------------------------------------------------
 //timer:

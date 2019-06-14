@@ -87,9 +87,10 @@ body{
 .timerWrapper #timerId{
 	width: auto;
 	height: auto;
-	position: absolute;
+	/*position: absolute;*/
 	left: 73px;
 	top: 50px;
+	z-index: 99;
 }
 
 	
