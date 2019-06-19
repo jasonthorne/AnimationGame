@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+	</head>
+	<script type="text/javascript">
+	var apple1time = 2000;
+	var apple2time = 6000;
+	var start = null;
+	//var element = document.getElementById('SomeElementYouWantToAnimate');
+
+	function animate(timestamp) {
+	
+	  if (!start) start = timestamp;
+	  var progress = timestamp - start;
+	  //element.style.transform = 'translateX(' + Math.min(progress / 10, 200) + 'px)';
+	  console.log("this keeps running");
+	  if (progress < apple1time) {
+		console.log("apple1 dropping");
+	 
+	  if (progress < apple2time) {
+		console.log("apple2 dropping");
+	  
+	  window.requestAnimationFrame(animate);
+	}
+
+	window.requestAnimationFrame(animate);
+		
+		
+	</script>
+    <body>
+       
+    </body>
+</html>
