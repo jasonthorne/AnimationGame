@@ -7,24 +7,32 @@
 	var apple2time = 6000;
 	var start = null;
 	//var element = document.getElementById('SomeElementYouWantToAnimate');
-
-	function animate(timestamp) {
+	var last = 0;
+	function animate(now) {
 	
+		/*
 	  if (!start) start = timestamp;
 	  var progress = timestamp - start;
 	  //element.style.transform = 'translateX(' + Math.min(progress / 10, 200) + 'px)';
-	  console.log("this keeps running");
-	  if (progress < apple1time) {
+	  //////console.log("this keeps running");
+	  //if (progress < apple1time) {
 		console.log("apple1 dropping");
-	 
+	
 	  if (progress < apple2time) {
 		console.log("apple2 dropping");
+		window.requestAnimationFrame(animate);
+	  }
+	  */
 	  
-	  window.requestAnimationFrame(animate);
+		if(!last || now - last >= 2*1000) { //2000) { //2*1000) {
+			last = now;
+			console.log("yo");
+		}
+			
+		window.requestAnimationFrame(animate);
 	}
 
 	window.requestAnimationFrame(animate);
-		
 		
 	</script>
     <body>
