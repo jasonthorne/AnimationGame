@@ -8,26 +8,33 @@
 	var start = null;
 	//var element = document.getElementById('SomeElementYouWantToAnimate');
 	var last = 0;
-	function animate(now) {
+	//function animate(now) {
+	function animate(timestamp) {
 	
-		/*
 	  if (!start) start = timestamp;
 	  var progress = timestamp - start;
 	  //element.style.transform = 'translateX(' + Math.min(progress / 10, 200) + 'px)';
 	  //////console.log("this keeps running");
-	  //if (progress < apple1time) {
-		console.log("apple1 dropping");
-	
-	  if (progress < apple2time) {
-		console.log("apple2 dropping");
-		window.requestAnimationFrame(animate);
-	  }
-	  */
 	  
-		if(!last || now - last >= 2*1000) { //2000) { //2*1000) {
-			last = now;
-			console.log("yo");
-		}
+	 
+	  if (progress < apple1time) {
+	   //cantDrop = off; //????????????????????????
+		console.log("apple1 dropping. progress is: " + progress);
+	  }else{
+		console.log("apple1 dropped: " + progress);
+		//canDrop //?????????????????
+	  }
+	  
+	 
+	
+		/*
+	  if (progress < apple2time) {
+		console.log("apple2 dropping. progress is: " + progress);
+	  }
+	 */
+	 
+	 
+		
 			
 		window.requestAnimationFrame(animate);
 	}

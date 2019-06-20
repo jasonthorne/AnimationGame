@@ -130,8 +130,32 @@ var applesArray = []; //array for holding apples
 var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
 var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
 var appleSpeeds = [3, 6, 12];//[3, 6, 12]; //holds apple drop speeds //+++++++++++++++++
-var applePauses = [1000, 2000, 4000]; //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-var initialPause = [1, 2];
+var applePauses = [1000, 2000, 3000]; //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+var applePausesTest = [
+    {time: 1000, isPicked: false}, 
+    {time: 2000, isPicked: false}, 
+    {time: 3000, isPicked: false}, 
+    {time: 4000, isPicked: false}, 
+    {time: 5000, isPicked: false}
+]; //???????????????????????????????
+
+var lastPickedPause = 2000;
+Array.prototype.pickRandomDiffElement = function(last) {
+    if (this.length == 0) {
+       return;
+    } else if (this.length == 1) {
+       return this[0];
+    } else {
+       var num = 0;
+       do {
+          num = Math.floor(Math.random() * this.length);
+       } while (this[num] == last);
+       return this[num];
+    }
+ }
+//@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+////////////////////////////var initialPause = [1, 2];
 //prototype function added to Array class, to allow random picking of elements:
 Array.prototype.pickElement = function(){ 
     return this[Math.floor(Math.random()*this.length)]; //return a random element
@@ -162,104 +186,11 @@ Apple.prototype.fall = function(){
     }
 
     if(this.speed == -0.05454545454545454){ //apple has stopped bouncing
-        this.canFall = false; //prevent falling
+        ////////////this.canFall = false; //prevent falling
         this.canFadeOut = true; //allow fading
-       ////// console.log("Hi there!");
-        //this.reset();
-        ///////////$(this.canvasId).fadeOut();
-        ///////////this.reset();
-
-       ////////////////// this.canFade = true; //allow fading
-       
-       /*
-        //---------------
-        var test = this;
-        var testTime = 5; //game length
-       
-       
-        $(this.canvasId).fadeOut(function() {
-            console.log("Done fading, do something else");
-            let myVar = setInterval(function(){
-                console.log("testTime is: " + testTime);
-                testTime--;
-                if(testTime <=0){
-                    console.log("counter stop at: " + testTime);
-                    //console.log(this.canvasId); //ONLY GETTING A COPY OF APPLE< NOT THE TARGET APPLE
-                    clearInterval(myVar);
-                    //test.reset();
-                }
-            }, 1000); //run timer
-           
-        }(test));
-          //----------------
-        */
+        this.justFell = true; //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     }  
 }          
-
-
-
-Apple.prototype.pauseApple = function(apple, i){
-//function pauseApple (apple, i){ /////////////////////////PROTOTYPE THIS!!!!
-   // console.log("start pause: " + Apple.canvasId + " pauseTime is: " + Apple.pauseTime);
-
-   
-
-
-    let pause = setInterval(function(){
-        apple.pauseTime--;
-        if(apple.pauseTime <=0){
-
-            apple.reset();
-            apple.canBeDrawn = true;
-            let x = testArray.pickElement();
-            console.log(x);
-            $(applesArray[i].canvasId).fadeIn(x, function() { 
-                
-                apple.canFall = true;
-                //(//applesArray[i].canvasId).fadeIn();
-
-            
-
-
-            /*
-            console.log("finished pause:" + apple.canvasId);
-           apple.yPos = appleY[i]; //reset y pos
-          apple.canBeDrawn = true;
-            $(apple.canvasId).fadeIn(function() { //fade back apple
-                apple.speed = appleSpeeds.pickElement(); //reset speed
-                apple.canFall = true;
-                apple.pauseTime = applePauses.pickElement(); //picks a pause time
-                apple.canScore = true; //reset ability to score
-               */
-
-
-
-                clearInterval(pause);
-               
-                ////console.log("reset speed: " + this.speed) ///////////////////////////
-               
-                //this.canFall = true; //???????????????????????????????????????????
-                ///this.canBeDrawn = true;
-               
-
-
-               
-                
-               // apple.reset();
-            });
-          
-          
-
-            ////////////////////applesArray[i].reset();
-           // test.reset();
-        }
-    }, apple.pauseTime); //1000); //run timer
-
-    ////console.log("please be 5!");
-
-
-}
-
 
 
 function Apple(xPos, yPos, i){
@@ -276,11 +207,12 @@ function Apple(xPos, yPos, i){
     this.gravity = 0.3; //gravity force
     this.bounce = 0.1; //bounce factor
     this.speed = appleSpeeds.pickElement(); //picks a speed
-    this.canFall = true; //if apple can drop
+    this.canFall = true; //if apple can drop ///////////////??????????????still needed? 
     this.canScore = true; //if apple can score
     this.canFadeOut = false;
-    this.canBeDrawn = true;
-    this.pauseTime = applePauses.pickElement();//initialPause.pickElement(); //picks a pause time
+    //this.canBeDrawn = true;
+    this.justFell = false;
+    this.pauseTime = 0;  /////////////////////////////////////applePauses.pickElement();//initialPause.pickElement(); //picks a pause time
     this.reset = function(){ 
 
         //console.log("in reset");
@@ -343,86 +275,89 @@ var test1 = 2000;
 var test2 = 4000;
 var test3 = 8000;
 var testNow=0
-var go = true;
+var go = false;
+var j = 0;
 //-------------------
-function animate(now){ 
+///function animate(now){ 
+function animate(timestamp){ 
 
-    /*
+
+    //drawBackground();
+    backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
+
+    //drawBasket();
+    basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    Basket.move(); //move basket
+    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
+
+    //drawApples(now)
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     if (!start) start = timestamp;
-    progress = timestamp - start;
-    //gameLength = start - timestamp
-    */
+    var progress = timestamp - start;
+    
+   for (let i=0; i<applesArray.length; i++){
 
-    drawBackground();
-    drawBasket();
+        if (progress < applesArray[i].pauseTime) {
+            applesArray[i].canFall = false;
+        }else{
 
-    //testNow = now;
-
-    if(go){
-        go = false;
-        drawApples(now);
-    }
-   
-
-    //=================================================================
-
-
-/*
-    for (let i=0; i<applesArray.length; i++){
-
-        if(!last || now - last >= applesArray[i].pauseTime) { //2000) { //2*1000) {
-            last = now;
-            console.log("test1");
-            $(applesArray[i].canvasId).fadeIn(function() { //fade back apple
-              
-               /// applesArray[i].reset();  //applesArray[i].canFall = true; //+++++++++++++++++++++++++++++++++++++++
-               applesArray[i].canFall = true;
+           $(applesArray[i].canvasId).fadeIn(function() { //fade back apple
+                applesArray[i].canFall = true;
             });
-
            
-           
-            //applesArray[i].fall();
         }
+    
+    
+        if (applesArray[i].canFall){
 
-       
+               applesArray[i].fall(); //allow apple to fall
+        }
+    
+        
+        applesCtx[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
+        applesCtx[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height);
+
+    }
+
+
+    //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+    
+    /*
+    for (let i=0; i<applesArray.length; i++){
+        if(!last || now - last >= applesArray[i].pauseTime){ //applesArray[i].pauseTime)) { // && (!applesArray[i].justFell)) { //2000) { //2*1000) {
+            last = now;
+            //console.log("apple: " + j + ". " + applesArray[j].canvasId + " pause time is: " + applesArray[j].pauseTime);
+            console.log("pause time in loop: "+ applesArray[i].pauseTime + ". id is: " + applesArray[i].canvasId);
+
+            applesArray[i].canFall = true;
+           
+           
+        }
+    
+      
         if (applesArray[i].canFall){
             applesArray[i].fall(); //allow apple to fall
         }
 
-        if (applesArray[i].canFadeOut){ //if apple can fade
-            applesArray[i].canFadeOut = false; //prevent further entry
-            $(applesArray[i].canvasId).fadeOut(function() { //fade apple
-
-                applesArray[i].reset();
-                //applesArray[i].pauseTime = applePauses.pickElement();
-            ///////// applesArray[i].canBeDrawn = false; //stop drawing apple
-            //applesArray[i].pauseApple(applesArray[i], i); //pause apple 
-            });
-        }
-
-
-
-
-        applesCtx[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
-        applesCtx[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); 
-       
-    }
-
-     //=================================================================
-*/
-    /*
-    if(!last || now - last >= test1) { //2000) { //2*1000) {
-        last = now;
-        console.log("test1");
-    }
-    */
         
-    /*
-    if (progress < 16000) {
-        document.getElementById("timerId").innerHTML = progress.toPrecision(2);
-        requestAnimationFrame(animate); //continue animation
-    }
-    */
+        applesCtx[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
+        applesCtx[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height);
+      
+    }*/
+   
+
+
+    /*else{
+        applesArray[j].pauseTime = applePauses.pickElement();
+    }*/
+
+
+
+    
+
+  
    requestAnimationFrame(animate); //continue animation
     
 }
@@ -448,9 +383,9 @@ function drawApple1(){
 var testArray = [600];
 function drawApples(now){
 
-    for (let i=0; i<applesArray.length; i++){
+    for (var i=0; i<applesArray.length; i++){
 
-        if(!last || now - last >= applesArray[i].pauseTime) { //2000) { //2*1000) {
+        if((!last || now - last >= applesArray[i].pauseTime)) { // && (!applesArray[i].justFell)) { //2000) { //2*1000) {
             last = now;
             applesArray[i].pauseTime=applePauses.pickElement(); /////////////////////////////????????????
 
@@ -458,7 +393,8 @@ function drawApples(now){
             $(applesArray[i].canvasId).fadeIn(function() { //fade back apple
               
                /// applesArray[i].reset();  //applesArray[i].canFall = true; //+++++++++++++++++++++++++++++++++++++++
-               applesArray[i].canFall = true;
+               applesArray[i].canFall = true; //this apples CAN fall
+               ////////////////////////applesArray[i--].justFell = false; //previous apple CANT fall
             });
 
            
@@ -475,7 +411,9 @@ function drawApples(now){
             applesArray[i].canFadeOut = false; //prevent further entry
             $(applesArray[i].canvasId).fadeOut(function() { //fade apple
 
+                //applesArray[i].justFell = true;
                 applesArray[i].reset();
+                
                 //applesArray[i].pauseTime = applePauses.pickElement();
             ///////// applesArray[i].canBeDrawn = false; //stop drawing apple
             //applesArray[i].pauseApple(applesArray[i], i); //pause apple 
@@ -486,7 +424,7 @@ function drawApples(now){
         applesCtx[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
         applesCtx[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height);
         //} 
-        go = true;
+        //////////go = true;
     }
 
    
@@ -555,11 +493,21 @@ var timer = setInterval(function(){
 
 //////var innit = (function(){
 
-    //create and store Apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
+    //create and store apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
     for (let i=0; i<MAX_APPLES; i++){
-        let apple = new Apple(appleX[i], appleY[i], i);
+        let apple = new Apple(appleX[i], appleY[i], i); //create apple
+        apple.pauseTime = applePauses.pickRandomDiffElement(lastPickedPause);
+        lastPickedPause = apple.pauseTime;
+        $(apple.canvasId).fadeOut(function() { //pre-fade apple
+
+            console.log(apple.canvasId + ": " + apple.pauseTime);
+            applesArray.push(apple); //add apple to array 
+        });
+
+
         //pauseApple(test);
-        applesArray.push(apple); //add Apple to array 
+        //apple.pauseTime = applePauses.pickElement();
+        
         //applesArray.push(new Apple(appleX[i], appleY[i], i)); //add Apple to array 
     }
 
