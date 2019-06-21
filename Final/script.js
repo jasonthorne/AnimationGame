@@ -215,12 +215,12 @@ function Apple(xPos, yPos, i){
     this.gravity = 0.3; //gravity force
     this.bounce = 0.1; //bounce factor
     this.speed = appleSpeeds.pickElement(); //picks a speed
-    this.canFall = true; //if apple can drop ///////////////??????????????still needed? 
+    this.canFall = false; //if apple can drop ///////////////??????????????still needed? 
     this.canScore = true; //if apple can score
     this.canFadeOut = false;
     this.canFadeIn = true;
     //this.canBeDrawn = true;
-    this.justFell = false;
+    //this.justFell = false;
     this.pauseTime = applePauses.pickElement(); // + (Date.now() + Math.random());//initialPause.pickElement(); //picks a pause time
     this.reset = function(){ 
 
@@ -259,8 +259,8 @@ function Apple(xPos, yPos, i){
         ////console.log("reset speed: " + this.speed) ///////////////////////////
         this.canScore = true; //reset ability to score
         //this.canFall = true; //???????????????????????????????????????????
-        this.canBeDrawn = true;
-        //this.pauseTime =  applePauses.pickElement(); //picks a pause time
+        ///////////////////////////this.canBeDrawn = true;
+        this.pauseTime =  applePauses.pickElement(); //picks a pause time
         this.canFadeOut = false;
         this.canFadeIn = true;
     };
@@ -306,25 +306,33 @@ function animate(timestamp){
     if (!start) start = timestamp;
     var progress = timestamp - start;
     
-   for (let i=0; i<applesArray.length; i++){
+    for (let i=0; i<applesArray.length; i++){
 
+        
         if (progress < applesArray[i].pauseTime) {
+            /////////////////applesArray[i].canFadeIn = true; 
             applesArray[i].canFall = false;
         }else{
+            
+        //if (progress > applesArray[i].pauseTime) {   
 
             if(applesArray[i].canFadeIn){ //if apple can fade
                 applesArray[i].canFadeIn = false; //prevent further entry
             
                 $(applesArray[i].canvasId).fadeIn(function() { //fade-in apple
-                        applesArray[i].canFall = true;
+                    applesArray[i].canFall = true;
+                        
                 });
             }
            
         }
     
         if (applesArray[i].canFall){
-            applesArray[i].canFadeOut = false;
-               applesArray[i].fall(); //allow apple to fall
+            //================================????????????????????
+           // applesArray[i].canFadeOut = false;
+           // applesArray[i].canFadeIn = false;
+            //================================????????????????????
+            applesArray[i].fall(); //allow apple to fall
         }
 
         if (applesArray[i].canFadeOut){ //if apple can fade
