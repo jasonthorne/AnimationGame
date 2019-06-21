@@ -260,7 +260,7 @@ function Apple(xPos, yPos, i){
         this.canScore = true; //reset ability to score
         //this.canFall = true; //???????????????????????????????????????????
         ///////////////////////////this.canBeDrawn = true;
-        this.pauseTime =  applePauses.pickElement(); //picks a pause time
+        //this.pauseTime =  applePauses.pickElement(); //picks a pause time
         this.canFadeOut = false;
         this.canFadeIn = true;
     };
@@ -305,23 +305,29 @@ function animate(timestamp){
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     if (!start) start = timestamp;
     var progress = timestamp - start;
-    
+    //console.log("progress: " + progress);
+    //console.log("timestamp: " + timestamp);
+   // console.log("start: " + start);
+
     for (let i=0; i<applesArray.length; i++){
 
         
         if (progress < applesArray[i].pauseTime) {
             /////////////////applesArray[i].canFadeIn = true; 
             applesArray[i].canFall = false;
+            ////////////////////////////////console.log("cant fall: " + applesArray[i].canvasId);
         }else{
-            
-        //if (progress > applesArray[i].pauseTime) {   
+        
+           
+            //applesArray[i].canFall = true;
 
+           
             if(applesArray[i].canFadeIn){ //if apple can fade
                 applesArray[i].canFadeIn = false; //prevent further entry
             
                 $(applesArray[i].canvasId).fadeIn(function() { //fade-in apple
                     applesArray[i].canFall = true;
-                        
+                   
                 });
             }
            
@@ -341,8 +347,9 @@ function animate(timestamp){
 
                 //applesArray[i].justFell = true;
                 //applesArray[i].canFadeIn = true;
-                
-                //applesArray[i].pauseTime = applePauses.pickElement();
+            var test = applePauses.pickElement();
+            //////////////////////////console.log(test);
+            applesArray[i].pauseTime = test + progress; //applePauses.pickElement() + progress;
             //applesArray[i].canBeDrawn = false; //stop drawing apple
             //applesArray[i].pauseApple(applesArray[i], i); //pause apple 
             applesArray[i].reset();
@@ -528,11 +535,11 @@ var timer = setInterval(function(){
 //////var innit = (function(){
 
     //create and store apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
-    for (let i=0; i<MAX_APPLES; i++){
+    for (let i=0; i<5; i++){
         let apple = new Apple(appleX[i], appleY[i], i); //create apple
         $(apple.canvasId).fadeOut(function() { //pre-fade apple
 
-            console.log(apple.canvasId + ": " + apple.pauseTime);
+            /////////////////////////////////////console.log(apple.canvasId + ": " + apple.pauseTime);
             applesArray.push(apple); //add apple to array 
         });
 
