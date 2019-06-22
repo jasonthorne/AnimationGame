@@ -70,11 +70,14 @@ body{
 #timerId{
 	position:absolute;
 	z-index: 8;
-	
-	left:40%; /*when counter hits 9, this needs pushed changed!! */
+	left:40%; 
 	right:50%;  
 	top: 40%;
 	bottom: 50%;
+
+	font-family: "Arial Narrow" , Arial, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
 	/* 
 	top: auto; 
 	bottom: 50%;
@@ -84,9 +87,10 @@ body{
 
 .timerWrapper{
 	position: relative;
-	/*left: 0px; 
-	right: 0px;*/
-	margin: auto;
+	top: 20px;
+	left: 275px; 
+	right: 0px;
+	/*margin: auto;*/
 	display: block;
 	height: 5em;
 	width: 5em;

@@ -1,6 +1,9 @@
 leading 0: 
 https://www.w3resource.com/javascript-exercises/javascript-date-exercise-19.php
 
+spaces: 
+https://stackoverflow.com/questions/32012755/javascript-how-to-add-spaces-between-numbers
+
 number fonts: Arial narrow
 
 sign number dark colour:
