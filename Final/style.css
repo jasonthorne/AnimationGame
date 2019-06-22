@@ -16,11 +16,45 @@ body{
 }
 */
 
-.layer{
-	position:absolute;
-	left:0px;
-	top:0px;
+
+
+/*
+.contentWrapper{
+
+	margin: auto;
+	padding-top: 7px;
+	display: block;
+	
+
 }
+*/
+
+
+
+
+.layer{
+
+	position: absolute;
+	left: 0px; 
+	right: 0px;
+	margin: auto;
+	padding-top: 8px;
+	/*display: block;*/
+	
+	/*
+
+	position: absolute;
+	display: inline-block;
+	padding-top: 7px;
+	display: block;
+	margin: auto;
+*/
+
+}
+
+
+
+
 
 #background{z-index: 1;}
 #apple5{z-index: 2;}
@@ -30,42 +64,33 @@ body{
 #apple1{z-index: 6;}
 #basket{z-index: 7;}
 
-
-
-#apple2Canvas{
-	/*padding-top: 7px;
-	display: block;
-	margin: auto;*/
+#timerId{
 	position:absolute;
-	left:0px;
-	top:0px;
-	z-index: 3;
+	z-index: 8;
+	
+	left:40%; /*when counter hits 9, this needs pushed changed!! */
+	right:50%;  
+	top: 40%;
+	bottom: 50%;
+	/* 
+	top: auto; 
+	bottom: 50%;
+	*/
+	/*margin-left: 0%;*/
 }
 
-#apple1Canvas{
-	/*padding-top: 7px;
+.timerWrapper{
+	position: relative;
+	/*left: 0px; 
+	right: 0px;*/
+	margin: auto;
 	display: block;
-	margin: auto;*/
-	position:absolute;
-	left:0px;
-	top:0px;
-	z-index: 2;
+	height: 5em;
+	width: 5em;
 }
 
-#bgCanvas{
-	/*padding-top: 7px;
-	display: block;
-	margin: auto;*/
-	position:absolute;
-	left:0px;
-	top:0px;
-	z-index: 1;
-}
-
-
-
-/*-----------------FIX THIS MESS!!---------------------*/
-
+/*---------------FIX THIS MESS!!---------------------*/
+/*
 .scoreWrapper{
 	width: 20px;
 	height: 20px;
@@ -87,7 +112,6 @@ body{
 .timerWrapper #timerId{
 	width: auto;
 	height: auto;
-	/*position: absolute;*/
 	left: 73px;
 	top: 50px;
 	z-index: 8;
@@ -99,6 +123,6 @@ body{
 	right: 20px;
 	top: 20px;
 }
-
+*/
 /*------------------------------------------*/
 

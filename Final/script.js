@@ -28,7 +28,7 @@ const MAX_APPLES = 5; //max apples
 //document.getElementById("scoreId").innerHTML = 0; //set hits element //+++++++++++++++++++
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/background.png'; //image source
+backgroundImg.src = 'img/backgroundTEST3.png'; //image source
 
 
 //=================
@@ -129,8 +129,8 @@ var Basket = {
 var applesArray = []; //array for holding apples 
 var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
 var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
-var appleSpeeds = [3, 6, 9];//[3, 6, 12]; //holds apple drop speeds //+++++++++++++++++
-var applePauses = [1000, 2000, 3000, 4000, 5000]; //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+var appleSpeeds = [6, 9];//3, 6, 9]; //holds apple drop speeds //+++++++++++++++++
+var applePauses = [1000, 2000, 3000, 4000, 5000];//[1000, 2000, 3000]; //, 4000, 5000]; //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 var applePausesTest = [
     {time: 1000, isPicked: false}, 
@@ -262,7 +262,7 @@ function Apple(xPos, yPos, i){
         ///////////////////////////this.canBeDrawn = true;
         //this.pauseTime =  applePauses.pickElement(); //picks a pause time
         this.canFadeOut = false;
-        this.canFadeIn = true;
+        this.canFadeIn = true; 
     };
     /*
     this.fall = function(){
@@ -313,20 +313,18 @@ function animate(timestamp){
 
         
         if (progress < applesArray[i].pauseTime) {
-            /////////////////applesArray[i].canFadeIn = true; 
             applesArray[i].canFall = false;
+
             ////////////////////////////////console.log("cant fall: " + applesArray[i].canvasId);
         }else{
         
            
-            //applesArray[i].canFall = true;
-
+        
            
             if(applesArray[i].canFadeIn){ //if apple can fade
                 applesArray[i].canFadeIn = false; //prevent further entry
-            
                 $(applesArray[i].canvasId).fadeIn(function() { //fade-in apple
-                    applesArray[i].canFall = true;
+                   applesArray[i].canFall = true;
                    
                 });
             }
@@ -347,9 +345,8 @@ function animate(timestamp){
 
                 //applesArray[i].justFell = true;
                 //applesArray[i].canFadeIn = true;
-            var test = applePauses.pickElement();
-            //////////////////////////console.log(test);
-            applesArray[i].pauseTime = test + progress; //applePauses.pickElement() + progress;
+            //////console.log(Date.now() + ( (Math.random()*100000).toFixed()))
+            applesArray[i].pauseTime = progress + applePauses.pickElement(); //applePauses.pickElement() + progress;
             //applesArray[i].canBeDrawn = false; //stop drawing apple
             //applesArray[i].pauseApple(applesArray[i], i); //pause apple 
             applesArray[i].reset();
@@ -518,7 +515,7 @@ function drawApples(now){
 //----------------------------------------------------------------------------------------------------
 //timer:
 
-var time = 7; //game length
+var time = 15; //game length
 var timer = setInterval(function(){
    
     time--;
@@ -537,12 +534,16 @@ var timer = setInterval(function(){
     //create and store apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
     for (let i=0; i<5; i++){
         let apple = new Apple(appleX[i], appleY[i], i); //create apple
+
+       
         $(apple.canvasId).fadeOut(function() { //pre-fade apple
 
             /////////////////////////////////////console.log(apple.canvasId + ": " + apple.pauseTime);
             applesArray.push(apple); //add apple to array 
         });
+      
 
+      
 
         //pauseApple(test);
         //apple.pauseTime = applePauses.pickElement();
