@@ -279,6 +279,7 @@ var gameTime = 16;
 ////var progress = 0;
 ///-----------------
 var start = null;
+var progress = null;
 var last = 0;
 var test1 = 2000;
 var test2 = 4000;
@@ -304,7 +305,7 @@ function animate(timestamp){
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     if (!start) start = timestamp;
-    var progress = timestamp - start;
+    progress = timestamp - start;
     //console.log("progress: " + progress);
     //console.log("timestamp: " + timestamp);
    // console.log("start: " + start);
@@ -314,7 +315,6 @@ function animate(timestamp){
         
         if (progress < applesArray[i].pauseTime) {
             applesArray[i].canFall = false;
-
             ////////////////////////////////console.log("cant fall: " + applesArray[i].canvasId);
         }else{
         

@@ -21,10 +21,11 @@ body{
 /*
 .contentWrapper{
 
-	margin: auto;
-	padding-top: 7px;
-	display: block;
 	
+	margin: auto;
+	padding-top: 8px;
+	display: block;
+	position: relative;
 
 }
 */
@@ -39,6 +40,8 @@ body{
 	right: 0px;
 	margin: auto;
 	padding-top: 8px;
+
+
 	/*display: block;*/
 	
 	/*

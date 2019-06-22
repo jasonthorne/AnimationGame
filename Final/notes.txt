@@ -1,3 +1,14 @@
+leading 0: 
+https://www.w3resource.com/javascript-exercises/javascript-date-exercise-19.php
+
+number fonts: Arial narrow
+
+sign number dark colour:
+B36A0B
+
+sign number light colour:
+EBAB49 
+
 http://javascript.info/coordinates
 
 https://stackoverflow.com/questions/442404/retrieve-the-position-x-y-of-an-html-element
