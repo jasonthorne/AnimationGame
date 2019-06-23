@@ -28,7 +28,7 @@ const MAX_APPLES = 5; //max apples
 //document.getElementById("scoreId").innerHTML = 0; //set hits element //+++++++++++++++++++
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/backgroundTEST5.png'; //image source
+backgroundImg.src = 'img/backgroundTEST6.png'; //image source
 
 
 //=================
