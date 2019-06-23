@@ -28,7 +28,7 @@ const MAX_APPLES = 5; //max apples
 //document.getElementById("scoreId").innerHTML = 0; //set hits element //+++++++++++++++++++
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/backgroundTEST3.png'; //image source
+backgroundImg.src = 'img/backgroundTEST5.png'; //image source
 
 
 //=================
@@ -406,7 +406,7 @@ function animate(timestamp){
 //document.getElementById("timerId").innerHTML = 12; //+++++++++++++++
 var time = 15; //game length
 
-
+/*
 var timer = setInterval(function(){ 
    
     time--; //reduce time
@@ -420,7 +420,7 @@ var timer = setInterval(function(){
     }
 
 }, 1000); //run timer
-
+*/
 
 
 //----------------------------------------------------------------------------------------------------
