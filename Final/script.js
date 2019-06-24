@@ -32,7 +32,7 @@ backgroundImg.src = 'img/backgroundTEST6.png'; //image source
 
 //=================
 var score = 0;
-
+document.getElementById("scoreId").innerHTML = score; //show time
  //set timer element
 //=================
 //document.getElementById("timerId").innerHTML = time;
@@ -169,6 +169,9 @@ function Apple(xPos, yPos, i){
         //this.pauseTime =  applePauses.pickElement(); //picks a pause time
         this.canFadeOut = false;
         this.canFadeIn = true; 
+        this.pauseTime = progress + applePauses.pickElement(); //reasign pause time
+        //appleCtxs[i].globalAlpha = 1;
+        this.canFall = false; //@@@@@@@@@@@@@@@@@@
     };
     this.fall = function(){
 
@@ -179,9 +182,15 @@ function Apple(xPos, yPos, i){
         if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
             && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
             && this.canScore){
-            this.reset(); //reset apple //+++++++++++++++++++++++++++++???????????? here????
-            score++; //add to score 
-            //////////////console.log("collision speed: " + this.speed); //=================
+                score++; //add to score 
+                document.getElementById("scoreId").innerHTML = score;
+                appleCtxs[i].globalAlpha = 0;
+                this.reset(); //reset apple //+++++++++++++++++++++++++++++???????????? here????
+            //this.canFall = false; //prevent falling
+            //this.canFadeOut = true; //allow fading
+           
+           
+        //////////////console.log("collision speed: " + this.speed); //=================
             if (score < 8) {
                 Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
             }
@@ -281,9 +290,13 @@ function animate(timestamp){
         
             if(applesArray[i].canFadeIn){ //if apple can fade
                 applesArray[i].canFadeIn = false; //prevent further entry
+
+                //===================================
                 $(applesArray[i].canvasId).fadeIn(function() { //fade-in apple
                    applesArray[i].canFall = true;
                 });
+
+                //===================================
             }
         }
     
@@ -293,15 +306,18 @@ function animate(timestamp){
 
         if (applesArray[i].canFadeOut){ //if apple can fade
             applesArray[i].canFadeOut = false; //prevent further entry
+
+            //=====================================
             $(applesArray[i].canvasId).fadeOut(function() { //fade apple
-                applesArray[i].pauseTime = progress + applePauses.pickElement(); //reasign pause time
+                //applesArray[i].pauseTime = progress + applePauses.pickElement(); //reasign pause time
                 applesArray[i].reset(); //reset apple vars
             });
+
+            //=====================================
         }
-    
+
         appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
         appleCtxs[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw apple
-
     }
 
    requestAnimationFrame(animate); //continue animation

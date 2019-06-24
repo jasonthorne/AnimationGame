@@ -55,10 +55,6 @@ body{
 
 }
 
-
-
-
-
 #background{z-index: 1;}
 #apple5{z-index: 2;}
 #apple4{z-index: 3;}
@@ -66,6 +62,19 @@ body{
 #apple2{z-index: 5;}
 #apple1{z-index: 6;}
 #basket{z-index: 7;}
+
+
+.timerWrapper{
+	position: relative;
+	top: 20px;
+	left: 275px; 
+	right: 0px;
+	/*margin: auto;*/
+	display: block;
+	height: 5em;
+	width: 5em;
+}
+
 
 #timerId{
 	position:absolute;
@@ -85,7 +94,9 @@ body{
 	/*margin-left: 0%;*/
 }
 
-.timerWrapper{
+/*-------------------------*/
+
+.scoreWrapper{
 	position: relative;
 	top: 20px;
 	left: 275px; 
@@ -94,7 +105,24 @@ body{
 	display: block;
 	height: 5em;
 	width: 5em;
-}
+} 
+
+
+#scoreId{
+	position:absolute;
+	z-index: 8;
+	left:40%; 
+	right:50%;  
+	top: 40%;
+	bottom: 50%;
+
+	font-family: "Arial Narrow" , Arial, sans-serif;
+	font-weight: bold;
+	font-size: 24px;
+} 
+
+
+
 
 /*---------------FIX THIS MESS!!---------------------*/
 /*
