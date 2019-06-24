@@ -38,7 +38,7 @@ document.getElementById("scoreId").innerHTML = score; //show time
 //var appleX = [120, 273, 518, 632, 720]; 
 //var appleY = [176, 132, 231, 119, 188];
 
-/*
+
 var testPic1 = new Image();
 testPic1.src = 'img/apl1.png';
 var testPic2 = new Image();
@@ -63,17 +63,18 @@ backgroundImg.onload = function(){
     
     //load and draw basket:
     basketImg.onload = function(){
-        //basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
+        basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
 
+        /*
         for (let i=0; i<5; i++){
-            basketCtx.drawImage(testPicsArray[i], applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
-            }
+            appleCtxs.drawImage(testPicsArray[i], applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
+        }
+            */
     }
     
-    
-    
+
 }
-*/
+
 
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
@@ -262,6 +263,29 @@ function animate(timestamp){
 //game timer:
 var time = 12; //game length
 
+function startTimer(){
+
+    document.getElementById("timerId").innerHTML = time; //show starting time
+    let timer = setInterval(function(){ 
+
+        time--; //reduce time
+        if (time <10){ 
+            time = "0" + time; //add leading 0
+            document.getElementById("timerId").style.color = "#ff0000"; //turn red to warn user
+        }
+    
+        if(time<=0){ 
+            clearInterval(timer); //clear timer 
+            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++pop up new modal, showing game score, & asking user to play again.
+        } 
+            
+        document.getElementById("timerId").innerHTML = time; //show new time
+    
+    }, 1000); //run timer
+
+}
+
+/*
 var timer = setInterval(function(){ 
 
     time--; //reduce time
@@ -270,23 +294,22 @@ var timer = setInterval(function(){
         document.getElementById("timerId").style.color = "#ff0000"; //turn red to warn user
     }
 
-    if(time<=0){
-        clearInterval(timer); //clear timer 
-    }
-
+    if(time<=0){ 
+        clearInterval(timer); //clear timer  
+    } 
+        
     document.getElementById("timerId").innerHTML = time; //show time
 
 }, 1000); //run timer
-
-
+*/
 
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
-//////var innit = (function(){
+function startGame(){
 
-    //create and store apples:  //++++++++++++++++++++INCREASE APPLE NUMBER
-    for (let i=0; i<5; i++){
+    //create and store apples: 
+    for (let i=0; i<APPLE_NUM; i++){
         let apple = new Apple(appleX[i], appleY[i], i); //create apple
         appleCtxs[i].globalAlpha = 0; //make apple initially invisible
        //console.log(apple.canvasId + ": " + apple.pauseTime);
@@ -294,11 +317,51 @@ var timer = setInterval(function(){
     }
 
     //=============================
-    //animate(); //=====================================
-    requestAnimationFrame(animate);
+    startTimer(); //start game timer
+    requestAnimationFrame(animate); //animate game
     //=============================
 
+}
 
-   
+//startGame(); //++++++++++++++++++++++++++
 
-/////}());
+//----------------------------------------------------------------------------------------------------
+//into modal:
+
+// Get the modal
+var modal = document.getElementById("introModal");
+
+function showIntroModal(){
+	modal.style.display = "block";
+}
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+/*
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+*/
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  startGame(); 
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    startGame(); //#############################################################################
+  }
+}
+//----------------------------------------------------------------------------------------------------
+
