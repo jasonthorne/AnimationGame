@@ -24,12 +24,12 @@ cloud:
 ==========================
 
 basket:
-??????????
+pixabay
 
 ======================
 
 apples:
-
+pixabay
 
 ======================
 tree sign:
@@ -53,13 +53,20 @@ basket sign:
 
 =========================
 
-famer girl:
+famer girl: MIGHT NOT USE
 
 <div>Icons made by <a href="https://www.freepik.com/?__hstc=57440181.addce7164f6759ee155033113b0f5384.1561404307538.1561404307538.1561404307538.1&__hssc=57440181.2.1561404307539&__hsfp=1778098460" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
 
 ===========================
 
-smile face face:
+smile face face: MIGHT NOT USE
 
 <div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+
+===========================
+
+PNGtree farm girl:
+
+<a href="https://pngtree.com/free-vectors">free vectors from pngtree.com</a>
