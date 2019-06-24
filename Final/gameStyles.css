@@ -68,7 +68,7 @@ body{
 .timerWrapper{
 	position: relative;
 	top: 20px;
-	left: 275px; 
+	left: 175px; 
 	right: 0px;
 	/*margin: auto;*/
 	display: block;
@@ -100,7 +100,7 @@ body{
 .scoreWrapper{
 	position: relative;
 	top: 20px;
-	left: 275px; 
+	left: 175px; 
 	right: 0px;
 	/*margin: auto;*/
 	display: block;

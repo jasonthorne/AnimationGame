@@ -49,3 +49,17 @@ signs 2:
 basket sign:
 
 <a href="https://www.freepik.com/free-photos-vectors/background">Background vector created by brgfx - www.freepik.com</a>
+
+
+=========================
+
+famer girl:
+
+<div>Icons made by <a href="https://www.freepik.com/?__hstc=57440181.addce7164f6759ee155033113b0f5384.1561404307538.1561404307538.1561404307538.1&__hssc=57440181.2.1561404307539&__hsfp=1778098460" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+
+===========================
+
+smile face face:
+
+<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"                 title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/"                 title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
