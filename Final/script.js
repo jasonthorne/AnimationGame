@@ -24,9 +24,6 @@ var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //stori
 
 //======================================================
 
-//document.getElementById("timerId").innerHTML = 0; //set timer element //+++++++++++++++++++
-//document.getElementById("scoreId").innerHTML = 0; //set hits element //+++++++++++++++++++
-
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/backgroundTEST6.png'; //image source
 
@@ -162,16 +159,10 @@ function Apple(xPos, yPos, i){
 
         this.yPos = yPos; //reset y pos
         this.speed = appleSpeeds.pickElement(); //reset speed
-        ////console.log("reset speed: " + this.speed) ///////////////////////////
         this.canScore = true; //reset ability to score
-        //this.canFall = true; //???????????????????????????????????????????
-        ///////////////////////////this.canBeDrawn = true;
-        //this.pauseTime =  applePauses.pickElement(); //picks a pause time
-        this.canFadeOut = false;
-        this.canFadeIn = true; 
-        this.pauseTime = progress + applePauses.pickElement(); //reasign pause time
-        //appleCtxs[i].globalAlpha = 1;
-        //this.canFall = false; //@@@@@@@@@@@@@@@@@@
+        this.canFadeOut = false; //prevent fade out 
+        this.canFadeIn = true;  //allow fade in 
+        this.pauseTime = progress + applePauses.pickElement(); //reassign pause time
     };
     this.fall = function(){
 
@@ -185,12 +176,8 @@ function Apple(xPos, yPos, i){
                 score++; //add to score 
                 document.getElementById("scoreId").innerHTML = score; //show score
                 appleCtxs[i].globalAlpha = 0; //remove apple from screen
-                this.reset(); //reset apple //+++++++++++++++++++++++++++++???????????? here????
-            //this.canFall = false; //prevent falling
-            //this.canFadeOut = true; //allow fading
-           
-           
-        //////////////console.log("collision speed: " + this.speed); //=================
+                this.reset(); //reset apple 
+        
             if (score < 8) {
                 Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
             }
@@ -212,61 +199,16 @@ function Apple(xPos, yPos, i){
     
 }
 
-/*
-Apple.prototype.fall = function(){
-
-    this.yPos += this.speed; //drop apple
-    this.speed += this.gravity; //add gravity to drop speed
-    
-    //check for collison with Basket:
-    if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
-        && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
-        && this.canScore){
-        this.reset(); //reset apple //+++++++++++++++++++++++++++++???????????? here????
-        score++; //add to score 
-        //////////////console.log("collision speed: " + this.speed); //=================
-        if (score < 8) {
-          Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
-        }
-    }
-
-    //check if apple has hit bottom of canvas:
-    if(this.yPos >= ((canvasH - 10) - this.height)){  //'canvas height -10' to make level with basket
-        this.canScore = false; //prevent scoring 
-        this.yPos = (canvasH - 10) - this.height; //repostion at bottom of canvas
-        this.speed *= -this.bounce; //bounce apple
-    }
-
-    if(this.speed == -0.05454545454545454){ //apple has stopped bouncing
-        this.canFall = false; //prevent falling
-        this.canFadeOut = true; //allow fading
-    }  
-};          
-
-Apple.prototype.reset = function(){
-    this.yPos = yPos; //reset y pos
-        this.speed = appleSpeeds.pickElement(); //reset speed
-        ////console.log("reset speed: " + this.speed) ///////////////////////////
-        this.canScore = true; //reset ability to score
-        //this.canFall = true; //???????????????????????????????????????????
-        ///////////////////////////this.canBeDrawn = true;
-        //this.pauseTime =  applePauses.pickElement(); //picks a pause time
-        this.canFadeOut = false;
-        this.canFadeIn = true; 
-};
-
-*/
-
 //----------------------------------------------------------------------------------------------------
 //animate game:
 
-var start = null;
-var progress = null;
+var start = null; //animation start time
+var progress = null; //animation progress
 
 function animate(timestamp){
     
-    if (!start) {start = timestamp;} //animation start time
-    progress = timestamp - start; //animation progress
+    if (!start) {start = timestamp;} //mark start time
+    progress = timestamp - start; //track progress
     //console.log("progress: " + progress);
     //console.log("timestamp: " + timestamp);
     //console.log("start: " + start);
@@ -288,7 +230,7 @@ function animate(timestamp){
         }else{ 
 
             if(applesArray[i].canFadeIn){ //if apple can fade in
-                appleCtxs[i].globalAlpha +=0.05; //fade in apple opacity
+                appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
             
                 if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
                     applesArray[i].canFall = true; //allow apple to fall
@@ -301,7 +243,7 @@ function animate(timestamp){
         }
     
         if (applesArray[i].canFadeOut){ //if apple can fade out
-           appleCtxs[i].globalAlpha -= 0.1; //fade out apple opacity
+           appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
 
            if (appleCtxs[i].globalAlpha <= 0.01){ 
                 applesArray[i].reset(); //reset apple when faded
@@ -317,20 +259,22 @@ function animate(timestamp){
 }
 
 //----------------------------------------------------------------------------------------------------
-//timer:
-var time = 30; //game length
+//game timer:
+var time = 12; //game length
 
 var timer = setInterval(function(){ 
-   
+
     time--; //reduce time
-    if (time <10){ //add leading 0 if less than 10
-        time = "0" + time;
+    if (time <10){ 
+        time = "0" + time; //add leading 0
+        document.getElementById("timerId").style.color = "#ff0000"; //turn red to warn user
     }
 
-    document.getElementById("timerId").innerHTML = time; //show time
     if(time<=0){
         clearInterval(timer); //clear timer 
     }
+
+    document.getElementById("timerId").innerHTML = time; //show time
 
 }, 1000); //run timer
 
