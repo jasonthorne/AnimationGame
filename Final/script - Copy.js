@@ -28,7 +28,7 @@ const MAX_APPLES = 5; //max apples
 //document.getElementById("scoreId").innerHTML = 0; //set hits element //+++++++++++++++++++
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/backgroundTEST3.png'; //image source
+backgroundImg.src = 'img/backgroundTEST6.png'; //image source
 
 
 //=================
@@ -41,7 +41,7 @@ var score = 0;
 //----------------------------------------------------------------------------------------------------
 //var appleX = [120, 273, 518, 632, 720]; 
 //var appleY = [176, 132, 231, 119, 188];
-/*
+
 var testPic1 = new Image();
 testPic1.src = 'img/apl1.png';
 var testPic2 = new Image();
@@ -61,7 +61,7 @@ var basketImg = new Image(); //basket image
 backgroundImg.onload = function(){
     
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
-      
+      /*
     basketImg.src = 'img/baskets/basket0.png'; //basket image source (assigned here so that background is drawn first)
     
     //load and draw basket:
@@ -72,11 +72,11 @@ backgroundImg.onload = function(){
             basketCtx.drawImage(testPicsArray[i], applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
             }
     }
-
+    */
     
     
 }
-*/
+
 
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
@@ -279,6 +279,7 @@ var gameTime = 16;
 ////var progress = 0;
 ///-----------------
 var start = null;
+var progress = null;
 var last = 0;
 var test1 = 2000;
 var test2 = 4000;
@@ -304,7 +305,7 @@ function animate(timestamp){
 
     //&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
     if (!start) start = timestamp;
-    var progress = timestamp - start;
+    progress = timestamp - start;
     //console.log("progress: " + progress);
     //console.log("timestamp: " + timestamp);
    // console.log("start: " + start);
@@ -314,7 +315,6 @@ function animate(timestamp){
         
         if (progress < applesArray[i].pauseTime) {
             applesArray[i].canFall = false;
-            continue;
             ////////////////////////////////console.log("cant fall: " + applesArray[i].canvasId);
         }else{
         
@@ -400,131 +400,28 @@ function animate(timestamp){
     
 }
 
-function drawBackground(){
-    backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
-}
-
-function drawBasket(){
-    basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-    Basket.move(); //move basket
-    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
- }
-
-/*
-function drawApple1(){
-    apple1Ctx.clearRect(0, 0, canvas.width, canvas.height); //clear canvas
-    apple1Ctx.drawImage(applesArray[0].img, applesArray[0].xPos, applesArray[0].yPos, applesArray[0].width, applesArray[0].height); 
-}
-*/
-///var testTime = 5; //game length //++++++++++++++++++++++++++++++++++++++++++++
-var testArray = [600];
-function drawApples(now){
-
-    for (var i=0; i<applesArray.length; i++){
-
-        if((!last || now - last >= applesArray[i].pauseTime)) { // && (!applesArray[i].justFell)) { //2000) { //2*1000) {
-            last = now;
-            applesArray[i].pauseTime=applePauses.pickElement(); /////////////////////////////????????????
-
-            console.log("test1");
-            $(applesArray[i].canvasId).fadeIn(function() { //fade back apple
-              
-               /// applesArray[i].reset();  //applesArray[i].canFall = true; //+++++++++++++++++++++++++++++++++++++++
-               applesArray[i].canFall = true; //this apples CAN fall
-               ////////////////////////applesArray[i--].justFell = false; //previous apple CANT fall
-            });
-
-           
-           
-            //applesArray[i].fall();
-        }
-
-       
-        if (applesArray[i].canFall){
-            applesArray[i].fall(); //allow apple to fall
-        }
-
-        if (applesArray[i].canFadeOut){ //if apple can fade
-            applesArray[i].canFadeOut = false; //prevent further entry
-            $(applesArray[i].canvasId).fadeOut(function() { //fade apple
-
-                //applesArray[i].justFell = true;
-                applesArray[i].reset();
-                
-                //applesArray[i].pauseTime = applePauses.pickElement();
-            ///////// applesArray[i].canBeDrawn = false; //stop drawing apple
-            //applesArray[i].pauseApple(applesArray[i], i); //pause apple 
-            });
-        }
-
-        //if(applesArray[i].canBeDrawn){
-        applesCtx[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
-        applesCtx[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height);
-        //} 
-        //////////go = true;
-    }
-
-   
-
-
-
-    /*
-    if(!last || now - last >= test1) { //2000) { //2*1000) {
-        last = now;
-        console.log("test1");
-    }*/
-
-
-    
-
-    /*
-    for (let i=0; i<applesArray.length; i++){
-        //console.log("apple loop hit");
-
-        if (progress > applesArray[i].pauseTime){
-            console.log("hi!");
-            if (applesArray[i].canFall){
-                applesArray[i].fall(); //allow apple to fall
-            }
-
-            if (applesArray[i].canFadeOut){ //if apple can fade
-                applesArray[i].canFadeOut = false; //prevent further entry
-                $(applesArray[i].canvasId).fadeOut(function() { //fade apple
-
-                    //applesArray[i].pauseTime = applePauses.pickElement();
-                ///////// applesArray[i].canBeDrawn = false; //stop drawing apple
-                //applesArray[i].pauseApple(applesArray[i], i); //pause apple 
-                });
-            }
-
-        
-               
-            
-
-            if(applesArray[i].canBeDrawn){
-                applesCtx[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
-                applesCtx[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); 
-            }
-        }else{
-            applesArray[i].reset();
-        }
-    }*/
-}
 
 //----------------------------------------------------------------------------------------------------
 //timer:
-
+//document.getElementById("timerId").innerHTML = 12; //+++++++++++++++
 var time = 15; //game length
-var timer = setInterval(function(){
+
+/*
+var timer = setInterval(function(){ 
    
-    time--;
-    document.getElementById("timerId").innerHTML = time;
+    time--; //reduce time
+    if (time <10){ //add leading 0 if less than 10
+        time = "0" + time;
+    }
+
+    document.getElementById("timerId").innerHTML = time; //show time
     if(time<=0){
-        clearInterval(timer);
+        clearInterval(timer); //clear timer 
     }
 
 }, 1000); //run timer
+*/
+
 
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
@@ -553,7 +450,7 @@ var timer = setInterval(function(){
 
     //=============================
     //animate(); //=====================================
-    requestAnimationFrame(animate);
+    ///////requestAnimationFrame(animate);
     //=============================
 
 
