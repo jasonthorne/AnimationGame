@@ -18,6 +18,9 @@ backgroundImg.src = '../img/backgroundTEST6.png'; //image source
 
 var basketImg = new Image(); //basket image
 
+//document.getElementById("timerId").innerHTML = 99; //show time
+
+//------------
 
 backgroundImg.onload = function(){
     

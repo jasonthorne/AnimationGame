@@ -6,3 +6,47 @@ body{
 
 #background{z-index: 1;}
 #basket{z-index: 7;}
+
+
+#timerId{z-index: 9;}
+
+/*
+.layer{
+	
+	position: absolute;
+	position: relative;
+}
+*/
+
+.container {
+	
+	display: block;
+	margin: auto;
+  }
+  
+/*
+  .container > canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+  }
+*
+
+/*
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	background-color: #2196F3;
+	padding: 0px;
+	
+  }
+
+  .grid-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 0px;
+	font-size: 30px;
+	text-align: center;
+	position: relative;
+  }
+  */
