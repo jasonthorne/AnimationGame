@@ -1,0 +1,8 @@
+
+body{
+	margin: 0; 
+}
+
+
+#background{z-index: 1;}
+#basket{z-index: 7;}
