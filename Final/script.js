@@ -27,9 +27,9 @@ var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //stori
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/backgroundTEST6.png'; //image source
 
-var baskets = [];
+
 /*
-preloadBaskets(
+preload(
     'img/baskets/basket0.png',
     'img/baskets/basket1.png',
     'img/baskets/basket2.png',
@@ -41,7 +41,7 @@ preloadBaskets(
 )
 */
 
-
+var baskets = [];
 
 //=================
 var score = 0;
@@ -76,22 +76,32 @@ var basketImg = new Image(); //basket image
 backgroundImg.onload = function(){
     
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
-
+    
     //=====================
-    for (let i=0; i<10; i++) {
+    for (let i=0; i<8; i++) {
+
+
+        //craate a temp image, assign it an address. push that to array! 
+        let basket = new Image();
+        basket.src = 'img/baskets/basket' + i.toString() + '.png';
+
+        baskets[i] = basket;
+        /*
         baskets[i] = new Image();
         baskets[i].src = 'img/baskets/basket' + i.toString() + '.png';
-        //baskets[i].src = preloadBaskets.arguments[i];
+        //baskets[i].src = preload.arguments[i];
+        */
         ////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
+        console.log(baskets[i]);
     }
 
     //=====================
       
-    basketImg.src = baskets[0];//////////'img/baskets/basket0.png'; //first basket image source
+    //basketImg.src = baskets[0];//////////'img/baskets/basket0.png'; //first basket image source
     
     //load and draw basket:
     basketImg.onload = function(){
-        basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
+      //  basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
 
         /*
         for (let i=0; i<5; i++){
@@ -100,9 +110,13 @@ backgroundImg.onload = function(){
             */
     }
     
-
+///////////////////////////////////////
 }
-
+for (let i=0; i<8; i++) {
+   
+    console.log(baskets[i]);
+}
+///////////////////////////////////////
 
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
@@ -205,7 +219,8 @@ function Apple(xPos, yPos, i){
                 score++; //add to score 
 
                 if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
-                    Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
+                    //////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
+                   // Basket.img.src = baskets[1];///.toString();
                 }
                 if (score <10){ 
 
