@@ -3,162 +3,40 @@ body{
 	margin: 0; 
 }
 
-/*
-.background{
-	background-image: url('img/background.png');
-}
-
-
-.contentWrapper {
-	padding-top: 7px;
-	display: block;
-	margin: auto;
-}
-*/
-
-
-
-/*
-.contentWrapper{
-
-	
-	margin: auto;
+/*container for elements*/
+.container {
 	padding-top: 8px;
-	display: block;
 	position: relative;
-
-}
-*/
-
-
-
-
-.layer{
-
-	position: absolute;
-	left: 0px; 
-	right: 0px;
 	margin: auto;
-	padding-top: 8px;
-
-
-	/*display: block;*/
-	
-	/*
-
+	width: 873px;
+	height: 640px;
+}
+  
+/*canvas layers within container*/
+.container > canvas {
 	position: absolute;
-	display: inline-block;
-	padding-top: 7px;
-	display: block;
 	margin: auto;
-*/
-
+	width: 100%;
+	height: 100%;
 }
 
-
-#background{z-index: 1;}
-#apple5{z-index: 2;}
-#apple4{z-index: 3;}
-#apple3{z-index: 4;}
-#apple2{z-index: 5;}
-#apple1{z-index: 6;}
-#basket{z-index: 7;}
+/*stacking order for elements*/
+.z-index1{z-index: 1;}
+.z-index2{z-index: 2;}
+.z-index3{z-index: 3;}
 
 
-.timerWrapper{
-	position: relative;
-	top: 20px;
-	left: 175px; 
-	right: 0px;
-	/*margin: auto;*/
-	display: block;
-	height: 5em;
-	width: 5em;
-}
-
-
+/*game timer*/
 #timerId{
-	position:absolute;
-	z-index: 8;
-	left:40%; 
-	right:50%;  
-	top: 40%;
-	bottom: 50%;
-
-	font-family: "Arial Narrow" , Arial, sans-serif;
-	font-weight: bold;
-	font-size: 24px;
-	/* 
-	top: auto; 
-	bottom: 50%;
-	*/
-	/*margin-left: 0%;*/
-}
-
-/*-------------------------*/
-
-.scoreWrapper{
 	position: relative;
-	top: 20px;
-	left: 175px; 
-	right: 0px;
-	/*margin: auto;*/
-	display: block;
-	height: 5em;
-	width: 5em;
-} 
+	margin-left: 60
+	px;
+}
 
-
+/*game score*/
 #scoreId{
-	position:absolute;
-	z-index: 8;
-	left:40%; 
-	right:50%;  
-	top: 40%;
-	bottom: 50%;
-
-	font-family: "Arial Narrow" , Arial, sans-serif;
-	font-weight: bold;
-	font-size: 24px;
-} 
-
-
-
-
-/*---------------FIX THIS MESS!!---------------------*/
-/*
-.scoreWrapper{
-	width: 20px;
-	height: 20px;
-	position: absolute;
-	left: 50%; 
-	top: 50%; 
-} 
-
-
-.scoreWrapper #scoreId{
-	width: auto;
-	height: auto;
-	position: absolute;
-	left: 50%; 
-	top: 50%; 
-} 
-
-
-.timerWrapper #timerId{
-	width: auto;
-	height: auto;
-	left: 73px;
-	top: 50px;
-	z-index: 8;
+	position: relative;
+	/*margin-left: 50px;*/
 }
 
-	
-#timerId, #scoreId {
-	position: absolute;
-	right: 20px;
-	top: 20px;
-}
-*/
-/*------------------------------------------*/
 

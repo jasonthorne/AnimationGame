@@ -262,9 +262,8 @@ function animate(timestamp){
 //----------------------------------------------------------------------------------------------------
 //game timer:
 var time = 12; //game length
-
+document.getElementById("timerId").innerHTML = time; //++++++++++++++++++++++++++++++++++++++++DELETE
 function startTimer(){
-
     document.getElementById("timerId").innerHTML = time; //show starting time
     let timer = setInterval(function(){ 
 
@@ -273,16 +272,13 @@ function startTimer(){
             time = "0" + time; //add leading 0
             document.getElementById("timerId").style.color = "#ff0000"; //turn red to warn user
         }
-    
-        if(time<=0){ 
+        if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++pop up new modal, showing game score, & asking user to play again.
         } 
-            
         document.getElementById("timerId").innerHTML = time; //show new time
     
-    }, 1000); //run timer
-
+    }, 1000); //run timer every second
 }
 
 /*
