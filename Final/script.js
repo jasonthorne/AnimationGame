@@ -25,7 +25,7 @@ var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //stori
 //======================================================
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/backgroundTEST6.png'; //image source
+backgroundImg.src = 'img/backgroundTEST7.png'; //image source
 
 
 /*
@@ -87,36 +87,19 @@ backgroundImg.onload = function(){
     
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
     
-    //=====================
-    for (let i=0; i<8; i++) {
-
-
-        //craate a temp image, assign it an address. push that to array! 
-        let x = new Image();
-        x.src = 'img/baskets/basket' + i.toString() + '.png';
     
-        baskets.push(x);
-        
-       
-        /*
-        baskets[i] = basket;
-        /*
-        baskets[i] = new Image();
-        baskets[i].src = 'img/baskets/basket' + i.toString() + '.png';
-        //baskets[i].src = preload.arguments[i];
-        */
         ////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
         //console.log(baskets[i]);
         
-    }
+    //}
 
     //=====================
       
-    //basketImg.src = baskets[0];//////////'img/baskets/basket0.png'; //first basket image source
+    basketImg.src = 'img/baskets/basket0.png'; //first basket image source
     
     //load and draw basket:
     basketImg.onload = function(){
-      //  basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
+      basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
 
         /*
         for (let i=0; i<5; i++){
@@ -125,14 +108,7 @@ backgroundImg.onload = function(){
             */
     }
     
-///////////////////////////////////////
 }
-for (let i=0; i<8; i++) {
-   
-    console.log(baskets[i]);
-}
-///////////////////////////////////////
-
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
 
@@ -233,8 +209,8 @@ function Apple(xPos, yPos, i){
             && this.canScore){
                 score++; //add to score 
                 if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
-                    //////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
-                   // Basket.img.src = baskets[1];///.toString();
+                   Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
+                   //Basket.img.src = baskets[1];///.toString();
                 }
                 if (score <10){ 
 
@@ -250,7 +226,7 @@ function Apple(xPos, yPos, i){
             if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
                 Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
             }
-          */  
+          */
          //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         }
 
