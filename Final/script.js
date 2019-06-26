@@ -27,9 +27,25 @@ var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //stori
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/backgroundTEST6.png'; //image source
 
+var baskets = [];
+/*
+preloadBaskets(
+    'img/baskets/basket0.png',
+    'img/baskets/basket1.png',
+    'img/baskets/basket2.png',
+    'img/baskets/basket3.png',
+    'img/baskets/basket4.png',
+    'img/baskets/basket5.png',
+    'img/baskets/basket6.png',
+    'img/baskets/basket7.png'
+)
+*/
+
+
+
 //=================
 var score = 0;
-document.getElementById("scoreId").innerHTML = score; //show time
+document.getElementById("score").innerHTML = "00"; //score; //show score
  //set timer element
 //=================
 //document.getElementById("timerId").innerHTML = time;
@@ -38,7 +54,7 @@ document.getElementById("scoreId").innerHTML = score; //show time
 //var appleX = [120, 273, 518, 632, 720]; 
 //var appleY = [176, 132, 231, 119, 188];
 
-
+/*
 var testPic1 = new Image();
 testPic1.src = 'img/apl1.png';
 var testPic2 = new Image();
@@ -50,16 +66,28 @@ testPic4.src = 'img/apl4.png';
 var testPic5 = new Image();
 testPic5.src = 'img/apl5.png';
 var testPicsArray = [testPic1, testPic2, testPic3, testPic4, testPic5];
-
+*/
 
 var basketImg = new Image(); //basket image
+
+
 
 //onload events:
 backgroundImg.onload = function(){
     
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
+
+    //=====================
+    for (let i=0; i<10; i++) {
+        baskets[i] = new Image();
+        baskets[i].src = 'img/baskets/basket' + i.toString() + '.png';
+        //baskets[i].src = preloadBaskets.arguments[i];
+        ////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
+    }
+
+    //=====================
       
-    basketImg.src = 'img/baskets/basket0.png'; //basket image source (assigned here so that background is drawn first)
+    basketImg.src = baskets[0];//////////'img/baskets/basket0.png'; //first basket image source
     
     //load and draw basket:
     basketImg.onload = function(){
@@ -175,13 +203,26 @@ function Apple(xPos, yPos, i){
             && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
             && this.canScore){
                 score++; //add to score 
-                document.getElementById("scoreId").innerHTML = score; //show score
+
+                if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
+                    Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
+                }
+                if (score <10){ 
+
+                    
+                    score = "0" + score; //add leading 0
+                }
+                //do ifs here!!! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+                document.getElementById("score").innerHTML = score; //show score
                 appleCtxs[i].globalAlpha = 0; //remove apple from screen
                 this.reset(); //reset apple 
-        
-            if (score < 8) {
+        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        /*
+            if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
                 Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
             }
+          */  
+         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         }
 
         //check if apple has hit bottom of canvas:
@@ -261,22 +302,22 @@ function animate(timestamp){
 
 //----------------------------------------------------------------------------------------------------
 //game timer:
-var time = 12; //game length
-document.getElementById("timerId").innerHTML = time; //++++++++++++++++++++++++++++++++++++++++DELETE
+var time = 30; //game length
+document.getElementById("timer").innerHTML = time; //++++++++++++++++++++++++++++++++++++++++DELETE
 function startTimer(){
-    document.getElementById("timerId").innerHTML = time; //show starting time
+    document.getElementById("timer").innerHTML = time; //show starting time
     let timer = setInterval(function(){ 
 
         time--; //reduce time
         if (time <10){ 
             time = "0" + time; //add leading 0
-            document.getElementById("timerId").style.color = "#ff0000"; //turn red to warn user
+            document.getElementById("timer").style.color = "#ff0000"; //turn red to warn user
         }
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++pop up new modal, showing game score, & asking user to play again.
         } 
-        document.getElementById("timerId").innerHTML = time; //show new time
+        document.getElementById("timer").innerHTML = time; //show new time
     
     }, 1000); //run timer every second
 }

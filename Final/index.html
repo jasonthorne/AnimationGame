@@ -8,12 +8,11 @@
 		<script type="text/javascript" src="script.js" defer > </script> <!-- 'defer' waits until page is loaded before execution-->
 	</head>
 
-
-	<!--<body onload = "showIntroModal()">-->
-    <body>
+	<body onload = "showIntroModal()">
+    <!--<body>-->
 
 		<!--------------------------------------------------------------->
-		<!-- intro modal -->
+		<!--intro modal -->
 		<div id="introModal" class="modal">
 
 			<!-- Modal content -->
@@ -37,15 +36,15 @@
 
 		<div class="container">
 
-			<canvas id="basket"  class="z-index3" width="873" height="640"></canvas>
-			<canvas id="apple1"  class="z-index2" width="873" height="640"></canvas>  
-			<canvas id="apple2"  class="z-index2" width="873" height="640"></canvas>
-			<canvas id="apple3"  class="z-index2" width="873" height="640"></canvas>  
-			<canvas id="apple4"  class="z-index2" width="873" height="640"></canvas>  
-			<canvas id="apple5"  class="z-index2" width="873" height="640"></canvas>    
-			<canvas id="background"  class="z-index1" width="873" height="640" ></canvas>
-			<div id="timerId" class="z-index3"></div>
-			<div id="scoreId" class="z-index3"></div>
+			<canvas id="basket"  class="layer3" width="873" height="640"></canvas>
+			<canvas id="apple1"  class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple2"  class="layer2" width="873" height="640"></canvas>
+			<canvas id="apple3"  class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple4"  class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple5"  class="layer2" width="873" height="640"></canvas>    
+			<canvas id="background"  class="layer1" width="873" height="640" ></canvas>
+			<div id="timer" class="layer3"></div>
+			<div id="score" class="layer3"></div>
 
 		</div>
 
