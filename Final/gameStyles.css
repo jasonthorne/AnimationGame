@@ -29,6 +29,7 @@ body{
 
 /*game timer*/
 #timer{
+	/*position: relative; ++++++++++++++++++++++++*/
 	position: absolute;
 	margin-left: 59px;
 	margin-top: 46px;
@@ -39,9 +40,10 @@ body{
 
 /*game score*/
 #score{
+	/*position: relative; +++++++++++++++++++++++++*/
 	position: absolute;
 	margin-left: 404px;
-	margin-top: 337px;
+	margin-top: 410px;
 	font-size: 32px;
 	font-weight: 600;
 	letter-spacing: 15px;

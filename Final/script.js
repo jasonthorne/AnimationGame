@@ -41,7 +41,7 @@ preload(
 )
 */
 
-var baskets = [];
+
 
 //=================
 var score = 0;
@@ -69,8 +69,18 @@ var testPicsArray = [testPic1, testPic2, testPic3, testPic4, testPic5];
 */
 
 var basketImg = new Image(); //basket image
+//var baskets = new Arrray();
 
-
+/*
+    'img/baskets/basket0.png',
+    'img/baskets/basket1.png',
+    'img/baskets/basket2.png',
+    'img/baskets/basket3.png',
+    'img/baskets/basket4.png',
+    'img/baskets/basket5.png',
+    'img/baskets/basket6.png',
+    'img/baskets/basket7.png'
+*/
 
 //onload events:
 backgroundImg.onload = function(){
@@ -82,9 +92,13 @@ backgroundImg.onload = function(){
 
 
         //craate a temp image, assign it an address. push that to array! 
-        let basket = new Image();
-        basket.src = 'img/baskets/basket' + i.toString() + '.png';
-
+        let x = new Image();
+        x.src = 'img/baskets/basket' + i.toString() + '.png';
+    
+        baskets.push(x);
+        
+       
+        /*
         baskets[i] = basket;
         /*
         baskets[i] = new Image();
@@ -92,7 +106,8 @@ backgroundImg.onload = function(){
         //baskets[i].src = preload.arguments[i];
         */
         ////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
-        console.log(baskets[i]);
+        //console.log(baskets[i]);
+        
     }
 
     //=====================
@@ -217,7 +232,6 @@ function Apple(xPos, yPos, i){
             && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
             && this.canScore){
                 score++; //add to score 
-
                 if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
                     //////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
                    // Basket.img.src = baskets[1];///.toString();
@@ -364,7 +378,6 @@ function startGame(){
     for (let i=0; i<APPLE_NUM; i++){
         let apple = new Apple(appleX[i], appleY[i], i); //create apple
         appleCtxs[i].globalAlpha = 0; //make apple initially invisible
-       //console.log(apple.canvasId + ": " + apple.pauseTime);
         applesArray.push(apple); //add apple to array 
     }
 
