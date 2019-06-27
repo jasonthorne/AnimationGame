@@ -42,7 +42,7 @@
   to {top:0; opacity:1}
 }
 
-/* The Close Button */
+/* The close button */
 .close {
   color: white;
   float: right;
@@ -63,7 +63,14 @@
   color: white;
 }
 
-.modal-body {padding: 2px 16px;}
+.modal-body {
+  /*-------------padding: 2px 16px;-------*/
+  /*position: relative;
+  margin: auto;
+   --------------------*/
+
+
+}
 
 .modal-footer {
   padding: 2px 16px;
@@ -76,7 +83,11 @@
 /* ========================================================= */
 
 .play-btn {
-  background-color: #008080; /* Teal */
+  /*
+  https://www.color-hex.com/color-palettes/ ----------------COLOUR PALLETES
+  https://www.color-hex.com/color-palette/4666
+  */
+  background-color: #008080; /* Teal */ 
   border: none;
   color: white;
   padding: 16px 32px;
@@ -92,58 +103,40 @@
   font-weight: bold;
   /*overflow: hidden; /*from ripple effect */
 }
-  /*------------------------------------------------*/
-
-  /*
-  position: relative;
-  transition: all 0.4s ease-in;
-  span[class^='ion'] {
-    position: relative;
-  }
-  &:before {
-    content: '';
-    background-color: aliceblue;
-    border-radius: 50%;
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    transform: scale(0.001, 0.001);
-  }
-  &:focus {
-    outline: 0;
-    color: #fff;
-    &:before {
-      animation: effect_dylan 0.8s ease-out;
-    }
-  }
-}
-@keyframes effect_dylan {
-  50% {
-    transform: scale(1.5, 1.5);
-    opacity: 0;
-  }
-  99% {
-    transform: scale(0.001, 0.001);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(0.001, 0.001);
-    opacity: 1;
-  }
-}
-
-
-*/
-
-
-
-/* ===================================*/
+  
 .play-btn:hover {
   background-color: #006666;
   color: #ffffff;
 }
 
 
+/*=======================height="35%" width="35%"=====================================*/
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  background-color:#EEF7EE;
+  padding: 8px;
+}
+
+
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 50%;
+  text-align: center;
+  /*padding: 8px;*/
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/*============================================================*/
