@@ -69,4 +69,98 @@
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
+  text-align: center;
 }
+
+
+/* ========================================================= */
+
+.play-button {
+  background-color: #008080; /* Teal */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  overflow: hidden; /*from ripple effect */
+}
+
+
+/*
+.play-button:hover {
+  background-color: #ffffff;
+  color: #008080;
+}
+*/
+
+
+.play-button:hover {
+  background-color: #006666;
+  color: #ffffff;
+}
+
+
+/*
+.play-button {
+  position: relative;
+  background-color: #4CAF50;
+  border: none;
+  font-size: 28px;
+  color: #FFFFFF;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari 
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+*/
+
+/*
+.play-button {
+  position: relative;
+  background-color: #008080;
+  border: none;
+  font-size: 18px;
+  color: #FFFFFF;
+  padding: 16px 32px;
+  margin: 4px 2px;
+  width: 200px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; 
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.play-button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.play-button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+*/

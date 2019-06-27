@@ -308,7 +308,8 @@ function animate(timestamp){
 //----------------------------------------------------------------------------------------------------
 //game timer:
 var time = 30; //game length
-document.getElementById("timer").innerHTML = time; //++++++++++++++++++++++++++++++++++++++++DELETE
+document.getElementById("timer").innerHTML = "00"; //show initial time as 00
+
 function startTimer(){
     document.getElementById("timer").innerHTML = time; //show starting time
     let timer = setInterval(function(){ 
@@ -327,24 +328,6 @@ function startTimer(){
     }, 1000); //run timer every second
 }
 
-/*
-var timer = setInterval(function(){ 
-
-    time--; //reduce time
-    if (time <10){ 
-        time = "0" + time; //add leading 0
-        document.getElementById("timerId").style.color = "#ff0000"; //turn red to warn user
-    }
-
-    if(time<=0){ 
-        clearInterval(timer); //clear timer  
-    } 
-        
-    document.getElementById("timerId").innerHTML = time; //show time
-
-}, 1000); //run timer
-*/
-
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
@@ -357,10 +340,10 @@ function startGame(){
         applesArray.push(apple); //add apple to array 
     }
 
-    //=============================
+    //================================================
     startTimer(); //start game timer
     requestAnimationFrame(animate); //animate game
-    //=============================
+    //================================================
 
 }
 
