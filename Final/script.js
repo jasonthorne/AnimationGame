@@ -350,40 +350,40 @@ function startGame(){
 //----------------------------------------------------------------------------------------------------
 //intro modal:
 
-// get the modal:
+//intro modal:
 var introModal = document.getElementById("introModal");
 
-//show the modal to user:
+//show intro modal to user:
 function showIntroModal(){
 	introModal.style.display = "block";
 }
 
-// Get the <span> element that closes the modal:
+//<span> element that closes the modal:
 var span = document.getElementsByClassName("close")[0];
 
-/*
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-*/
-
-// When the user clicks on <span> (x), close the modal
+//when the user clicks on <span> (x):
 span.onclick = function() {
-    introModal.style.display = "none";
-    startGame(); 
+    introModal.style.display = "none"; //close the modal
+    startGame(); //start the game //++++++++++++++++++++++++++++++show another modal with a start option and a artists option
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == introModal) {
-    introModal.style.display = "none";
-    startGame(); //#############################################################################
-  }
+//play button
+var playBtn = document.getElementById("play-btn");
+
+//when play button is clicked:
+playBtn.onclick = function() {
+    introModal.style.display = "none";  //close the modal
+    startGame();
 }
+
+//when the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == introModal) {
+      introModal.style.display = "none";
+      startGame(); //#############################################################################
+    }
+  }
+
+
 //----------------------------------------------------------------------------------------------------
 

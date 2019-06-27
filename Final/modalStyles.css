@@ -61,15 +61,11 @@
   padding: 2px 16px;
   background-color: #5cb85c;
   color: white;
+  text-align: center;
 }
 
 .modal-body {
-  /*-------------padding: 2px 16px;-------*/
-  /*position: relative;
-  margin: auto;
-   --------------------*/
-
-
+  padding: 2px 16px;
 }
 
 .modal-footer {
@@ -82,7 +78,7 @@
 
 /* ========================================================= */
 
-.play-btn {
+#play-btn {
   /*
   https://www.color-hex.com/color-palettes/ ----------------COLOUR PALLETES
   https://www.color-hex.com/color-palette/4666
@@ -104,13 +100,13 @@
   /*overflow: hidden; /*from ripple effect */
 }
   
-.play-btn:hover {
+#play-btn:hover {
   background-color: #006666;
   color: #ffffff;
 }
 
 
-/*=======================height="35%" width="35%"=====================================*/
+/*============================================================*/
 
 * {
   box-sizing: border-box;
@@ -118,17 +114,15 @@
 
 .row {
   background-color:#EEF7EE;
-  padding: 8px;
+  /*padding: 8px;*/
 }
-
-
 
 /* Create two equal columns that floats next to each other */
 .column {
   float: left;
   width: 50%;
   text-align: center;
-  /*padding: 8px;*/
+  padding: 8px;
 }
 
 /* Clear floats after the columns */
@@ -138,5 +132,10 @@
   clear: both;
 }
 
+.farmer-img{
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 /*============================================================*/
