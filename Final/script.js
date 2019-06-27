@@ -350,18 +350,17 @@ function startGame(){
 //----------------------------------------------------------------------------------------------------
 //intro modal:
 
-//intro modal:
-var introModal = document.getElementById("introModal");
 
-//show intro modal to user:
+var introModal = document.getElementById("introModal"); //intro modal
+
+//show intro modal:
 function showIntroModal(){
 	introModal.style.display = "block";
 }
 
-//<span> element that closes the modal:
-var span = document.getElementsByClassName("close")[0];
+var span = document.getElementsByClassName("close")[0]; //<span> that closes modal
 
-//when the user clicks on <span> (x):
+//when span is clicked:
 span.onclick = function() {
     introModal.style.display = "none"; //close the modal
     startGame(); //start the game //++++++++++++++++++++++++++++++show another modal with a start option and a artists option
