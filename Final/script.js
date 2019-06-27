@@ -339,28 +339,26 @@ function startGame(){
         appleCtxs[i].globalAlpha = 0; //make apple initially invisible
         applesArray.push(apple); //add apple to array 
     }
-
     //================================================
     startTimer(); //start game timer
     requestAnimationFrame(animate); //animate game
     //================================================
-
 }
 
 //startGame(); //++++++++++++++++++++++++++
 
 //----------------------------------------------------------------------------------------------------
-//into modal:
+//intro modal:
 
-// Get the modal
-var modal = document.getElementById("introModal");
+// get the modal:
+var introModal = document.getElementById("introModal");
 
+//show the modal to user:
 function showIntroModal(){
-	modal.style.display = "block";
+	introModal.style.display = "block";
 }
 
-
-// Get the <span> element that closes the modal
+// Get the <span> element that closes the modal:
 var span = document.getElementsByClassName("close")[0];
 
 /*
@@ -376,14 +374,14 @@ btn.onclick = function() {
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
-  startGame(); 
+    introModal.style.display = "none";
+    startGame(); 
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+  if (event.target == introModal) {
+    introModal.style.display = "none";
     startGame(); //#############################################################################
   }
 }

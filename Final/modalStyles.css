@@ -75,7 +75,7 @@
 
 /* ========================================================= */
 
-.play-button {
+.play-btn {
   background-color: #008080; /* Teal */
   border: none;
   color: white;
@@ -84,83 +84,66 @@
   text-decoration: none;
   display: inline-block;
   font-size: 18px;
-  margin: 4px 2px;
-  -webkit-transition-duration: 0.4s; /* Safari */
+  margin: 4px;
+  -webkit-transition-duration: 0.4s; /* for Safari */
   transition-duration: 0.4s;
   cursor: pointer;
   border-radius: 4px;
   font-weight: bold;
-  overflow: hidden; /*from ripple effect */
+  /*overflow: hidden; /*from ripple effect */
+}
+  /*------------------------------------------------*/
+
+  /*
+  position: relative;
+  transition: all 0.4s ease-in;
+  span[class^='ion'] {
+    position: relative;
+  }
+  &:before {
+    content: '';
+    background-color: aliceblue;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    transform: scale(0.001, 0.001);
+  }
+  &:focus {
+    outline: 0;
+    color: #fff;
+    &:before {
+      animation: effect_dylan 0.8s ease-out;
+    }
+  }
+}
+@keyframes effect_dylan {
+  50% {
+    transform: scale(1.5, 1.5);
+    opacity: 0;
+  }
+  99% {
+    transform: scale(0.001, 0.001);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(0.001, 0.001);
+    opacity: 1;
+  }
 }
 
 
-/*
-.play-button:hover {
-  background-color: #ffffff;
-  color: #008080;
-}
 */
 
 
-.play-button:hover {
+
+/* ===================================*/
+.play-btn:hover {
   background-color: #006666;
   color: #ffffff;
 }
 
 
-/*
-.play-button {
-  position: relative;
-  background-color: #4CAF50;
-  border: none;
-  font-size: 28px;
-  color: #FFFFFF;
-  padding: 20px;
-  width: 200px;
-  text-align: center;
-  -webkit-transition-duration: 0.4s; /* Safari 
-  transition-duration: 0.4s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-}
-*/
-
-/*
-.play-button {
-  position: relative;
-  background-color: #008080;
-  border: none;
-  font-size: 18px;
-  color: #FFFFFF;
-  padding: 16px 32px;
-  margin: 4px 2px;
-  width: 200px;
-  text-align: center;
-  -webkit-transition-duration: 0.4s; 
-  transition-duration: 0.4s;
-  text-decoration: none;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.play-button:after {
-  content: "";
-  background: #f1f1f1;
-  display: block;
-  position: absolute;
-  padding-top: 300%;
-  padding-left: 350%;
-  margin-left: -20px !important;
-  margin-top: -120%;
-  opacity: 0;
-  transition: all 0.8s
-}
-
-.play-button:active:after {
-  padding: 0;
-  margin: 0;
-  opacity: 1;
-  transition: 0s
-}
-*/
