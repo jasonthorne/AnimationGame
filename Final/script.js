@@ -245,7 +245,7 @@ function Apple(xPos, yPos, i){
 
 var start = null; //animation start time
 var progress = null; //animation progress
-/////var continueAnimating = true;//////////////////????????????
+/////////////////var animationFrameRef = null; 
 function animate(timestamp){
 
     /////if(continueAnimating){ //////////////////????????????
@@ -297,6 +297,7 @@ function animate(timestamp){
         }
 
         requestAnimationFrame(animate); //continue animation
+        //////animationFrameRef = requestAnimationFrame(animate); //continue animation
    /// }if(continueAnimating)///???????????
     
     
@@ -321,6 +322,7 @@ function startTimer(){
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             ////continueAnimating = false; //cancel animation ?????????????
+           ////////////// cancelAnimationFrame(animationFrameRef);
             showGameEndModal(); //show end of game modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
@@ -381,6 +383,7 @@ window.onclick = function(event) {
       startGame(); //#############################################################################
     }else if(event.target == gameEndModal){ //change all this to be prettier!!! +++++++++++++++++++++++++++++++++++++++
         gameEndModal.style.display = "none";
+        startGame();
     }
   }
 
