@@ -245,65 +245,71 @@ function Apple(xPos, yPos, i){
 
 var start = null; //animation start time
 var progress = null; //animation progress
-
+/////var continueAnimating = true;//////////////////????????????
 function animate(timestamp){
-    
-    if (!start) {start = timestamp;} //mark start time
-    progress = timestamp - start; //track progress
-    //console.log("progress: " + progress);
-    //console.log("timestamp: " + timestamp);
-    //console.log("start: " + start);
 
-    //draw background:
-    backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
+    /////if(continueAnimating){ //////////////////????????????
+        if (!start) {start = timestamp;} //mark start time
+        progress = timestamp - start; //track progress
+        //console.log("progress: " + progress);
+        //console.log("timestamp: " + timestamp);
+        //console.log("start: " + start);
 
-    //draw basket:
-    basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-    Basket.move(); //move basket
-    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
+        //draw background:
+        backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+        backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
 
-    //draw apples:
-    for (let i=0; i<applesArray.length; i++){
+        //draw basket:
+        basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+        Basket.move(); //move basket
+        basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
 
-        if (progress < applesArray[i].pauseTime) { //if apple can't yet fall
-            applesArray[i].canFall = false; //dont allow fall
-        }else{ 
+        //draw apples:
+        for (let i=0; i<applesArray.length; i++){
 
-            if(applesArray[i].canFadeIn){ //if apple can fade in
-                appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
-            
-                if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
-                    applesArray[i].canFall = true; //allow apple to fall
+            if (progress < applesArray[i].pauseTime) { //if apple can't yet fall
+                applesArray[i].canFall = false; //dont allow fall
+            }else{ 
+
+                if(applesArray[i].canFadeIn){ //if apple can fade in
+                    appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
+                
+                    if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
+                        applesArray[i].canFall = true; //allow apple to fall
+                    }
                 }
             }
+        
+            if (applesArray[i].canFall){ //if apple can fall
+                applesArray[i].fall(); //allow apple to fall
+            }
+        
+            if (applesArray[i].canFadeOut){ //if apple can fade out
+                appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
+
+                if (appleCtxs[i].globalAlpha <= 0.01){ 
+                        applesArray[i].reset(); //reset apple when faded
+                }
+            }
+
+            appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
+            appleCtxs[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw apple
         }
+
+        requestAnimationFrame(animate); //continue animation
+   /// }if(continueAnimating)///???????????
     
-        if (applesArray[i].canFall){ //if apple can fall
-            applesArray[i].fall(); //allow apple to fall
-        }
     
-        if (applesArray[i].canFadeOut){ //if apple can fade out
-           appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
-
-           if (appleCtxs[i].globalAlpha <= 0.01){ 
-                applesArray[i].reset(); //reset apple when faded
-           }
-        }
-
-        appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
-        appleCtxs[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw apple
-    }
-
-   requestAnimationFrame(animate); //continue animation
 }
 
 //----------------------------------------------------------------------------------------------------
 //game timer:
-var time = 30; //game length
+
+
 document.getElementById("timer").innerHTML = "00"; //show initial time as 00
 
 function startTimer(){
+    var time = 30; //game length
     document.getElementById("timer").innerHTML = time; //show starting time
     let timer = setInterval(function(){ 
 
@@ -314,7 +320,8 @@ function startTimer(){
         }
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
-            //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++pop up new modal, showing game score, & asking user to play again.
+            ////continueAnimating = false; //cancel animation ?????????????
+            showGameEndModal(); //show end of game modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
     
@@ -342,7 +349,6 @@ function startGame(){
 
 //----------------------------------------------------------------------------------------------------
 //intro modal:
-
 
 var introModal = document.getElementById("introModal"); //intro modal
 
@@ -373,9 +379,18 @@ window.onclick = function(event) {
     if (event.target == introModal) {
       introModal.style.display = "none";
       startGame(); //#############################################################################
+    }else if(event.target == gameEndModal){ //change all this to be prettier!!! +++++++++++++++++++++++++++++++++++++++
+        gameEndModal.style.display = "none";
     }
   }
 
 
 //----------------------------------------------------------------------------------------------------
+//end of game modal:
 
+var gameEndModal = document.getElementById("gameOverModal"); //game over modal
+
+//show intro modal:
+function showGameEndModal(){
+	gameEndModal.style.display = "block";
+}
