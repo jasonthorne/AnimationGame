@@ -68,7 +68,6 @@ testPic5.src = 'img/apl5.png';
 var testPicsArray = [testPic1, testPic2, testPic3, testPic4, testPic5];
 */
 
-var basketImg = new Image(); //basket image
 //var baskets = new Arrray();
 
 /*
@@ -94,12 +93,14 @@ backgroundImg.onload = function(){
     //}
 
     //=====================
+    
+    var basketImg = new Image(); //basket image
       
     basketImg.src = 'img/baskets/basket0.png'; //first basket image source
     
     //load and draw basket:
     basketImg.onload = function(){
-      basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
+        basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
 
         /*
         for (let i=0; i<5; i++){
@@ -167,8 +168,8 @@ const APPLE_NUM = 5; //number of apples
 var applesArray = []; //array for holding apples 
 var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
 var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
-var appleSpeeds = [6, 9];//3, 6, 9]; //holds apple drop speeds //+++++++++++++++++
-var applePauses = [1000, 2000, 3000, 4000, 5000];//[1000, 2000, 3000]; //, 4000, 5000]; //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+var appleSpeeds = [6, 9]; //initial drop speeds 
+var applePauses = [1000, 2000, 3000, 4000, 5000]; //pause times
 
 function Apple(xPos, yPos, i){
     this.img = (function(){ //apple image
@@ -188,7 +189,7 @@ function Apple(xPos, yPos, i){
     this.canScore = true; //if apple can score
     this.canFadeOut = false; //if apple can fade out
     this.canFadeIn = true; //if apple can fade in
-    this.pauseTime = applePauses.pickElement(); // + (Date.now() + Math.random());//initialPause.pickElement(); //picks a pause time
+    this.pauseTime = applePauses.pickElement(); //picks a pause time
     this.reset = function(){ //resets apple vars
 
         this.yPos = yPos; //reset y pos
@@ -198,7 +199,7 @@ function Apple(xPos, yPos, i){
         this.canFadeIn = true;  //allow fade in 
         this.pauseTime = progress + applePauses.pickElement(); //reassign pause time
     };
-    this.fall = function(){
+    this.fall = function(){ //falling apple
 
         this.yPos += this.speed; //drop apple
         this.speed += this.gravity; //add gravity to drop speed
@@ -208,26 +209,19 @@ function Apple(xPos, yPos, i){
             && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
             && this.canScore){
                 score++; //add to score 
+                
                 if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
                    Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
                    //Basket.img.src = baskets[1];///.toString();
                 }
+                
                 if (score <10){ 
-
-                    
                     score = "0" + score; //add leading 0
                 }
                 //do ifs here!!! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 document.getElementById("score").innerHTML = score; //show score
                 appleCtxs[i].globalAlpha = 0; //remove apple from screen
                 this.reset(); //reset apple 
-        //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        /*
-            if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
-                Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
-            }
-          */
-         //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         }
 
         //check if apple has hit bottom of canvas:
@@ -260,16 +254,16 @@ function animate(timestamp){
     //console.log("timestamp: " + timestamp);
     //console.log("start: " + start);
 
-    //drawBackground:
+    //draw background:
     backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
 
-    //drawBasket:
+    //draw basket:
     basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
     Basket.move(); //move basket
     basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
 
-    //drawApples:
+    //draw apples:
     for (let i=0; i<applesArray.length; i++){
 
         if (progress < applesArray[i].pauseTime) { //if apple can't yet fall
@@ -285,7 +279,7 @@ function animate(timestamp){
             }
         }
     
-        if (applesArray[i].canFall){ //iff apple can fall
+        if (applesArray[i].canFall){ //if apple can fall
             applesArray[i].fall(); //allow apple to fall
         }
     
@@ -295,7 +289,6 @@ function animate(timestamp){
            if (appleCtxs[i].globalAlpha <= 0.01){ 
                 applesArray[i].reset(); //reset apple when faded
            }
-
         }
 
         appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
