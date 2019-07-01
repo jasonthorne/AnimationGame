@@ -44,8 +44,7 @@ preload(
 
 
 //=================
-var score = 0;
-document.getElementById("score").innerHTML = "00"; //score; //show score
+
  //set timer element
 //=================
 //document.getElementById("timerId").innerHTML = time;
@@ -210,6 +209,7 @@ function Apple(xPos, yPos, i){
             && this.canScore){
                 score++; //add to score 
                 
+                //_____________________________________maybe its own method!!!??______________________________
                 if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
                    Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
                    //Basket.img.src = baskets[1];///.toString();
@@ -220,6 +220,7 @@ function Apple(xPos, yPos, i){
                 }
                 //do ifs here!!! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
                 document.getElementById("score").innerHTML = score; //show score
+                 //_____________________________________________________________________________________________
                 appleCtxs[i].globalAlpha = 0; //remove apple from screen
                 this.reset(); //reset apple 
         }
@@ -245,7 +246,7 @@ function Apple(xPos, yPos, i){
 
 var start = null; //animation start time
 var progress = null; //animation progress
-/////////////////var animationFrameRef = null; 
+var animationFrameRef = null; //animationFrame reference
 function animate(timestamp){
 
     /////if(continueAnimating){ //////////////////????????????
@@ -255,6 +256,7 @@ function animate(timestamp){
         //console.log("timestamp: " + timestamp);
         //console.log("start: " + start);
 
+        
         //draw background:
         backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
         backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
@@ -296,8 +298,20 @@ function animate(timestamp){
             appleCtxs[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw apple
         }
 
-        requestAnimationFrame(animate); //continue animation
-        //////animationFrameRef = requestAnimationFrame(animate); //continue animation
+
+        
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        //check for pause:
+        if (key[32]){ //if space is pressed is pressed
+            introModal.style.display = "block";
+            cancelAnimationFrame(animationFrameRef);
+        }
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        
+        //requestAnimationFrame(animate); //continue animation
+        animationFrameRef = requestAnimationFrame(animate); //continue animation
    /// }if(continueAnimating)///???????????
     
     
@@ -305,7 +319,6 @@ function animate(timestamp){
 
 //----------------------------------------------------------------------------------------------------
 //game timer:
-
 
 document.getElementById("timer").innerHTML = "00"; //show initial time as 00
 
@@ -322,7 +335,7 @@ function startTimer(){
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             ////continueAnimating = false; //cancel animation ?????????????
-           ////////////// cancelAnimationFrame(animationFrameRef);
+            cancelAnimationFrame(animationFrameRef); ///////////////////////////////////?????????
             showGameEndModal(); //show end of game modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
@@ -333,8 +346,10 @@ function startTimer(){
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
-function startGame(){
+var score = 0;
+document.getElementById("score").innerHTML = "00"; //show initial score as 00
 
+function startGame(){
     //create and store apples: 
     for (let i=0; i<APPLE_NUM; i++){
         let apple = new Apple(appleX[i], appleY[i], i); //create apple
@@ -346,8 +361,6 @@ function startGame(){
     requestAnimationFrame(animate); //animate game
     //================================================
 }
-
-//startGame(); //++++++++++++++++++++++++++
 
 //----------------------------------------------------------------------------------------------------
 //intro modal:
@@ -397,3 +410,6 @@ var gameEndModal = document.getElementById("gameOverModal"); //game over modal
 function showGameEndModal(){
 	gameEndModal.style.display = "block";
 }
+
+//----------------------------------------------------------------------------------------------------
+//pause modal:
