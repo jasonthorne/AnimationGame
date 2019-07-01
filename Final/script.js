@@ -41,6 +41,13 @@ preload(
 )
 */
 
+//#######################################################
+//offical tut:
+//https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0
+
+//persistant storage:
+//https://www.howtogeek.com/howto/14912/create-a-persistent-bootable-ubuntu-usb-flash-drive/
+//#######################################################
 
 
 //=================
@@ -180,7 +187,7 @@ function Apple(xPos, yPos, i){
     this.yPos = yPos; //y pos of apple
     this.width = 60; //width of apple
     this.height = 60; //height of apple
-    this.canvasId = "#apple" + (i+1).toString(); //canvas id of apple
+    ///////////////////////this.canvasId = "#apple" + (i+1).toString(); //canvas id of apple
     this.gravity = 0.3; //gravity force
     this.bounce = 0.1; //bounce factor
     this.speed = appleSpeeds.pickElement(); //picks a speed
@@ -205,24 +212,24 @@ function Apple(xPos, yPos, i){
     
         //check for collison with Basket:
         if (this.xPos < (Basket.xPos + Basket.width) && (this.xPos + this.width) > Basket.xPos
-            && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
-            && this.canScore){
-                score++; //add to score 
-                
-                //_____________________________________maybe its own method!!!??______________________________
-                if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
-                   Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
-                   //Basket.img.src = baskets[1];///.toString();
-                }
-                
-                if (score <10){ 
-                    score = "0" + score; //add leading 0
-                }
-                //do ifs here!!! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-                document.getElementById("score").innerHTML = score; //show score
-                 //_____________________________________________________________________________________________
-                appleCtxs[i].globalAlpha = 0; //remove apple from screen
-                this.reset(); //reset apple 
+        && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
+        && this.canScore){
+            score++; //add to score 
+            
+            //_____________________________________maybe its own method!!!??______________________________
+            if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
+                Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
+                //Basket.img.src = baskets[1];///.toString();
+            }
+            
+            if (score <10){ 
+                score = "0" + score; //add leading 0
+            }
+            //do ifs here!!! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            document.getElementById("score").innerHTML = score; //show score
+                //_____________________________________________________________________________________________
+            appleCtxs[i].globalAlpha = 0; //remove apple from screen
+            this.reset(); //reset apple 
         }
 
         //check if apple has hit bottom of canvas:
@@ -247,9 +254,11 @@ function Apple(xPos, yPos, i){
 var start = null; //animation start time
 var progress = null; //animation progress
 var animationFrameRef = null; //animationFrame reference
+var canAnimate = true; //?????????????????????????
+
 function animate(timestamp){
 
-    /////if(continueAnimating){ //////////////////????????????
+    ///if(canAnimate){ //////////////////????????????
         if (!start) {start = timestamp;} //mark start time
         progress = timestamp - start; //track progress
         //console.log("progress: " + progress);
@@ -301,18 +310,25 @@ function animate(timestamp){
 
         
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        //check for pause:
+       /*
+        //check for pause: ?????????????????????
         if (key[32]){ //if space is pressed is pressed
-            introModal.style.display = "block";
-            cancelAnimationFrame(animationFrameRef);
+            canAnimate = false;
+            gameEndModal.style.display = "block";
         }
-
+        */
+     /*
+        else{
+            //requestAnimationFrame(animate); //continue animation
+            animationFrameRef = requestAnimationFrame(animate); //continue animation
+        }
+        */
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         
         //requestAnimationFrame(animate); //continue animation
         animationFrameRef = requestAnimationFrame(animate); //continue animation
-   /// }if(continueAnimating)///???????????
+   ///}//if(continueAnimating)///???????????
     
     
 }
@@ -334,8 +350,8 @@ function startTimer(){
         }
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
-            ////continueAnimating = false; //cancel animation ?????????????
-            cancelAnimationFrame(animationFrameRef); ///////////////////////////////////?????????
+            canAnimate = false; //cancel animation ?????????????
+            /////////////cancelAnimationFrame(animationFrameRef); ///////////////////////////////////?????????
             showGameEndModal(); //show end of game modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
@@ -396,7 +412,8 @@ window.onclick = function(event) {
       startGame(); //#############################################################################
     }else if(event.target == gameEndModal){ //change all this to be prettier!!! +++++++++++++++++++++++++++++++++++++++
         gameEndModal.style.display = "none";
-        startGame();
+        //startGame(); ///////////////////////?????????????????
+       // canAnimate = true;
     }
   }
 
