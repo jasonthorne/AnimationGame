@@ -27,26 +27,23 @@ var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //stori
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/backgroundTEST7.png'; //image source
 
-
-/*
-preload(
-    'img/baskets/basket0.png',
-    'img/baskets/basket1.png',
-    'img/baskets/basket2.png',
-    'img/baskets/basket3.png',
-    'img/baskets/basket4.png',
-    'img/baskets/basket5.png',
-    'img/baskets/basket6.png',
-    'img/baskets/basket7.png'
-)
-*/
-
 //#######################################################
 //offical tut:
 //https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0
 
 //persistant storage:
 //https://www.howtogeek.com/howto/14912/create-a-persistent-bootable-ubuntu-usb-flash-drive/
+
+//tecg republic persistant storage:
+//https://www.techrepublic.com/article/how-to-create-a-live-usb-drive-with-persistent-storage-in-ubuntu/
+
+
+//Paint.net portable:
+//https://forums.getpaint.net/topic/106754-how-do-i-get-paintnet-portable/
+
+
+//touney round robin:
+//https://nrich.maths.org/1443
 //#######################################################
 
 
@@ -171,7 +168,7 @@ var Basket = {
 //create apples:
 
 const APPLE_NUM = 5; //number of apples 
-var applesArray = []; //array for holding apples 
+var apples = []; //array for holding apples 
 var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
 var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
 var appleSpeeds = [6, 9]; //initial drop speeds 
@@ -187,7 +184,6 @@ function Apple(xPos, yPos, i){
     this.yPos = yPos; //y pos of apple
     this.width = 60; //width of apple
     this.height = 60; //height of apple
-    ///////////////////////this.canvasId = "#apple" + (i+1).toString(); //canvas id of apple
     this.gravity = 0.3; //gravity force
     this.bounce = 0.1; //bounce factor
     this.speed = appleSpeeds.pickElement(); //picks a speed
@@ -276,35 +272,35 @@ function animate(timestamp){
         basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
 
         //draw apples:
-        for (let i=0; i<applesArray.length; i++){
+        for (let i=0; i<apples.length; i++){
 
-            if (progress < applesArray[i].pauseTime) { //if apple can't yet fall
-                applesArray[i].canFall = false; //dont allow fall
+            if (progress < apples[i].pauseTime) { //if apple can't yet fall
+                apples[i].canFall = false; //dont allow fall
             }else{ 
 
-                if(applesArray[i].canFadeIn){ //if apple can fade in
+                if(apples[i].canFadeIn){ //if apple can fade in
                     appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
                 
                     if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
-                        applesArray[i].canFall = true; //allow apple to fall
+                        apples[i].canFall = true; //allow apple to fall
                     }
                 }
             }
         
-            if (applesArray[i].canFall){ //if apple can fall
-                applesArray[i].fall(); //allow apple to fall
+            if (apples[i].canFall){ //if apple can fall
+                apples[i].fall(); //allow apple to fall
             }
         
-            if (applesArray[i].canFadeOut){ //if apple can fade out
+            if (apples[i].canFadeOut){ //if apple can fade out
                 appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
 
                 if (appleCtxs[i].globalAlpha <= 0.01){ 
-                        applesArray[i].reset(); //reset apple when faded
+                        apples[i].reset(); //reset apple when faded
                 }
             }
 
             appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
-            appleCtxs[i].drawImage(applesArray[i].img, applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw apple
+            appleCtxs[i].drawImage(apples[i].img, apples[i].xPos, apples[i].yPos, apples[i].width, apples[i].height); //draw apple
         }
 
 
@@ -370,7 +366,7 @@ function startGame(){
     for (let i=0; i<APPLE_NUM; i++){
         let apple = new Apple(appleX[i], appleY[i], i); //create apple
         appleCtxs[i].globalAlpha = 0; //make apple initially invisible
-        applesArray.push(apple); //add apple to array 
+        apples.push(apple); //add apple to array 
     }
     //================================================
     startTimer(); //start game timer
