@@ -28,6 +28,10 @@ var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/backgroundTEST7.png'; //image source
 
 //#######################################################
+//Interview questions: ++++++++++++++++++++++++++++++++
+//https://www.javatpoint.com/interview-questions-and-answers 
+
+
 //offical tut:
 //https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0
 
