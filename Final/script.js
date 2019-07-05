@@ -265,7 +265,6 @@ function animate(timestamp){
         //console.log("timestamp: " + timestamp);
         //console.log("start: " + start);
 
-        
         //draw background:
         backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
         backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
@@ -326,8 +325,8 @@ function animate(timestamp){
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         
-        //requestAnimationFrame(animate); //continue animation
-        animationFrameRef = requestAnimationFrame(animate); //continue animation
+        requestAnimationFrame(animate); //continue animation
+       // animationFrameRef = requestAnimationFrame(animate); //continue animation
    ///}//if(continueAnimating)///???????????
     
     
@@ -415,7 +414,7 @@ window.onclick = function(event) {
         //startGame(); ///////////////////////?????????????????
        // canAnimate = true;
     }
-  }
+}
 
 
 //----------------------------------------------------------------------------------------------------
