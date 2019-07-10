@@ -225,32 +225,9 @@ function animate(timestamp){
         appleCtxs[i].drawImage(apples[i].img, apples[i].xPos, apples[i].yPos, apples[i].width, apples[i].height); //draw apple
     }
 
-
-    
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    /*
-    //check for pause: ?????????????????????
-    if (key[32]){ //if space is pressed is pressed
-        canAnimate = false;
-        gameEndModal.style.display = "block";
-    }
-    */
-    /*
-    else{
         //requestAnimationFrame(animate); //continue animation
-        animationFrameRef = requestAnimationFrame(animate); //continue animation
-    }
-    */
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-    //if (time>0){
-        //requestAnimationFrame(animate); //continue animation
-    //}
-    
-    animationFrameRef = requestAnimationFrame(animate); //continue animation
   
-    
-    
+    animationFrameRef = requestAnimationFrame(animate); //continue animation 
 }
 
 //----------------------------------------------------------------------------------------------------
