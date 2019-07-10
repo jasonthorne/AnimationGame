@@ -22,132 +22,25 @@ var apple5Ctx = apple5Canvas.getContext("2d");
 
 var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //storing apple ctxs
 
-//======================================================
+//----------------------------------------------------------------------------------------------------
+//image preloads:
+
+//preload basket images:
+var basketImgs = [];
+for (let i=0;i<=7;i++){
+    basketImgs[i] = new Image();
+    basketImgs[i].src = 'img/baskets/basket' + i.toString() + '.png';
+}
 
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/backgroundTEST7.png'; //image source
-var basketImgs = []; //stores basket images
 
-//#######################################################
-//Interview questions: ++++++++++++++++++++++++++++++++
-//https://www.javatpoint.com/interview-questions-and-answers 
-
-
-//offical tut:
-//https://tutorials.ubuntu.com/tutorial/tutorial-create-a-usb-stick-on-windows#0
-
-//persistant storage:
-//https://www.howtogeek.com/howto/14912/create-a-persistent-bootable-ubuntu-usb-flash-drive/
-
-//tecg republic persistant storage:
-//https://www.techrepublic.com/article/how-to-create-a-live-usb-drive-with-persistent-storage-in-ubuntu/
-
-
-//Paint.net portable:
-//https://forums.getpaint.net/topic/106754-how-do-i-get-paintnet-portable/
-
-
-//touney round robin:
-//https://nrich.maths.org/1443
-//#######################################################
-
-
-//=================
-
- //set timer element
-//=================
-//document.getElementById("timerId").innerHTML = time;
-
-//----------------------------------------------------------------------------------------------------
-//var appleX = [120, 273, 518, 632, 720]; 
-//var appleY = [176, 132, 231, 119, 188];
-
-/*
-var testPic1 = new Image();
-testPic1.src = 'img/apl1.png';
-var testPic2 = new Image();
-testPic2.src = 'img/apl2.png';
-var testPic3 = new Image();
-testPic3.src = 'img/apl3.png';
-var testPic4 = new Image();
-testPic4.src = 'img/apl4.png';
-var testPic5 = new Image();
-testPic5.src = 'img/apl5.png';
-var testPicsArray = [testPic1, testPic2, testPic3, testPic4, testPic5];
-*/
-
-//https://stackoverflow.com/questions/3646036/preloading-images-with-javascript
-
-
-/*
-var basketImgs = [];
-
-for (let i=0;i<=7;i++){
-    
-    basketImgs[i] = new Image();
-    basketImgs[i].src = 'img/baskets/basket' + i.toString() + '.png';
-    //console.log(basketImgs[i].src);
-}
-*/
-
-/*
-    'img/baskets/basket0.png',
-    'img/baskets/basket1.png',
-    'img/baskets/basket2.png',
-    'img/baskets/basket3.png',
-    'img/baskets/basket4.png',
-    'img/baskets/basket5.png',
-    'img/baskets/basket6.png',
-    'img/baskets/basket7.png'
-*/
-
-
-//onload events:
+//after background load:
 backgroundImg.onload = function(){
-    
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
-    
-    
-        ////Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
-        //console.log(baskets[i]);
-        
-    //}
-
-    //=====================
-    
-    //preload & store basket images:
-    for (let i=0;i<=7;i++){
-        basketImgs[i] = new Image();
-        basketImgs[i].src = 'img/baskets/basket' + i.toString() + '.png';
-        console.log(basketImgs[i].src);
-    }
-
-
-
-
-
-    //------------------------------------
-    
-    //var basketImg = new Image(); //basket image
-      
-    //basketImg.src = basketImgs[0].src;//'img/baskets/basket0.png'; //first basket image source
-    
-
-
-    //load and draw basket:
-   // basketImg.onload = function(){
-    //basketImgs.onload = function(){
-        basketCtx.drawImage(basketImgs[0], (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
-        //basketCtx.drawImage(basketImg, (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); 
-
-        /*
-        for (let i=0; i<5; i++){
-            appleCtxs.drawImage(testPicsArray[i], applesArray[i].xPos, applesArray[i].yPos, applesArray[i].width, applesArray[i].height); //draw Apple
-        }
-            */
-    //}
-    
+    basketCtx.drawImage(basketImgs[0], (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); //then draw basket
 }
+
 //----------------------------------------------------------------------------------------------------
 //key event listeners:
 
@@ -246,34 +139,16 @@ function Apple(xPos, yPos, i){
         && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
         && this.canScore){
             score++; //add to score 
-            
-
-            /*
-            //_____________________________________maybe its own method!!!??______________________________
-            if (score < 8) { //???????????????load up picks first. then pull from the loaded array to decide on pic
-                Basket.img.src='img/baskets/basket' + score.toString() + '.png'; 
-                //Basket.img.src = baskets[1];///.toString();
-            }
-            
-            if (score <10){ 
-                score = "0" + score; //add leading 0
-            }
-            */
-
-
-
-           if (score < 8) {
+           
+            if (score < 8) {
             Basket.img.src=basketImgs[score].src; 
-           }
+            }
 
-           if (score <10){ 
+            if (score <10){ 
             score = "0" + score; //add leading 0
-        }
+            }
 
-
-            //do ifs here!!! ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             document.getElementById("score").innerHTML = score; //show score
-                //_____________________________________________________________________________________________
             appleCtxs[i].globalAlpha = 0; //remove apple from screen
             this.reset(); //reset apple 
         }
@@ -398,19 +273,8 @@ function startTimer(){
         }
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
-            ////////canAnimate = false; //cancel animation ?????????????
-            cancelAnimationFrame(animationFrameRef); ///////////////////////////////////?????????
+            cancelAnimationFrame(animationFrameRef); //cancel animation
             showGameEndModal(); //show end of game modal
-
-
-
-            //=--------------------------------
-            for (let i=0;i<=7;i++){
-                console.log(basketImgs[i]);
-            }
-            //---------------------------------
-
-
         } 
         document.getElementById("timer").innerHTML = time; //show new time
     
@@ -472,6 +336,8 @@ window.onclick = function(event) {
         gameEndModal.style.display = "none";
         //startGame(); ///////////////////////?????????????????
        // canAnimate = true;
+       startTimer(); //start game timer ???????????????????
+       requestAnimationFrame(animate); //animate game ????????????????
     }
 }
 

@@ -54,3 +54,30 @@ https://www.techrepublic.com/article/preloading-and-the-javascript-image-object/
 transparency:
 http://zetcode.com/gfx/html5canvas/transparency/
 https://html5.litten.com/using-multiple-html5-canvases-as-layers/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////USB STUFF///
+
+//persistant storage:
+//https://www.howtogeek.com/howto/14912/create-a-persistent-bootable-ubuntu-usb-flash-drive/
+
+//tecg republic persistant storage:
+//https://www.techrepublic.com/article/how-to-create-a-live-usb-drive-with-persistent-storage-in-ubuntu/
+
+
+
+
+
