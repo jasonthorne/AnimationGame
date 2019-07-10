@@ -35,7 +35,7 @@ for (let i=0;i<=7;i++){
 var backgroundImg = new Image(); //background image
 backgroundImg.src = 'img/backgroundTEST7.png'; //image source
 
-//after background load:
+//after background image load:
 backgroundImg.onload = function(){
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
     basketCtx.drawImage(basketImgs[0], (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); //then draw basket
@@ -175,82 +175,80 @@ function Apple(xPos, yPos, i){
 var start = null; //animation start time
 var progress = null; //animation progress
 var animationFrameRef = null; //animationFrame reference
-var canAnimate = true; //?????????????????????????
 
 function animate(timestamp){
 
-    ///if(canAnimate){ //////////////////????????????
-        if (!start) {start = timestamp;} //mark start time
-        progress = timestamp - start; //track progress
-        //console.log("progress: " + progress);
-        //console.log("timestamp: " + timestamp);
-        //console.log("start: " + start);
+    if (!start) {start = timestamp;} //mark start time
+    progress = timestamp - start; //track progress
+    //console.log("progress: " + progress);
+    //console.log("timestamp: " + timestamp);
+    //console.log("start: " + start);
 
-        //draw background:
-        backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-        backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
+    //draw background:
+    backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
 
-        //draw basket:
-        basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
-        Basket.move(); //move basket
-        basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
+    //draw basket:
+    basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    Basket.move(); //move basket
+    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
 
-        //draw apples:
-        for (let i=0; i<apples.length; i++){
+    //draw apples:
+    for (let i=0; i<apples.length; i++){
 
-            if (progress < apples[i].pauseTime) { //if apple can't yet fall
-                apples[i].canFall = false; //dont allow fall
-            }else{ 
+        if (progress < apples[i].pauseTime) { //if apple can't yet fall
+            apples[i].canFall = false; //dont allow fall
+        }else{ 
 
-                if(apples[i].canFadeIn){ //if apple can fade in
-                    appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
-                
-                    if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
-                        apples[i].canFall = true; //allow apple to fall
-                    }
+            if(apples[i].canFadeIn){ //if apple can fade in
+                appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
+            
+                if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
+                    apples[i].canFall = true; //allow apple to fall
                 }
             }
-        
-            if (apples[i].canFall){ //if apple can fall
-                apples[i].fall(); //allow apple to fall
+        }
+    
+        if (apples[i].canFall){ //if apple can fall
+            apples[i].fall(); //allow apple to fall
+        }
+    
+        if (apples[i].canFadeOut){ //if apple can fade out
+            appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
+
+            if (appleCtxs[i].globalAlpha <= 0.01){ 
+                    apples[i].reset(); //reset apple when faded
             }
-        
-            if (apples[i].canFadeOut){ //if apple can fade out
-                appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
-
-                if (appleCtxs[i].globalAlpha <= 0.01){ 
-                        apples[i].reset(); //reset apple when faded
-                }
-            }
-
-            appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
-            appleCtxs[i].drawImage(apples[i].img, apples[i].xPos, apples[i].yPos, apples[i].width, apples[i].height); //draw apple
         }
 
+        appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
+        appleCtxs[i].drawImage(apples[i].img, apples[i].xPos, apples[i].yPos, apples[i].width, apples[i].height); //draw apple
+    }
 
-        
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-       /*
-        //check for pause: ?????????????????????
-        if (key[32]){ //if space is pressed is pressed
-            canAnimate = false;
-            gameEndModal.style.display = "block";
-        }
-        */
-     /*
-        else{
-            //requestAnimationFrame(animate); //continue animation
-            animationFrameRef = requestAnimationFrame(animate); //continue animation
-        }
-        */
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        //if (time>0){
-            //requestAnimationFrame(animate); //continue animation
-        //}
-     
-       animationFrameRef = requestAnimationFrame(animate); //continue animation
-   ///}//if(continueAnimating)///???????????
+    
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    /*
+    //check for pause: ?????????????????????
+    if (key[32]){ //if space is pressed is pressed
+        canAnimate = false;
+        gameEndModal.style.display = "block";
+    }
+    */
+    /*
+    else{
+        //requestAnimationFrame(animate); //continue animation
+        animationFrameRef = requestAnimationFrame(animate); //continue animation
+    }
+    */
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    //if (time>0){
+        //requestAnimationFrame(animate); //continue animation
+    //}
+    
+    animationFrameRef = requestAnimationFrame(animate); //continue animation
+  
     
     
 }
@@ -264,8 +262,8 @@ document.getElementById("timer").innerHTML = "00"; //show initial time as 00
 function startTimer(){
     time = 30; //(re)set time
     document.getElementById("timer").innerHTML = time; //show starting time
+    
     let timer = setInterval(function(){ 
-
         time--; //reduce time
         if (time <10){ 
             time = "0" + time; //add leading 0
