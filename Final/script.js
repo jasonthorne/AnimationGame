@@ -324,8 +324,10 @@ function animate(timestamp){
         */
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        
-        requestAnimationFrame(animate); //continue animation
+        if (time>0){
+            requestAnimationFrame(animate); //continue animation
+        }
+     
        // animationFrameRef = requestAnimationFrame(animate); //continue animation
    ///}//if(continueAnimating)///???????????
     
@@ -335,10 +337,11 @@ function animate(timestamp){
 //----------------------------------------------------------------------------------------------------
 //game timer:
 
+var time = 0; //time
 document.getElementById("timer").innerHTML = "00"; //show initial time as 00
 
 function startTimer(){
-    var time = 30; //game length
+    time = 30; //(re)set time
     document.getElementById("timer").innerHTML = time; //show starting time
     let timer = setInterval(function(){ 
 
@@ -349,7 +352,7 @@ function startTimer(){
         }
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
-            canAnimate = false; //cancel animation ?????????????
+            ////////canAnimate = false; //cancel animation ?????????????
             /////////////cancelAnimationFrame(animationFrameRef); ///////////////////////////////////?????????
             showGameEndModal(); //show end of game modal
         } 
