@@ -27,7 +27,7 @@ var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //stori
 
 //preload basket images:
 var basketImgs = [];
-for (let i=0;i<=7;i++){
+for (let i=0;i<=7;i++){ /////////////////////?? change to 10 and make more baskets!
     basketImgs[i] = new Image();
     basketImgs[i].src = 'img/baskets/basket' + i.toString() + '.png';
 }
@@ -202,7 +202,7 @@ function animate(timestamp){
 
             if(apples[i].canFadeIn){ //if apple can fade in
                 appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
-            
+
                 if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
                     apples[i].canFall = true; //allow apple to fall
                 }
@@ -215,9 +215,9 @@ function animate(timestamp){
     
         if (apples[i].canFadeOut){ //if apple can fade out
             appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
-
-            if (appleCtxs[i].globalAlpha <= 0.01){ 
-                    apples[i].reset(); //reset apple when faded
+            
+            if (appleCtxs[i].globalAlpha <= 0.01){ //when apple has faded
+                    apples[i].reset(); //reset apple
             }
         }
 
@@ -302,6 +302,7 @@ playBtn.onclick = function() {
     startGame();
 }
 
+/*
 //when the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == introModal) {
@@ -315,7 +316,7 @@ window.onclick = function(event) {
        requestAnimationFrame(animate); //animate game ????????????????
     }
 }
-
+*/
 
 //----------------------------------------------------------------------------------------------------
 //end of game modal:
