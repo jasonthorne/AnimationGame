@@ -25,6 +25,7 @@
   padding: 0;
   /*border: 1px solid #888;*/
   width: 40%; 
+  /*height: 40%; */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
   -webkit-animation-duration: 0.4s;
@@ -59,7 +60,8 @@
 }
 
 .modal-header {
-  padding: 2px 16px;
+  /*padding: 2px 16px;*/
+  padding: 2px;
   background-color: #5cb85c;
   color: white;
   text-align: center;
@@ -76,7 +78,8 @@
 }
 
 .modal-footer {
-  padding: 2px 16px;
+  padding: 2px;
+   /*padding: 2px 16px;*/
   background-color: #5cb85c;
   color: white;
   text-align: center;
@@ -140,3 +143,50 @@
 }
 
 /*============================================================*/
+
+h1{
+  /*font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;*/
+  font-family: 'Bubblegum Sans', cursive;
+  font-size: 35px;
+  /*padding: 80px 50px;*/
+  text-align: center;
+  /*text-transform: uppercase;*/
+  /*text-rendering: optimizeLegibility;*/
+}
+
+
+.deepshadow {
+  color: rgb(255, 255, 255);
+  /*text-shadow: 6px 6px 0px rgba(0,0,0,0.2);*/
+
+  /*
+  https://stackoverflow.com/questions/2570972/css-font-border
+  */
+
+  /*
+  text-shadow: 1px 1px 0 #000, 
+    -1px 1px 0 #376e37,
+    1px -1px 0 #376e37,
+    -1px -1px 0 #376e37,
+    0px 1px 0 #376e37,
+    0px -1px 0 #376e37,
+    -1px 0px 0 #376e37,
+    1px 0px 0 #376e37,
+    2px 2px 0 #376e37,
+    -2px 2px 0 #376e37,
+    2px -2px 0 #376e37,
+    -2px -2px 0 #376e37,
+    0px 2px 0 #376e37,
+    0px -2px 0 #376e37,
+    -2px 0px 0 #376e37,
+    2px 0px 0 #376e37,
+    1px 2px 0 #376e37,
+    -1px 2px 0 #376e37,
+    1px -2px 0 #376e37,
+    -1px -2px 0 #376e37,
+    2px 1px 0 #376e37,
+    -2px 1px 0 #376e37,
+    2px -1px 0 #376e37,
+    -2px -1px 0 #376e37;
+    */
+}
