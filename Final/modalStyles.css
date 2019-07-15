@@ -24,7 +24,7 @@
   margin: auto;
   padding: 0;
   /*border: 1px solid #888;*/
-  width: 30%; /*40%*/
+  width: 35%; /*40%*/
   /*height: 40%; */
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   -webkit-animation-name: animatetop;
@@ -82,8 +82,9 @@
    /*padding: 2px 16px;*/
   background-color: #5cb85c;
   color: white;
-  text-align: center;
-  
+  /*text-align: center;*/
+  display: grid;
+  grid-template-columns: 1fr 1fr
 }
 
 
@@ -98,7 +99,8 @@
   border: none;
   color: #ffffff;
   padding: 16px 32px;
-  text-align: center;
+  /*text-align: center;*/
+  /*float: left;*/
   text-decoration: none;
   display: inline-block;
   font-size: 18px;
@@ -154,8 +156,15 @@
 
 }
 
-.testPic{
-  text-align: right;
-  text-decoration: none;
-  display: inline-block;
+
+.row{
+	width: 100%; /*give width of full viewport */
+	align-items: center; /*center the contents within the flex container (as they wrap during flexing)*/
+}
+
+
+
+.grid-parent {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
