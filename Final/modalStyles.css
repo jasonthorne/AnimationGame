@@ -82,9 +82,9 @@
    /*padding: 2px 16px;*/
   background-color: #5cb85c;
   color: white;
-  /*text-align: center;*/
-  display: grid;
-  grid-template-columns: 1fr 1fr
+  text-align: center;
+ /* display: grid;
+  grid-template-columns: 1fr 1fr*/
 }
 
 
@@ -99,7 +99,7 @@
   border: none;
   color: #ffffff;
   padding: 16px 32px;
-  /*text-align: center;*/
+  text-align: center;
   /*float: left;*/
   text-decoration: none;
   display: inline-block;
