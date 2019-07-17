@@ -147,28 +147,37 @@
  position: absolute;
  right: 0;
  /*vertical-align: middle;*/
- background-color: transparent;
+ /*background-color: transparent;*/
  border: none;
- /*color: #408540;*/
- padding: 16px 32px;
+ color: #1a1d1a;
+ /*padding: 16px 32px;*/
+ padding: 0px;
  /*text-align: right;*/
  /*float: left;*/
  text-decoration: none;
  display: inline-block;
- /*width: 25%;*/
+ width: 25%;
  /*font-size: 18px;*/
- margin: 6px;
- /*-webkit-transition-duration: 0.4s; /* for Safari */
- /*transition-duration: 0.4s;*/
+ margin: 3px;
+ -webkit-transition-duration: 0.4s; /* for Safari */
+ transition-duration: 0.4s;
  cursor: pointer;
- /*border-radius: 4px;*/
+ border-radius: 4px;
  /*font-weight: bold;*/
  outline: none;
- /*background-image:url("img/iconTest1.png");
- background-repeat:no-repeat;*/
+
  
+ background-image:url("img/icon1.png");
+ background-repeat: no-repeat;
+ background-size: cover;
 
 }
+
+#attributions-img{
+  
+}
+
+
 
 
 

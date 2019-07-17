@@ -224,9 +224,7 @@ function animate(timestamp){
         appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
         appleCtxs[i].drawImage(apples[i].img, apples[i].xPos, apples[i].yPos, apples[i].width, apples[i].height); //draw apple
     }
-
-        //requestAnimationFrame(animate); //continue animation
-  
+    
     animationFrameRef = requestAnimationFrame(animate); //continue animation 
 }
 
