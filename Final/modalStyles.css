@@ -1,14 +1,19 @@
 
 /*body {font-family: Arial, Helvetica, sans-serif;} /* hmmmmmmmmmmmmmm?????*/
 
+* {
+  box-sizing: border-box;
+}
+
+
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 99; /* Sit on top */ /* +++++++++++++++++++++++++++++++++++change to corret number (in relation to all the other layers)*/
+  z-index: 4; /* Sit on top */
   padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
+  /*left: 0;
+  top: 0;*/
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
@@ -20,7 +25,6 @@
 .modal-content {
   position: relative;
  /* background-color: #fefefe; */
-  
   margin: auto;
   padding: 0;
   /*border: 1px solid #888;*/
@@ -94,6 +98,8 @@
   /*text-align: center;*/
  /* display: grid;
   grid-template-columns: 1fr 1fr*/
+  text-align: center; 
+  position: relative; 
 }
 
 
@@ -114,7 +120,7 @@
   display: inline-block;
   /*width: 25%;*/
   font-size: 18px;
-  margin: 4px;
+  margin: 6px;
   -webkit-transition-duration: 0.4s; /* for Safari */
   transition-duration: 0.4s;
   cursor: pointer;
@@ -131,56 +137,25 @@
 
 /*============================================================*/
 
-* {
-  box-sizing: border-box;
-}
 
-.row {
-  background-color:#EEF7EE;
-  /*padding: 8px;*/
-}
-
-/* Create two equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 50%;
-  text-align: center;
-   /*padding: 8px;*/
-}
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
 /*============================================================*/
-
-.footer-container{
-  text-align: center; 
-  position: relative; 
-  width: 100%;
-  /*border-width: 1px 0 0 0;*/
-}
-
-
 
 #attributions-btn{
  position: absolute;
  right: 0;
  /*vertical-align: middle;*/
- background-color: #008080; /* Teal */ 
+ background-color: #5cb85c; /* Teal */ 
  border: none;
- color: #ffffff;
+ color: #408540;
  padding: 16px 32px;
- text-align: center;
+ /*text-align: right;*/
  /*float: left;*/
  text-decoration: none;
  display: inline-block;
  /*width: 25%;*/
  font-size: 18px;
- margin: 4px;
+ margin: 6px;
  -webkit-transition-duration: 0.4s; /* for Safari */
  transition-duration: 0.4s;
  cursor: pointer;
