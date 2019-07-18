@@ -64,7 +64,7 @@
   /*padding: 2px 16px;*/
   padding: 1px;
   background-color: #5cb85c;
-  color: white;
+  /*color: white;*/
   text-align: center;
 }
 
@@ -72,7 +72,7 @@
   font-family: 'Bubblegum Sans', cursive;
   font-size: 35px;
   /*padding: 80px 50px;*/
-  text-align: center;
+  /*text-align: center;*/
   color: #ffffff;
 
 }
@@ -173,6 +173,3 @@
 
 }
 
-#attributions-img{
-  
-}

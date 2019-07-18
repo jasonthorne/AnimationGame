@@ -165,9 +165,7 @@ function Apple(xPos, yPos, i){
             this.canFall = false; //prevent falling
             this.canFadeOut = true; //allow fading
         }  
-
     };
-    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -274,34 +272,24 @@ function startGame(){
 //----------------------------------------------------------------------------------------------------
 //intro modal:
 
-var introModal = document.getElementById("introModal"); //intro modal
+var startGameModal = document.getElementById("intro-modal"); //intro modal
+var playBtn = document.getElementById("play-btn"); //play button
 
 //show intro modal:
 function showIntroModal(){
-	introModal.style.display = "block";
+	introModal.style.display = "block"; //display introModal
 }
 
-var span = document.getElementsByClassName("close")[0]; //<span> that closes modal
-
-//when span is clicked:
-span.onclick = function() {
-    introModal.style.display = "none"; //close the modal
-    startGame(); //start the game //++++++++++++++++++++++++++++++show another modal with a start option and a artists option
-}
-
-//play button
-var playBtn = document.getElementById("play-btn");
-
-//when play button is clicked:
+//play button onclick:
 playBtn.onclick = function() {
-    introModal.style.display = "none";  //close the modal
-    startGame();
+    introModal.style.display = "none";  //close introModal
+    startGame(); //start game
 }
 
 //----------------------------------------------------------------------------------------------------
 //end of game modal:
 
-var gameEndModal = document.getElementById("gameOverModal"); //game over modal
+var endGameModal = document.getElementById("game-start-modal"); //game over modal
 
 //show intro modal:
 function showGameEndModal(){
@@ -309,4 +297,3 @@ function showGameEndModal(){
 }
 
 //----------------------------------------------------------------------------------------------------
-//pause modal:

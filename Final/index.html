@@ -3,87 +3,49 @@
     <head>
 		<meta charset="UTF=8">
 		<title>Apple Catch</title>
-		<link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap" rel="stylesheet"> <!--Google font import-->
 		<link type="text/css" rel="stylesheet" href="gameStyles.css">
 		<link type="text/css" rel="stylesheet" href="modalStyles.css">
 		<script type="text/javascript" src="script.js" defer > </script> <!-- 'defer' waits until page is loaded before execution-->
 	</head>
 
-	<body onload = "showIntroModal()">
-    <!--<body>-->
+	<body onload = "showIntroModal()"> <!--show intro modal on page load-->
+   
+		<!-------------------------------------------------------------------------------------
+		intro modal: -->
 
-		<!--------------------------------------------------------------->
-		<!--intro modal -->
-		<div id="introModal" class="modal">
-
-			<!-- Modal content -->
+		<div id="intro-modal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
 					<h1 class="modal-header-title">Apple Catch</h1>
 				</div>
-				
 				<div class="modal-body">
-					
-						<img src="img/test8.png" height="100%" width="100%">
-					<!--<img src="img/b2.png" height="80%" width="80%">-->
+					<img src="img/test8.png" height="100%" width="100%">
 				</div>
 				<div class="modal-footer">
-
-					
-						<button id="play-btn">Play</button>
-						<button id="attributions-btn">
-						
-							
-							<!--<img id="attributions-img"src="img/icon1.png" height="100%">-->
-							
-						</button>
-					
-					
-					
-							
-				
-					<!--<div class="footer-container"><span class="close"><img src="img/testPic4.png" height="50%" width="50%"></span>-->
-					
-					  <!--CHANGE SIZE OF THIS!<img src="img/testPic4.png" height="50%" width="50%" >-->
+					<button id="play-btn">Play</button>
+					<button id="attributions-btn"></button>
 				</div>
-			
-				
 			</div>
-	  
 		</div>
 
+		<!-------------------------------------------------------------------------------------
+		canvas layers:-->
 
-		<!-- Modal content 
-		<div class="modal-content">
-			<div class="modal-header">
-				<span class="close">&times;</span>
-			
-				<h2>Welcome!</h2>
-			</div>
-			<div class="modal-body">
-
-					<img src="img/fr1.png" height="100%" width="100%">
-			</div>
-			<div class="modal-footer">
-				<div id="play-btn">Play</div>
-			</div>
-		</div> -->
-  
+		<div class="canvas-container">
+			<canvas id="basket"  class="layer3" width="873" height="640"></canvas>
+			<canvas id="apple1"  class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple2"  class="layer2" width="873" height="640"></canvas>
+			<canvas id="apple3"  class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple4"  class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple5"  class="layer2" width="873" height="640"></canvas>    
+			<canvas id="background"  class="layer1" width="873" height="640" ></canvas>
+			<div id="timer" class="layer3"></div>
+			<div id="score" class="layer3"></div>
+		</div>
 	
-		<!-----------------------------------------------------
+		<!------------------------------------------------------------------------------------->
 
-		<div class="row">
-				<div class="column"> <!-- style="background-color:rgb(133, 138, 133);" > 
-					<!--<img src="img/farmer2b.png" height="55%" width="55%" > <!--previously: height="35%" width="35%"
-					<img src="img/a1.png" height="100%" width="100%">
-				</div>
-				<div class="column" ><!-- style="background-color:rgb(33, 37, 33);" > 
-					<!--<img src="img/bgTest2.png" height="100%" width="100%">
-					<img src="img/a2.png" height="100%" width="100%">
-				</div>
-			</div>
-
-		------------------------------------------------------------>
 		<!--game over modal -->
 		<div id="gameOverModal" class="modal">
 
@@ -103,23 +65,7 @@
 	  
 		</div>
 
-		<!------------------------------------------------------------>
-
-		<div class="canvas-container">
-
-			<canvas id="basket"  class="layer3" width="873" height="640"></canvas>
-			<canvas id="apple1"  class="layer2" width="873" height="640"></canvas>  
-			<canvas id="apple2"  class="layer2" width="873" height="640"></canvas>
-			<canvas id="apple3"  class="layer2" width="873" height="640"></canvas>  
-			<canvas id="apple4"  class="layer2" width="873" height="640"></canvas>  
-			<canvas id="apple5"  class="layer2" width="873" height="640"></canvas>    
-			<canvas id="background"  class="layer1" width="873" height="640" ></canvas>
-			<div id="timer" class="layer3"></div>
-			<div id="score" class="layer3"></div>
-
-		</div>
-
-		<!------------------------------------------------------------>
+		
 
 
 	</body>
