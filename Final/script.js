@@ -231,7 +231,7 @@ var time = 0; //time
 document.getElementById("timer").innerHTML = "00"; //show initial time as 00
 
 function startTimer(){
-    time = 30; //(re)set time
+    time = 3; //(re)set time
     document.getElementById("timer").innerHTML = time; //show starting time
     
     let timer = setInterval(function(){ 
@@ -243,7 +243,7 @@ function startTimer(){
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             cancelAnimationFrame(animationFrameRef); //cancel animation
-            showGameEndModal(); //show end of game modal
+            showScoreModal(); //show game score modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
     
@@ -272,7 +272,7 @@ function startGame(){
 //----------------------------------------------------------------------------------------------------
 //intro modal:
 
-var startGameModal = document.getElementById("intro-modal"); //intro modal
+var introModal = document.getElementById("intro-modal"); //intro modal
 var playBtn = document.getElementById("play-btn"); //play button
 
 //show intro modal:
@@ -280,20 +280,27 @@ function showIntroModal(){
 	introModal.style.display = "block"; //display introModal
 }
 
-//play button onclick:
+//play game:
 playBtn.onclick = function() {
     introModal.style.display = "none";  //close introModal
     startGame(); //start game
 }
 
 //----------------------------------------------------------------------------------------------------
-//end of game modal:
+//score modal:
 
-var endGameModal = document.getElementById("game-start-modal"); //game over modal
+var scoreModal = document.getElementById("score-modal"); //score modal
+var replayBtn = document.getElementById("replay-btn"); //replay button
 
-//show intro modal:
-function showGameEndModal(){
-	gameEndModal.style.display = "block";
+//show score modal:
+function showScoreModal(){
+	scoreModal.style.display = "block"; //display scoreModal
+}
+
+//replay game:
+replayBtn.onclick = function() {
+    replayBtn.display = "none";  //close scoreModal
+    startGame(); //start game
 }
 
 //----------------------------------------------------------------------------------------------------
