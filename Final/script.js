@@ -40,6 +40,8 @@ backgroundImg.src = 'img/backgroundTEST7.png'; //image source //++++++++++++++++
 backgroundImg.onload = function(){
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
     basketCtx.drawImage(basketImgs[0], (canvasW - basketW) /2, (canvasH - basketH) - 10, basketW, basketH); //then draw basket
+    document.getElementById("timer").innerHTML = "00"; //show initial time as 00
+    document.getElementById("score").innerHTML = "00"; //show initial score as 00
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -171,8 +173,8 @@ function Apple(xPos, yPos, i){
 //----------------------------------------------------------------------------------------------------
 //animate game:
 
-var start = null; //animation start time
-var progress = null; //animation progress
+var start = 0; //animation start time
+var progress = 0; //animation progress
 var animationFrameRef = null; //animationFrame reference
 
 function animate(timestamp){
@@ -228,7 +230,6 @@ function animate(timestamp){
 //game timer:
 
 var time = 0; //time
-document.getElementById("timer").innerHTML = "00"; //show initial time as 00
 
 function startTimer(){
     time = 30; //(re)set time
@@ -243,7 +244,7 @@ function startTimer(){
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             cancelAnimationFrame(animationFrameRef); //cancel animation
-            //////////////////////////////////showScoreModal(); //show game score modal
+            showScoreModal(); //show game score modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
     
@@ -253,13 +254,9 @@ function startTimer(){
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
-var score = null;
-document.getElementById("score").innerHTML = "00"; //show initial score as 00
+var score = 0;
 
 function startGame(){
-
-    score = 0;//(re)set score
-    apples.length = 0;//flush apples array
 
     //create and store apples: 
     for (let i=0; i<APPLE_NUM; i++){
@@ -304,6 +301,15 @@ function showScoreModal(){
 //replay game:
 replayBtn.onclick = function() {
     scoreModal.style.display = "none";  //close scoreModal
+
+    //reset vars:
+    document.getElementById("score").innerHTML = "00"; //reset score element
+    document.getElementById("timer").style.color = "#808080"; //reset timer element colour
+    score = 0; //reset score counter
+    apples.length = 0; //flush apples array
+    start = 0; //reset animation start time
+    progress = 0; //reset animation progress
+
     startGame(); //start game
 }
 
