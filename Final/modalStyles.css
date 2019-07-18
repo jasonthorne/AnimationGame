@@ -1,9 +1,6 @@
 
 /*body {font-family: Arial, Helvetica, sans-serif;} /* hmmmmmmmmmmmmmm?????*/
 
-* {
-  box-sizing: border-box;
-}
 
 
 /* The Modal (background) */
@@ -138,11 +135,14 @@
 
 /*============================================================*/
 
-
+/*include padding & border in element width & heights.*/
+* {
+  box-sizing: border-box; 
+}
 
 
 /*============================================================*/
-
+/*???????????????????????????????????????????????*/
 #attributions-btn{
  position: absolute;
  right: 0;
@@ -175,23 +175,4 @@
 
 #attributions-img{
   
-}
-
-
-
-
-
-
-
-
-.row{
-	width: 100%; /*give width of full viewport */
-	align-items: center; /*center the contents within the flex container (as they wrap during flexing)*/
-}
-
-
-
-.grid-parent {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
 }

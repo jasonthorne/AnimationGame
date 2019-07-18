@@ -14,20 +14,42 @@ var canvasH = backgroundCanvas.height; //canvas height
 //2D contexts:
 var backgroundCtx = backgroundCanvas.getContext("2d"); 
 var basketCtx = basketCanvas.getContext("2d"); 
+
+var appleCtxs = [
+    apple1Canvas.getContext("2d"), 
+    apple2Canvas.getContext("2d"), 
+    apple3Canvas.getContext("2d"), 
+    apple4Canvas.getContext("2d"), 
+    apple5Canvas.getContext("2d")
+];
+
+/*
 var apple1Ctx = apple1Canvas.getContext("2d"); 
 var apple2Ctx = apple2Canvas.getContext("2d"); 
 var apple3Ctx = apple3Canvas.getContext("2d");
 var apple4Ctx = apple4Canvas.getContext("2d");
 var apple5Ctx = apple5Canvas.getContext("2d"); 
+*/
 
-var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //storing apple ctxs
+
+//var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //storing apple ctxs
+/*
+var appleCtxs = [
+    apple1Ctx = apple1Canvas.getContext("2d"), 
+    apple2Ctx = apple2Canvas.getContext("2d"), 
+    apple3Ctx = apple3Canvas.getContext("2d"), 
+    apple4Ctx = apple4Canvas.getContext("2d"), 
+    apple5Ctx = apple5Canvas.getContext("2d")
+];
+*/
+
 
 //----------------------------------------------------------------------------------------------------
 //image preloads:
 
 //preload basket images:
 var basketImgs = [];
-for (let i=0;i<=7;i++){ /////////////////////?? change to 10 and make more baskets!
+for (let i=0;i<=10;i++){ /////////////////////?? change to 10 and make more baskets!
     basketImgs[i] = new Image();
     basketImgs[i].src = 'img/baskets/basket' + i.toString() + '.png';
 }
@@ -139,15 +161,16 @@ function Apple(xPos, yPos, i){
         && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
         && this.canScore){
             score++; //add to score 
-           
-            if (score < 8) {
-            Basket.img.src=basketImgs[score].src; 
-            }
+           //////////////////////////////////////////////////////////////
+            if (score <10){    
+                
+               // if (score < 8) {
+                    Basket.img.src=basketImgs[score].src; 
+               // }
 
-            if (score <10){ 
-            score = "0" + score; //add leading 0
+                score = "0" + score; //add leading 0
             }
-
+            //////////////////////////////////////////////////////////////
             document.getElementById("score").innerHTML = score; //show score
             appleCtxs[i].globalAlpha = 0; //remove apple from screen
             this.reset(); //reset apple 
@@ -299,22 +322,6 @@ playBtn.onclick = function() {
     introModal.style.display = "none";  //close the modal
     startGame();
 }
-
-/*
-//when the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == introModal) {
-      introModal.style.display = "none";
-      startGame(); //#############################################################################
-    }else if(event.target == gameEndModal){ //change all this to be prettier!!! +++++++++++++++++++++++++++++++++++++++
-        gameEndModal.style.display = "none";
-        //startGame(); ///////////////////////?????????????????
-       // canAnimate = true;
-       startTimer(); //start game timer ???????????????????
-       requestAnimationFrame(animate); //animate game ????????????????
-    }
-}
-*/
 
 //----------------------------------------------------------------------------------------------------
 //end of game modal:
