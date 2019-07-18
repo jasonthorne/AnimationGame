@@ -23,39 +23,18 @@ var appleCtxs = [
     apple5Canvas.getContext("2d")
 ];
 
-/*
-var apple1Ctx = apple1Canvas.getContext("2d"); 
-var apple2Ctx = apple2Canvas.getContext("2d"); 
-var apple3Ctx = apple3Canvas.getContext("2d");
-var apple4Ctx = apple4Canvas.getContext("2d");
-var apple5Ctx = apple5Canvas.getContext("2d"); 
-*/
-
-
-//var appleCtxs = [apple1Ctx, apple2Ctx, apple3Ctx, apple4Ctx, apple5Ctx]; //storing apple ctxs
-/*
-var appleCtxs = [
-    apple1Ctx = apple1Canvas.getContext("2d"), 
-    apple2Ctx = apple2Canvas.getContext("2d"), 
-    apple3Ctx = apple3Canvas.getContext("2d"), 
-    apple4Ctx = apple4Canvas.getContext("2d"), 
-    apple5Ctx = apple5Canvas.getContext("2d")
-];
-*/
-
-
 //----------------------------------------------------------------------------------------------------
 //image preloads:
 
 //preload basket images:
 var basketImgs = [];
-for (let i=0;i<=10;i++){ /////////////////////?? change to 10 and make more baskets!
+for (let i=0;i<=10;i++){ /////////////////////?? change to 10 and make more baskets! +++++++++++++++++++++++++++++
     basketImgs[i] = new Image();
     basketImgs[i].src = 'img/baskets/basket' + i.toString() + '.png';
 }
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/backgroundTEST7.png'; //image source
+backgroundImg.src = 'img/backgroundTEST7.png'; //image source //+++++++++++++++++++++++++++++change image source
 
 //after background image load:
 backgroundImg.onload = function(){
@@ -101,15 +80,14 @@ var Basket = {
         if (key[37]){ //if left is pressed
             this.xPos -=25; //decrease x pos 
             
-            if(this.xPos <0){ //check for canvas collision
-                this.xPos = 0; //stop at screen edge
-            }
+            //check for canvas edge collision and stop if so:
+            if(this.xPos <0){ this.xPos = 0;}
+               
         }else if (key[39]){ //if right is pressed
             this.xPos += 25; //increase x pos
-          
-            if(this.xPos > (canvasW - this.width)){ //check for canvas collision
-                this.xPos = canvasW - this.width; //stop at screen edge
-            }
+
+            //check for canvas edge collision and stop if so:
+            if(this.xPos > (canvasW - this.width)){ this.xPos = canvasW - this.width; } 
         }
     }
 };
@@ -226,28 +204,25 @@ function animate(timestamp){
             if(apples[i].canFadeIn){ //if apple can fade in
                 appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
 
-                if (appleCtxs[i].globalAlpha >= 0.95){ //when apple is visible
-                    apples[i].canFall = true; //allow apple to fall
-                }
+                //when apple is visible, allow apple to fall:
+                if (appleCtxs[i].globalAlpha >= 0.95){ apples[i].canFall = true; }
             }
         }
     
-        if (apples[i].canFall){ //if apple can fall
-            apples[i].fall(); //allow apple to fall
-        }
-    
+        //if apple can fall, make fall:
+        if (apples[i].canFall){ apples[i].fall(); }
+           
         if (apples[i].canFadeOut){ //if apple can fade out
             appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
             
-            if (appleCtxs[i].globalAlpha <= 0.01){ //when apple has faded
-                    apples[i].reset(); //reset apple
-            }
+            //when apple has faded, reset apple:
+            if (appleCtxs[i].globalAlpha <= 0.01){ apples[i].reset(); }
         }
 
         appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
         appleCtxs[i].drawImage(apples[i].img, apples[i].xPos, apples[i].yPos, apples[i].width, apples[i].height); //draw apple
     }
-    
+
     animationFrameRef = requestAnimationFrame(animate); //continue animation 
 }
 
