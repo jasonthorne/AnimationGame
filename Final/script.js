@@ -253,13 +253,17 @@ function startTimer(){
 //----------------------------------------------------------------------------------------------------
 //initialise the game:
 
-var score = 0;
+var score = null;
 document.getElementById("score").innerHTML = "00"; //show initial score as 00
 
 function startGame(){
+
+    score = 0;//(re)set score
+    apples.length = 0;//flush apples array
+
     //create and store apples: 
     for (let i=0; i<APPLE_NUM; i++){
-        let apple = new Apple(appleX[i], appleY[i], i); //create apple
+        let apple = new Apple(appleX[i], appleY[i], i); //create new apple
         appleCtxs[i].globalAlpha = 0; //make apple initially invisible
         apples.push(apple); //add apple to array 
     }
@@ -273,7 +277,7 @@ function startGame(){
 //intro modal:
 
 var introModal = document.getElementById("intro-modal"); //intro modal
-var playBtn = document.getElementById("play-btn"); //play button
+var playBtn = document.getElementById("play-button"); //play button
 
 //show intro modal:
 function showIntroModal(){
@@ -290,7 +294,7 @@ playBtn.onclick = function() {
 //score modal:
 
 var scoreModal = document.getElementById("score-modal"); //score modal
-var replayBtn = document.getElementById("replay-btn"); //replay button
+var replayBtn = document.getElementById("replay-button"); //replay button
 
 //show score modal:
 function showScoreModal(){
