@@ -80,13 +80,13 @@ var Basket = {
         if (key[37]){ //if left is pressed
             this.xPos -=25; //decrease x pos 
             
-            //check for canvas edge collision and stop if so:
+            //stop at canvas's left edge:
             if(this.xPos <0){ this.xPos = 0;}
                
         }else if (key[39]){ //if right is pressed
             this.xPos += 25; //increase x pos
 
-            //check for canvas edge collision and stop if so:
+            //stop at canvas's right edge:
             if(this.xPos > (canvasW - this.width)){ this.xPos = canvasW - this.width; } 
         }
     }
@@ -231,7 +231,7 @@ var time = 0; //time
 document.getElementById("timer").innerHTML = "00"; //show initial time as 00
 
 function startTimer(){
-    time = 3; //(re)set time
+    time = 30; //(re)set time
     document.getElementById("timer").innerHTML = time; //show starting time
     
     let timer = setInterval(function(){ 
@@ -243,7 +243,7 @@ function startTimer(){
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             cancelAnimationFrame(animationFrameRef); //cancel animation
-            showScoreModal(); //show game score modal
+            //////////////////////////////////showScoreModal(); //show game score modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
     
@@ -299,7 +299,7 @@ function showScoreModal(){
 
 //replay game:
 replayBtn.onclick = function() {
-    replayBtn.display = "none";  //close scoreModal
+    scoreModal.style.display = "none";  //close scoreModal
     startGame(); //start game
 }
 
