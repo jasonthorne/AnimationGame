@@ -200,19 +200,16 @@ function animate(timestamp){
             if(apples[i].canFadeIn){ //if apple can fade in
                 appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
 
-                //when apple is visible, allow apple to fall:
-                if (appleCtxs[i].globalAlpha >= 0.95){ apples[i].canFall = true; }
+                if (appleCtxs[i].globalAlpha >= 0.95){ apples[i].canFall = true; } //allow apple to fall when visible
             }
         }
     
-        //if apple can fall, make fall:
-        if (apples[i].canFall){ apples[i].fall(); }
+        if (apples[i].canFall){ apples[i].fall(); } //make apple fall if able
            
         if (apples[i].canFadeOut){ //if apple can fade out
             appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
             
-            //when apple has faded, reset apple:
-            if (appleCtxs[i].globalAlpha <= 0.01){ apples[i].reset(); }
+            if (appleCtxs[i].globalAlpha <= 0.01){ apples[i].reset(); } //reset apple when faded
         }
 
         appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
@@ -233,7 +230,7 @@ function startTimer(){
     
     let timer = setInterval(function(){ 
         time--; //reduce time
-        if (time <10){ 
+        if (time<10){ 
             time = "0" + time; //add leading 0
             document.getElementById("timer").style.color = "#ff0000"; //turn red to warn user
         }
