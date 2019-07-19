@@ -64,7 +64,7 @@ Array.prototype.pickElement = function(){
 }//https://stackoverflow.com/questions/4550505/getting-a-random-value-from-a-javascript-array
 
 //----------------------------------------------------------------------------------------------------
-//create basket:
+//basket:
 
 var basketW = 110, basketH = basketW; //width & height of basket
 
@@ -83,7 +83,7 @@ var Basket = {
             this.xPos -=25; //decrease x pos 
             
             //stop at canvas's left edge:
-            if(this.xPos <0){ this.xPos = 0;}
+            if(this.xPos <0){ this.xPos = 0; }
                
         }else if (key[39]){ //if right is pressed
             this.xPos += 25; //increase x pos
@@ -95,9 +95,8 @@ var Basket = {
 };
 
 //----------------------------------------------------------------------------------------------------
-//create apples:
+//apples:
 
-const APPLE_NUM = 5; //number of apples 
 var apples = []; //array for holding apples 
 var appleX = [120, 273, 518, 632, 720]; //x pos of apples  
 var appleY = [176, 132, 231, 119, 188]; //y pos of apples  
@@ -148,7 +147,7 @@ function Apple(xPos, yPos, i){
                     Basket.img.src=basketImgs[score].src; 
                // }
 
-                score = "0" + score; //add leading 0
+               score = "0" + score; //add leading 0
             }
             //////////////////////////////////////////////////////////////
             document.getElementById("score").innerHTML = score; //show score
@@ -179,12 +178,9 @@ var animationFrameRef = null; //animationFrame reference
 
 function animate(timestamp){
 
-    if (!start) {start = timestamp;} //mark start time
+    if (!start) { start = timestamp; } //mark start time
     progress = timestamp - start; //track progress
-    //console.log("progress: " + progress);
-    //console.log("timestamp: " + timestamp);
-    //console.log("start: " + start);
-
+    
     //draw background:
     backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
@@ -252,18 +248,19 @@ function startTimer(){
 }
 
 //----------------------------------------------------------------------------------------------------
-//initialise the game:
+//start the game:
 
 var score = 0;
 
 function startGame(){
 
     //create and store apples: 
-    for (let i=0; i<APPLE_NUM; i++){
+    for (let i=0; i<5; i++){
         let apple = new Apple(appleX[i], appleY[i], i); //create new apple
         appleCtxs[i].globalAlpha = 0; //make apple initially invisible
         apples.push(apple); //add apple to array 
     }
+
     //================================================
     startTimer(); //start game timer
     requestAnimationFrame(animate); //animate game
@@ -303,12 +300,13 @@ replayBtn.onclick = function() {
     scoreModal.style.display = "none";  //close scoreModal
 
     //reset vars:
-    document.getElementById("score").innerHTML = "00"; //reset score element
-    document.getElementById("timer").style.color = "#808080"; //reset timer element colour
+    document.getElementById("score").innerHTML = "00"; //show score as 00
+    document.getElementById("timer").style.color = "#808080"; //reset timer colour
     score = 0; //reset score counter
     apples.length = 0; //flush apples array
     start = 0; //reset animation start time
     progress = 0; //reset animation progress
+    animationFrameRef = null; //reset animationFrame reference
 
     startGame(); //start game
 }

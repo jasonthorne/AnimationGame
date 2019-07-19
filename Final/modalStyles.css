@@ -1,7 +1,8 @@
 
-/*body {font-family: Arial, Helvetica, sans-serif;} /* hmmmmmmmmmmmmmm?????*/
-
-
+/*include padding & border in element width & heights.*/
+* {
+  box-sizing: border-box; 
+}
 
 /* The Modal (background) */
 .modal {
@@ -86,12 +87,13 @@
 
 
 /* ========================================================= */
-
-#play-button {
-  /*
+/*
   https://www.color-hex.com/color-palettes/ ----------------COLOUR PALLETES
   https://www.color-hex.com/color-palette/4666
   */
+
+.footer-button {
+  
   background-color: #008080; 
   border: none;
   color: #ffffff;
@@ -112,7 +114,7 @@
   outline: none;
 }
   
-#play-button:hover {
+.footer-button:hover {
   background-color: #006666;
   color: #ffffff;
 }
@@ -120,10 +122,6 @@
 
 /*============================================================*/
 
-/*include padding & border in element width & heights.*/
-* {
-  box-sizing: border-box; 
-}
 
 
 /*============================================================*/
