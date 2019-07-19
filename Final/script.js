@@ -34,7 +34,7 @@ for (let i=0;i<=10;i++){ /////////////////////?? change to 10 and make more bask
 }
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/backgroundTEST7.png'; //image source //+++++++++++++++++++++++++++++change image source
+backgroundImg.src = 'img/background.png'; //image source //+++++++++++++++++++++++++++++change image source
 
 //after background image load:
 backgroundImg.onload = function(){
