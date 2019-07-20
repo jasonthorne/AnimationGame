@@ -225,7 +225,7 @@ function animate(timestamp){
 var time = 0; //time
 
 function startTimer(){
-    time = 30; //(re)set time
+    time = 10; //(re)set time +++++++++30
     document.getElementById("timer").innerHTML = time; //show starting time
     
     let timer = setInterval(function(){ 
@@ -289,7 +289,8 @@ var replayBtn = document.getElementById("replay-button"); //replay button
 
 //show score modal:
 function showScoreModal(){
-	scoreModal.style.display = "block"; //display scoreModal
+    scoreModal.style.display = "block"; //display scoreModal
+    document.getElementById("final-score").innerHTML = score; //show final score
 }
 
 //replay game:
