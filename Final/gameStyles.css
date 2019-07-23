@@ -26,7 +26,6 @@ body{
 .layer2{z-index: 2;}
 .layer3{z-index: 3;}
 
-
 /*game timer*/
 #timer{
 	position: absolute;
