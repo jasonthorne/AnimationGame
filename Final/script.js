@@ -225,7 +225,7 @@ function animate(timestamp){
 var time = 0; //time
 
 function startTimer(){
-    time = 10; //(re)set time +++++++++30
+    time = 3; //(re)set time +++++++++30
     document.getElementById("timer").innerHTML = time; //show starting time
     
     let timer = setInterval(function(){ 
