@@ -3,10 +3,13 @@
 	box-sizing: border-box; /*include padding & border in element width & heights*/
   }
 
+/*default body properties */
 body{
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif; 
 }
+
+/*ingame elements:----------------------------------------------------------------*/
 
 /*container for elements*/
 .canvas-container {
@@ -52,10 +55,11 @@ body{
 	opacity: 0.8;
 }
 
-/*=============================================================================*/
-/* The Modal (background) */
+/*modal elements:----------------------------------------------------------------*/
+
+/*modal*/
 .modal {
-	display: none; /* Hidden by default */
+	display: none; /* hidden by default */
 	position: fixed; /* Stay in place */
 	z-index: 4; /* Sit on top */
 	padding-top: 100px; /* Location of the box */
@@ -66,10 +70,10 @@ body{
 	overflow: auto; /* Enable scroll if needed */
 	background-color: rgb(0,0,0); /* Fallback color */
 	background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  }
+}
   
-  /* Modal Content */
-  .modal-content {
+/*modal content*/
+.modal-content {
 	position: relative;
    /* background-color: #fefefe; */
 	margin: auto;
@@ -82,70 +86,68 @@ body{
 	-webkit-animation-duration: 0.4s;
 	animation-name: animatetop;
 	animation-duration: 0.4s
-  }
-  
-  /* Add Animation */
-  @-webkit-keyframes animatetop {
+}
+
+/*modal animation*/
+@-webkit-keyframes animatetop {
 	from {top:-300px; opacity:0} 
 	to {top:0; opacity:1}
-  }
-  
-  @keyframes animatetop {
+}
+
+@keyframes animatetop {
 	from {top:-300px; opacity:0}
 	to {top:0; opacity:1}
-  }
-  
-  .modal-header {
+}
+
+/*modal header*/
+.modal-header {
 	/*padding: 2px 16px;*/
 	padding: 1px;
 	background-color: #5cb85c;
 	color: #ffffff;
 	text-align: center;
-  }
-  
-  .modal-title{
-	font-family: 'Bubblegum Sans', cursive;
-	font-size: 35px;
-  }
-  
-  
-  /*
-  http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-container/
-  */
-  .modal-body {
+}
+
+/*modal title*/
+.modal-title{
+font-family: 'Bubblegum Sans', cursive;
+font-size: 35px;
+}
+
+
+/*
+http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-container/
+*/
+
+/*modal body*/
+.modal-body {
 	/*padding: 2px 16px;*/
 	/*padding: 4px;*/
 	background-color:#EEF7EE;
 	text-align: center;
 	/*background-image: url("img/a.png");
-	  width: 200px;
-	  height: 200px;*/
+	width: 200px;
+	height: 200px;*/
 	position: relative;
 	height: 100%;
-   /*width: 100%;*/
-  }
-  
-  .modal-footer {
+	/*width: 100%;*/
+}
+
+/*modal footer*/
+.modal-footer {
 	/*padding: 2px;*/
-	 /*padding: 2px 16px;*/
+	/*padding: 2px 16px;*/
 	background-color: #5cb85c;
 	/*color: white;*/
 	/*text-align: center;*/
-   /* display: grid;
+	/* display: grid;
 	grid-template-columns: 1fr 1fr*/
 	text-align: center; 
 	position: relative; 
-  }
-  
-  
-  /* ========================================================= */
-  /*
-	https://www.color-hex.com/color-palettes/ ----------------COLOUR PALLETES
-	https://www.color-hex.com/color-palette/4666
-	*/
-  
-  .footer-button {
-	
+}
+
+/*modal footer button*/
+.modal-footer-button {
 	background-color: #008080; 
 	border: none;
 	color: #ffffff;
@@ -164,67 +166,67 @@ body{
 	font-weight: bold;
 	/*overflow: hidden; /*from ripple effect */
 	outline: none;
-  }
-	
-  .footer-button:hover {
+}
+
+.modal-footer-button:hover {
 	background-color: #006666;
 	color: #ffffff;
-  }
-  
-  
-  /*============================================================*/
-  
-  #final-score{
+}
+
+
+/*============================================================*/
+
+#final-score{
 	/*text-align: center; */
 	z-index: 5;
 	position: absolute;
-	  /*margin: auto;
-	  width: 100%;
+	/*margin: auto;
+	width: 100%;
 	height: 100%;
 	display: inline-block;
 	vertical-align: middle;*/
 	margin-left: 50%;
-	  margin-top: 25%;
-	
-  }
-  
-  .test{
+	margin-top: 25%;
+
+}
+
+.test{
 	/*display: inline-block;*/
 	position: absolute;
 	margin-left: 50%;
-	  margin-top: 50%;
-  }
-  
-  /*============================================================*/
-  /*???????????????????????????????????????????????*/
-  #attributions-btn{
-   position: absolute;
-   right: 0;
-   /*vertical-align: middle;*/
-   /*background-color: transparent;*/
-   border: none;
-   color: #1a1d1a;
-   /*padding: 16px 32px;*/
-   padding: 0px;
-   /*text-align: right;*/
-   /*float: left;*/
-   text-decoration: none;
-   display: inline-block;
-   width: 25%;
-   /*font-size: 18px;*/
-   margin: 3px;
-   -webkit-transition-duration: 0.4s; /* for Safari */
-   transition-duration: 0.4s;
-   cursor: pointer;
-   border-radius: 4px;
-   /*font-weight: bold;*/
-   outline: none;
-  
-   
-   background-image:url("img/icon1.png");
-   background-repeat: no-repeat;
-   background-size: cover;
-  
-  }
-  
-  
+	margin-top: 50%;
+}
+
+/*============================================================*/
+/*???????????????????????????????????????????????*/
+#attributions-btn{
+	position: absolute;
+	right: 0;
+	/*vertical-align: middle;*/
+	/*background-color: transparent;*/
+	border: none;
+	color: #1a1d1a;
+	/*padding: 16px 32px;*/
+	padding: 0px;
+	/*text-align: right;*/
+	/*float: left;*/
+	text-decoration: none;
+	display: inline-block;
+	width: 25%;
+	/*font-size: 18px;*/
+	margin: 3px;
+	-webkit-transition-duration: 0.4s; /* for Safari */
+	transition-duration: 0.4s;
+	cursor: pointer;
+	border-radius: 4px;
+	/*font-weight: bold;*/
+	outline: none;
+
+
+	background-image:url("img/icon1.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+}
+
+
