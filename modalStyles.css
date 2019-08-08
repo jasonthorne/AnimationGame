@@ -50,17 +50,13 @@
   /*padding: 2px 16px;*/
   padding: 1px;
   background-color: #5cb85c;
-  /*color: white;*/
+  color: #ffffff;
   text-align: center;
 }
 
 .modal-title{
   font-family: 'Bubblegum Sans', cursive;
   font-size: 35px;
-  /*padding: 80px 50px;*/
-  /*text-align: center;*/
-  color: #ffffff;
-
 }
 
 

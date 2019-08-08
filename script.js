@@ -28,13 +28,13 @@ var appleCtxs = [
 
 //preload basket images:
 var basketImgs = [];
-for (let i=0;i<=10;i++){ /////////////////////?? change to 10 and make more baskets! +++++++++++++++++++++++++++++
+for (let i=0;i<=11;i++){
     basketImgs[i] = new Image();
     basketImgs[i].src = 'img/baskets/basket' + i.toString() + '.png';
 }
 
 var backgroundImg = new Image(); //background image
-backgroundImg.src = 'img/background.png'; //image source //+++++++++++++++++++++++++++++change image source
+backgroundImg.src = 'img/background.png'; //image source 
 
 //after background image load:
 backgroundImg.onload = function(){
@@ -79,17 +79,15 @@ var Basket = {
     width: basketW, //width of basket
     height: basketH, //height of basket
     move: function(){
-        if (key[37]){ //if left is pressed
+        if (key[37]){ //if left is pressed:
             this.xPos -=25; //decrease x pos 
             
-            //stop at canvas's left edge:
-            if(this.xPos <0){ this.xPos = 0; }
+            if(this.xPos <0){this.xPos = 0;}  //stop at canvas's left edge
                
-        }else if (key[39]){ //if right is pressed
+        }else if (key[39]){ //if right is pressed:
             this.xPos += 25; //increase x pos
 
-            //stop at canvas's right edge:
-            if(this.xPos > (canvasW - this.width)){ this.xPos = canvasW - this.width; } 
+            if(this.xPos > (canvasW - this.width)){ this.xPos = canvasW - this.width; } //stop at canvas's right edge
         }
     }
 };
@@ -140,16 +138,15 @@ function Apple(xPos, yPos, i){
         && this.yPos < (Basket.yPos + Basket.height) && (this.yPos + this.height) > Basket.yPos
         && this.canScore){
             score++; //add to score 
-           //////////////////////////////////////////////////////////////
-            if (score <10){    
-                
-               // if (score < 8) {
-                    Basket.img.src=basketImgs[score].src; 
-               // }
-
-               score = "0" + score; //add leading 0
+            
+            if (score <10){ //if score is less than 10:
+                Basket.img.src = basketImgs[score].src; //update basket img
+                score = "0" + score; //add leading 0
+            }else{ //score is >= 10:
+                if(score%2 == 0){ Basket.img.src = basketImgs[10].src; } //update to this img when an even score
+                else{ Basket.img.src = basketImgs[11].src; } //update to this img when an odd score
             }
-            //////////////////////////////////////////////////////////////
+
             document.getElementById("score").innerHTML = score; //show score
             appleCtxs[i].globalAlpha = 0; //remove apple from screen
             this.reset(); //reset apple 
@@ -182,11 +179,11 @@ function animate(timestamp){
     progress = timestamp - start; //track progress
     
     //draw background:
-    backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    backgroundCtx.clearRect(0, 0, canvasW, canvasH); //clear background canvas
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
 
     //draw basket:
-    basketCtx.clearRect(0, 0, canvasW, canvasH); //clear canvas
+    basketCtx.clearRect(0, 0, canvasW, canvasH); //clear basket canvas
     Basket.move(); //move basket
     basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
 
@@ -212,7 +209,7 @@ function animate(timestamp){
             if (appleCtxs[i].globalAlpha <= 0.01){ apples[i].reset(); } //reset apple when faded
         }
 
-        appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear canvas
+        appleCtxs[i].clearRect(0, 0, canvasW, canvasH); //clear apple canvas
         appleCtxs[i].drawImage(apples[i].img, apples[i].xPos, apples[i].yPos, apples[i].width, apples[i].height); //draw apple
     }
 
@@ -225,7 +222,7 @@ function animate(timestamp){
 var time = 0; //time
 
 function startTimer(){
-    time = 3; //(re)set time +++++++++30
+    time = 30; //(re)set time
     document.getElementById("timer").innerHTML = time; //show starting time
     
     let timer = setInterval(function(){ 
@@ -258,10 +255,8 @@ function startGame(){
         apples.push(apple); //add apple to array 
     }
 
-    //================================================
     startTimer(); //start game timer
     requestAnimationFrame(animate); //animate game
-    //================================================
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -301,10 +296,11 @@ replayBtn.onclick = function() {
     document.getElementById("score").innerHTML = "00"; //show score as 00
     document.getElementById("timer").style.color = "#808080"; //reset timer colour
     score = 0; //reset score counter
-    apples.length = 0; //flush apples array
+    apples.length = 0; //reset apples array
     start = 0; //reset animation start time
     progress = 0; //reset animation progress
     animationFrameRef = null; //reset animationFrame reference
+    Basket.img.src = basketImgs[0].src; //reset basket img
 
     startGame(); //start game
 }

@@ -10,17 +10,18 @@
 	</head>
 
 	<!--<body onload = "showIntroModal()"> <!--show intro modal on page load-->
-		<body onload = "showScoreModal();">
+		<!--<body onload = "showScoreModal();">-->
+				<body onload = "showIntroModal()">
 		<!-------------------------------------------------------------------------------------
 		intro modal:-->
 
 		<div id="intro-modal" class="modal">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="header-title">Apple Catch</h1>
+					<h1 class="modal-title">Apple Catch</h1>
 				</div>
 				<div class="modal-body">
-					<img src="img/test8.png" height="100%" width="100%">
+					<img src="img/rules.png" height="100%" width="100%">
 				</div>
 				<div class="modal-footer">
 					<button id="play-button" class="footer-button">Play</button>
@@ -41,7 +42,6 @@
 					<div class = "test">
 						<img src="img/scoreTest.png" height="100%" width="100%">
 					</div>
-					
 				</div>
 				<div class="modal-footer">
 					<button id="replay-button" class="footer-button">Play again?</button>
@@ -53,19 +53,17 @@
 		canvas layers:-->
 
 		<div class="canvas-container">
-			<canvas id="basket"  class="layer3" width="873" height="640"></canvas>
-			<canvas id="apple1"  class="layer2" width="873" height="640"></canvas>  
-			<canvas id="apple2"  class="layer2" width="873" height="640"></canvas>
-			<canvas id="apple3"  class="layer2" width="873" height="640"></canvas>  
-			<canvas id="apple4"  class="layer2" width="873" height="640"></canvas>  
-			<canvas id="apple5"  class="layer2" width="873" height="640"></canvas>    
-			<canvas id="background"  class="layer1" width="873" height="640" ></canvas>
+			<canvas id="basket" class="layer3" width="873" height="640"></canvas>
+			<canvas id="apple1" class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple2" class="layer2" width="873" height="640"></canvas>
+			<canvas id="apple3" class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple4" class="layer2" width="873" height="640"></canvas>  
+			<canvas id="apple5" class="layer2" width="873" height="640"></canvas>    
+			<canvas id="background" class="layer1" width="873" height="640"></canvas>
 			<div id="timer" class="layer3"></div>
 			<div id="score" class="layer3"></div>
 		</div>
 	
-
-
 	</body>
 
 </html>
