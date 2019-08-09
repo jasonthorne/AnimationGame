@@ -129,11 +129,11 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	/*background-image: url("img/a.png");
 	width: 200px;
 	height: 200px;*/
-	position: relative;
-	/*height: 100%;_*/
-	height: 500px;
-	width: 500px;
-	margin: auto; /* CENTER IMG TEST */
+	/*position: relative; ///////////////////*/
+	/*height: 100%;*/
+	/*height: 500px;*/
+	/*width: 500px;*/
+	/*margin: auto; /* CENTER IMG TEST */
 }
 
 /*modal footer*/
@@ -251,9 +251,27 @@ canvas layers within container
 	height: 100%;
 }*/
 
+.testDiv{
+	position: relative;
+	margin: auto;
+	width: 400px;
+	height: 300px;
+	/*width: 400px;
+	height: 300px;*/
+}
+
 .testImg{
-	position: absolute;
+	/*position: absolute;
 	margin: auto;
 	width: 100%;
-	height: 100%;
+	height: 100%;   */
+	position: absolute;
+	display: block;
+	/*margin-left: auto;
+	margin-right: auto;*/
+	margin: auto;
+	/*top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);*/
 }
