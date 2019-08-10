@@ -124,7 +124,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 .modal-body {
 	/*padding: 2px 16px;*/
 	/*padding: 4px;*/
-	background-color:#EEF7EE;
+	/*background-color:#EEF7EE;++++++++++REMOVED FOR SCORE MODAL (replace again for into modal)*/
 	/*text-align: center;*/
 	/*background-image: url("img/a.png");
 	width: 200px;
