@@ -79,13 +79,20 @@ body{
 	margin: auto;
 	padding: 0;
 	/*border: 1px solid #888;*/
-	width: 35%; /*40%*/
+	/*width: 35%; /*40%*/
 	/*height: 626px; /* ++++++++++++++++++++++++++++++++ADDED FOR BODY (for score within body)*/ 
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	/*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
 	-webkit-animation-name: animatetop;
 	-webkit-animation-duration: 0.4s;
 	animation-name: animatetop;
 	animation-duration: 0.4s
+}
+
+/*modal content for into modal */
+#intro-modal .modal-content{
+	background-color:#EEF7EE;
+	width: 35%;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 /*modal animation*/
@@ -121,7 +128,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 */
 
 /*modal body*/
-.modal-body {
+.modal-body { /*???????????????????????????????????????????*/
 	/*padding: 2px 16px;*/
 	/*padding: 4px;*/
 	/*background-color:#EEF7EE;++++++++++REMOVED FOR SCORE MODAL (replace again for into modal)*/
@@ -129,7 +136,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	/*background-image: url("img/a.png");
 	width: 200px;
 	height: 200px;*/
-	position: relative;
+	position: relative; /*???????????????????????????????????????????*/
 	/*height: 100%;*/
 	/*height: 500px;*/
 	/*width: 500px;*/
@@ -137,6 +144,10 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	/*height: 313px;
 	width: 501px;*/
 }
+
+
+
+
 
 /*modal footer*/
 .modal-footer {
@@ -147,7 +158,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	/* display: grid;
 	grid-template-columns: 1fr 1fr*/
 	text-align: center; 
-	position: relative; 
+	position: relative; /*???????????????????????????????????????????*/
 }
 
 /*modal button*/
