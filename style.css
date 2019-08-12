@@ -164,6 +164,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	text-align: center; 
 	position: relative; /*???????????????????????????????????????????*/
 	/*border-radius: 0px 0px 15px 15px;*/
+	/*width: 30%; */
 }
 
 /*modal button*/
@@ -277,7 +278,7 @@ canvas layers within container
 	height: 300px;*/
 }
 
-.testImg{ /*++++++++++++++++++++++++++++++++++++CHANGE NAME :P */
+.score-modal-Img{ /*++++++++++++++++++++++++++++++++++++CHANGE NAME :P */
 	/*position: absolute;
 	margin: auto;
 	width: 100%;
@@ -296,3 +297,14 @@ canvas layers within container
 	transform: translate(-50%, -50%);*/
 	border-radius: 15px;
 }
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++
+overflow: auto;
+
+https://www.w3schools.com/cssref/pr_pos_overflow.asp
+
+https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
+
+
+*/
