@@ -5,3 +5,14 @@ https://x10hosting.com/sso/login
 https://x10hosting.com/
 
 
+
+
+db connecting:
+
+
+https://x10hosting.com/wiki/How_to_Create_a_MySQL_Database_and_User
+
+https://x10hosting.com/wiki/How_to_connect_to_a_MySQL_database
+
+
+https://x10hosting.com/community/threads/how-to-connect-my-php-script-to-database.147757/

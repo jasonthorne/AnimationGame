@@ -75,11 +75,11 @@ body{
 /*modal content*/
 .modal-content {
 	position: relative;
-   /* background-color: #fefefe; */
+   /*background-color: #fefefe;*/
 	margin: auto;
 	padding: 0;
 	/*border: 1px solid #888;*/
-	/*width: 35%; /*40%*/
+	/*width: 35%; /*40%*/ /*++++++++++++++++++++++++++++++++WAS 35!! CHECK THIS AT HOME ++++++++++++++*/
 	/*height: 626px; /* ++++++++++++++++++++++++++++++++ADDED FOR BODY (for score within body)*/ 
 	/*box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);*/
 	-webkit-animation-name: animatetop;
@@ -90,10 +90,11 @@ body{
 
 /*modal content for into modal */
 #intro-modal .modal-content{
-	background-color:#EEF7EE;
-	width: 35%;
+	background-color: #fefefe;
+	width: 30%; /* ++++++++++++++++++++++++++++++++WAS 35!! CHECK THIS AT HOME ++++++++++++++*/
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 }
+
 
 /*modal animation*/
 @-webkit-keyframes animatetop {
@@ -113,13 +114,15 @@ body{
 	background-color: #5cb85c;
 	color: #ffffff;
 	text-align: center;
+	/*border-radius: 15px 15px 0px 0px;*/
+	
 }
 
 /*modal title*/
 .modal-title{
 	/*font-family: 'Bubblegum Sans', cursive;*/
 	font-family: cursive;
-	font-size: 30px;
+	/*font-size: 30px;*/ /* +++++++++++++++++++++++CHECK THIS AT HOME */
 }
 
 
@@ -143,6 +146,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	/*margin: auto; /* CENTER IMG TEST */
 	/*height: 313px;
 	width: 501px;*/
+	/*border-radius: 15px 15px 0px 0px;*/
 }
 
 
@@ -159,6 +163,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	grid-template-columns: 1fr 1fr*/
 	text-align: center; 
 	position: relative; /*???????????????????????????????????????????*/
+	/*border-radius: 0px 0px 15px 15px;*/
 }
 
 /*modal button*/
@@ -272,21 +277,22 @@ canvas layers within container
 	height: 300px;*/
 }
 
-.testImg{
+.testImg{ /*++++++++++++++++++++++++++++++++++++CHANGE NAME :P */
 	/*position: absolute;
 	margin: auto;
 	width: 100%;
 	height: 100%;   */
-	position: absolute;
+	/*position: absolute;*/
 	display: block;
-	width: 100%;
-	height: 100%;  
+	width: 378px;
+	height: 548px;
 	/*margin-left: auto;
 	margin-right: auto;*/
 	margin: auto;
-	
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	/*top: 50%;
     left: 50%;
     margin-right: -50%;
-    transform: translate(-50%, -50%);*/
+	transform: translate(-50%, -50%);*/
+	border-radius: 15px;
 }
