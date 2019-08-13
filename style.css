@@ -172,7 +172,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	background-color: #008080; 
 	border: none;
 	color: #ffffff;
-	padding: 16px 32px;
+	/*padding: 16px 32px;*/
 	/*text-align: center;*/
 	/*float: left;*/
 	/*text-decoration: none;*/
@@ -192,6 +192,11 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 .modal-button:hover {
 	background-color: #006666;
 	color: #ffffff;
+}
+
+/*play button*/
+#play-button{
+	padding: 16px 32px;
 }
 
 
@@ -251,31 +256,6 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 
 }
 
-/*container for elements
-.canvas-container {
-	padding-top: 8px;
-	position: relative;
-	margin: auto;
-	width: 873px;
-	height: 640px;
-}
-  
-canvas layers within container
-.canvas-container > canvas {
-	position: absolute;
-	margin: auto;
-	width: 100%;
-	height: 100%;
-}*/
- 
-.testDiv{ /*++++++++++++++++++++++++++++REMOVE++++++++++++++*/
-	position: relative;
-	margin: auto;
-	width: 501px;
-	height: 313px;
-	/*width: 400px;
-	height: 300px;*/
-}
 
 .score-modal-img{ /*++++++++++++++++++++++++++++++++++++CHANGE NAME :P */
 	/*position: absolute;
@@ -310,46 +290,39 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
   .TEST1 {
-	/*grid-area: header;*/
 	background-color: aqua;
+	/*margin: auto;
+	width: 100%;*/
   }
 
   .TEST2 {
-	/*grid-area: main;*/
 	background-color: yellow;
+	/*margin: auto;
+	width: 100%;*/
   }
 
   .TEST3 {
-	/*grid-area: sidebar;*/
 	background-color: blueviolet;
+	/*margin: auto;
+	width: 100%;*/
   }
 
   .TEST4 {
-	/*grid-area: footer;*/
 	background-color: purple;
+	margin: auto;
+	/*width: 100%;*/
   }
 
 
 .score-modal-container {
 	margin: auto;
-	display: grid;
 	background-image:url("img/blackBoard60pc.png");
 	background-repeat:no-repeat;
 	width: 378px;
 	height: 548px;
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	border-radius: 15px;
-
-	/*
-	grid-template-columns: 50px 50px 50px 50px;
-  	grid-template-rows: auto;
-  	grid-template-areas: 
-    "header header header header"
-    "main main . sidebar"
-    "footer footer footer footer";
-	*/
-
-	grid-template-rows: 40px 40px auto 40px;
-
+	display: grid;
+	grid-template-rows: 45px 45px auto 80px;
 
   }
