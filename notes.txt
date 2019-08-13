@@ -1,5 +1,19 @@
 
 
+
+
+accordion effect:
+https://www.w3schools.com/w3css/w3css_accordions.asp
+
+
+
+
+hand icon:
+https://icons8.com/icons/set/you
+
+
+
+
 https://stackoverflow.com/questions/14004117/create-div-and-append-div-dynamically
 
 
