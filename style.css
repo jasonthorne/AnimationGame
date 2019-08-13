@@ -135,11 +135,11 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	/*padding: 2px 16px;*/
 	/*padding: 4px;*/
 	/*background-color:#EEF7EE;++++++++++REMOVED FOR SCORE MODAL (replace again for into modal)*/
-	text-align: center;
+	text-align: center; /*NEEDED FOR SCORE CONTAINER */
 	/*background-image: url("img/a.png");
 	width: 200px;
 	height: 200px;*/
-	position: relative; /*???????????????????????????????????????????*/
+	/*position: relative; /*???????????????????????????????????????????*/
 	/*height: 100%;*/
 	/*height: 500px;*/
 	/*width: 500px;*/
@@ -185,7 +185,6 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	cursor: pointer;
 	border-radius: 4px;
 	font-weight: bold;
-	/*overflow: hidden; /*from ripple effect */
 	outline: none;
 }
 
@@ -268,8 +267,8 @@ canvas layers within container
 	width: 100%;
 	height: 100%;
 }*/
-
-.testDiv{
+ 
+.testDiv{ /*++++++++++++++++++++++++++++REMOVE++++++++++++++*/
 	position: relative;
 	margin: auto;
 	width: 501px;
@@ -310,8 +309,47 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 */
 
 
-.grid-container {
+  .TEST1 {
+	/*grid-area: header;*/
+	background-color: aqua;
+  }
+
+  .TEST2 {
+	/*grid-area: main;*/
+	background-color: yellow;
+  }
+
+  .TEST3 {
+	/*grid-area: sidebar;*/
+	background-color: blueviolet;
+  }
+
+  .TEST4 {
+	/*grid-area: footer;*/
+	background-color: purple;
+  }
+
+
+.score-modal-container {
+	margin: auto;
 	display: grid;
-	grid-template-columns: 200px;
-	position: relative;
+	background-image:url("img/blackBoard60pc.png");
+	background-repeat:no-repeat;
+	width: 378px;
+	height: 548px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	border-radius: 15px;
+
+	/*
+	grid-template-columns: 50px 50px 50px 50px;
+  	grid-template-rows: auto;
+  	grid-template-areas: 
+    "header header header header"
+    "main main . sidebar"
+    "footer footer footer footer";
+	*/
+
+	grid-template-rows: 40px 40px auto 40px;
+
+
   }
