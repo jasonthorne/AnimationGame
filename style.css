@@ -199,6 +199,11 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	padding: 16px 32px;
 }
 
+/*replay-button*/
+#replay-button{
+	padding: 8px 16px;
+}
+
 
 /*============================================================*/
 
@@ -308,9 +313,10 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
   }
 
   .TEST4 {
-	background-color: purple;
+	/*background-color: purple;*/
 	margin: auto;
 	/*width: 100%;*/
+	margin-top: 0px;
   }
 
 
@@ -323,6 +329,6 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
 	border-radius: 15px;
 	display: grid;
-	grid-template-rows: 45px 45px auto 80px;
+	grid-template-rows: 45px 45px auto 70px;
 
   }
