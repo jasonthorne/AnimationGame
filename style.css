@@ -1,7 +1,7 @@
 
 * {
 	box-sizing: border-box; /*include padding & border in width & heights*/
-  }
+}
 
 /*default body properties */
 body{
@@ -290,9 +290,20 @@ https://www.w3schools.com/cssref/pr_pos_overflow.asp
 
 https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
-
 */
 
+.score-modal-container {
+	margin: auto;
+	background-image:url("img/blackBoard60pc.png");
+	background-repeat:no-repeat;
+	width: 378px;
+	height: 548px;
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+	border-radius: 15px;
+	display: grid;
+	grid-template-rows: 45px 45px auto 70px;
+
+}
 
   .TEST1 {
 	background-color: aqua;
@@ -312,7 +323,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	width: 100%;*/
   }
 
-  .TEST4 {
+  .replay-button-row {
 	/*background-color: purple;*/
 	margin: auto;
 	/*width: 100%;*/
@@ -320,15 +331,3 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
   }
 
 
-.score-modal-container {
-	margin: auto;
-	background-image:url("img/blackBoard60pc.png");
-	background-repeat:no-repeat;
-	width: 378px;
-	height: 548px;
-	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-	border-radius: 15px;
-	display: grid;
-	grid-template-rows: 45px 45px auto 70px;
-
-  }
