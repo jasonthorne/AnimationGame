@@ -317,13 +317,13 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	width: 100%;*/
   }
 
-  .TEST3 {
+  .scores-container {
 	background-color: blueviolet;
 	/*margin: auto;
 	width: 100%;*/
   }
 
-  .replay-button-row {
+  .replay-button-container {
 	/*background-color: purple;*/
 	margin: auto;
 	/*width: 100%;*/
