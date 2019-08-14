@@ -289,7 +289,7 @@ function showScoreModal(){
 
 
     /////////////////////////////////////////////////
-    for (let i=0; i<10; i++){
+    for (let i=0; i<6; i++){
         makeScores();
     }
 
@@ -316,14 +316,37 @@ replayBtn.onclick = function() {
 
 //----------------------------------------------------------------------------------------------------
 
-function makeScores(){
+function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
 
+    /*
     let scoreDiv = document.createElement("div"); //create a div element
     let divText = document.createTextNode("Hello World!"); //create text for div
     scoreDiv.appendChild(divText); //add text to div
 
     document.getElementById("scores-container").appendChild(scoreDiv); //add div to scores-container
+    */
 
+    //create a div for holding player name & score divs:
+    let scoreContainer = document.createElement("div"); //create div
+    scoreContainer.className = "score-container"; //give classname for styling
+
+    //create player name div:
+    let playerName = document.createElement("div"); //create div
+    playerName.className = "player-name"; //give classname for styling
+    let playerNameTxt = document.createTextNode("player's name"); //create text node for player name  //+++++++++++++++++++++++++++PULL FROM DB TO PROVIDE THIS!! 
+    playerName.appendChild(playerNameTxt); //add text to div
+
+    //create player score div:
+    let playerScore = document.createElement("div"); //create div
+    playerScore.className = "player-score"; //give classname for styling
+    let playerScoreTxt = document.createTextNode("player's score"); //create text node for player score  //+++++++++++++++++++++++++++PULL FROM DB TO PROVIDE THIS!! 
+    playerScore.appendChild(playerScoreTxt); //add text to div
+
+    //add playerName & playerScore to scoreContainer:
+    scoreContainer.appendChild(playerName);
+    scoreContainer.appendChild(playerScore);
+
+    document.getElementById("scores-container").appendChild(scoreContainer); //add div to scores-container
 
 
 
