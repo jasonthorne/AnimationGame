@@ -286,6 +286,15 @@ var replayBtn = document.getElementById("replay-button"); //replay button
 function showScoreModal(){
     scoreModal.style.display = "block"; //display scoreModal
     document.getElementById("final-score").innerHTML = score; //show final score
+
+
+    /////////////////////////////////////////////////
+    for (let i=0; i<10; i++){
+        makeScores();
+    }
+
+    ////////////////////////////////////////////////
+
 }
 
 //replay game:
@@ -306,3 +315,16 @@ replayBtn.onclick = function() {
 }
 
 //----------------------------------------------------------------------------------------------------
+
+function makeScores(){
+
+    let scoreDiv = document.createElement("div"); //create a div element
+    let divText = document.createTextNode("Hello World!"); //create text for div
+    scoreDiv.appendChild(divText); //add text to div
+
+    document.getElementById("scores-container").appendChild(scoreDiv); //add div to scores-container
+
+
+
+
+}
