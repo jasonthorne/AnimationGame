@@ -305,29 +305,57 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 }
 
-  .TEST1 {
+.TEST1 {
 	background-color: aqua;
 	/*margin: auto;
 	width: 100%;*/
-  }
+}
 
-  .TEST2 {
+.TEST2 {
 	background-color: yellow;
 	/*margin: auto;
 	width: 100%;*/
-  }
+}
 
-  .scores-container {
+.scores-container {
 	background-color: blueviolet;
-	/*margin: auto;
-	width: 100%;*/
-  }
+	/*margin: auto;*/
+	width: 100%;
+	/*display: grid;*/
+	overflow: auto;
+	/*grid-template-rows: 45px 45px auto 70px;*/
+}
 
-  .replay-button-container {
+.replay-button-container {
 	/*background-color: purple;*/
 	margin: auto;
 	/*width: 100%;*/
 	margin-top: 0px;
-  }
+}
 
 
+
+
+.testA {
+	background-color: green;
+	margin: auto;
+	width: 80%;
+}
+
+.testB {
+	background-color: red;
+	margin: auto;
+	width: 80%;
+}
+
+.testC {
+	background-color: gray;
+	margin: auto;
+	width: 80%;
+}
+
+.testD {
+	background-color: brown;
+	margin: auto;
+	width: 80%;
+}
