@@ -9,6 +9,10 @@ https://x10hosting.com/
 
 db connecting:
 
+https://x10hosting.com/support/mysql/create-database
+
+
+
 
 https://x10hosting.com/wiki/How_to_Create_a_MySQL_Database_and_User
 
@@ -16,3 +20,19 @@ https://x10hosting.com/wiki/How_to_connect_to_a_MySQL_database
 
 
 https://x10hosting.com/community/threads/how-to-connect-my-php-script-to-database.147757/
+
+
+------------------------
+TABLE:
+players
+
+player_name
+MAX: 20
+
+player_score
+MAX: 2
+
+Mack Flurry
+Taffy Crisp
+Kareem Egg
+Toby Lerone

@@ -1,4 +1,13 @@
 
+
+game sounds:
+https://felgo.com/game-resources/16-sites-featuring-free-game-sounds#_Freesound.org
+
+
+
+https://pngtree.com/freepng/cartoon-wooden-sign_2702935.html
+
+
 https://stackoverflow.com/questions/50950056/is-it-possible-to-dynamically-create-divs-using-only-html-css-and-javascript
 
 https://www.w3schools.com/jsref/met_document_createtextnode.asp
@@ -105,7 +114,7 @@ https://html5.litten.com/using-multiple-html5-canvases-as-layers/
 
 
 
-
+_jayDB
 /////////////USB STUFF///
 
 //persistant storage:

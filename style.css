@@ -354,6 +354,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*text-align: left;*/
 	float: left;
 	margin: 15px;
+	margin-right: 100px;
 }
 
 .player-score{
@@ -376,19 +377,6 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	margin: auto;
 	width: 80%;
 }
-
-.testC {
-	background-color: gray;
-	margin: auto;
-	width: 80%;
-}
-
-.testD {
-	background-color: brown;
-	margin: auto;
-	width: 80%;
-}
-
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*
