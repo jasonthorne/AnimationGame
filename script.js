@@ -126,7 +126,7 @@ function Apple(xPos, yPos, i){
         this.canScore = true; //reset ability to score
         this.canFadeOut = false; //prevent fade out 
         this.canFadeIn = true;  //allow fade in 
-        this.pauseTime = progress + applePauses.pickElement(); //reassign pause time
+        this.pauseTime = progress + applePauses.pickElement(); //re-assign pause time
     };
     this.fall = function(){ //falling apple
 
@@ -332,7 +332,7 @@ function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLA
     //player score div:
     let playerScore = document.createElement("div"); //create div
     playerScore.className = "player-score"; //give classname for styling
-    let playerScoreTxt = document.createTextNode("player's score"); //create text node for player score  //+++++++++++++++++++++++++++PULL FROM DB TO PROVIDE THIS!! 
+    let playerScoreTxt = document.createTextNode("00"); //create text node for player score  //+++++++++++++++++++++++++++PULL FROM DB TO PROVIDE THIS!! 
     playerScore.appendChild(playerScoreTxt); //add text to div
 
     //add playerName & playerScore to scoreContainer:

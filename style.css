@@ -346,17 +346,21 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .score-values{
 	background-color: purple;
 	/*display: inline-block;*/
-	/*margin: auto;*/
+	margin: auto;
 }
 
 .player-name{
 	background-color: red;
 	/*text-align: left;*/
+	float: left;
+	margin: 15px;
 }
 
 .player-score{
 	background-color: grey;
 	/*text-align: right;*/
+	float:right;
+	margin: 15px;
 }
 
 
