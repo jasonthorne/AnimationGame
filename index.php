@@ -3,6 +3,7 @@
     <head>
 		<meta charset="UTF=8">
 		<title>Apple Catch</title>
+		<?php include("scores.php"); ?>
 		<link href="https://fonts.googleapis.com/css?family=Bubblegum+Sans&display=swap" rel="stylesheet"> <!--Google font import-->
 		<link type="text/css" rel="stylesheet" href="style.css">
         <script type="text/javascript" src="script.js" defer > </script> <!-- 'defer' waits until page is loaded before execution-->
@@ -11,55 +12,7 @@
 	<!--<body onload = "showIntroModal()"> --> <!--show intro modal on page load-->
 	<body onload = "showScoreModal()">
 			<!------------------------	<body onload = "showScoreModal();">------------------------------------------------------------->
-		
-		<?php
-        $servername = "localhost";
-        $username = "########";
-        $password = "######";
-        $dbname = "#######";
-		
-		////////////////////
-		$testA = array();
-		$testB = array();
-		///////////////////
-		
-		
-		// Create connection
-		$conn = new mysqli($servername, $username, $password, $dbname);
-		// Check connection
-		if ($conn->connect_error) {
-			die("Connection failed: " . $conn->connect_error);
-		} 
-		
-		$sql = "SELECT player_name, player_score FROM players";
-		$result = $conn->query($sql);
-		
-		if ($result->num_rows > 0) {
-			// output data of each row
-			while($row = $result->fetch_assoc()) {
-				//echo "<br> player_name: ". $row["player_name"]. " - player_score: ". $row["player_score"]. "<br>";
-				array_push($testA, $row["player_name"]);
-				array_push($testB, $row["player_score"]);
-			
-			}
-		} else {
-			echo "0 results";
-		}
-			
-		$conn->close();
-		?> 
 
-        <script>
-
-            var testA2= <?php echo '["' . implode('", "', $testA ) . '"]' ?>;
-            var testB2= <?php echo '["' . implode('", "', $testB ) . '"]' ?>;
-            
-            console.log(testA2);
-            console.log(testB2);
-        </script>
-
-
-		
 		<!-------------------------------------------------------------------------------------
 		intro modal:-->
 
