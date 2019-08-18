@@ -10,8 +10,7 @@
 <body>
 
        
-      
-        
+   
        <div id="scores-container">
 
 	</div>
@@ -21,12 +20,10 @@
 
 	<script type="text/javascript">
 
-	
 	 
              makeScores();
 
-	  
-	  
+	 
 
 	</script>
 
