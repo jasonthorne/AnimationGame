@@ -6,6 +6,7 @@
 	<body>
         
         <?php
+
             $servername = "localhost";
             $username = "########";
             $password = "######";
@@ -30,7 +31,7 @@
             if ($result->num_rows > 0) {
                 // output data of each row
                 while($row = $result->fetch_assoc()) {
-                    echo "<br> player_name: ". $row["player_name"]. " - player_score: ". $row["player_score"]. "<br>";
+                   ///////////////// echo "<br> player_name: ". $row["player_name"]. " - player_score: ". $row["player_score"]. "<br>";
                     array_push($testA, $row["player_name"]);
                     array_push($testB, $row["player_score"]);
                 }
@@ -48,6 +49,8 @@
             
             console.log(testA2);
             console.log(testB2);
+
+            var woohoo = "bum;"
 
         </script> 
 	</body>

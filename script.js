@@ -319,8 +319,6 @@ replayBtn.onclick = function() {
 var testNameArray  = [ "bob",  "frank", "cuthbert" ];
 var testScoreArray  = [ 5,  3, 20 ];
    
-    
-
 function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
 
     //div for holding player name & score divs:
