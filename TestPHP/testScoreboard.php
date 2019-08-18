@@ -2,16 +2,18 @@
 <html>
 
 <head>
-	<script type="text/javascript" src="script.js" defer > </script>
+     <?php include("dbLogin.php"); ?>
 </head>
 <body>
 
 
 	<?php
-	$servername = "localhost";
-	$username = "########";
-	$password = "######";
-	$dbname = "#######";
+	
+       $servername = $dbLoginServername;
+       $username = $dbLoginUsername;
+       $password = $dbLoginPassword;
+       $dbname = $dbLoginDbname;
+
 
 	////////////////////////
 	$testA = array();
@@ -50,27 +52,23 @@
 
 	<script>
 
-	  
 	  var testA2= <?php echo '["' . implode('", "', $testA ) . '"]' ?>;
 	  var testB2= <?php echo '["' . implode('", "', $testB ) . '"]' ?>;
 	  
 	  console.log(testA2);
 	  console.log(testB2);
-	  
-	  //makeScores();
-	  
+	  /*
+	  for (let i=0; i<6; i++){
+        makeScores();
+	   }
+          */
 
+	  
 	</script>
 
 
 
-
-	<div id="scores-container">
-	<div>yo</div>
-	<div>yo</div>
-	<div>yo</div>
 	
-	</div>
 
 
 
