@@ -14,13 +14,16 @@
 			console.log(lowestScore);
 			//////////////////////////////////////////
 
-
+			makeScores();
 			//make array of score objects 
 			
 		}
 
 
 		function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
+
+
+			console.log(playerNames);
 
 
 			//div for holding player name & score divs:

@@ -55,9 +55,9 @@
 		<!--passing PHP variables to Javascript: -->
 		<script>
 			
-			var playerNames = <?php echo '["' . implode('", "', $playerNames ) . '"]' ?>; //passing player names
-			var playerScores = <?php echo '[' . implode(', ', $playerScores ) . ']' ?>; //passing player scores
-			var lowestScore = <?php echo $lowestScore ?>; //passing value of lowest score
+			 var playerNames = <?php echo '["' . implode('", "', $playerNames ) . '"]' ?>; //passing player names
+			 var playerScores = <?php echo '[' . implode(', ', $playerScores ) . ']' ?>; //passing player scores
+			 var lowestScore = <?php echo $lowestScore ?>; //passing value of lowest score
 		
 			/*
 			console.log(playerNames);
