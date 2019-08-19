@@ -190,7 +190,7 @@ function animate(timestamp){
     //draw apples:
     for (let i=0; i<apples.length; i++){
 
-        if (progress < apples[i].pauseTime) { //if apple can't yet fall
+        if (progress < apples[i].pauseTime) { //if apple can't yet fall 
             apples[i].canFall = false; //dont allow fall
         }else{ 
 
