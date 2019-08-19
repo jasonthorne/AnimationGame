@@ -1,8 +1,27 @@
 
 
+		///////+++++++++++++++++++++++++++++++++++++++++++
+		var testName = "bob";
+		var testScore = 11;
+		///////+++++++++++++++++++++++++++++++++++++++++++
+
+
+		function test(){
+
+			//////////////////////////////////////////
+			console.log(playerNames);
+			console.log(playerScores);
+			console.log(lowestScore);
+			//////////////////////////////////////////
+
+
+			//make array of score objects 
+			
+		}
 
 
 		function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
+
 
 			//div for holding player name & score divs:
 			let scoreVals = document.createElement("div"); //create div
@@ -25,6 +44,12 @@
 			scoreVals.appendChild(playerScore);
 			
 			document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
-
+			
+			/*
+			console.log("yo");
+			console.log(playerNames);
+			console.log(playerScores);
+			console.log(lowestScore);
+			*/
 		}
 	  
