@@ -1,5 +1,8 @@
 
 
+
+		 
+
 		///////+++++++++++++++++++++++++++++++++++++++++++
 		var testName = "bob";
 		var testScore = 11;
@@ -10,11 +13,12 @@
 
 			//////////////////////////////////////////
 			console.log(playerNames);
+			console.log("y");
 			console.log(playerScores);
-			console.log(lowestScore);
+			///console.log(lowestScore);
 			//////////////////////////////////////////
 
-			makeScores();
+			//makeScores();
 			//make array of score objects 
 			
 		}
@@ -23,7 +27,12 @@
 		function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
 
 
+			
+			console.log("yo");
 			console.log(playerNames);
+			console.log(playerScores);
+			console.log(lowestScore);
+			
 
 
 			//div for holding player name & score divs:

@@ -3,9 +3,7 @@
 
 <head>
        <?php include("testScoreboard.php"); ?>
-	   <!--<script type="text/javascript" src="testScript.js"> </script>-->
-
-	
+	   <script type="text/javascript" src="testScript.js"> </script>
 </head>
 <body>
 
@@ -15,17 +13,19 @@
 
 	   </div>
 
-        
-
-
-	<script type="text/javascript">
+	   <script type="text/javascript">
 
 	 		/////does any script need to be here (prob not!)?????????????????????????????????????????????????
-            //makeScores();
+            makeScores();
 
 			 //console.log(playerNames);
 
 	</script>
+
+        
+
+
+	
 
 
 	
