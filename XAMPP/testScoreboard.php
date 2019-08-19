@@ -2,7 +2,8 @@
 <html>
 
 <head>
-     <?php include("dbLogin.php"); ?>
+	 <?php include("dbLogin.php"); ?>
+	 <script type="text/javascript" src="testScript.js"> </script>
 </head>
 <body>
 
@@ -15,53 +16,66 @@
        $dbname = $dbLoginDbname;
 
 
-	////////////////////////
-	$testA = array();
-	$testB = array();
-	///////////////////
+		////////////////////////
+		$playerNames = array();
+		$playerScores = array();
+		$lowestScore = PHP_INT_MAX;
+		$tempScore = 0;
+		///////////////////
 
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	} 
+		// Create connection
+		$conn = new mysqli($servername, $username, $password, $dbname);
+		// Check connection
+		if ($conn->connect_error) {
+			die("Connection failed: " . $conn->connect_error);
+		} 
 
-	$sql = "SELECT player_name, player_score FROM players";
-	$result = $conn->query($sql);
+		$sql = "SELECT player_name, player_score FROM players";
+		$result = $conn->query($sql);
 
-	if ($result->num_rows > 0) {
-		// output data of each row
-		while($row = $result->fetch_assoc()) {
-			echo "<br> player_name: ". $row["player_name"]. " - player_score: ". $row["player_score"]. "<br>";
-			array_push($testA, $row["player_name"]);
-			array_push($testB, $row["player_score"]);
-	  
-		}
-	} else {
-		echo "0 results";
-	}
+		if ($result->num_rows > 0) {
+			// output data of each row
+			while($row = $result->fetch_assoc()) {
+				//echo "<br> player_name: ". $row["player_name"]. " - player_score: ". $row["player_score"]. "<br>"; ///////////////////////////
+
+				//store row data:
+				array_push($playerNames, $row["player_name"]);
+				array_push($playerScores, $row["player_score"]);
+				
+				//find & store lowest score:
+				$tempScore = $row["player_score"];
+				if ($tempScore < $lowestScore) {
+					$lowestScore = $tempScore;
+				}
 		
-	$conn->close();
+			}
+		} else {
+			echo "0 results";
+		}
+
+		$conn->close();
 	?> 
 
 
-
-
-
+	<!--passing PHP variables to Javascript: -->
 	<script>
-
-	  var testA2= <?php echo '["' . implode('", "', $testA ) . '"]' ?>;
-	  var testB2= <?php echo '["' . implode('", "', $testB ) . '"]' ?>;
+		
+		var playerNames = <?php echo '["' . implode('", "', $playerNames ) . '"]' ?>; //passing player names
+		var playerScores = <?php echo '[' . implode(', ', $playerScores ) . ']' ?>; //passing player scores
+		var lowestScore = <?php echo $lowestScore ?>; //passing value of lowest score
 	  
-	  console.log(testA2);
-	  console.log(testB2);
+		console.log(playerNames);
+		console.log(playerScores);
+		console.log(lowestScore);
+
+
 	  /*
 	  for (let i=0; i<6; i++){
         makeScores();
 	   }
           */
+		  //makeScores();
 
 	  
 	</script>

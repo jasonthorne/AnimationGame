@@ -24,7 +24,6 @@
 			scoreVals.appendChild(playerName);
 			scoreVals.appendChild(playerScore);
 			
-			//return scoreVals;
 			document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
 
 		}
