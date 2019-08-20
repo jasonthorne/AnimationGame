@@ -20,7 +20,7 @@
 
 			 //console.log(playerNames);
 
-	</script>
+		</script>
 
         
 

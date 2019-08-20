@@ -47,6 +47,8 @@
 			} else {
 				echo "0 results";
 			}
+			
+			////////////$sql = null;
 
 			$conn->close();
 		?> 

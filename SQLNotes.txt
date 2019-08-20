@@ -1,0 +1,9 @@
+
+defer examples:
+https://flaviocopes.com/javascript-async-defer/
+
+insert multiple data into table:
+https://www.tutorialrepublic.com/php-tutorial/php-mysql-insert-query.php
+
+delete all data from table:
+https://stackoverflow.com/questions/10337158/how-can-i-use-php-to-delete-all-records-in-a-mysql-database/
