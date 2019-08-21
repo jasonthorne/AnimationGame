@@ -294,12 +294,22 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .TEST1 {
 	background-color: aqua;
-	/*margin: auto;
-	width: 100%;*/
+	/*background-image:url("img/signTest.png");
+	background-repeat:no-repeat;
+	margin: auto;
+	width: 378px;
+	height: 100px;*/
+	/*width: 100%;*/
 }
 
 .TEST2 {
-	background-color: yellow;
+	/*background-color: yellow;*/
+	background-image:url("img/plateTest.png");
+	background-repeat:no-repeat;
+	margin: auto;
+	width: 378px;
+	height: 60px;
+	display: block;
 	/*margin: auto;
 	width: 100%;*/
 }
@@ -311,6 +321,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	display: grid;
 	overflow: auto;
 	/*grid-template-rows: auto;*/
+	margin-top: 5px;
 }
 
 .replay-button-container {
@@ -319,7 +330,6 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*width: 100%;*/
 	margin-top: 0px;
 }
-
 
 .score-values{
 	background-color: purple;
@@ -331,15 +341,16 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	background-color: red;
 	/*text-align: left;*/
 	float: left;
-	margin: 15px;
-	margin-right: 100px;
+	margin: 5px;
+	margin-right: 70px;
+	/*margin-left: 5px;*/
 }
 
 .player-score{
 	background-color: grey;
 	/*text-align: right;*/
 	float:right;
-	margin: 15px;
+	margin: 5px;
 }
 
 
