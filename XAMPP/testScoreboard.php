@@ -8,7 +8,7 @@
 	<body>
 
 		<?php
-
+				
 			$servername = $dbLoginServername;
 			$username = $dbLoginUsername;
 			$password = $dbLoginPassword;
@@ -18,11 +18,14 @@
 			$playerScores = array();
 			$lowestScore = PHP_INT_MAX;
 			
+			//STORE SOME ERROR MSG HERE IF CONNNECTIN DOESNT WORK. CHABGE SCOREBOARD LAYOUT IF NO CONNECTION, GIVING THIS STORED MESSAGE.
+			
 			// Create connection
 			$conn = new mysqli($servername, $username, $password, $dbname);
 			// Check connection
 			if ($conn->connect_error) {
 				die("Connection failed: " . $conn->connect_error);
+				//add to a php > js boolean to show connection fail. (for suitable changes to display).
 			} 
 
 			$sql = "SELECT player_name, player_score FROM players";

@@ -304,15 +304,27 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .TEST2 {
 	/*background-color: yellow;*/
-	background-image:url("img/plateTest.png");
+	/*background-image:url("img/plateTest.png");
 	background-repeat:no-repeat;
 	margin: auto;
 	width: 378px;
 	height: 60px;
-	display: block;
+	display: block;*/
 	/*margin: auto;
 	width: 100%;*/
+	margin: auto;
 }
+
+
+
+.plaque {
+	background-image:url("img/plateTest.png");
+	background-repeat:no-repeat;
+	/*margin: auto;*/
+	width: 10px;
+	height: 20px;
+}
+
 
 #scores-container {
 	/*background-color: blueviolet;*/
