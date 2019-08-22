@@ -216,27 +216,34 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 
 /*============================================================*/
 
-/*final score*/
+/*final score*/  /* ++++++++++++++++++++++++++NEEDED FOR JS (as score is being passed to this)*/
 #final-score{
 	/*text-align: center; */
-	z-index: 5;
-	position: absolute;
 	/*margin: auto;
 	height: 100%;g\
 	width: 100%;
 	display: inline-block;
 	vertical-align: middle;*/
+
+
+	
+	z-index: 5;
+	position: absolute;
+	
 	margin-left: 50%;
 	margin-top: 25%;
-
+	
 }
 
+/*
 .test{
-	/*display: inline-block;*/
+
 	position: absolute;
 	margin-left: 50%;
 	margin-top: 50%;
 }
+*/
+
 
 /*============================================================*/
 /*???????????????????????????????????????????????*/
@@ -293,7 +300,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 }
 
 .TEST1 {
-	background-color: aqua;
+	/*background-color: aqua;*/
 	/*background-image:url("img/signTest.png");
 	background-repeat:no-repeat;
 	margin: auto;
@@ -334,6 +341,11 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .plaque-font{
 	display: table-cell; /* for centering of font */
 	vertical-align: middle; /* for centering of font */
+
+	/*color: #3B5957;
+    background-color: #5D8D89;*/
+	/*text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
+	font-size: 17px;*/
 }
 
 
@@ -356,25 +368,25 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 }
 
 .score-values{
-	background-color: purple;
-	/*display: inline-block;*/
+	/*background-color: purple;*/
 	margin: auto;
 }
 
 .player-name{
-	background-color: red;
-	/*text-align: left;*/
+	/*background-color: red;*/
 	float: left;
 	margin: 5px;
 	margin-right: 70px;
-	/*margin-left: 5px;*/
+
+	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
 }
 
 .player-score{
-	background-color: grey;
-	/*text-align: right;*/
+	/*background-color: grey;*/
 	float: right;
 	margin: 5px;
+
+	color: grey; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
 }
 
 
