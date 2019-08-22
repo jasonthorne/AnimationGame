@@ -30,7 +30,7 @@ TABLE:
 players
 
 player_name
-MAX: 20
+MAX: 20 (30 for xampp)
 
 player_score
 MAX: 2
