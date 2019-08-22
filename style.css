@@ -129,7 +129,7 @@ body{
 
 /*modal title*/
 .modal-title{
-	/*font-family: 'Bubblegum Sans', cursive;*/
+	font-family: 'Bubblegum Sans', cursive;
 	font-family: cursive;
 	/*font-size: 30px;*/ /* +++++++++++++++++++++++CHECK THIS AT HOME */
 }
