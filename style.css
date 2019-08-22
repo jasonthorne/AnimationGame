@@ -302,7 +302,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*width: 100%;*/
 }
 
-.TEST2 {
+.plaque-row {
 	/*background-color: yellow;*/
 	/*background-image:url("img/plateTest.png");
 	background-repeat:no-repeat;
@@ -315,6 +315,8 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	margin: auto;
 	/*text-align: center;*/
 	/*position: relative;*/
+	margin-top: 5px;
+	margin-bottom: 5px;
 }
 
 
@@ -325,14 +327,13 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*margin: auto;*/
 	width: 82px;
 	height: 36px;
-	margin-top: 5px;
-	margin-bottom: 5px;
 	/*text-align: center;*/
-	
+	display: table; /* for centering of font */
 }
 
-.plaque-test{
-	/*vertical-align: middle;*/
+.plaque-font{
+	display: table-cell; /* for centering of font */
+	vertical-align: middle; /* for centering of font */
 }
 
 
