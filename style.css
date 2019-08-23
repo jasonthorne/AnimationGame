@@ -387,6 +387,8 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	margin-right: 70px;
 
 	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
+
+	font-family: 'Coming Soon', cursive;
 }
 
 .player-score{
@@ -395,6 +397,8 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	margin: 2px;
 
 	color: grey; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
+
+	font-family: 'Coming Soon', cursive;
 }
 
 

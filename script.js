@@ -314,12 +314,14 @@ replayBtn.onclick = function() {
     startGame(); //start game
 }
 
+
+
 //----------------------------------------------------------------------------------------------------
 
 var testNameArray  = [ "bob",  "frank", "cuthbert" ];
 var testScoreArray  = [ 5,  3, 20 ];
    
-function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
+function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
 
     //div for holding player name & score divs:
     let scoreVals = document.createElement("div"); //create div
@@ -328,7 +330,7 @@ function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLA
     //player name div:
     let playerName = document.createElement("div"); //create div
     playerName.className = "player-name"; //give classname for styling
-    let playerNameTxt = document.createTextNode("players_name________"); //create text node for player name  //++THIS IS 20 CHARS LONG ATM+++PULL FROM DB TO PROVIDE THIS!! 
+    let playerNameTxt = document.createTextNode("abcdefghijklmnopqrst"); //("players_name________"); //create text node for player name  //++THIS IS 20 CHARS LONG ATM+++PULL FROM DB TO PROVIDE THIS!! 
     playerName.appendChild(playerNameTxt); //add text to div
 
     //player score div:
