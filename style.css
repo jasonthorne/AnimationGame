@@ -129,8 +129,11 @@ body{
 
 /*modal title*/
 .modal-title{
-	font-family: 'Bubblegum Sans', cursive;
-	font-family: cursive;
+
+	font-family: 'Luckiest Guy', cursive;
+
+	/*font-family: 'Bubblegum Sans', cursive;*/
+	/*font-family: cursive;*/
 	/*font-size: 30px;*/ /* +++++++++++++++++++++++CHECK THIS AT HOME */
 }
 
@@ -302,19 +305,22 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .TEST1 {
 	/*background-color: aqua;*/
 
-
+	
 	background-image:url("img/redTest12pc.png");
 	background-repeat:no-repeat;
 	margin: auto;
 	width: 226px;
 	height: 75px;
+	
 
-	/*background-image:url("img/signTest.png");
+	/*
+	background-image:url("img/signTest40pc.png");
 	background-repeat:no-repeat;
 	margin: auto;
-	width: 378px;
-	height: 100px;*/
-	/*width: 100%;*/
+	width: 240px;
+	height: 140px;
+	*/
+
 }
 
 .plaque-row {
@@ -384,7 +390,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*background-color: red;*/
 	float: left;
 	margin: 2px;
-	margin-right: 70px;
+	margin-right: 80px;
 
 	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
 
@@ -396,7 +402,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	float: right;
 	margin: 2px;
 
-	color: grey; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
+	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
 
 	font-family: 'Coming Soon', cursive;
 }
