@@ -328,7 +328,7 @@ function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOLSING PLA
     //player name div:
     let playerName = document.createElement("div"); //create div
     playerName.className = "player-name"; //give classname for styling
-    let playerNameTxt = document.createTextNode("player's name"); //create text node for player name  //+++++++++++++++++++++++++++PULL FROM DB TO PROVIDE THIS!! 
+    let playerNameTxt = document.createTextNode("players_name________"); //create text node for player name  //++THIS IS 20 CHARS LONG ATM+++PULL FROM DB TO PROVIDE THIS!! 
     playerName.appendChild(playerNameTxt); //add text to div
 
     //player score div:

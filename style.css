@@ -301,6 +301,14 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .TEST1 {
 	/*background-color: aqua;*/
+
+
+	background-image:url("img/redTest12pc.png");
+	background-repeat:no-repeat;
+	margin: auto;
+	width: 226px;
+	height: 75px;
+
 	/*background-image:url("img/signTest.png");
 	background-repeat:no-repeat;
 	margin: auto;
@@ -322,7 +330,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	margin: auto;
 	/*text-align: center;*/
 	/*position: relative;*/
-	margin-top: 5px;
+	margin-top: 10px;
 	margin-bottom: 5px;
 }
 
@@ -375,7 +383,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .player-name{
 	/*background-color: red;*/
 	float: left;
-	margin: 5px;
+	margin: 2px;
 	margin-right: 70px;
 
 	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
@@ -384,7 +392,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .player-score{
 	/*background-color: grey;*/
 	float: right;
-	margin: 5px;
+	margin: 2px;
 
 	color: grey; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
 }
