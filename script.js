@@ -190,11 +190,11 @@ function animate(timestamp){
     //draw apples:
     for (let i=0; i<apples.length; i++){
 
-        if (progress < apples[i].pauseTime) { //if apple can't yet fall 
+        if (progress < apples[i].pauseTime) { //if apple can't yet fall:
             apples[i].canFall = false; //dont allow fall
         }else{ 
 
-            if(apples[i].canFadeIn){ //if apple can fade in
+            if(apples[i].canFadeIn){ //if apple can fade in:
                 appleCtxs[i].globalAlpha +=0.05; //fade in apple's opacity
 
                 if (appleCtxs[i].globalAlpha >= 0.95){ apples[i].canFall = true; } //allow apple to fall when visible
@@ -203,7 +203,7 @@ function animate(timestamp){
     
         if (apples[i].canFall){ apples[i].fall(); } //make apple fall if able
            
-        if (apples[i].canFadeOut){ //if apple can fade out
+        if (apples[i].canFadeOut){ //if apple can fade out:
             appleCtxs[i].globalAlpha -= 0.1; //fade out apple's opacity
             
             if (appleCtxs[i].globalAlpha <= 0.01){ apples[i].reset(); } //reset apple when faded

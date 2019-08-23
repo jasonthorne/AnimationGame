@@ -196,7 +196,7 @@ http://css-workshop.com/css-center-textimagediv-in-middle-of-parent-div-containe
 	transition-duration: 0.4s;
 	cursor: pointer;
 	border-radius: 4px;
-	font-weight: bold;
+	font-weight: bold; /*?????????????????????????????????????????*/
 	outline: none;
 }
 
@@ -305,21 +305,31 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .TEST1 {
 	/*background-color: aqua;*/
 
-	/*
+	
 	background-image:url("img/redTest12pc.png");
 	background-repeat:no-repeat;
 	margin: auto;
 	width: 226px;
 	height: 75px;
-	*/
+	
 
-	
+	/*
 	background-image:url("img/plainSign20pc.png");
-	
+	background-repeat:no-repeat;
 	margin: auto;
 	width: 112px;
 	height: 37px;
-	
+	*/
+
+	/*
+	background-image:url("img/greenBanner40pc.png");
+	background-repeat:no-repeat;
+	margin: auto;
+	width: 291px;
+	height: 65px;
+	*/
+
+
 
 }
 
@@ -407,13 +417,15 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	font-family: 'Coming Soon', cursive;
 }
 
-
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 h1{
 	font-family: 'Coming Soon', cursive;
 	color: white;
 	font-size: 15px;
 	
 }
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .testA {
