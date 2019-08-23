@@ -134,7 +134,7 @@ body{
 
 	/*font-family: 'Bubblegum Sans', cursive;*/
 	/*font-family: cursive;*/
-	/*font-size: 30px;*/ /* +++++++++++++++++++++++CHECK THIS AT HOME */
+	/*font-size: 60px;/* +++++++++++++++++++++++CHECK THIS AT HOME */
 }
 
 
@@ -305,21 +305,21 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .TEST1 {
 	/*background-color: aqua;*/
 
-	
+	/*
 	background-image:url("img/redTest12pc.png");
 	background-repeat:no-repeat;
 	margin: auto;
 	width: 226px;
 	height: 75px;
-	
-
-	/*
-	background-image:url("img/signTest40pc.png");
-	background-repeat:no-repeat;
-	margin: auto;
-	width: 240px;
-	height: 140px;
 	*/
+
+	
+	background-image:url("img/plainSign20pc.png");
+	
+	margin: auto;
+	width: 112px;
+	height: 37px;
+	
 
 }
 
@@ -378,7 +378,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*background-color: purple;*/
 	margin: auto;
 	/*width: 100%;*/
-	margin-top: 0px;
+	margin-top: 0px; /*??????????????????????????????*/
 }
 
 .score-values{
@@ -389,7 +389,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .player-name{
 	/*background-color: red;*/
 	float: left;
-	margin: 2px;
+	/*margin: 2px;*/
 	margin-right: 80px;
 
 	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
@@ -400,13 +400,20 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .player-score{
 	/*background-color: grey;*/
 	float: right;
-	margin: 2px;
+	/*margin: 2px;*/
 
 	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
 
 	font-family: 'Coming Soon', cursive;
 }
 
+
+h1{
+	font-family: 'Coming Soon', cursive;
+	color: white;
+	font-size: 15px;
+	
+}
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 .testA {
