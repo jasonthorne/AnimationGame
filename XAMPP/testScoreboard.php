@@ -8,11 +8,19 @@
 	<body>
 
 		<?php
-				
+			
+			/*
 			$servername = $dbLoginServername;
 			$username = $dbLoginUsername;
 			$password = $dbLoginPassword;
 			$dbname = $dbLoginDbname;
+			*/
+
+			$servername = DB_HOST;
+			$username = DB_USER;
+			$password = DB_PASSWORD;
+			$dbname = DB_NAME;
+
 
 			$playerNames = array();
 			$playerScores = array();
