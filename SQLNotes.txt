@@ -7,3 +7,21 @@ https://www.tutorialrepublic.com/php-tutorial/php-mysql-insert-query.php
 
 delete all data from table:
 https://stackoverflow.com/questions/10337158/how-can-i-use-php-to-delete-all-records-in-a-mysql-database/
+
+
+thinking:
+
+
++mark that user is new.
+
+	If new:
+	delete previous records
+	add test records
+
+
++then play game 
+	record score 
+
+
++then pull info from db
+

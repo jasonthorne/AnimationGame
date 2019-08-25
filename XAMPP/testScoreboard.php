@@ -2,7 +2,6 @@
 <html>
 
 	<head>
-		
 		<script type="text/javascript" src="testScript.js"> </script>
 	</head>
 	<body>

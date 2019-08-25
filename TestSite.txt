@@ -1,3 +1,11 @@
+text for enteriong name;
+enter name to save 
+
+css bounce effect:
+https://stackoverflow.com/questions/23152900/how-to-create-bouncing-div-animation
+https://codeburst.io/tutorial-make-a-bouncing-ball-entirely-with-css-1e7e3c853a50
+
+
 
 http://blog.pengyifan.com/three-steps-to-test-php-locally-without-installing-a-server/
 

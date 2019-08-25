@@ -2,7 +2,9 @@
 <html>
 
 <head>
-       <?php include("testScoreboard.php"); ?>
+		
+		
+		<?php include("testScoreboard.php"); ?>
 	   <script type="text/javascript" src="testScript.js"> </script>
 </head>
 <body>
