@@ -318,10 +318,14 @@ replayBtn.onclick = function() {
 
 //----------------------------------------------------------------------------------------------------
 
-var testNameArray  = [ "bob",  "frank", "cuthbert" ];
-var testScoreArray  = [ 5,  3, 20 ];
-   
-function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
+
+/////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++
+var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10", "player11" ];
+var testScoreArray  = [ 1, 3, 20, 40, 99, 54, 63, 36, 78, 15, 22 ];
+/////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++   
+
+
+function makeScores(){ 
 
     //div for holding player name & score divs:
     let scoreVals = document.createElement("div"); //create div
@@ -346,3 +350,32 @@ function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOSING PLAY
     document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
 
 }
+
+
+
+/*
+function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
+
+    //div for holding player name & score divs:
+    let scoreVals = document.createElement("div"); //create div
+    scoreVals.className = "score-values"; //give classname for styling
+
+    //player name div:
+    let playerName = document.createElement("div"); //create div
+    playerName.className = "player-name"; //give classname for styling
+    let playerNameTxt = document.createTextNode("Great Uncle Bulgaria");//("players-name--------"); //create text node for player name  //++THIS IS 20 CHARS LONG ATM+++PULL FROM DB TO PROVIDE THIS!! 
+    playerName.appendChild(playerNameTxt); //add text to div
+
+    //player score div:
+    let playerScore = document.createElement("div"); //create div
+    playerScore.className = "player-score"; //give classname for styling
+    let playerScoreTxt = document.createTextNode("00"); //create text node for player score  //+++++++++++++++++++++++++++PULL FROM DB TO PROVIDE THIS!! 
+    playerScore.appendChild(playerScoreTxt); //add text to div
+
+    //add playerName & playerScore to scoreVals:
+    scoreVals.appendChild(playerName);
+    scoreVals.appendChild(playerScore);
+
+    document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
+
+}*/
