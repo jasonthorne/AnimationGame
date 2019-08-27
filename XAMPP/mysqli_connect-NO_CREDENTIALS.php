@@ -7,7 +7,7 @@
     DEFINE("DB_NAME", "********");
 
     //create connection ('@' subdues errors in browser):
-    $dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
-    OR dies ("Could not connect to MYSQL: " . mysqli_connect_error()); //terminate with error message on fail
+    //////////////$dbc = @mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME)
+    ///////////OR dies ("Could not connect to MYSQL: " . mysqli_connect_error()); //terminate with error message on fail
 
 ?> 

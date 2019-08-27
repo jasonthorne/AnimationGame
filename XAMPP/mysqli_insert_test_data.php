@@ -1,19 +1,39 @@
 <?php
 			
 	require_once('mysqli_connect.php'); //make connection file avaliable
+	//================================
 
+	$servername = DB_HOST;
+	$username = DB_USER;
+	$password = DB_PASSWORD;
+	$dbname = DB_NAME;
+
+	// Create connection
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	// Check connection
+	if (!$conn) {
+		die("Connection failed: " . mysqli_connect_error());
+	}
+
+
+
+
+
+	//=======================================
 	//attempt insert query execution:
-	$query = "INSERT INTO players (player_name, player_score) VALUES
-	('John', 10),
-	('Clark', 5),
-	('John', 3),
-	('Harry', 1)";
+	$sql = "INSERT INTO players (player_name, player_score) VALUES
+	('John', 10);";
+	$sql .= "INSERT INTO players (player_name, player_score) VALUES
+	('Mary', 5);";
+	$sql .= "INSERT INTO players (player_name, player_score) VALUES
+	('bob', 2);";
 
-	$response = @mysqli_query($dbc, $query); //$conn->query($sql);
-
+	//$response = @mysqli_query($dbc, $query); //$conn->query($sql);
 
 	
-	if(mysqli_query($response, $query)){
+	
+	////if(mysqli_query($conn, $sql)){
+	if (mysqli_multi_query($conn, $sql)) {
 	echo "Records added successfully.";
 	} else{
 	echo "ERROR: Could not able to execute";
@@ -22,6 +42,10 @@
 
 	/*
 		<?php include("mysqli_insert_test_data.php"); ?>
+
+
+		<!--<?php include("testScoreboard.php"); ?>-->
+
 	*/
 
 
@@ -49,5 +73,5 @@
 	}
 	*/
 
-	mysqli_close($dbc);
+	mysqli_close($conn);
 ?> 
