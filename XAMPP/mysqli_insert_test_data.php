@@ -3,11 +3,18 @@
 	require_once('mysqli_connect.php'); //make connection file avaliable
 	//================================
 
+	/*
+
+	/////////////////////////////////
 	$servername = DB_HOST; //CHECK IF YOU CAN JUST PASS IN DB_HOST!!!! +++++++++++
 	$username = DB_USER;
 	$password = DB_PASSWORD;
 	$dbname = DB_NAME;
 
+	////////////////////////////////
+	*/
+
+	/*
 	// Create connection
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 	// Check connection
@@ -16,8 +23,9 @@
 
 		//STORE RESULT IN BOOLEAN FOR JS CHANGES!! ++++++++++
 	}
+	*/
 
-
+	
 	//CHECK IF ALL OF ABOVE CAN BE IN THE SAME FILE!!!!++++++++++++++++++++++++++++++
 
 
@@ -31,11 +39,11 @@
 	('bob', 2);";
 
 	//$response = @mysqli_query($dbc, $query); //$conn->query($sql);
-
+	//////////$conn = $dbc;
 	
 	
 	////if(mysqli_query($conn, $sql)){
-	if (mysqli_multi_query($conn, $sql)) {
+	if (mysqli_multi_query($dbc, $sql)) {
 	echo "Records added successfully.";
 	} else{
 	echo "ERROR: Could not able to execute";
@@ -75,5 +83,6 @@
 	}
 	*/
 
-	mysqli_close($conn);
+	/////////mysqli_close($conn);
+	mysqli_close($dbc);
 ?> 
