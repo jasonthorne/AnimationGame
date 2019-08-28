@@ -1,4 +1,13 @@
 
+
+cookies:
+https://www.tutorialrepublic.com/php-tutorial/php-cookies.php
+
+
+insert to mysql through form:
+https://www.tutorialrepublic.com/php-tutorial/php-mysql-insert-query.php
+
+
 defer examples:
 https://flaviocopes.com/javascript-async-defer/
 

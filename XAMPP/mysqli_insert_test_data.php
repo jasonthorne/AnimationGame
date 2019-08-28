@@ -3,7 +3,7 @@
 	require_once('mysqli_connect.php'); //make connection file avaliable
 	//================================
 
-	$servername = DB_HOST;
+	$servername = DB_HOST; //CHECK IF YOU CAN JUST PASS IN DB_HOST!!!! +++++++++++
 	$username = DB_USER;
 	$password = DB_PASSWORD;
 	$dbname = DB_NAME;
@@ -13,10 +13,12 @@
 	// Check connection
 	if (!$conn) {
 		die("Connection failed: " . mysqli_connect_error());
+
+		//STORE RESULT IN BOOLEAN FOR JS CHANGES!! ++++++++++
 	}
 
 
-
+	//CHECK IF ALL OF ABOVE CAN BE IN THE SAME FILE!!!!++++++++++++++++++++++++++++++
 
 
 	//=======================================
