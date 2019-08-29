@@ -347,12 +347,12 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .ribbon-font{
 
-
 	position: relative;
 	/*width: 400px;*/
 	border-radius: 50%;
 	/*transform: rotate(-50deg);*/
-	transform: rotate(-32deg);
+	/*transform: rotate(-32deg);*/
+	transform: rotate(-25deg);
 	background-color: yellow;
 	
 
@@ -364,7 +364,10 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
     background-color: #5D8D89;*/
 	/*text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
 	font-size: 17px;*/
-	padding-top: 10px;
+
+
+
+	/*padding-top: 10px;*/
 	
 	/*
 	display: table-cell; 
@@ -378,17 +381,19 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 /*8888888888888888span testing8888888888888888*/
 
 .ribbon-font > span{
-
 	background-color: aqua;
-	font: 14px Monaco, MonoSpace;
-	height: 180px;
+	/*font: 16px Monaco, MonoSpace;*/
+	font-size: 14px;
+	/*font-weight: bold;*/
+	height: 215px;/*175px;*/
 	position: absolute;
 	width: 20px;
-	/*left: 0;
-	top: 0;*/
+	left: 0;
+	top: 0;
 	transform-origin: bottom center;
 }
 
+/*
 .char1 {transform: rotate(6deg);}
 .char2 {transform: rotate(12deg);}
 .char3 {transform: rotate(18deg);}
@@ -399,6 +404,32 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .char8 {transform: rotate(48deg);}
 .char9 {transform: rotate(54deg);}
 .char10 {transform: rotate(60deg);}
+*/
+
+/*
+.char1 {transform: rotate(5deg);}
+.char2 {transform: rotate(10deg);}
+.char3 {transform: rotate(15deg);}
+.char4 {transform: rotate(20deg);}
+.char5 {transform: rotate(25deg);}
+.char6 {transform: rotate(30deg);}
+.char7 {transform: rotate(35deg);}
+.char8 {transform: rotate(40deg);}
+.char9 {transform: rotate(45deg);}
+.char10 {transform: rotate(50deg);}
+*/
+
+.char1 {transform: rotate(4deg);}
+.char2 {transform: rotate(8deg);}
+.char3 {transform: rotate(12deg);}
+.char4 {transform: rotate(16deg);}
+.char5 {transform: rotate(20deg);}
+.char6 {transform: rotate(24deg);}
+.char7 {transform: rotate(28deg);}
+.char8 {transform: rotate(32deg);}
+.char9 {transform: rotate(36deg);}
+.char10 {transform: rotate(40deg);}
+
 
 /*8888888888888888s8888888888888888*/
 
