@@ -1,0 +1,93 @@
+<!doctype html>
+
+<!--
+https://css-tricks.com/set-text-on-a-circle/
+-->
+<html lang="en">
+  <head>
+	<style>
+	
+		.ribbon-font{
+			position: relative;
+			width: 400px;
+			border-radius: 50%;
+			/*transform: rotate(-50deg);*/
+			transform: rotate(-32deg);
+		}
+		
+		.ribbon-font > span {
+		  background-color: aqua;
+		  font: 26px Monaco, MonoSpace;
+		  height: 200px;
+		  position: absolute;
+		  width: 20px;
+		  left: 0;
+		  top: 0;
+		  transform-origin: bottom center;
+		}
+		
+		.char1 {
+		  transform: rotate(6deg);
+		}
+
+		.char2 {
+		  transform: rotate(12deg);
+		}
+
+		.char3 {
+		  transform: rotate(18deg);
+		}
+
+		.char4 {
+		  transform: rotate(24deg);
+		}
+
+		.char5 {
+		  transform: rotate(30deg);
+		}
+
+		.char6 {
+		  transform: rotate(36deg);
+		}
+
+		.char7 {
+		  transform: rotate(42deg);
+		}
+
+		.char8 {
+		  transform: rotate(48deg);
+		}
+
+		.char9 {
+		  transform: rotate(54deg);
+		}
+
+		.char10 {
+		  transform: rotate(60deg);
+		}
+
+	</style>
+	
+	<script>
+	</script>
+   
+  </head>
+  <body>
+  
+	<div class="ribbon-font">
+		<span class="char1">T</span>
+		<span class="char2">i</span>
+		<span class="char3">m</span>
+		<span class="char4">e</span>
+		<span class="char5">'</span>
+		<span class="char6">s</span>
+		<span class="char7">&nbsp;</span>
+		<span class="char8">u</span>
+		<span class="char9">p</span>
+		<span class="char10">!</span>
+	</div>
+  
+  
+  </body>
+  
+  </html>
