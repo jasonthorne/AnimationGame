@@ -19,6 +19,6 @@ getHighestScores:
 - store lowest score in php var
 
 checkPlayerScore() 
-- compare score against leaderboard's LOWEST score to see if it should be added to displayed leaderboard
+- compare score against leaderboard's LOWEST score to see if it should be given options to save.
 
 

@@ -1,5 +1,21 @@
 
 
+
+TEXT ON A CIRCLE:
+https://css-tricks.com/set-text-on-a-circle/
+
+
+
+
+DYNAMICALLY CREATE A FORM:
+https://stackoverflow.com/questions/3297143/dynamically-create-a-html-form-with-javascript
+
+
+
+
+
+
+
 Another possible font:
 https://fonts.google.com/specimen/Luckiest+Guy
 

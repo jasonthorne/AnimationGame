@@ -289,8 +289,8 @@ function showScoreModal(){
 
 
     /////////////////////////////////////////////////
-    for (let i=0; i<10; i++){
-        makeScores();
+    for (let i=0; i<11; i++){
+        makeScores(); //REMEMBER TO TWEAK DIV LAYOUTS FOR PERFECT ALIGNMENT OF ROWS AND THEIR PICS
     }
 
     ////////////////////////////////////////////////
@@ -321,9 +321,9 @@ replayBtn.onclick = function() {
 
 /////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++
 var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10", "player11" ];
-var testScoreArray  = [ 1, 3, 20, 40, 99, 54, 63, 36, 78, 15, 22 ];
+var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 1, 78, 15, 45 ];
 /////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++   
-
+var testLowestScore = 1;
 
 function makeScores(){ 
 
