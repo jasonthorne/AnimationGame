@@ -316,7 +316,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 .ribbon {
-	/*background-color: aqua;*/
+	background-color: red;
 
 	
 	background-image:url("img/redTest12pc.png");
@@ -346,8 +346,17 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 }
 
 .ribbon-font{
-	/*background-color: yellow;*/
+
+
+	position: relative;
+	/*width: 400px;*/
+	border-radius: 50%;
+	/*transform: rotate(-50deg);*/
+	transform: rotate(-32deg);
+	background-color: yellow;
 	
+
+
 	/*display: table-cell; /* for centering of font */
 	/*vertical-align: middle; /* for centering of font */
 
@@ -356,35 +365,41 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
 	font-size: 17px;*/
 	padding-top: 10px;
+	
+	/*
+	display: table-cell; 
+	vertical-align: middle;
+	 */
+
+
+
 }
 
 /*8888888888888888span testing8888888888888888*/
 
 .ribbon-font > span{
 
-	/*font: 26px Monaco, MonoSpace;
-	height: 200px;
-	position: absolute;*/
-	height: 200px;
+	background-color: aqua;
+	font: 14px Monaco, MonoSpace;
+	height: 180px;
+	position: absolute;
 	width: 20px;
-	left: 0;
-	top: 0;
+	/*left: 0;
+	top: 0;*/
 	transform-origin: bottom center;
 }
 
-.char1 { transform: rotate(6deg); }
-.char2 { transform: rotate(12deg); }
-.char3 { transform: rotate(18deg); }
-.char4 { transform: rotate(24deg); }
+.char1 {transform: rotate(6deg);}
+.char2 {transform: rotate(12deg);}
+.char3 {transform: rotate(18deg);}
+.char4 {transform: rotate(24deg);}
+.char5 {transform: rotate(30deg);}
+.char6 {transform: rotate(36deg);}
+.char7 {transform: rotate(42deg);}
+.char8 {transform: rotate(48deg);}
+.char9 {transform: rotate(54deg);}
+.char10 {transform: rotate(60deg);}
 
-/*
-.char5 { transform: rotate(32deg); }
-.char6 { transform: rotate(18deg); }
-.char7 { transform: rotate(6deg); }
-.char8 { transform: rotate(12deg); }
-.char9 { transform: rotate(18deg); }
-.char10 { transform: rotate(6deg); }
-*/
 /*8888888888888888s8888888888888888*/
 
 
