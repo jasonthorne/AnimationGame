@@ -1,4 +1,6 @@
 
+165
+
 finish playing game:
 
 +pull scores from db for leaderboard:
@@ -21,4 +23,21 @@ getHighestScores:
 checkPlayerScore() 
 - compare score against leaderboard's LOWEST score to see if it should be given options to save.
 
+
+======================
+
+
+
++
+before anything else, find the lowest scoring record and delete it:
+https://stackoverflow.com/questions/9819168/deleting-record-with-lowest-id
+then add a dummy record with a beatable value. (john doe - 3)
+THEN pull all the info from the DB, and find lowest score value.
++
+
++
+if players score is greater than the lowest THEN add ability for player to add and save their name.
+and find their place in the list, and add that to the scoreboard.
+ELSE add players name and score to the bottom of the list
++
 

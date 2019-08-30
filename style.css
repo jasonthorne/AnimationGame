@@ -290,7 +290,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 */
 
-.score-modal-container {
+.score-modal-grid-container {
 	margin: auto;
 	background-image:url("img/blackboard.png");
 	background-repeat:no-repeat;
@@ -304,7 +304,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 
-.ribbon-row{ /*needed?????????????????????????????????????(probably not!)*/
+.ribbon-container{ /*needed?????????????????????????????????????(probably not!)*/
 	/*background-color: aqua;*/
 	/*margin: auto;*/
 	/*text-align: center;*/
@@ -316,216 +316,77 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 .ribbon {
-	background-color: red;
-
-	
+	/*background-color: red;*/
 	background-image:url("img/redTest12pc.png");
 	background-repeat:no-repeat;
 	margin: auto;
 	width: 226px;
 	height: 75px;
-	
-
-	/*
-	background-image:url("img/plainSign20pc.png");
-	background-repeat:no-repeat;
-	margin: auto;
-	width: 112px;
-	height: 37px;
-	*/
-
-	/*
-	background-image:url("img/greenBanner40pc.png");
-	background-repeat:no-repeat;
-	margin: auto;
-	width: 291px;
-	height: 65px;
-	*/
-
-	/*display: table;*/
-	/*margin: auto;*/
 }
 
-.ribbon-font{
 
-	position: relative;
-	/*width: 400px;*/
-	border-radius: 50%;
-	/*transform: rotate(-50deg);*/
-	/*transform: rotate(-32deg);*/
-	transform: rotate(-25deg);
-	background-color: yellow;
-	
-
-
-	/*display: table-cell; /* for centering of font */
-	/*vertical-align: middle; /* for centering of font */
-
-	/*color: #3B5957;
-    background-color: #5D8D89;*/
-	/*text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-	font-size: 17px;*/
-
-	padding-top: 35px;
-	
-	/*
-	display: table-cell;
-	vertical-align: middle;
-	 */
-
-
-
-}
-
-/*8888888888888888span testing8888888888888888*/
-
-.ribbon-font > span{
-	background-color: aqua;
-	/*font: 16px Monaco, MonoSpace;*/
-	font-size: 14px;
-	/*font-weight: bold;*/
-	height: 215px;/*175px;*/
-	position: absolute;
-	width: 15px; /*20px;*/
-	left: 0;
-	top: 0;
-	margin: auto;
-	transform-origin: bottom center;
-}
-
-/*
-.char1 {transform: rotate(6deg);}
-.char2 {transform: rotate(12deg);}
-.char3 {transform: rotate(18deg);}
-.char4 {transform: rotate(24deg);}
-.char5 {transform: rotate(30deg);}
-.char6 {transform: rotate(36deg);}
-.char7 {transform: rotate(42deg);}
-.char8 {transform: rotate(48deg);}
-.char9 {transform: rotate(54deg);}
-.char10 {transform: rotate(60deg);}
-*/
-
-/*
-.char1 {transform: rotate(5deg);}
-.char2 {transform: rotate(10deg);}
-.char3 {transform: rotate(15deg);}
-.char4 {transform: rotate(20deg);}
-.char5 {transform: rotate(25deg);}
-.char6 {transform: rotate(30deg);}
-.char7 {transform: rotate(35deg);}
-.char8 {transform: rotate(40deg);}
-.char9 {transform: rotate(45deg);}
-.char10 {transform: rotate(50deg);}
-*/
-
-.char1 {transform: rotate(4deg);}
-.char2 {transform: rotate(8deg);}
-.char3 {transform: rotate(12deg);}
-.char4 {transform: rotate(16deg);}
-.char5 {transform: rotate(20deg);}
-.char6 {transform: rotate(24deg);}
-.char7 {transform: rotate(28deg);}
-.char8 {transform: rotate(32deg);}
-.char9 {transform: rotate(36deg);}
-.char10 {transform: rotate(40deg);}
-
-
-/*8888888888888888s8888888888888888*/
-
-
-.plaque-row {
+.plaque-container {
 	/*background-color: yellow;*/
-	/*background-image:url("img/plateTest.png");
-	background-repeat:no-repeat;
 	margin: auto;
-	width: 378px;
-	height: 60px;
-	display: block;*/
-	/*margin: auto;
-	width: 100%;*/
-	margin: auto;
-	/*text-align: center;*/
-	/*position: relative;*/
 	margin-top: 10px;
 	margin-bottom: 5px;
 }
 
 
-
 .plaque {
 	background-image:url("img/plateTest15pc.png");
 	background-repeat:no-repeat;
-	/*margin: auto;*/
 	width: 82px;
 	height: 36px;
-	/*text-align: center;*/
 	display: table; /* for centering of font */
 }
 
 .plaque-font{
 	display: table-cell; /* for centering of font */
 	vertical-align: middle; /* for centering of font */
-
-	/*color: #3B5957;
-    background-color: #5D8D89;*/
-	/*text-shadow: 0px 1px 0px rgba(255,255,255,.3), 0px -1px 0px rgba(0,0,0,.7);
-	font-size: 17px;*/
 }
-
 
 
 #scores-container {
 	/*background-color: blueviolet;*/
-	/*margin: auto;*/
 	width: 100%;
 	display: grid;
 	overflow: auto;
-	/*grid-template-rows: auto;*/
-	/*margin-top: 5px;*/
 }
 
 .replay-button-container {
 	/*background-color: purple;*/
 	margin: auto;
-	/*width: 100%;*/
-	margin-top: 0px; /*??????????????????????????????*/
+	margin-top: 0px; 
 }
 
 .score-values{
 	/*background-color: purple;*/
 	margin: auto;
+	color: white;
+	font-family: 'Coming Soon', cursive;
 }
 
 .player-name{
 	/*background-color: red;*/
 	float: left;
-	/*margin: 2px;*/
 	margin-right: 80px;
-
-	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
-
-	font-family: 'Coming Soon', cursive;
 }
 
 .player-score{
 	/*background-color: grey;*/
 	float: right;
-	/*margin: 2px;*/
-
-	color: white; /* +++++++++++++++++CHANGE THIS OBV!! and add chalk effect to font*/
-
-	font-family: 'Coming Soon', cursive;
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*
 h1{
 	font-family: 'Coming Soon', cursive;
 	color: white;
 	font-size: 15px;
 	
 }
-
+*/
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */

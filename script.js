@@ -315,15 +315,21 @@ replayBtn.onclick = function() {
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 
-
 /////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++
-var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10", "player11" ];
-var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 1, 78, 15, 45 ];
-/////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++   
+var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10"];
+var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 1, 78, 15];
+
 var testLowestScore = 1;
+
+var testName_ScoreArray = testNameArray.map(function (x, i) { //(val of curr element, index of curr element)
+    return [x, testScoreArray[i]] //return an array holding each element of testName  and each element of testScore at element of testName's position
+});
+//https://stackoverflow.com/questions/50741594/how-to-combine-two-arrays-into-an-array-of-objects-in-javascript
+/////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++   
+
+console.log(testName_ScoreArray);
 
 function makeScores(){ 
 
