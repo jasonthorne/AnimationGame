@@ -234,7 +234,7 @@ function startTimer(){
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             cancelAnimationFrame(animationFrameRef); //cancel animation
-            showScoreModal(); //show game score modal
+            showScoreModal(); //show game score modal +++++++++++++++++++++++++++++make call to DB here!! where scores are calced or dummy scores given if no connection
         } 
         document.getElementById("timer").innerHTML = time; //show new time
     
@@ -319,54 +319,54 @@ replayBtn.onclick = function() {
 
 /////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++
 var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10"];
-var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 1, 78, 15];
+var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 5, 78, 15];
 
-var testLowestScore = 1;
+var testLowestScore = 3; //++++++++++++++lowest score - found with php
+var testCurrentScore = 2; //current score
 
-var testPlayerScore = 33;
-
-
-/*
-var testName_ScoreArray = testNameArray.map(function (x, i) { //(val of curr element, index of curr element)
-    return [x, testScoreArray[i]] //return an array holding each element of testName  and each element of testScore at element of testName's position
-});
-*/
+testNameArray.push("currentScore");
+testScoreArray.push(testCurrentScore);
+var testcanSave = false;
 
 var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
-    return {name: currElement, score: testScoreArray[i], canSave: false}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
-}).sort(function(a, b) {return a.score < b.score ? 1 : -1}); //sort array objects by score
+
+    if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){
+        testcanSave = true;
+    };
+
+    return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
+}).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
 
 console.log(testName_ScoreArray);
 
+console.log(testName_ScoreArray[testName_ScoreArray.length -1].score);
+
+/*
+if (testPlayerScore > testName_ScoreArray[testName_ScoreArray.length -1].score){
+    //create 
+}
+*/
+
+
 //https://stackoverflow.com/questions/50741594/how-to-combine-two-arrays-into-an-array-of-objects-in-javascript
 
-//var test2 = {};
-var testArray = [];
+/*
+var testArray2 = [];
 //testNameArray.forEach((testNameArray, i) => test2[testNameArray] = testScoreArray[i]; testArray.push(test2));
 testNameArray.forEach(function(currElement, i){
-    ///////////////////testNameArray.forEach((currElement, i) => testArray.push({playerName: currElement, playerScore: testScoreArray[i]}));
-    /*let testObj = {
-        playerName: currElement,
-        playerScore: testScoreArray[i]  qw1
-    };*/
-    //testArray.push(testObj);
-
-
+   
     //push anonomous object with keys/values to array ('canSave' is flag for current player formatting):
-   testArray.push({name: currElement, score: testScoreArray[i], canSave: false}); 
+   testArray2.push({name: currElement, score: testScoreArray[i], canSave: false}); 
 });
 
-testArray.sort(function(a, b) {return a.score < b.score ? 1 : -1}); //sort array objects by score
-
+testArray2.sort(function(a, b) {return a.score < b.score ? 1 : -1}); //sort array objects by score
+*/
 
 //testArray.sort((a, b) => (a.playerScore < b.playerScore) ? 1 : -1); //sort array objects by score
 
-//console.log(testName_ScoreArray);
-//console.log(test2);
-console.log(testArray);
 
-//var testSort = testName_ScoreArray.sort((a, b) => (a.color > b.color) ? 1 : -1);
+//console.log(testArray2);
 
 /////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++   
 
