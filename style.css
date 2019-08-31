@@ -317,7 +317,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .ribbon {
 	/*background-color: red;*/
-	background-image:url("img/redTest12pc.png");
+	background-image:url("img/ribbon.png");
 	background-repeat:no-repeat;
 	margin: auto;
 	width: 226px;
@@ -334,7 +334,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 .plaque {
-	background-image:url("img/plateTest15pc.png");
+	background-image:url("img/plaque.png");
 	background-repeat:no-repeat;
 	width: 82px;
 	height: 36px;

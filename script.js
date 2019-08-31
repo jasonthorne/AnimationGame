@@ -323,13 +323,41 @@ var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 1, 78, 15];
 
 var testLowestScore = 1;
 
+
+/*
 var testName_ScoreArray = testNameArray.map(function (x, i) { //(val of curr element, index of curr element)
     return [x, testScoreArray[i]] //return an array holding each element of testName  and each element of testScore at element of testName's position
 });
+*/
+
 //https://stackoverflow.com/questions/50741594/how-to-combine-two-arrays-into-an-array-of-objects-in-javascript
+
+//var test2 = {};
+var testArray = [];
+//testNameArray.forEach((testNameArray, i) => test2[testNameArray] = testScoreArray[i]; testArray.push(test2));
+testNameArray.forEach(function(currElement, i){
+    /*let testObj = {
+        playerName: currElement,
+        playerScore: testScoreArray[i]  qw1
+    };*/
+    //testArray.push(testObj);
+
+
+    //push anonomous object with keys/values to array:
+    testArray.push({playerName: currElement, playerScore: testScoreArray[i]}); 
+});
+
+testArray.sort((a, b) => (a.playerScore < b.playerScore) ? 1 : -1); //sort array objects by score
+
+//console.log(testName_ScoreArray);
+//console.log(test2);
+console.log(testArray);
+
+//var testSort = testName_ScoreArray.sort((a, b) => (a.color > b.color) ? 1 : -1);
+
 /////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++   
 
-console.log(testName_ScoreArray);
+
 
 function makeScores(){ 
 
