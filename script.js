@@ -322,7 +322,7 @@ var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "
 var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 5, 78, 15];
 
 var testLowestScore = 3; //++++++++++++++lowest score - found with php
-var testCurrentScore = 2; //current score
+var testCurrentScore = 33; //current score
 
 testNameArray.push("currentScore");
 testScoreArray.push(testCurrentScore);
@@ -330,12 +330,34 @@ var testcanSave = false;
 
 var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
 
-    if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){
-        testcanSave = true;
-    };
-
+    if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
+        
     return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
-}).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
+}).sort((a, b) => (a.score < b.score) ? 1 : -1) //; //sort array objects by score
+
+
+testName_ScoreArray.map(function(currElement) {
+
+    if (currElement.name == "currentScore"){
+        
+        if(currElement.canSave){
+
+            console.log("can save");
+
+        }else{
+
+        }
+
+    }else{
+
+        console.log("Not current score");
+
+    }
+    
+});
+
+
+
 
 
 console.log(testName_ScoreArray);
