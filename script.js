@@ -323,6 +323,8 @@ var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 1, 78, 15];
 
 var testLowestScore = 1;
 
+var testPlayerScore = 33;
+
 
 /*
 var testName_ScoreArray = testNameArray.map(function (x, i) { //(val of curr element, index of curr element)
@@ -330,12 +332,20 @@ var testName_ScoreArray = testNameArray.map(function (x, i) { //(val of curr ele
 });
 */
 
+var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
+    return {name: currElement, score: testScoreArray[i], canSave: false}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
+}).sort(function(a, b) {return a.score < b.score ? 1 : -1}); //sort array objects by score
+
+
+console.log(testName_ScoreArray);
+
 //https://stackoverflow.com/questions/50741594/how-to-combine-two-arrays-into-an-array-of-objects-in-javascript
 
 //var test2 = {};
 var testArray = [];
 //testNameArray.forEach((testNameArray, i) => test2[testNameArray] = testScoreArray[i]; testArray.push(test2));
 testNameArray.forEach(function(currElement, i){
+    ///////////////////testNameArray.forEach((currElement, i) => testArray.push({playerName: currElement, playerScore: testScoreArray[i]}));
     /*let testObj = {
         playerName: currElement,
         playerScore: testScoreArray[i]  qw1
@@ -343,11 +353,14 @@ testNameArray.forEach(function(currElement, i){
     //testArray.push(testObj);
 
 
-    //push anonomous object with keys/values to array:
-    testArray.push({playerName: currElement, playerScore: testScoreArray[i]}); 
+    //push anonomous object with keys/values to array ('canSave' is flag for current player formatting):
+   testArray.push({name: currElement, score: testScoreArray[i], canSave: false}); 
 });
 
-testArray.sort((a, b) => (a.playerScore < b.playerScore) ? 1 : -1); //sort array objects by score
+testArray.sort(function(a, b) {return a.score < b.score ? 1 : -1}); //sort array objects by score
+
+
+//testArray.sort((a, b) => (a.playerScore < b.playerScore) ? 1 : -1); //sort array objects by score
 
 //console.log(testName_ScoreArray);
 //console.log(test2);
