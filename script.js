@@ -188,7 +188,7 @@ function animate(timestamp){
     basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
 
     //draw apples:
-    for (let i=0; i<apples.length; i++){
+    for (let i=0, j=apples.length; i<j; i++){
 
         if (progress < apples[i].pauseTime) { //if apple can't yet fall:
             apples[i].canFall = false; //dont allow fall
@@ -285,7 +285,7 @@ var replayBtn = document.getElementById("replay-button"); //replay button
 //show score modal:
 function showScoreModal(){
     scoreModal.style.display = "block"; //display scoreModal
-    document.getElementById("final-score").innerHTML = score; //show final score
+    document.getElementById("final-score").innerHTML = score; //show final score ////////////RENOVE WHEN READY!! 
     
 
     /////////////////////////////////////////////////
@@ -317,60 +317,95 @@ replayBtn.onclick = function() {
 
 
 //----------------------------------------------------------------------------------------------------
+
+var currentPlayer = "YOU"; //++++++++++++++++++++++++++++++++++++++change to something more appropriate (ie no caps! :P)
+
 function showScores(){
 
     //+++++++++++++++++++++++++++++pull from DB to find previous scores here
-    var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10"];
-    var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 5, 78, 15];
+    var testNameArray  = [ "test1",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"];
+    var testScoreArray  = [ 25, 3, 20, 40, 99, 54, 63, 5, 78, 15];
 
     var testLowestScore = 3; //++++++++++++++lowest score - found with php
     var testCurrentScore = 22; //++++++++++++++current score
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    testNameArray.push("currentScore"); //add 
+    testNameArray.push(currentPlayer); 
     testScoreArray.push(testCurrentScore);
-    var testcanSave = false;
+    ////////var testcanSave = false;
 
     var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
 
-        if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
+        //if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
             
-        return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
+        //return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
+
+        return {name: currElement, score: testScoreArray[i]}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
+
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++possibly use methods below to create this!!
     //div for holding player name & score divs:
-    /////let scoreVals = document.createElement("div"); //create div
-    //////scoreVals.className = "score-values"; //give classname for styling
+    //let scoreVals = makeElement("div", "score-values", null); //document.createElement("div"); //create div 
+    //scoreVals.className = "score-values"; //give classname for styling
+    //document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
+    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-    testName_ScoreArray.map(function(currElement) {
+    for (let i=0, j=testName_ScoreArray.length; i<j; i++){
 
-        if (currElement.name == "currentScore"){
+        if (testName_ScoreArray[i].name == currentPlayer){ //if current player's score
 
-            if(currElement.canSave){
+            //add wavy hand animation!!     
+           
+            if(testName_ScoreArray[i].score > testLowestScore){ //if score can be saved: 
 
-                console.log("can save");
+                console.log("current score: can save");
+                //add save implementation
 
-            }else{
-    
+            }else{  
+                    //add "You" to the text instead
+                    console.log("current score: 'can't' save");
             }
+
+            //add to 
     
         }else{
             console.log("Not current score");
+            //add regular formatting 
         }
        
-       
-        /////////////makeElement(currElement);
-    });
+       //)))))))))))))))))))))))))))))))))))))))))
+            let scoreVals = makeElement("div", "score-values", null); //create div for holding score values
+            
+           scoreVals.appendChild(makeElement("div", "player-name", testName_ScoreArray[i].name)); //make name div);
+           scoreVals.appendChild(makeElement("div", "player-score", testName_ScoreArray[i].score)); //make score div);
+        
+            document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
+       //)))))))))))))))))))))))))))))))))))))))))
+        
+    }
 
-    //+++++Make elements:
-    function makeElement(obj, type, className){ //maybe one with text too!! 
-        console.log("name is: "+ obj.name);
+    //make html element:
+    function makeElement(type, className, text){ //////////+++++++++++++++++++++++MIGHT NOT EVEN NEED THIS!! (might be better done locally)
+
+        let element =  document.createElement(type); //create element
+        element.className = className; //give classname
+
+        if(text !== null){
+            let elementTxt = document.createTextNode(text);
+            element.appendChild(elementTxt);
+        };
+
+        return element;
     }
     
     //++++++++++append elements to other elements:
     function appendElement(parent, child){
 
     }
+
+
+    console.log(testName_ScoreArray);
 
 
 }
