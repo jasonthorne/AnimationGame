@@ -289,11 +289,7 @@ function showScoreModal(){
     
 
     /////////////////////////////////////////////////
-    showScores();
-    for (let i=0; i<11; i++){
-       // makeScores(); //REMEMBER TO TWEAK DIV LAYOUTS FOR PERFECT ALIGNMENT OF ROWS AND THEIR PICS
-    }
-
+    showScores(); //REMEMBER TO TWEAK DIV LAYOUTS FOR PERFECT ALIGNMENT OF ROWS AND THEIR PICS
     ////////////////////////////////////////////////
 
 }
@@ -314,7 +310,7 @@ replayBtn.onclick = function() {
 
     //clear scores from 'scores-container':
     let div = document.getElementById("scores-container");
-    while(div.firstChild){ //while div has a child:
+    while (div.firstChild) { //while div has a child:
         div.removeChild(div.firstChild); //remove said child
     }
 
@@ -335,6 +331,10 @@ function showScores(){
     var testLowestScore = 3; //++++++++++++++lowest score - found with php
     var testCurrentScore = 22; //++++++++++++++current score
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    if (typeof score == "string"){ //if score is a string (< 10)
+        score.slice(0, 1); //remove leading 0
+        score = parseInt(score); //parse to int
+    }
 
     testNameArray.push(currentPlayer); 
     testScoreArray.push(score);
@@ -375,12 +375,12 @@ function showScores(){
         }
        
        //)))))))))))))))))))))))))))))))))))))))))
-            let scoreVals = makeElement("div", "score-values", null); //create div for holding score values
-            
-           scoreVals.appendChild(makeElement("div", "player-name", testName_ScoreArray[i].name)); //make name div
-           scoreVals.appendChild(makeElement("div", "player-score", testName_ScoreArray[i].score)); //make score div
+        let scoreVals = makeElement("div", "score-values", null); //create div for holding score values
         
-            document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
+        scoreVals.appendChild(makeElement("div", "player-name", testName_ScoreArray[i].name)); //make name div
+        scoreVals.appendChild(makeElement("div", "player-score", testName_ScoreArray[i].score)); //make score div
+    
+        document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
        //)))))))))))))))))))))))))))))))))))))))))
         
     }
@@ -394,7 +394,7 @@ function showScores(){
         if(text !== null){
             let elementTxt = document.createTextNode(text);
             element.appendChild(elementTxt);
-        };
+        }
 
         return element;
     }
@@ -409,78 +409,11 @@ function showScores(){
 
 
 }
-/////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++
-
-/*
-var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10"];
-var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 5, 78, 15];
-
-var testLowestScore = 3; //++++++++++++++lowest score - found with php
-var testCurrentScore = 22; //++++++++++++++current score
-
-testNameArray.push("currentScore");
-testScoreArray.push(testCurrentScore);
-var testcanSave = false;
-
-var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
-
-    if (currElement == "currentScore" && testScoreArray[i]>testLowestScore){ testcanSave = true; };
-        
-    return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
-}).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
-*/
-
- /*
-testName_ScoreArray.map(function(currElement) {
-
-    if (currElement.name == "currentScore"){
-        if(currElement.canSave){
-            console.log("can save");
-        }else{
-
-        }
-
-    }else{
-        console.log("Not current score");
-    }
-   
-});
- */
-
- /*
-testName_ScoreArray.map(function(currElement) {
-    test(currElement);
-});
-*/
-
-
-
-///////////console.log(testName_ScoreArray);
-
-
-
-///////////////////////console.log(testName_ScoreArray[testName_ScoreArray.length -1].score);
 
 //https://stackoverflow.com/questions/50741594/how-to-combine-two-arrays-into-an-array-of-objects-in-javascript
 
-/*
-var testArray2 = [];
-//testNameArray.forEach((testNameArray, i) => test2[testNameArray] = testScoreArray[i]; testArray.push(test2));
-testNameArray.forEach(function(currElement, i){
-   
-    //push anonomous object with keys/values to array ('canSave' is flag for current player formatting):
-   testArray2.push({name: currElement, score: testScoreArray[i], canSave: false}); 
-});
+/////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++
 
-testArray2.sort(function(a, b) {return a.score < b.score ? 1 : -1}); //sort array objects by score
-*/
-
-//testArray.sort((a, b) => (a.playerScore < b.playerScore) ? 1 : -1); //sort array objects by score
-
-
-//console.log(testArray2);
-
-/////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++   
 
 
 
@@ -509,32 +442,3 @@ function showScore(){
     document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
 
 }
-
-
-
-/*
-function makeScores(){ //SHOULD PROBABLY PASS IN AN ARRAY OF OBJECTS HOSING PLAYER NAMES AND SCORES ++++++++++++++++++++++++++++++++++++++++
-
-    //div for holding player name & score divs:
-    let scoreVals = document.createElement("div"); //create div
-    scoreVals.className = "score-values"; //give classname for styling
-
-    //player name div:
-    let playerName = document.createElement("div"); //create div
-    playerName.className = "player-name"; //give classname for styling
-    let playerNameTxt = document.createTextNode("Great Uncle Bulgaria");//("players-name--------"); //create text node for player name  //++THIS IS 20 CHARS LONG ATM+++PULL FROM DB TO PROVIDE THIS!! 
-    playerName.appendChild(playerNameTxt); //add text to div
-
-    //player score div:
-    let playerScore = document.createElement("div"); //create div
-    playerScore.className = "player-score"; //give classname for styling
-    let playerScoreTxt = document.createTextNode("00"); //create text node for player score  //+++++++++++++++++++++++++++PULL FROM DB TO PROVIDE THIS!! 
-    playerScore.appendChild(playerScoreTxt); //add text to div
-
-    //add playerName & playerScore to scoreVals:
-    scoreVals.appendChild(playerName);
-    scoreVals.appendChild(playerScore);
-
-    document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
-
-}*/
