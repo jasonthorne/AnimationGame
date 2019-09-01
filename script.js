@@ -312,6 +312,12 @@ replayBtn.onclick = function() {
     animationFrameRef = null; //reset animationFrame reference
     Basket.img.src = basketImgs[0].src; //reset basket img
 
+    //clear scores from 'scores-container':
+    let div = document.getElementById("scores-container");
+    while(div.firstChild){ //while div has a child:
+        div.removeChild(div.firstChild); //remove said child
+    }
+
     startGame(); //start game
 }
 
@@ -331,7 +337,8 @@ function showScores(){
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     testNameArray.push(currentPlayer); 
-    testScoreArray.push(testCurrentScore);
+    testScoreArray.push(score);
+    //testScoreArray.push(testCurrentScore);
     ////////var testcanSave = false;
 
     var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
@@ -343,13 +350,6 @@ function showScores(){
         return {name: currElement, score: testScoreArray[i]}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
 
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
-
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++possibly use methods below to create this!!
-    //div for holding player name & score divs:
-    //let scoreVals = makeElement("div", "score-values", null); //document.createElement("div"); //create div 
-    //scoreVals.className = "score-values"; //give classname for styling
-    //document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
-    //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
     for (let i=0, j=testName_ScoreArray.length; i<j; i++){
 
@@ -377,8 +377,8 @@ function showScores(){
        //)))))))))))))))))))))))))))))))))))))))))
             let scoreVals = makeElement("div", "score-values", null); //create div for holding score values
             
-           scoreVals.appendChild(makeElement("div", "player-name", testName_ScoreArray[i].name)); //make name div);
-           scoreVals.appendChild(makeElement("div", "player-score", testName_ScoreArray[i].score)); //make score div);
+           scoreVals.appendChild(makeElement("div", "player-name", testName_ScoreArray[i].name)); //make name div
+           scoreVals.appendChild(makeElement("div", "player-score", testName_ScoreArray[i].score)); //make score div
         
             document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
        //)))))))))))))))))))))))))))))))))))))))))
