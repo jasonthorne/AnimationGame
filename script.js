@@ -80,12 +80,12 @@ var Basket = {
     height: basketH, //height of basket
     move: function(){
         if (key[37]){ //if left is pressed:
-            this.xPos -=25; //decrease x pos 
+            this.xPos -=25; //decrease x pos of basket
             
             if(this.xPos <0){this.xPos = 0;}  //stop at canvas's left edge
                
         }else if (key[39]){ //if right is pressed:
-            this.xPos += 25; //increase x pos
+            this.xPos += 25; //increase x pos of basket
 
             if(this.xPos > (canvasW - this.width)){ this.xPos = canvasW - this.width; } //stop at canvas's right edge
         }
@@ -234,7 +234,7 @@ function startTimer(){
         if(time<=0){ //timer has run out
             clearInterval(timer); //clear timer 
             cancelAnimationFrame(animationFrameRef); //cancel animation
-            showScoreModal(); //show game score modal +++++++++++++++++++++++++++++make call to DB here!! where scores are calced or dummy scores given if no connection
+            showScoreModal(); //show game score modal
         } 
         document.getElementById("timer").innerHTML = time; //show new time
     
@@ -286,11 +286,12 @@ var replayBtn = document.getElementById("replay-button"); //replay button
 function showScoreModal(){
     scoreModal.style.display = "block"; //display scoreModal
     document.getElementById("final-score").innerHTML = score; //show final score
-
+    
 
     /////////////////////////////////////////////////
+    showScores();
     for (let i=0; i<11; i++){
-        makeScores(); //REMEMBER TO TWEAK DIV LAYOUTS FOR PERFECT ALIGNMENT OF ROWS AND THEIR PICS
+       // makeScores(); //REMEMBER TO TWEAK DIV LAYOUTS FOR PERFECT ALIGNMENT OF ROWS AND THEIR PICS
     }
 
     ////////////////////////////////////////////////
@@ -316,13 +317,42 @@ replayBtn.onclick = function() {
 
 
 //----------------------------------------------------------------------------------------------------
+function showScores(){
 
+    //+++++++++++++++++++++++++++++pull from DB to find previous scores here
+    var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10"];
+    var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 5, 78, 15];
+
+    var testLowestScore = 3; //++++++++++++++lowest score - found with php
+    var testCurrentScore = 22; //++++++++++++++current score
+    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    testNameArray.push("currentScore"); //add 
+    testScoreArray.push(testCurrentScore);
+    var testcanSave = false;
+
+    var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
+
+        if (currElement == "currentScore" && testScoreArray[i]>testLowestScore){ testcanSave = true; };
+            
+        return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
+    }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
+
+    testName_ScoreArray.map(function(currElement) {
+        test(currElement);
+    });
+    
+
+
+}
 /////////////////////////////////////////////////////////////++++++++++++++++++++++++++++++
+
+/*
 var testNameArray  = [ "player1",  "player2", "player3", "player4", "player5", "player6", "player7", "player8", "player9", "player10"];
 var testScoreArray  = [ 22, 3, 20, 40, 99, 54, 63, 5, 78, 15];
 
 var testLowestScore = 3; //++++++++++++++lowest score - found with php
-var testCurrentScore = 33; //current score
+var testCurrentScore = 22; //++++++++++++++current score
 
 testNameArray.push("currentScore");
 testScoreArray.push(testCurrentScore);
@@ -330,46 +360,44 @@ var testcanSave = false;
 
 var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
 
-    if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
+    if (currElement == "currentScore" && testScoreArray[i]>testLowestScore){ testcanSave = true; };
         
     return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
-}).sort((a, b) => (a.score < b.score) ? 1 : -1) //; //sort array objects by score
+}).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
+*/
 
-
+ /*
 testName_ScoreArray.map(function(currElement) {
 
     if (currElement.name == "currentScore"){
-        
         if(currElement.canSave){
-
             console.log("can save");
-
         }else{
 
         }
 
     }else{
-
         console.log("Not current score");
-
     }
-    
+   
 });
+ */
 
-
-
-
-
-console.log(testName_ScoreArray);
-
-console.log(testName_ScoreArray[testName_ScoreArray.length -1].score);
-
-/*
-if (testPlayerScore > testName_ScoreArray[testName_ScoreArray.length -1].score){
-    //create 
-}
+ /*
+testName_ScoreArray.map(function(currElement) {
+    test(currElement);
+});
 */
 
+function test(currElement){
+    console.log("name is: "+ currElement.name);
+}
+
+///////////console.log(testName_ScoreArray);
+
+
+
+///////////////////////console.log(testName_ScoreArray[testName_ScoreArray.length -1].score);
 
 //https://stackoverflow.com/questions/50741594/how-to-combine-two-arrays-into-an-array-of-objects-in-javascript
 
@@ -394,7 +422,7 @@ testArray2.sort(function(a, b) {return a.score < b.score ? 1 : -1}); //sort arra
 
 
 
-function makeScores(){ 
+function showScore(){ 
 
     //div for holding player name & score divs:
     let scoreVals = document.createElement("div"); //create div
