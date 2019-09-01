@@ -333,15 +333,44 @@ function showScores(){
 
     var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
 
-        if (currElement == "currentScore" && testScoreArray[i]>testLowestScore){ testcanSave = true; };
+        if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
             
         return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
+    //div for holding player name & score divs:
+    /////let scoreVals = document.createElement("div"); //create div
+    //////scoreVals.className = "score-values"; //give classname for styling
+
     testName_ScoreArray.map(function(currElement) {
-        test(currElement);
-    });
+
+        if (currElement.name == "currentScore"){
+
+            if(currElement.canSave){
+
+                console.log("can save");
+
+            }else{
     
+            }
+    
+        }else{
+            console.log("Not current score");
+        }
+       
+       
+        /////////////makeElement(currElement);
+    });
+
+    //+++++Make elements:
+    function makeElement(obj, type, className){ //maybe one with text too!! 
+        console.log("name is: "+ obj.name);
+    }
+    
+    //++++++++++append elements to other elements:
+    function appendElement(parent, child){
+
+    }
 
 
 }
@@ -389,9 +418,7 @@ testName_ScoreArray.map(function(currElement) {
 });
 */
 
-function test(currElement){
-    console.log("name is: "+ currElement.name);
-}
+
 
 ///////////console.log(testName_ScoreArray);
 
