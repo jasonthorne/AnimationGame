@@ -360,6 +360,8 @@ function showScores(){
 
     for (let i=0, j=playerVals.length; i<j; i++){
 
+        let playerValsDiv = makeElement("div", "score-values", null); //create div for holding score values +++++++CHANGE VAR NAMES 
+
         if (playerVals[i].name == currentPlayer){ //if current player's score
 
             //flag here that this score has been found!!!!???????????? (for further games by player) +++++++++++++++++++++++
@@ -373,11 +375,25 @@ function showScores(){
             if(playerVals[i].score > lowestScore){ //if score can be saved: //AND higher than previous score ++++++++++++++++++FIGURE THIS OUT! :P
 
                 console.log("current score: can save");
-                //add save implementation
+                let testForm = makeElement("form");
+                let i = document.createElement("input");
+                i.name = "user_name";
+                i.type = "text";
+                testForm.appendChild(i);
+                playerValsDiv.appendChild(testForm); //make name div
+                playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
 
             }else{  
                     //add "You" to the text instead
                     console.log("current score: 'can't' save");
+                    console.log("current score: can save");
+                    let testForm = makeElement("form");
+                    let i = document.createElement("input");
+                    i.name = "user_name";
+                    i.type = "text";
+                    testForm.appendChild(i);
+                    playerValsDiv.appendChild(testForm); //make name div
+                    //playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
             }
 
             //add to 
@@ -385,13 +401,14 @@ function showScores(){
         }else{
             console.log("Not current score");
             //add regular formatting 
+            playerValsDiv.appendChild(makeElement("div", "player-name", playerVals[i].name)); //make name div
+            playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
         }
        
        //)))))))))))))))))))))))))))))))))))))))))
-        let playerValsDiv = makeElement("div", "score-values", null); //create div for holding score values
+       
         
-        playerValsDiv.appendChild(makeElement("div", "player-name", playerVals[i].name)); //make name div
-        playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
+        
     
         document.getElementById("scores-container").appendChild(playerValsDiv); //add div to scores-container
        //)))))))))))))))))))))))))))))))))))))))))
