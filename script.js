@@ -325,10 +325,17 @@ var currentPlayer = "YOU"; //++++++++++++++++++++++++++++++++++++++change to som
 function showScores(){
 
     //+++++++++++++++++++++++++++++pull from DB to find previous scores here
-    var testNameArray  = [ "test1",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"];
-    var testScoreArray  = [ 25, 3, 20, 40, 99, 54, 63, 5, 78, 15];
 
-    var testLowestScore = 3; //++++++++++++++lowest score - found with php
+    //var playerNames =
+    //var playerScores 
+    //var lowestScore 
+			
+
+    //testNameArray
+    var playerNames  = [ "test1",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"]; //-++++++++++++ found with php
+    var playerScores  = [ 25, 3, 20, 40, 99, 54, 63, 5, 78, 15]; //- ++++++++++found with php
+
+    var lowestScore = 3; //++++++++++++++lowest score - found with php
     var testCurrentScore = 22; //++++++++++++++current score
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     if (typeof score == "string"){ //if score is a string (< 10)
@@ -336,28 +343,34 @@ function showScores(){
         score = parseInt(score); //parse to int
     }
 
-    testNameArray.push(currentPlayer); 
-    testScoreArray.push(score);
+    playerNames.push(currentPlayer); 
+    playerScores.push(score);
     //testScoreArray.push(testCurrentScore);
     ////////var testcanSave = false;
 
-    var testName_ScoreArray = testNameArray.map(function (currElement, i) { //(val of curr element, index of curr element)
+    var playerVals = playerNames.map(function (currElement, i) { //(val of curr element, index of curr element)
 
         //if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
             
         //return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
 
-        return {name: currElement, score: testScoreArray[i]}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
+        return {name: currElement, score: playerScores[i]}; //return an object with keys/values to array ('canSave' is flag for current player formatting) +++++++++++++++
 
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
-    for (let i=0, j=testName_ScoreArray.length; i<j; i++){
+    for (let i=0, j=playerVals.length; i<j; i++){
 
-        if (testName_ScoreArray[i].name == currentPlayer){ //if current player's score
+        if (playerVals[i].name == currentPlayer){ //if current player's score
 
-            //add wavy hand animation!!     
+            //flag here that this score has been found!!!!???????????? (for further games by player) +++++++++++++++++++++++
+
+            //add wavy hand animation!!
+            
+            //IF PLAYED B4: then compare score to last score wih same name as player
+
+            //ELSE - below
            
-            if(testName_ScoreArray[i].score > testLowestScore){ //if score can be saved: 
+            if(playerVals[i].score > lowestScore){ //if score can be saved: //AND higher than previous score ++++++++++++++++++FIGURE THIS OUT! :P
 
                 console.log("current score: can save");
                 //add save implementation
@@ -375,12 +388,12 @@ function showScores(){
         }
        
        //)))))))))))))))))))))))))))))))))))))))))
-        let scoreVals = makeElement("div", "score-values", null); //create div for holding score values
+        let playerValsDiv = makeElement("div", "score-values", null); //create div for holding score values
         
-        scoreVals.appendChild(makeElement("div", "player-name", testName_ScoreArray[i].name)); //make name div
-        scoreVals.appendChild(makeElement("div", "player-score", testName_ScoreArray[i].score)); //make score div
+        playerValsDiv.appendChild(makeElement("div", "player-name", playerVals[i].name)); //make name div
+        playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
     
-        document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
+        document.getElementById("scores-container").appendChild(playerValsDiv); //add div to scores-container
        //)))))))))))))))))))))))))))))))))))))))))
         
     }
@@ -390,12 +403,8 @@ function showScores(){
 
         let element =  document.createElement(type); //create element
         element.className = className; //give classname
-
-        if(text !== null){
-            let elementTxt = document.createTextNode(text);
-            element.appendChild(elementTxt);
-        }
-
+        if(text !== null){element.appendChild(document.createTextNode(text));} //create and add text node if applicable
+        
         return element;
     }
     
@@ -405,7 +414,7 @@ function showScores(){
     }
 
 
-    console.log(testName_ScoreArray);
+    console.log(playerVals);
 
 
 }
