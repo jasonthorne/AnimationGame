@@ -347,36 +347,50 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 }
 
 
-#scores-container {
-	/*background-color: blueviolet;*/
+#players-container {
+	background-color: blueviolet;
 	width: 100%;
 	display: grid;
 	overflow: auto;
 }
 
-.replay-button-container {
-	/*background-color: purple;*/
-	margin: auto;
-	margin-top: 0px; 
-}
-
-.score-values{
-	/*background-color: purple;*/
-	margin: auto;
+.player{
+	background-color: purple;
+	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++ */ 
 	color: white;
 	font-family: 'Coming Soon', cursive;
 }
 
 .player-name{
-	/*background-color: red;*/
+	background-color: red;
 	float: left;
 	margin-right: 80px;
 }
 
 .player-score{
-	/*background-color: grey;*/
+	background-color: grey;
 	float: right;
 }
+
+.replay-button-container {
+	background-color: yellow;
+	margin: auto;
+	margin-top: 0px; 
+}
+
+
+input[type="text"]{
+    background: rgba(0, 0, 0, 0);
+    border: none;
+	outline: none;
+}
+
+/*style input and placeholder text */
+input[type="text"], ::placeholder  {
+	color: white;
+	font-family: 'Coming Soon', cursive;
+  }
+
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*

@@ -308,8 +308,8 @@ replayBtn.onclick = function() {
     animationFrameRef = null; //reset animationFrame reference
     Basket.img.src = basketImgs[0].src; //reset basket img
 
-    //clear scores from 'scores-container':
-    let div = document.getElementById("scores-container");
+    //clear scores from 'players-container':
+    let div = document.getElementById("players-container");
     while (div.firstChild) { //while div has a child:
         div.removeChild(div.firstChild); //remove said child
     }
@@ -348,7 +348,8 @@ function showScores(){
     //testScoreArray.push(testCurrentScore);
     ////////var testcanSave = false;
 
-    var playerVals = playerNames.map(function (currElement, i) { //(val of curr element, index of curr element)
+    let players = playerNames.map(function (currElement, i) { //(val of curr element, index of curr element)
+    
 
         //if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
             
@@ -358,51 +359,64 @@ function showScores(){
 
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
-    for (let i=0, j=playerVals.length; i<j; i++){
+    for (let i=0, j=players.length; i<j; i++){
 
-        let playerValsDiv = makeElement("div", "score-values", null); //create div for holding score values +++++++CHANGE VAR NAMES 
+        let player = makeElement("div", "player"); //player div
+        let playerName = makeElement("div", "player-name"); //player-name div
+        let playerScore = makeElement("div", "player-score"); //player-score div
 
-        if (playerVals[i].name == currentPlayer){ //if current player's score
+        if (players[i].name == currentPlayer){ //if current player's score
 
             //flag here that this score has been found!!!!???????????? (for further games by player) +++++++++++++++++++++++
 
             //add wavy hand animation!!
             
             //IF PLAYED B4: then compare score to last score wih same name as player
-
+            console.log(players[i].score);
             //ELSE - below
            
-            if(playerVals[i].score > lowestScore){ //if score can be saved: //AND higher than previous score ++++++++++++++++++FIGURE THIS OUT! :P
+            ///////////////////////////////////
+            let nameForm = makeElement("form", "name-form");
 
+            let nameInput = makeElement("input", "input-form");
+            nameInput.type = "text";
+            nameInput.placeholder = "hello!"
+            nameInput.backgroundC
+            nameForm.appendChild(nameInput);
+        
+            player.appendChild(nameForm); //make name div 
+            /////////////////////////////////
+            
+    
+            if(players[i].score > lowestScore){ //if score can be saved: //AND higher than previous score ++++++++++++++++++FIGURE THIS OUT! :P
                 console.log("current score: can save");
-                let testForm = makeElement("form");
-                let i = document.createElement("input");
-                i.name = "user_name";
-                i.type = "text";
-                testForm.appendChild(i);
-                playerValsDiv.appendChild(testForm); //make name div
-                playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
+               
 
             }else{  
                     //add "You" to the text instead
-                    console.log("current score: 'can't' save");
-                    console.log("current score: can save");
-                    let testForm = makeElement("form");
-                    let i = document.createElement("input");
-                    i.name = "user_name";
-                    i.type = "text";
-                    testForm.appendChild(i);
-                    playerValsDiv.appendChild(testForm); //make name div
-                    //playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
+                
             }
 
             //add to 
     
         }else{
             console.log("Not current score");
-            //add regular formatting 
-            playerValsDiv.appendChild(makeElement("div", "player-name", playerVals[i].name)); //make name div
-            playerValsDiv.appendChild(makeElement("div", "player-score", playerVals[i].score)); //make score div
+    
+            playerName.appendChild(document.createTextNode(players[i].name));
+            player.appendChild(playerName); 
+            
+
+            playerScore.appendChild(document.createTextNode(players[i].score));
+            player.appendChild(playerScore); 
+
+            /*
+            let playerScore = makeElement("div", "player-score");
+            player.appendChild(playerScore.appendChild(document.createTextNode(players[i].score))); 
+            */
+
+            //playerValsDiv.appendChild(makeElement("div", "player-name", playerVals[i].name)); //make name div ++++++++++++++++OLD METHOD
+           
+            //player.appendChild((makeElement("div", "player-score")).appendChild(document.createTextNode(players[i].score))); //make score div 
         }
        
        //)))))))))))))))))))))))))))))))))))))))))
@@ -410,28 +424,40 @@ function showScores(){
         
         
     
-        document.getElementById("scores-container").appendChild(playerValsDiv); //add div to scores-container
+        document.getElementById("players-container").appendChild(player); //add div to scores-container
        //)))))))))))))))))))))))))))))))))))))))))
         
     }
 
-    //make html element:
-    function makeElement(type, className, text){ //////////+++++++++++++++++++++++MIGHT NOT EVEN NEED THIS!! (might be better done locally)
 
-        let element =  document.createElement(type); //create element
-        element.className = className; //give classname
-        if(text !== null){element.appendChild(document.createTextNode(text));} //create and add text node if applicable
+    /*
+    function makeElement(className, text){ //////////+++++++++++++++++++++++MIGHT NOT EVEN NEED THIS!! (might be better done locally)
+
+        let div = document.createElement("div"); //create element
+        div.className = className; //give classname
+       //////// if(text !== null){element.appendChild(document.createTextNode(text));} //create and add text node if applicable
         
+        return div;
+    }*/
+
+    
+    //make a html element with classname:
+    function makeElement(type, className){ 
+        let element = document.createElement(type); //create element
+        element.className = className; //give classname
         return element;
     }
     
+
+
+    
     //++++++++++append elements to other elements:
     function appendElement(parent, child){
-
+        return parent.appendChild(child);
     }
 
 
-    console.log(playerVals);
+    console.log(players);
 
 
 }
