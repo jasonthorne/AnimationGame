@@ -1,6 +1,10 @@
 https://www.w3schools.com/css/css_form.asp
 
+BOX SHADOW SITE:
+https://www.cssmatic.com/box-shadow
 
+box shadow link:
+https://css-tricks.com/snippets/css/css-box-shadow/
 
 165
 
