@@ -245,6 +245,7 @@ function startTimer(){
 //start the game:
 
 var score = 0;
+var prevScore = 0;
 
 function startGame(){
 
@@ -314,6 +315,8 @@ replayBtn.onclick = function() {
         div.removeChild(div.firstChild); //remove said child
     }
 
+    prevScore = score; //++++++++++++++++++++++++++++++++++++++++++++++++???????????
+
     startGame(); //start game
 }
 
@@ -336,6 +339,7 @@ function showScores(){
     var playerScores  = [ 25, 3, 20, 40, 99, 54, 63, 5, 78, 15]; //- ++++++++++found with php
 
     var lowestScore = 3; //++++++++++++++lowest score - found with php
+    
     var testCurrentScore = 22; //++++++++++++++current score
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     if (typeof score == "string"){ //if score is a string (< 10)
@@ -378,23 +382,22 @@ function showScores(){
             ///////////////////////////////////
             let nameForm = makeElement("form", "name-form");
 
-            let nameInput = makeElement("input", "input-form");
+            let nameInput = makeElement("input", "name-input");
             nameInput.type = "text";
             nameInput.placeholder = "hello!"
-            nameInput.backgroundC
             nameForm.appendChild(nameInput);
         
             player.appendChild(nameForm); //make name div 
             /////////////////////////////////
             
     
-            if(players[i].score > lowestScore){ //if score can be saved: //AND higher than previous score ++++++++++++++++++FIGURE THIS OUT! :P
-                console.log("current score: can save");
+            if((players[i].score > lowestScore) && (players[i].score > prevScore)){ //if score can be saved: //AND higher than previous score ++++++++++++++++++FIGURE THIS OUT! :P
+                console.log("new score: can save");
                
 
             }else{  
                     //add "You" to the text instead
-                
+
             }
 
             //add to 

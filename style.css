@@ -378,15 +378,23 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	margin-top: 0px; 
 }
 
-
+/*
 input[type="text"]{
     background: rgba(0, 0, 0, 0);
     border: none;
 	outline: none;
 }
+*/
+.name-input{
+	background: rgba(0, 0, 0, 0);
+    border: none;
+	outline: none;
+}
+
+
 
 /*style input and placeholder text */
-input[type="text"], ::placeholder  {
+.name-input, ::placeholder  {
 	color: white;
 	font-family: 'Coming Soon', cursive;
   }
