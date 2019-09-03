@@ -356,6 +356,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .player{
 	/*background-color: purple;*/
+	width: 60%;
 	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++ */ 
 	color: white;
 	font-family: 'Coming Soon', cursive;
@@ -364,11 +365,11 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .player-name{
 	/*background-color: red;*/
 	float: left;
-	margin-right: 80px;
+	/*margin-right: 80px;*/
 }
 
 .player-score{
-	background-color: grey;
+	/*background-color: grey;*/
 	float: right;
 }
 
@@ -388,7 +389,7 @@ input[type="text"]{
 .name-input{
 	background: rgba(0, 0, 0, 0);
     /*border: none;*/
-	
+	font-family: 'Coming Soon', cursive;
 
 }
 
@@ -399,7 +400,7 @@ input[type="text"]{
 /*style input and placeholder text */
 .name-input, ::placeholder  {
 	color: #ffffff;
-	font-family: 'Coming Soon', cursive;
+	
 	font-size: 16px;
 	/*padding: 2px 2px;*/
 
@@ -409,8 +410,9 @@ input[type="text"]{
 	-webkit-transition: 0.5s;
 	transition: 0.5s;
 	outline: none;
-	width: 12em;
+	
 	border-radius: 4px;
+	width: 110px;
 
   }
 
@@ -425,11 +427,13 @@ input[type="text"]{
   	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
 	  box-shadow: inset 2px 2px 2px 0px #dddddd;
 	  */
+	  width: 12em;
   }
 
   /* input:focus::placeholder{hide placeholder text on focus */
   input:focus::placeholder{
-	color:transparent;
+	/*color:transparent;*/
+	color:  rgba(0, 0, 0, 0);
 }
 
 

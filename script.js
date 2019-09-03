@@ -335,7 +335,7 @@ function showScores(){
 			
 
     //testNameArray
-    var playerNames  = [ "test1",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"]; //-++++++++++++ found with php
+    var playerNames  = [ "aaaaaaaaaaaaaaaaaaaa",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"]; //-++++++++++++ found with php
     var playerScores  = [ 25, 3, 20, 40, 99, 54, 63, 5, 78, 15]; //- ++++++++++found with php
 
     var lowestScore = 3; //++++++++++++++lowest score - found with php
@@ -384,10 +384,13 @@ function showScores(){
 
             let nameInput = makeElement("input", "name-input");
             nameInput.type = "text";
-            nameInput.placeholder = "enter name";
+            nameInput.placeholder = "Enter name";
             nameForm.appendChild(nameInput);
             
-            player.appendChild(nameForm); //make name div 
+            playerName.appendChild(nameForm); //make name div 
+
+            //player.appendChild(playerName); 
+
             /////////////////////////////////
             
     
@@ -406,11 +409,18 @@ function showScores(){
             console.log("Not current score");
     
             playerName.appendChild(document.createTextNode(players[i].name));
+
+            /*
             player.appendChild(playerName); 
             
+            ===========================================
 
             playerScore.appendChild(document.createTextNode(players[i].score));
             player.appendChild(playerScore); 
+            */
+
+
+
 
             /*
             let playerScore = makeElement("div", "player-score");
@@ -425,7 +435,12 @@ function showScores(){
        //)))))))))))))))))))))))))))))))))))))))))
        
         
-        
+       player.appendChild(playerName); 
+            
+
+       playerScore.appendChild(document.createTextNode(players[i].score));
+       player.appendChild(playerScore); 
+
     
         document.getElementById("players-container").appendChild(player); //add div to scores-container
        //)))))))))))))))))))))))))))))))))))))))))
