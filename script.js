@@ -384,9 +384,9 @@ function showScores(){
 
             let nameInput = makeElement("input", "name-input");
             nameInput.type = "text";
-            nameInput.placeholder = "hello!"
+            nameInput.placeholder = "enter name";
             nameForm.appendChild(nameInput);
-        
+            
             player.appendChild(nameForm); //make name div 
             /////////////////////////////////
             

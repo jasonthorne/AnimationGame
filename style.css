@@ -348,21 +348,21 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 #players-container {
-	background-color: blueviolet;
+	/*background-color: blueviolet;*/
 	width: 100%;
 	display: grid;
 	overflow: auto;
 }
 
 .player{
-	background-color: purple;
+	/*background-color: purple;*/
 	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++ */ 
 	color: white;
 	font-family: 'Coming Soon', cursive;
 }
 
 .player-name{
-	background-color: red;
+	/*background-color: red;*/
 	float: left;
 	margin-right: 80px;
 }
@@ -373,7 +373,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 }
 
 .replay-button-container {
-	background-color: yellow;
+	/*background-color: yellow;*/
 	margin: auto;
 	margin-top: 0px; 
 }
@@ -387,17 +387,50 @@ input[type="text"]{
 */
 .name-input{
 	background: rgba(0, 0, 0, 0);
-    border: none;
-	outline: none;
+    /*border: none;*/
+	
+
 }
 
-
+::placeholder  {
+	/*font-style: oblique;*/
+}
 
 /*style input and placeholder text */
 .name-input, ::placeholder  {
-	color: white;
+	color: #ffffff;
 	font-family: 'Coming Soon', cursive;
+	font-size: 16px;
+	/*padding: 2px 2px;*/
+
+
+	box-sizing: border-box;
+	border: 2px solid #555;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	outline: none;
+	width: 12em;
+	border-radius: 4px;
+
   }
+
+  .name-input:focus {
+	/*border: 2px solid blue;*/
+	/*background-color: grey;
+	font-weight: bold;
+	color: #000000;*/
+
+	/*
+	-webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+	  box-shadow: inset 2px 2px 2px 0px #dddddd;
+	  */
+  }
+
+  /* input:focus::placeholder{hide placeholder text on focus */
+  input:focus::placeholder{
+	color:transparent;
+}
 
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
