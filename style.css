@@ -348,28 +348,32 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 #players-container {
-	/*background-color: blueviolet;*/
+	background-color: blueviolet;
 	width: 100%;
 	display: grid;
 	overflow: auto;
 }
 
 .player{
-	/*background-color: purple;*/
+	background-color: purple;
 	width: 60%;
 	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++ */ 
 	color: white;
 	font-family: 'Coming Soon', cursive;
 }
 
+.current-player{
+	
+}
+
 .player-name{
-	/*background-color: red;*/
+	background-color: red;
 	float: left;
 	/*margin-right: 80px;*/
 }
 
 .player-score{
-	/*background-color: grey;*/
+	background-color: grey;
 	float: right;
 }
 
@@ -446,6 +450,13 @@ h1{
 	
 }
 */
+
+.testDiv{
+	background-image:url("img/testApple30pc.png");
+	background-repeat:no-repeat;
+	width: 25px;
+	height: 27px;
+}
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
