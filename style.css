@@ -363,7 +363,9 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 }
 
 .current-player{
-	
+	background-color: yellow;
+	width: 60%;
+	margin: auto; 
 }
 
 .player-name{

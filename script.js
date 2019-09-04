@@ -323,7 +323,7 @@ replayBtn.onclick = function() {
 
 //----------------------------------------------------------------------------------------------------
 
-var currPlayerName = "YOU"; //++++++++++++++++++++++++++++++++++++++change to something more appropriate (ie no caps! :P)
+var currentPlayer = "YOU"; //++++++++++++++++++++++++++++++++++++++change to something more appropriate (ie no caps! :P)
 
 function showScores(){
 
@@ -347,7 +347,7 @@ function showScores(){
         score = parseInt(score); //parse to int
     }
 
-    playerNames.push(currPlayerName); 
+    playerNames.push(currentPlayer); 
     playerScores.push(score);
     //testScoreArray.push(testCurrentScore);
     ////////var testcanSave = false;
@@ -366,13 +366,13 @@ function showScores(){
     
     for (let i=0, j=players.length; i<j; i++){
 
-        /////////////////let player = makeElement("div", "player"); //player div
+        let player = null; //makeElement("div", "player"); //player div
         let playerName = makeElement("div", "player-name"); //player-name div
         let playerScore = makeElement("div", "player-score"); //player-score div
-       
+        playerScore.appendChild(document.createTextNode(players[i].score)); //WORKS FOR BOTH ++++++++++++++++++++++
       
 
-        if (players[i].name == currPlayerName){ //if current player's score
+        if (players[i].name == currentPlayer){ //if current player's score
 
             //flag here that this score has been found!!!!???????????? (for further games by player) +++++++++++++++++++++++
 
@@ -383,6 +383,7 @@ function showScores(){
             //ELSE - below
            
             ///////////////////////////////////
+            player = makeElement("div", "current-player"); //create 'current-player' div
 
             let nameForm = makeElement("form", "name-form");
 
@@ -393,14 +394,14 @@ function showScores(){
             playerName.appendChild(nameForm); //make name div 
             
             //----------------------------------------------------
-            let currPlayer = makeElement("div", "testDiv"); //???????????
-            currPlayer.appendChild(playerName); //?????????????????????
+            //let currPlayer = makeElement("div", "testDiv"); //???????????
+           // currPlayer.appendChild(playerName); //?????????????????????
             //----------------------------------------------------
 
 
           
 
-            //player.appendChild(playerName); 
+            player.appendChild(playerName); 
 
             ///////////////////////////////// 
             
@@ -417,10 +418,13 @@ function showScores(){
     
         }else{
             console.log("Not current score");
-    
 
-            let player = makeElement("div", "player"); //player div /////////////////////////////
+            player = makeElement("div", "player"); //create 'player' div
+           
+            /////////let player = makeElement("div", "player"); //player div /////////////////////////////
             playerName.appendChild(document.createTextNode(players[i].name));
+
+            player.appendChild(playerName); 
 
             /*
             player.appendChild(playerName); 
@@ -431,11 +435,7 @@ function showScores(){
             player.appendChild(playerScore); 
             */
 
-            player.appendChild(playerName); 
            
-            player.appendChild(playerScore); 
-
-            document.getElementById("players-container").appendChild(player); //add div to scores-container
 
             /*
             let playerScore = makeElement("div", "player-score");
@@ -447,8 +447,14 @@ function showScores(){
             //player.appendChild((makeElement("div", "player-score")).appendChild(document.createTextNode(players[i].score))); //make score div 
         }
        
+
+
+        //player.appendChild(playerName); 
+        player.appendChild(playerScore); 
+
+        document.getElementById("players-container").appendChild(player); //add div to scores-container
        //)))))))))))))))))))))))))))))))))))))))))
-       playerScore.appendChild(document.createTextNode(players[i].score)); //WORKS FOR BOTH ++++++++++++++++++++++
+       
         
       // player.appendChild(playerName); 
             
