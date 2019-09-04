@@ -245,7 +245,7 @@ function startTimer(){
 //start the game:
 
 var score = 0;
-//var prevScore = 0;
+var prevScore = 0;
 
 function startGame(){
 
@@ -354,7 +354,6 @@ function showScores(){
 
     let players = playerNames.map(function (currElement, i) { //(val of curr element, index of curr element)
     
-
         //if (currElement == "currentScore" && testScoreArray[i] > testLowestScore){ testcanSave = true; };
             
         //return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
@@ -366,35 +365,44 @@ function showScores(){
     
     for (let i=0, j=players.length; i<j; i++){
 
-        let player = null;  //player
+        let player = null;  //player div reference
         let playerName = makeElement("div", "player-name"); //player-name div
 
         let playerScore = makeElement("div", "player-score"); //player-score div
-        playerScore.appendChild(document.createTextNode(players[i].score)); //assign it value of score
+        playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
 
-        if (players[i].name == currentPlayer){ //if current player's score:
+        if (players[i].name == currentPlayer){ //if current player:
 
-            player = makeElement("div", "current-player"); //assign a 'current-player' div
+            player = makeElement("div", "current-player"); //create a 'current-player' div
+
+            if((players[i].score > lowestScore) && (players[i].score > prevScore)){ //if score elegable for save: 
+            
+
+                let nameForm = makeElement("form", "name-form"); //create html form
+                let nameInput = makeElement("input", "name-input"); //create input field
+                nameInput.type = "text"; //type text
+                nameInput.placeholder = "Enter name"; //placeholder text
+                nameForm.appendChild(nameInput); //add input field to form
+
+                playerName.appendChild(nameForm); //to nameForm for entering of name
 
 
+            }else{ //score not elegabile for save:
+                playerName.appendChild(document.createTextNode("YOU")); //+++++++++++++REPLACE THIS 'YOU' :P 
+            }
+            
 
-        }else{
-            player = makeElement("div", "player"); //assign a 'player' div
+        }else{ //if any other player:
+            player = makeElement("div", "player"); //create a 'player' div
+            playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
         }
        
-       
-       playerName.appendChild(document.createTextNode(players[i].name));
-       
+        player.appendChild(playerName); //add playerName div to player
+        player.appendChild(playerScore); //add playerScore div to player
 
-       player.appendChild(playerName); 
-       player.appendChild(playerScore); 
-
-        document.getElementById("players-container").appendChild(player); //add div to scores-container
-     
+        document.getElementById("players-container").appendChild(player); //add player div to players-container
     }
 
-
-   
     
     //make a html element with classname:
     function makeElement(type, className){ 
