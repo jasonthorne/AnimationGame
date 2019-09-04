@@ -352,6 +352,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	width: 100%;
 	display: grid;
 	overflow: auto;
+	
 }
 
 .player{
@@ -452,13 +453,14 @@ h1{
 	
 }
 */
-
+/*
 .testDiv{
 	background-image:url("img/testApple30pc.png");
 	background-repeat:no-repeat;
 	width: 25px;
 	height: 27px;
 }
+*/
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
 /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
