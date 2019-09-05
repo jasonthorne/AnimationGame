@@ -361,28 +361,19 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	color: white;
 	/*font-family: 'Coming Soon', cursive; /* ++++++++PROBLEM IS HERE!! */
 	/*font-family: Arial, Helvetica, sans-serif; */
-
 }
-
-/*
-.testA {
-	background-color: green;
-	margin: auto;
-	width: 50%;
-	float: left;
-}
-*/
 
 .current-player{
 	background-color: yellow;
-	width: 85%; /*85%;*/
+	width: 60%; /*85%;*/
 	margin: auto;
+
 }
 
 .player-name{
 	background-color: red;
 	float: left;
-	/*margin-right: 80px; /*
+	/*margin-right: 80px; */
 }
 
 .player-score{
@@ -444,7 +435,8 @@ input[type="text"]{
   	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
 	  box-shadow: inset 2px 2px 2px 0px #dddddd;
 	  */
-	  width: 12em; 
+
+	  /*width: 12em; */
   }
 
   /* input:focus::placeholder{hide placeholder text on focus */

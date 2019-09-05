@@ -427,7 +427,6 @@ function showScores(){
     }
     
 
-    
     //make a html element with classname:
     function makeElement(type, className){ 
         let element = document.createElement(type); //create element
@@ -436,8 +435,6 @@ function showScores(){
     }
     
 
-
-    
     //++++++++++append elements to other elements:
     function appendElement(parent, child){
         return parent.appendChild(child);
