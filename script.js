@@ -335,7 +335,7 @@ function showScores(){
 			
 
     //testNameArray
-    var playerNames  = [ "aaaaaaaaaaaaaaaaaaaa",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"]; //-++++++++++++ found with php
+    var playerNames  = [ "test1",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10"]; //-++++++++++++ found with php
     var playerScores  = [ 25, 3, 20, 40, 99, 54, 63, 5, 78, 15]; //- ++++++++++found with php
 
     var lowestScore = 3; //++++++++++++++lowest score - found with php
@@ -362,7 +362,16 @@ function showScores(){
 
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
-    
+
+    for (let i=0, j=players.length; i<j; i++){
+
+        let testDiv = makeElement("div", "testA"); //player-name div
+        testDiv.appendChild(document.createTextNode("test div: " + i)); //add object's score value to div
+
+        document.getElementById("players-container").appendChild(testDiv); //add player div to players-container
+    }
+
+    /*
     for (let i=0, j=players.length; i<j; i++){
 
         let player = null;  //player div reference
@@ -402,6 +411,7 @@ function showScores(){
 
         document.getElementById("players-container").appendChild(player); //add player div to players-container
     }
+    */
 
     
     //make a html element with classname:
