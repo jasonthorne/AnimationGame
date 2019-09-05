@@ -375,14 +375,14 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .current-player{
 	background-color: yellow;
-	/*width: 85%;]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
-	margin: auto; 
+	width: 85%; /*85%;*/
+	margin: auto;
 }
 
 .player-name{
 	background-color: red;
 	float: left;
-	/*margin-right: 80px; /* turned this back on]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
+	/*margin-right: 80px; /*
 }
 
 .player-score{
@@ -392,7 +392,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .replay-button-container {
 	/*background-color: yellow;*/
-	margin: auto;
+	/*margin: auto;*/
 	margin-top: 0px; 
 }
 
@@ -406,7 +406,7 @@ input[type="text"]{
 .name-input{
 	background: rgba(0, 0, 0, 0);
     /*border: none;*/
-	font-family: 'Coming Soon', cursive;
+	/*font-family: 'Coming Soon', cursive;*/
 
 }
 
@@ -444,7 +444,7 @@ input[type="text"]{
   	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
 	  box-shadow: inset 2px 2px 2px 0px #dddddd;
 	  */
-	  /*width: 12em; ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
+	  width: 12em; 
   }
 
   /* input:focus::placeholder{hide placeholder text on focus */

@@ -363,22 +363,16 @@ function showScores(){
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
 
+    /*
     for (let i=0, j=players.length; i<j; i++){
-
-        /*
-        let testDiv = makeElement("div", "testA"); //player-name div
-        testDiv.appendChild(document.createTextNode("test div: " + i)); //add object's score value to div
-
-        document.getElementById("players-container").appendChild(testDiv); //add player div to players-container
-        */
 
        let player = makeElement("div", "player"); //player-name div
        player.appendChild(document.createTextNode("test div: " + i)); //add object's name value to div
        document.getElementById("players-container").appendChild(player); //add player div to players-container
 
-    }
+    }*/
 
-    /*
+    
     for (let i=0, j=players.length; i<j; i++){
 
         let player = null;  //player div reference
@@ -391,6 +385,18 @@ function showScores(){
 
             player = makeElement("div", "current-player"); //create a 'current-player' div
 
+
+            /*=================================================================================================*/
+            let nameForm = makeElement("form", "name-form"); //create html form
+            let nameInput = makeElement("input", "name-input"); //create input field
+            nameInput.type = "text"; //type text
+            nameInput.placeholder = "Enter name"; //placeholder text
+            nameForm.appendChild(nameInput); //add input field to form
+
+            playerName.appendChild(nameForm); //to nameForm for entering of name
+             /*=================================================================================================*/
+
+            /*
             if((players[i].score > lowestScore) && (players[i].score > prevScore)){ //if score elegable for save: 
             
 
@@ -406,6 +412,7 @@ function showScores(){
             }else{ //score not elegabile for save:
                 playerName.appendChild(document.createTextNode("YOU")); //+++++++++++++REPLACE THIS 'YOU' :P 
             }
+            */
             
 
         }else{ //if any other player:
@@ -418,7 +425,7 @@ function showScores(){
 
         document.getElementById("players-container").appendChild(player); //add player div to players-container
     }
-    */
+    
 
     
     //make a html element with classname:
