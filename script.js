@@ -385,8 +385,17 @@ function showScores(){
 
             player = makeElement("div", "current-player"); //create a 'current-player' div
 
+            //======================================================
+            
+            //player = makeElement("div", "current-player-container"); //create a 'current-player' div
+
+            let testDiv = makeElement("div", "testDiv"); 
+            //player.appendChild(testDiv); 
+            
+            //======================================================
 
             /*=================================================================================================*/
+            
             let nameForm = makeElement("form", "name-form"); //create html form
             let nameInput = makeElement("input", "name-input"); //create input field
             nameInput.type = "text"; //type text
@@ -394,11 +403,14 @@ function showScores(){
             nameForm.appendChild(nameInput); //add input field to form
 
             playerName.appendChild(nameForm); //to nameForm for entering of name
+            
              /*=================================================================================================*/
 
             /*
             if((players[i].score > lowestScore) && (players[i].score > prevScore)){ //if score elegable for save: 
             
+
+                
 
                 let nameForm = makeElement("form", "name-form"); //create html form
                 let nameInput = makeElement("input", "name-input"); //create input field
@@ -410,9 +422,9 @@ function showScores(){
 
 
             }else{ //score not elegabile for save:
-                playerName.appendChild(document.createTextNode("YOU")); //+++++++++++++REPLACE THIS 'YOU' :P 
+               playerName.appendChild(document.createTextNode("YOU")); //+++++++++++++REPLACE THIS 'YOU' :P 
             }
-            */
+           */
             
 
         }else{ //if any other player:
@@ -435,13 +447,15 @@ function showScores(){
     }
     
 
+    /*
     //++++++++++append elements to other elements:
     function appendElement(parent, child){
         return parent.appendChild(child);
     }
+    */
 
 
-    console.log(players);
+    console.log(players); ///////////////////++++++++++++++++
 
 
 }
@@ -452,7 +466,7 @@ function showScores(){
 
 
 
-
+/*
 function showScore(){ 
 
     //div for holding player name & score divs:
@@ -478,3 +492,4 @@ function showScore(){
     document.getElementById("scores-container").appendChild(scoreVals); //add div to scores-container
 
 }
+*/
