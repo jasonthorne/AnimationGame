@@ -365,10 +365,17 @@ function showScores(){
 
     for (let i=0, j=players.length; i<j; i++){
 
+        /*
         let testDiv = makeElement("div", "testA"); //player-name div
         testDiv.appendChild(document.createTextNode("test div: " + i)); //add object's score value to div
 
         document.getElementById("players-container").appendChild(testDiv); //add player div to players-container
+        */
+
+       let player = makeElement("div", "player"); //player-name div
+       player.appendChild(document.createTextNode("test div: " + i)); //add object's name value to div
+       document.getElementById("players-container").appendChild(player); //add player div to players-container
+
     }
 
     /*

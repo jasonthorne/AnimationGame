@@ -352,7 +352,6 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	width: 100%;
 	display: grid;
 	overflow: auto;
-	
 }
 
 .player{
@@ -360,8 +359,19 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	width: 60%;  /*]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
 	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++  turned this off]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/ 
 	color: white;
-	font-family: 'Coming Soon', cursive;
+	/*font-family: 'Coming Soon', cursive; /* ++++++++PROBLEM IS HERE!! */
+	/*font-family: Arial, Helvetica, sans-serif; */
+
 }
+
+/*
+.testA {
+	background-color: green;
+	margin: auto;
+	width: 50%;
+	float: left;
+}
+*/
 
 .current-player{
 	background-color: yellow;
