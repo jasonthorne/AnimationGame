@@ -383,6 +383,7 @@ function showScores(){
 
         if (players[i].name == currentPlayer){ //if current player:
 
+           // container = makeElement("div", "current-player-container"); //+++++++++++++++++++++
             player = makeElement("div", "current-player"); //create a 'current-player' div
 
             //======================================================
