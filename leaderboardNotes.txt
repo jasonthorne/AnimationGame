@@ -8,28 +8,11 @@ https://css-tricks.com/snippets/css/css-box-shadow/
 
 165
 
-finish playing game:
 
-+pull scores from db for leaderboard:
--check if player's score should be added to leader board (if score is bigger than leaderboard's LOWEST score)
-find where to add score in list (add to array list of scores)
-add ability for player to save and push score
-
------
-add if so:
-
--------
-if not, display score elsewhere????
-
-
-
-getHighestScores:  
-- pull leaderboard scores from DB
-- store lowest score in php var
-
-checkPlayerScore() 
-- compare score against leaderboard's LOWEST score to see if it should be given options to save.
-
+=========leaderboard divs=============
+div for everyoneone with 100% size.
+-div for currPlayer with tooltip/save button
+-player div foreveryone with nanme and score inside (at ~60% size) 
 
 ======================
 
