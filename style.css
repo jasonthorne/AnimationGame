@@ -363,7 +363,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++*/
 
-.player{
+.former-player{
 	background-color: purple;
 	width: 60%;  /*]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
 	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++  turned this off]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/ 
@@ -394,8 +394,8 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 .current-player > .player-name{ 
-	/*margin-left: 72px;
-	/*position: absolute;*/ /* NEEDED WHEN currplr width < 100%*/
+	/*margin-left: 72px;*/
+	position: absolute; /* NEEDED WHEN currplr width < 100%*/
 }
 
 .player-score{
@@ -489,6 +489,8 @@ h1{
 	width: 25px;
 	height: 27px;
 	float: left;
+	/*width: 20%;*/
+	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
