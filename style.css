@@ -330,6 +330,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	margin: auto;
 	margin-top: 10px;
 	margin-bottom: 5px;
+	dis
 }
 
 
@@ -359,6 +360,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 .player-container{
 	width: 100%;
 	margin: auto;
+	text-align: center; /* ????????????????????????????*/
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -484,16 +486,24 @@ h1{
 	background-repeat:no-repeat;
 	width: 25px;
 	height: 27px;
-	float: left;
+	/*float: left;*/
 	/*width: 20%;*/
 	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
 }
 
 .testDiv2{
 	background-color: yellow;
+	/*float: left;*/
+	/*width: 20%;*/
+	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
+	/*margin: auto;*/
+	display: inline-block;
+}
+
+.testDivContainer{
 	float: left;
 	width: 20%;
-	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
+	text-align: center;
 }
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/

@@ -377,9 +377,12 @@ function showScores(){
             player = makeElement("div", "current-player"); //create a 'current-player' div
 
             /* ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+            let testDivContainer = makeElement("div", "testDivContainer"); 
             let testDiv = makeElement("div", "testDiv2"); 
-            testDiv.appendChild(document.createTextNode("testDiv2")); //add object's score value to div
-            playerContainer.appendChild(testDiv); 
+            testDiv.appendChild(document.createTextNode("testDiv2")); 
+            testDivContainer.appendChild(testDiv); 
+
+            playerContainer.appendChild(testDivContainer); 
             /* ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
             /*=================================================================================================*/
