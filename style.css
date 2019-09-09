@@ -354,6 +354,15 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	overflow: auto;
 }
 
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++*/
+.player-container{
+	width: 100%;
+	margin: auto;
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++*/
+
 .player{
 	background-color: purple;
 	width: 60%;  /*]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
@@ -363,16 +372,17 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	/*font-family: Arial, Helvetica, sans-serif; */
 }
 
-
+/*
 .current-player-container{
 	background-color: green;
 	width: 100%; 
 	margin: auto;
 }
+*/
 
 .current-player{
 	background-color: yellow;
-	width: 100%; /*60%; /*85%;*/
+	width: 60%;/*100%; /*60%; /*85%;*/
 	margin: auto;
 }
 
@@ -384,7 +394,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 
 .current-player > .player-name{ 
-	margin-left: 72px;
+	/*margin-left: 72px;
 	/*position: absolute;*/ /* NEEDED WHEN currplr width < 100%*/
 }
 
@@ -471,6 +481,7 @@ h1{
 	
 }
 */
+
 
 .testDiv{
 	background-image:url("img/testApple30pc.png");
