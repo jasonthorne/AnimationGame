@@ -364,7 +364,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 /* ++++++++++++++++++++++++++++++++++++++++++++++*/
 
 .former-player{
-	background-color: purple;
+	/*background-color: yellow;*/
 	width: 60%;  /*]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
 	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++  turned this off]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/ 
 	color: #ffffff;
@@ -395,7 +395,7 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .current-player > .player-name{ 
 	/*margin-left: 72px;*/
-	position: absolute; /* NEEDED WHEN currplr width < 100%*/
+	position: absolute; /* ++++++STOPS JUDDERING*/
 }
 
 .player-score{
@@ -437,13 +437,10 @@ input[type="text"]{
 
   }
 
-
 .name-input{
 	background: rgba(0, 0, 0, 0);
     /*border: none;*/
 	/*font-family: 'Coming Soon', cursive;*/
-	
-	
 }
 
 ::placeholder  {
@@ -478,7 +475,6 @@ h1{
 	font-family: 'Coming Soon', cursive;
 	color: white;
 	font-size: 15px;
-	
 }
 */
 
@@ -490,6 +486,13 @@ h1{
 	height: 27px;
 	float: left;
 	/*width: 20%;*/
+	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
+}
+
+.testDiv2{
+	background-color: yellow;
+	float: left;
+	width: 20%;
 	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
 }
 

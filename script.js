@@ -366,20 +366,21 @@ function showScores(){
     
     for (let i=0, j=players.length; i<j; i++){
 
-        let playerContainer =  makeElement("div", "player-container"); 
+        let playerContainer = makeElement("div", "player-container"); 
         let player = null;
         let playerName = makeElement("div", "player-name"); //player-name div
         let playerScore = makeElement("div", "player-score"); //player-score div
         playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
 
-
         if (players[i].name == currentPlayer){ //if current player:
 
             player = makeElement("div", "current-player"); //create a 'current-player' div
 
-
-            let testDiv = makeElement("div", "testDiv"); 
+            /* ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+            let testDiv = makeElement("div", "testDiv2"); 
+            testDiv.appendChild(document.createTextNode("testDiv2")); //add object's score value to div
             playerContainer.appendChild(testDiv); 
+            /* ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
             /*=================================================================================================*/
             
@@ -413,8 +414,8 @@ function showScores(){
             */
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        }else{ //if any other player:
-            player = makeElement("div", "former-player"); //create a 'player' div
+        }else{ //a former player:
+            player = makeElement("div", "former-player"); 
             playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
         }
 
