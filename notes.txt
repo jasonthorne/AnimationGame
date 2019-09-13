@@ -1,9 +1,6 @@
 w3c HOW TO PAGE: https://www.w3schools.com/howto/howto_css_form_on_image.asp
 
 
-TEXT ON A CIRCLE:
-https://css-tricks.com/set-text-on-a-circle/
-
 
 
 
