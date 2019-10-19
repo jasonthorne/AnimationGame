@@ -340,6 +340,7 @@ function showScores(){
 
     var lowestScore = 3; //++++++++++++++lowest score - found with php
     
+    
     var testCurrentScore = 22; //++++++++++++++current score
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     if (typeof score == "string"){ //if score is a string (< 10)
@@ -386,22 +387,40 @@ function showScores(){
             /* ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
             /*=================================================================================================*/
-            
-            let nameForm = makeElement("form", "name-form"); //create html form
-            let nameInput = makeElement("input", "name-input"); //create input field
-            nameInput.type = "text"; //type text
-            nameInput.placeholder = "Enter name"; //placeholder text
-            nameForm.appendChild(nameInput); //add input field to form
+                /*
+                    let nameForm = makeElement("form", "name-form"); //create html form
+                    let nameInput = makeElement("input", "name-input"); //create input field
+                    nameInput.type = "text"; //type text
+                    nameInput.placeholder = "Enter name"; //placeholder text
+                    nameForm.appendChild(nameInput); //add input field to form
 
-            playerName.appendChild(nameForm); //to nameForm for entering of name
-        
+                    playerName.appendChild(nameForm); //to nameForm for entering of name
+                */
              /*=================================================================================================*/
 
 
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-            /*
+           
             if((players[i].score > lowestScore) && (players[i].score > prevScore)){ //if score elegable for save: 
             
+
+                let nameForm = makeElement("form", "name-form"); //create html form
+                let nameInput = makeElement("input", "name-input"); //create input field
+                nameInput.type = "text"; //type text
+                nameInput.placeholder = "Enter name"; //placeholder text
+                nameForm.appendChild(nameInput); //add input field to form
+
+                playerName.appendChild(nameForm); //to nameForm for entering of name
+            
+            }else{ //score not elegabile for save:
+                playerName.appendChild(document.createTextNode("YOU")); //+++++++++++++REPLACE THIS 'YOU' :P 
+             }    
+
+
+                 /*
+            playerName.appendChild(nameForm); //to nameForm for entering of name
+
+
                 let nameForm = makeElement("form", "name-form"); //create html form
                 let nameInput = makeElement("input", "name-input"); //create input field
                 nameInput.type = "text"; //type text
