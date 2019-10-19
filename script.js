@@ -302,6 +302,7 @@ replayBtn.onclick = function() {
     //reset vars:
     document.getElementById("score").innerHTML = "00"; //show score as 00
     document.getElementById("timer").style.color = "#808080"; //reset timer colour
+    prevScore = score; //++++++++++++++++++++++++++++++++++++++++++++++++???????????
     score = 0; //reset score counter
     apples.length = 0; //reset apples array
     start = 0; //reset animation start time
@@ -315,7 +316,7 @@ replayBtn.onclick = function() {
         div.removeChild(div.firstChild); //remove said child
     }
 
-   // prevScore = score; //++++++++++++++++++++++++++++++++++++++++++++++++???????????
+    
 
     startGame(); //start game
 }
@@ -341,7 +342,7 @@ function showScores(){
     var lowestScore = 3; //++++++++++++++lowest score - found with php
     
     
-    var testCurrentScore = 22; //++++++++++++++current score
+    ////////////////////var testCurrentScore = 22; //++++++++++++++current score
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     if (typeof score == "string"){ //if score is a string (< 10)
         score.slice(0, 1); //remove leading 0
@@ -378,12 +379,14 @@ function showScores(){
             player = makeElement("div", "current-player"); //create a 'current-player' div
 
             /* ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+            /*
             let testDivContainer = makeElement("div", "testDivContainer"); 
             let testDiv = makeElement("div", "testDiv2"); 
             testDiv.appendChild(document.createTextNode("testDiv2")); 
             testDivContainer.appendChild(testDiv); 
 
             playerContainer.appendChild(testDivContainer); 
+            */
             /* ++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
             /*=================================================================================================*/
@@ -403,6 +406,14 @@ function showScores(){
            
             if((players[i].score > lowestScore) && (players[i].score > prevScore)){ //if score elegable for save: 
             
+                /* -----------------------------------------*/
+                let testDivContainer = makeElement("div", "testDivContainer"); 
+                let testDiv = makeElement("div", "testDiv2"); 
+                testDiv.appendChild(document.createTextNode("testDiv2")); 
+                testDivContainer.appendChild(testDiv); 
+
+                playerContainer.appendChild(testDivContainer); 
+                 /* -----------------------------------------*/
 
                 let nameForm = makeElement("form", "name-form"); //create html form
                 let nameInput = makeElement("input", "name-input"); //create input field
