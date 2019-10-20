@@ -400,7 +400,7 @@ function showScores(){
                 nameInput.type = "text"; //type text
                 nameInput.placeholder = "Enter name"; //placeholder text
 
-                nameForm.appendChild(testBtn);
+                nameForm.appendChild(testBtn); //++++++++++++++++++++++++++++++++++++++++
 
                 nameForm.appendChild(nameInput); //add input field to form
 
