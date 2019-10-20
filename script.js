@@ -385,13 +385,10 @@ function showScores(){
 
                 let testBtn = makeElement("button", "test-Btn");
                 testBtn.innerHTML = "yo dawg!";
-                testBtn.type = "submit";
+                testBtn.type = "button";
 
-                /*
-                testBtn.onclick = function() {
-                    console.log("Yo");
-                }
-                */
+                
+               
                 ///////////////////////testDivContainer.appendChild(testBtn); 
 
                ////////////////// playerContainer.appendChild(testDivContainer); 
@@ -409,6 +406,13 @@ function showScores(){
 
                 playerName.appendChild(nameForm); //to nameForm for entering of name
                 
+                /*
+                testBtn.onclick = function() {
+                    console.log("Yo");
+                    //nameForm.prevent
+                    //nameForm.submit();
+                }*/
+            
 
             //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
            
