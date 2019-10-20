@@ -461,13 +461,15 @@ input[type="text"]{
 	  */
 
 	width: 12em; 
-	
+
+	/*
+	SHOW BUTTON AND ITS TOOLTIP AND MAKE BUTTON ABLE TO BNE CLICKED
+	*/
 }
 
-  /* input:focus::placeholder{hide placeholder text on focus */
+/* hide placeholder text on focus */
 input:focus::placeholder{
-	/*color:transparent;*/
-	color:  rgba(0, 0, 0, 0);
+	color:  rgba(0, 0, 0, 0); /*color:transparent;*/
 }
 
 
