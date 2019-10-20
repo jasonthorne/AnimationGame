@@ -382,15 +382,19 @@ function showScores(){
             /* -----------------------------------------*/
                 
                 let testDivContainer = makeElement("div", "testDivContainer"); 
-                
+
                 let testBtn = makeElement("button", "test-Btn");
                 testBtn.innerHTML = "yo dawg!";
+                testBtn.type = "submit";
+
+                /*
                 testBtn.onclick = function() {
                     console.log("Yo");
                 }
-                testDivContainer.appendChild(testBtn); 
+                */
+                ///////////////////////testDivContainer.appendChild(testBtn); 
 
-                playerContainer.appendChild(testDivContainer); 
+               ////////////////// playerContainer.appendChild(testDivContainer); 
                 
                  /* -----------------------------------------*/
                 
@@ -398,6 +402,9 @@ function showScores(){
                 let nameInput = makeElement("input", "name-input"); //create input field
                 nameInput.type = "text"; //type text
                 nameInput.placeholder = "Enter name"; //placeholder text
+
+                nameForm.appendChild(testBtn);
+
                 nameForm.appendChild(nameInput); //add input field to form
 
                 playerName.appendChild(nameForm); //to nameForm for entering of name
