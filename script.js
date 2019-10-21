@@ -383,12 +383,15 @@ function showScores(){
                 
                 let testDivContainer = makeElement("div", "testDivContainer"); 
 
-                let testBtn = makeElement("button", "test-Btn");
-                testBtn.innerHTML = "yo dawg!";
-                testBtn.type = "button";
+                let testBtn = makeElement("input", "test-Btn");
+                //testBtn.innerHTML = "yo dawg!";
+               testBtn.type = "button";
+               testBtn.value = "yo";
 
-                
-               
+                  // https://trans4mind.com/personal_development/JavaScript2/createSelectDynamically.htm?
+
+              // https://www.google.com/search?q=dynamically+create+a+form+with+javascript&rlz=1C1CHBF_enIE863IE863&oq=dynamically+create+a+form&aqs=chrome.0.0j69i57j0l3j69i60.15123j1j4&sourceid=chrome&ie=UTF-8
+           
                 ///////////////////////testDivContainer.appendChild(testBtn); 
 
                ////////////////// playerContainer.appendChild(testDivContainer); 
