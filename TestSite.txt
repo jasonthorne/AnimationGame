@@ -4,7 +4,7 @@ sortimg arrays:
 https://reactgo.com/sort-arrayofobjects/
 
 
-s
+
 
 text for enteriong name;
 enter name to save 
