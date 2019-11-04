@@ -317,7 +317,6 @@ replayBtn.onclick = function() {
     }
 
     
-
     startGame(); //start game
 }
 
@@ -360,7 +359,7 @@ function showScores(){
             
         //return {name: currElement, score: testScoreArray[i], canSave: testcanSave}; //return an object with keys/values to array ('canSave' is flag for current player formatting)
 
-        return {name: currElement, score: playerScores[i]}; //return an object with keys/values to array ('canSave' is flag for current player formatting) +++++++++++++++
+        return {name: currElement, score: playerScores[i]}; //return an object with keys/values to array
 
     }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
 
