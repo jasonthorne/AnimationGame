@@ -521,7 +521,6 @@ function showScores(){
             }
              //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
             
-
         }else{ //if any other player:
             player = makeElement("div", "player"); //create a 'player' div
             playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
