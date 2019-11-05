@@ -1,5 +1,3 @@
-console.log("Hi!");
-
 
 //testNameArray
  var playerNames  = [ "test1",  "test2", "test3", "test4", "test5", "test6", "test7", "test8", "test9", "test10" ];
@@ -15,6 +13,10 @@ console.log("Hi!");
     return {name: currElement, score: playerScores[i]}; //return an object with keys/values to array
  }).sort((a, b) => (a.score < b.score) ? 1 : -1); //sort array objects by score
  
+
+ //-------------------
+ console.log(players);
+ //------------------
  
  for (let i=0, j=players.length; i<j; i++){
 
@@ -31,12 +33,12 @@ console.log("Hi!");
 
 		/* -----------------------------------------*/
 			
-			let testDivContainer = makeElement("div", "testDivContainer"); 
+			//let testDivContainer = makeElement("div", "testDivContainer"); 
 
 			let testBtn = makeElement("input", "test-Btn");
 			//testBtn.innerHTML = "yo dawg!";
-		   testBtn.type = "button";
-		   testBtn.value = "yo";
+		    testBtn.type = "button";
+		    testBtn.value = "yo";
 
 			 /* -----------------------------------------*/
 			
@@ -74,4 +76,11 @@ function makeElement(type, className){
 	element.className = className; //give classname
 	return element;
 }
- 
+
+
+
+//+++++++++++++++++++++++++++++++
+function testClick(){
+	console.log("yo");
+}
+//+++++++++++++++++++++++++++++++
