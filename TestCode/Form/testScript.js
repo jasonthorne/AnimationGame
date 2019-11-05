@@ -52,15 +52,18 @@
 
 		playerName.appendChild(nameForm); //to nameForm for entering of name
 
-		//player.appendChild(playerName); //add playerName div to player //??????????????????????
+		player.appendChild(playerName); //add playerName div to player //??????????????????????
 			
 	}else{ //a former player:
 		player = makeElement("div", "former-player"); 
+		player.appendChild(playerName); //add playerName div to player
+		player.appendChild(playerScore); //add playerScore div to player
+
 		playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
 	}
 	
-	player.appendChild(playerName); //add playerName div to player
-	player.appendChild(playerScore); //add playerScore div to player
+	//player.appendChild(playerName); //add playerName div to player
+	//player.appendChild(playerScore); //add playerScore div to player
 
 	///////////playerContainer.appendChild(player); //add player to player-container +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
