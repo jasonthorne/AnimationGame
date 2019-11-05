@@ -20,7 +20,7 @@
  
  for (let i=0, j=players.length; i<j; i++){
 
-	let playerContainer = makeElement("div", "player-container"); 
+	///////////////////////let playerContainer = makeElement("div", "player-container"); 
 	let player = null;
 	let playerName = makeElement("div", "player-name"); //player-name div
 	let playerScore = makeElement("div", "player-score"); //player-score div
@@ -33,27 +33,25 @@
 
 		/* -----------------------------------------*/
 			
-			//let testDivContainer = makeElement("div", "testDivContainer"); 
+		let testBtn = makeElement("input", "test-Btn");
+		testBtn.type = "button";
+		testBtn.value = "yo";
 
-			let testBtn = makeElement("input", "test-Btn");
-			//testBtn.innerHTML = "yo dawg!";
-		    testBtn.type = "button";
-		    testBtn.value = "yo";
+		/* -----------------------------------------*/
+		
+		let nameForm = makeElement("form", "name-form"); //create html form
+		let nameInput = makeElement("input", "name-input"); //create input field
+		nameInput.type = "text"; //type text
+		nameInput.placeholder = "Enter name"; //placeholder text
 
-			 /* -----------------------------------------*/
+		nameForm.appendChild(testBtn); //++++++++++++++++++++++++++++++++++++++++
+
+		nameForm.appendChild(nameInput); //add input field to form
+
+		nameForm.appendChild(playerScore); //ADD PLAYER SCORE TO FORM ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+		playerName.appendChild(nameForm); //to nameForm for entering of name
 			
-			let nameForm = makeElement("form", "name-form"); //create html form
-			let nameInput = makeElement("input", "name-input"); //create input field
-			nameInput.type = "text"; //type text
-			nameInput.placeholder = "Enter name"; //placeholder text
-
-			nameForm.appendChild(testBtn); //++++++++++++++++++++++++++++++++++++++++
-
-			nameForm.appendChild(nameInput); //add input field to form
-
-			playerName.appendChild(nameForm); //to nameForm for entering of name
-			
-			 
 	}else{ //a former player:
 		player = makeElement("div", "former-player"); 
 		playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
