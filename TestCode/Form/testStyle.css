@@ -1,0 +1,54 @@
+#players-container {
+		background-color: blueviolet;
+		width: 100%;
+		display: grid;
+		overflow: auto;
+		}
+		
+		.player-container{
+	width: 100%;
+	margin: auto;
+	text-align: center; /* ????????????????????????????*/
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++*/
+
+.former-player{
+	/*background-color: yellow;*/
+	width: 60%;  /*]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
+	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++  turned this off]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/ 
+	color: #ffffff;
+	/*font-family: 'Coming Soon', cursive; /* ++++++++PROBLEM IS HERE!! */
+	/*font-family: Arial, Helvetica, sans-serif; */
+}
+
+/*
+.current-player-container{
+	background-color: green;
+	width: 100%; 
+	margin: auto;
+}
+*/
+
+.current-player{
+	background-color: yellow;
+	width: 60%;/*100%; /*60%; /*85%;*/
+	margin: auto;
+}
+
+.player-name{
+	background-color: red;
+	float: left;
+	/*margin-right: 80px; */
+}
+
+
+.current-player > .player-name{ 
+	/*margin-left: 72px;*/
+	position: absolute; /* ++++++STOPS JUDDERING*/
+}
+
+.player-score{
+	background-color: grey;
+	float: right;
+}
