@@ -9,8 +9,8 @@ https://stackoverflow.com/questions/3297143/dynamically-create-a-html-form-with-
 
 
 
-
-
+empty text box validation: 
+https://www.w3schools.com/howto/howto_js_validation_empty_input.asp
 
 
 Another possible font:

@@ -34,7 +34,7 @@
 		/* -----------------------------------------*/
 			
 		let testBtn = makeElement("input", "test-Btn");
-		testBtn.type = "button";
+		testBtn.type = "button"; //= "submit"; //+++++++MIGHT NEED TO BE SUBMIT
 		testBtn.value = "yo";
 
 		/* -----------------------------------------*/
@@ -48,22 +48,24 @@
 
 		nameForm.appendChild(nameInput); //add input field to form
 
-		nameForm.appendChild(playerScore); //ADD PLAYER SCORE TO FORM ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		////////////nameForm.appendChild(playerScore); //ADD PLAYER SCORE TO FORM ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 		playerName.appendChild(nameForm); //to nameForm for entering of name
 
-		player.appendChild(playerName); //add playerName div to player //??????????????????????
+		///////////////player.appendChild(playerName); //add playerName div to player //??????????????????????
 			
 	}else{ //a former player:
 		player = makeElement("div", "former-player"); 
-		player.appendChild(playerName); //add playerName div to player
-		player.appendChild(playerScore); //add playerScore div to player
-
+		
 		playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
+
+		////player.appendChild(playerName); //add playerName div to player
+		////player.appendChild(playerScore); //add playerScore div to player
+
 	}
 	
-	//player.appendChild(playerName); //add playerName div to player
-	//player.appendChild(playerScore); //add playerScore div to player
+	player.appendChild(playerName); //add playerName div to player
+	player.appendChild(playerScore); //add playerScore div to player
 
 	///////////playerContainer.appendChild(player); //add player to player-container +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
