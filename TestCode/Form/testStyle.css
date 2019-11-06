@@ -54,15 +54,27 @@
 	position: absolute; /* ++++++STOPS JUDDERING*/
 }
 
+
+/*
 .player-score{
 	background-color: grey;
+	float: right;
+}
+*/
+
+.former-player-score{
+	background-color: grey;
+	float: right;
+}
+
+.current-player-score{
+	background-color: turquoise;
 	float: right;
 }
 
 
 /*
-.player-container:has(.current-player){
-	
-	background-color: yellow;
+.name-input{
+	margin-left: 50px;
 }
 */

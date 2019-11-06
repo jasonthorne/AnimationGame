@@ -23,23 +23,34 @@
 	///////////////////////let playerContainer = makeElement("div", "player-container"); 
 	let player = null;
 	let playerName = makeElement("div", "player-name"); //player-name div
+
+	/*
 	let playerScore = makeElement("div", "player-score"); //player-score div
 	playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
+	*/
+
+	let playerScore = null; //++++++++++TESTING HAVING SCORE SPERATE TO TARGET CURRENT PLAYER SCORE FOR ALIGNING
+
 
 	if (players[i].name == currentPlayer){ //if current player:
 
 		player = makeElement("div", "current-player"); //create a 'current-player' div
 
 
-		/* -----------------------------------------*/
+		/* ---------------------------------------------------------------------------*/
+		playerScore = makeElement("div", "current-player-score");  //create a 'current-player-score' div
+
 			
 		let testBtn = makeElement("input", "test-Btn");
 		testBtn.type = "button"; //= "submit"; //+++++++MIGHT NEED TO BE SUBMIT
 		testBtn.value = "yo";
 
-		/* -----------------------------------------*/
+		/* ---------------------------------------------------------------------------*/
 		
 		let nameForm = makeElement("form", "name-form"); //create html form
+		nameForm.method = "post"; //++++++++++++++++++++++++++++++++++++++++++++MIGHT HAVE TO BE IN CAPS!!
+		nameForm.action = "testPHP.php";
+
 		let nameInput = makeElement("input", "name-input"); //create input field
 		nameInput.type = "text"; //type text
 		nameInput.placeholder = "Enter name"; //placeholder text
@@ -56,6 +67,8 @@
 			
 	}else{ //a former player:
 		player = makeElement("div", "former-player"); 
+
+		playerScore = makeElement("div", "former-player-score");  //create a 'current-player-score' div
 		
 		playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
 
@@ -63,7 +76,13 @@
 		////player.appendChild(playerScore); //add playerScore div to player
 
 	}
-	
+
+
+	//---------------------------------------
+	playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
+	//---------------------------------------
+
+
 	player.appendChild(playerName); //add playerName div to player
 	player.appendChild(playerScore); //add playerScore div to player
 

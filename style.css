@@ -398,10 +398,19 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	position: absolute; /* ++++++STOPS JUDDERING*/
 }
 
+
+
 .player-score{
 	background-color: grey;
 	float: right;
 }
+
+/*
+.former-player-score{
+	background-color: grey;
+	float: right;
+}
+*/
 
 .replay-button-container {
 	/*background-color: yellow;*/
