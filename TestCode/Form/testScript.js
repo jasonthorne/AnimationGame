@@ -38,53 +38,59 @@
 
 
 		/* ---------------------------------------------------------------------------*/
-		playerScore = makeElement("div", "current-player-score");  //create a 'current-player-score' div
+		//FORM
+		let phpForm = makeElement("form", "php-form"); //create html form
+		phpForm.method = "post"; //++++++++++++++++++++++++++++++++++++++++++++MIGHT HAVE TO BE IN CAPS!!
+		phpForm.action = "testPHP.php"; // ++++++++++++++CHANGE THIS!!
 
-			
-		let testBtn = makeElement("input", "test-Btn");
-		testBtn.type = "button"; //= "submit"; //+++++++MIGHT NEED TO BE SUBMIT
-		testBtn.value = "yo";
+		//BUTTON
+		let saveBtn = makeElement("input", "save-button"); //create save button
+		saveBtn.type = "button"; //= "submit"; //+++++++MIGHT NEED TO BE SUBMIT
+		saveBtn.value = "yo";
+		nameForm.appendChild(saveBtn); //add save button to form
 
-		/* ---------------------------------------------------------------------------*/
-		
-		let nameForm = makeElement("form", "name-form"); //create html form
-		nameForm.method = "post"; //++++++++++++++++++++++++++++++++++++++++++++MIGHT HAVE TO BE IN CAPS!!
-		nameForm.action = "testPHP.php";
-
+		//INPUT
 		let nameInput = makeElement("input", "name-input"); //create input field
 		nameInput.type = "text"; //type text
 		nameInput.placeholder = "Enter name"; //placeholder text
+		playerName.appendChild(nameInput); //add input field to playerName div
+		nameForm.appendChild(playerName); //add playerName div to form
 
-		nameForm.appendChild(testBtn); //++++++++++++++++++++++++++++++++++++++++
+		//SCORE
+		playerScore = makeElement("div", "current-player-score");  //create a 'current-player-score' div
+		playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div ++++++++++++++
+		nameForm.appendChild(playerScore); //add playerScore div to form
+		
 
-		nameForm.appendChild(nameInput); //add input field to form
-
+		player.appendChild(nameForm); //add form to player div
+		/* ---------------------------------------------------------------------------*/
+		
 		////////////nameForm.appendChild(playerScore); //ADD PLAYER SCORE TO FORM ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-		playerName.appendChild(nameForm); //to nameForm for entering of name
+		///playerName.appendChild(nameForm); //to nameForm for entering of name
 
 		///////////////player.appendChild(playerName); //add playerName div to player //??????????????????????
 			
 	}else{ //a former player:
-		player = makeElement("div", "former-player"); 
+		player = makeElement("div", "former-player"); //create a 'former-player' div
+
+		playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
+		player.appendChild(playerName); //add playerName div to player
 
 		playerScore = makeElement("div", "former-player-score");  //create a 'current-player-score' div
-		
-		playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
-
-		////player.appendChild(playerName); //add playerName div to player
-		////player.appendChild(playerScore); //add playerScore div to player
+		playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
+		player.appendChild(playerScore); //add playerScore div to player
 
 	}
 
 
 	//---------------------------------------
-	playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
+	/////////////////-------------playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
 	//---------------------------------------
 
 
-	player.appendChild(playerName); //add playerName div to player
-	player.appendChild(playerScore); //add playerScore div to player
+	/////////////------------///////////////player.appendChild(playerName); //add playerName div to player
+	//////////////------------//////////////player.appendChild(playerScore); //add playerScore div to player
 
 	///////////playerContainer.appendChild(player); //add player to player-container +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
