@@ -47,22 +47,22 @@
 		let saveBtn = makeElement("input", "save-button"); //create save button
 		saveBtn.type = "button"; //= "submit"; //+++++++MIGHT NEED TO BE SUBMIT
 		saveBtn.value = "yo";
-		nameForm.appendChild(saveBtn); //add save button to form
+		phpForm.appendChild(saveBtn); //add save button to form
 
 		//INPUT
 		let nameInput = makeElement("input", "name-input"); //create input field
 		nameInput.type = "text"; //type text
 		nameInput.placeholder = "Enter name"; //placeholder text
 		playerName.appendChild(nameInput); //add input field to playerName div
-		nameForm.appendChild(playerName); //add playerName div to form
+		phpForm.appendChild(playerName); //add playerName div to form
 
 		//SCORE
 		playerScore = makeElement("div", "current-player-score");  //create a 'current-player-score' div
 		playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div ++++++++++++++
-		nameForm.appendChild(playerScore); //add playerScore div to form
+		phpForm.appendChild(playerScore); //add playerScore div to form
 		
 
-		player.appendChild(nameForm); //add form to player div
+		player.appendChild(phpForm); //add form to player div
 		/* ---------------------------------------------------------------------------*/
 		
 		////////////nameForm.appendChild(playerScore); //ADD PLAYER SCORE TO FORM ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
