@@ -20,84 +20,62 @@
  
  for (let i=0, j=players.length; i<j; i++){
 
-	///////////////////////let playerContainer = makeElement("div", "player-container"); 
-	let player = null;
-	let playerName = makeElement("div", "player-name"); //player-name div
-
-	/*
-	let playerScore = makeElement("div", "player-score"); //player-score div
-	playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
-	*/
-
-	let playerScore = null; //++++++++++TESTING HAVING SCORE SPERATE TO TARGET CURRENT PLAYER SCORE FOR ALIGNING
-
-
+	let player = null; //player div ref
+	
 	if (players[i].name == currentPlayer){ //if current player:
 
 		player = makeElement("div", "current-player"); //create a 'current-player' div
 
-
-		/* ---------------------------------------------------------------------------*/
-		//FORM
+		//form:
 		let phpForm = makeElement("form", "php-form"); //create html form
 		phpForm.method = "post"; //++++++++++++++++++++++++++++++++++++++++++++MIGHT HAVE TO BE IN CAPS!!
 		phpForm.action = "testPHP.php"; // ++++++++++++++CHANGE THIS!!
 
-		//BUTTON
+		//save button:
 		let saveBtn = makeElement("input", "save-button"); //create save button
 		saveBtn.type = "button"; //= "submit"; //+++++++MIGHT NEED TO BE SUBMIT
 		saveBtn.value = "yo";
-		phpForm.appendChild(saveBtn); //add save button to form
+		///phpForm.appendChild(saveBtn); //add button to form
 
-		//INPUT
+		//------------------------------------
+		let saveBtnContainer = makeElement("div", "save-button-container"); 
+		saveBtnContainer.appendChild(saveBtn); //add button to container
+		phpForm.appendChild(saveBtnContainer); //add container to form
+		//------------------------------------
+
+		//input field:
 		let nameInput = makeElement("input", "name-input"); //create input field
 		nameInput.type = "text"; //type text
 		nameInput.placeholder = "Enter name"; //placeholder text
-		playerName.appendChild(nameInput); //add input field to playerName div
-		phpForm.appendChild(playerName); //add playerName div to form
+		//////////phpForm.appendChild(nameInput); //add input field to form
 
-		//SCORE
-		playerScore = makeElement("div", "current-player-score");  //create a 'current-player-score' div
+		//score:
+		let playerScore = makeElement("div", "current-player-score");  //create a 'current-player-score' div
 		playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div ++++++++++++++
-		phpForm.appendChild(playerScore); //add playerScore div to form
-		
+		//////////phpForm.appendChild(playerScore); //add playerScore div to form
 
+		//------------------------------------
+		let testDiv = makeElement("div", "testDiv"); 
+		testDiv.appendChild(nameInput); 
+		testDiv.appendChild(playerScore); 
+		phpForm.appendChild(testDiv);
+		//------------------------------------
+	
 		player.appendChild(phpForm); //add form to player div
-		/* ---------------------------------------------------------------------------*/
-		
-		////////////nameForm.appendChild(playerScore); //ADD PLAYER SCORE TO FORM ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-		///playerName.appendChild(nameForm); //to nameForm for entering of name
-
-		///////////////player.appendChild(playerName); //add playerName div to player //??????????????????????
 			
 	}else{ //a former player:
-		player = makeElement("div", "former-player"); //create a 'former-player' div
+		player = makeElement("div", "former-player"); //create former-player div
 
+		let playerName = makeElement("div", "former-player-name"); // create 'player-name' div
 		playerName.appendChild(document.createTextNode(players[i].name)); //add object's name value to div
 		player.appendChild(playerName); //add playerName div to player
 
-		playerScore = makeElement("div", "former-player-score");  //create a 'current-player-score' div
+		let playerScore = makeElement("div", "former-player-score");  //create 'current-player-score' div
 		playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
 		player.appendChild(playerScore); //add playerScore div to player
-
 	}
 
-
-	//---------------------------------------
-	/////////////////-------------playerScore.appendChild(document.createTextNode(players[i].score)); //add object's score value to div
-	//---------------------------------------
-
-
-	/////////////------------///////////////player.appendChild(playerName); //add playerName div to player
-	//////////////------------//////////////player.appendChild(playerScore); //add playerScore div to player
-
-	///////////playerContainer.appendChild(player); //add player to player-container +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-	///document.getElementById("players-container").appendChild(playerContainer); //add player-container div to players-container div
-	document.getElementById("players-container").appendChild(player); //add player-container div to players-container div
-
-
+	document.getElementById("players-container").appendChild(player); //add 'player' div to 'players-container' div
 }
  
  

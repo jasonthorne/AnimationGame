@@ -39,19 +39,43 @@
 
 .current-player{
 	background-color: yellow;
-	width: 67%;/*+++++++++++++++++++++++++++++++++++CHANGED FROM 60% */
-	margin: auto;
+	width: 100%; /*60%;/*+++++++++++++++++++++++++++++++++++CHANGED FROM 67% */
+	/*margin: auto;*/
 }
 
-.player-name{
+.testDiv{
+	width: 60%;
+	margin: auto;
+	background-color: pink;
+}
+
+.save-button-container{
+	
+}
+.save-button{
+	
+	float: left;
+	
+}
+
+
+
+
+.former-player-name{
 	background-color: red;
 	float: left;
 	/*margin-right: 80px; */
 }
 
-.current-player > .player-name{ 
+/* +++++++++++++++++++++++POSSIBLY OBSELETE!! +++++++++++++++++++++++++++++*/
+.current-player > .player-name{ /* THIS DIV WAS REMOVED, SO THIS COULD BE A PROBLEM!!! +++++++++++++
 	/*margin-left: 72px;*/
 	position: absolute; /* ++++++STOPS JUDDERING*/
+}
+
+
+.name-input{
+	position: absolute; /* MIGHT STOP JUDDERING NOW!!! +++++++++++++ */
 }
 
 
