@@ -345,20 +345,19 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	vertical-align: middle; /* for centering of font */
 }
 
-
+/* +++++++++++++++++++++++++++++++++NEW CODE FROM TEST ++++++++++++++++++++++++++++++++++++*/
 #players-container {
 	background-color: blueviolet;
 	width: 100%;
 	display: grid;
 	overflow: auto;
-}
-
-
-/* +++++++++++++++++++++++++++++++++++++++DONT THINK ANY OF THIS IS NEEDED!!+++++++*/
+	}
+	
 .player-container{
-	width: 100%;
+	/*width: 100%;
 	margin: auto;
-	text-align: center; /* ????????????????????????????*/
+	text-align: center; 
+	*/
 }
 
 /* ++++++++++++++++++++++++++++++++++++++++++++++*/
@@ -370,6 +369,12 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 	color: #ffffff;
 	/*font-family: 'Coming Soon', cursive; /* ++++++++PROBLEM IS HERE!! */
 	/*font-family: Arial, Helvetica, sans-serif; */
+
+
+	/*width: 100%;*/
+	/*margin: auto;*/
+	/*text-align: center;*/
+
 }
 
 /*
@@ -382,35 +387,72 @@ https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_js_overflow-y
 
 .current-player{
 	background-color: yellow;
-	width: 60%;/*100%; /*60%; /*85%;*/
+	width: 100%; /*60%;/*+++++++++++++++++++++++++++++++++++CHANGED FROM 67% */
 	margin: auto;
 }
 
-.player-name{
+.testDiv{
+	width: 60%;
+	margin: auto;
+	background-color: pink;
+}
+
+.save-button-container{
+
+}
+.save-button{
+
+	float: left;
+
+}
+
+
+
+
+.former-player-name{
 	background-color: red;
 	float: left;
 	/*margin-right: 80px; */
 }
 
 
-.current-player > .player-name{ 
+/* +++++++++++++++++++++++POSSIBLY OBSELETE!! +++++++++++++++++++++++++++++*/
+.current-player > .player-name{ /* THIS DIV WAS REMOVED, SO THIS COULD BE A PROBLEM!!! +++++++++++++
 	/*margin-left: 72px;*/
 	position: absolute; /* ++++++STOPS JUDDERING*/
 }
 
 
-
-.player-score{
-	background-color: grey;
-	float: right;
+.name-input{
+	/*position: absolute; /* MIGHT STOP JUDDERING NOW!!! +++++++++++++ */
+	float: left;
 }
 
+
 /*
+.player-score{
+background-color: grey;
+float: right;
+}
+*/
+
 .former-player-score{
 	background-color: grey;
 	float: right;
 }
+
+.current-player-score{
+	background-color: turquoise;
+	float: right;
+}
+
+
+/*
+.name-input{
+margin-left: 50px;
+}
 */
+/* +++++++++++++++++++++++++++++++++END OF NEW CODE FROM TEST ++++++++++++++++++++++++++++++++++++*/
 
 .replay-button-container {
 	/*background-color: yellow;*/
@@ -491,15 +533,6 @@ h1{
 */
 
 
-.testDiv{
-	background-image:url("img/testApple30pc.png");
-	background-repeat:no-repeat;
-	width: 25px;
-	height: 27px;
-	/*float: left;*/
-	/*width: 20%;*/
-	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
-}
 
 .testDiv2{
 	background-color: yellow;
@@ -544,7 +577,6 @@ https://css-tricks.com/the-current-state-of-styling-scrollbars/
 
 
 
-      
      
             
    

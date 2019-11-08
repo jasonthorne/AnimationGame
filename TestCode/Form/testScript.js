@@ -16,6 +16,10 @@
 
  //-------------------
  console.log(players);
+  // https://trans4mind.com/personal_development/JavaScript2/createSelectDynamically.htm?
+
+// https://www.google.com/search?q=dynamically+create+a+form+with+javascript&rlz=1C1CHBF_enIE863IE863&oq=dynamically+create+a+form&aqs=chrome.0.0j69i57j0l3j69i60.15123j1j4&sourceid=chrome&ie=UTF-8
+           
  //------------------
  
  for (let i=0, j=players.length; i<j; i++){
@@ -62,6 +66,40 @@
 		//------------------------------------
 	
 		player.appendChild(phpForm); //add form to player div
+
+
+		//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+		/*
+            if((players[i].score > lowestScore) && (players[i].score > prevScore)){ //if score elegable for save: 
+            
+               
+                
+                let testDivContainer = makeElement("div", "testDivContainer"); 
+
+                let testBtn = makeElement("button", "test-Btn");
+                testBtn.innerHTML = "yo dawg!";
+                testDivContainer.appendChild(testBtn); 
+                playerContainer.appendChild(testDivContainer); 
+
+
+              
+                let nameForm = makeElement("form", "name-form"); //create html form
+                let nameInput = makeElement("input", "name-input"); //create input field
+                nameInput.type = "text"; //type text
+                nameInput.placeholder = "Enter name"; //placeholder text
+                nameForm.appendChild(nameInput); //add input field to form
+
+                playerName.appendChild(nameForm); //to nameForm for entering of name
+                
+
+
+            
+            }else{ //score not elegabile for save:
+                playerName.appendChild(document.createTextNode("YOU")); //+++++++++++++REPLACE THIS 'YOU' :P 
+             }    
+
+             */
+			//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 			
 	}else{ //a former player:
 		player = makeElement("div", "former-player"); //create former-player div
