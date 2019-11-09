@@ -1,10 +1,12 @@
+/* +++++++++++++++++++++++++++++++++NEW CODE FROM TEST ++++++++++++++++++++++++++++++++++++*/
 #players-container {
-		background-color: blueviolet;
-		width: 100%;
-		display: grid;
-		overflow: auto;
-		}
-		
+	background-color: blueviolet;
+	width: 100%;
+	display: grid;
+	overflow: auto;
+}
+
+	
 .player-container{
 	/*width: 100%;
 	margin: auto;
@@ -22,11 +24,11 @@
 	/*font-family: 'Coming Soon', cursive; /* ++++++++PROBLEM IS HERE!! */
 	/*font-family: Arial, Helvetica, sans-serif; */
 
-	
+
 	/*width: 100%;*/
 	/*margin: auto;*/
 	/*text-align: center;*/
-	
+
 }
 
 /*
@@ -38,9 +40,9 @@
 */
 
 .current-player{
-	background-color: yellow;
+	/*background-color: yellow;*/
 	width: 100%; /*60%;/*+++++++++++++++++++++++++++++++++++CHANGED FROM 67% */
-	/*margin: auto;*/
+	margin: auto;
 }
 
 .testDiv{
@@ -50,12 +52,12 @@
 }
 
 .save-button-container{
-	
+
 }
 .save-button{
-	
+
 	float: left;
-	
+
 }
 
 
@@ -67,22 +69,21 @@
 	/*margin-right: 80px; */
 }
 
+
 /* +++++++++++++++++++++++POSSIBLY OBSELETE!! +++++++++++++++++++++++++++++*/
-.current-player > .player-name{ /* THIS DIV WAS REMOVED, SO THIS COULD BE A PROBLEM!!! +++++++++++++
+/*.current-player > .player-name{ /* THIS DIV WAS REMOVED, SO THIS COULD BE A PROBLEM!!! +++++++++++++
 	/*margin-left: 72px;*/
-	position: absolute; /* ++++++STOPS JUDDERING*/
-}
+	/*position: absolute; /* ++++++STOPS JUDDERING*/
+/*}*/
 
 
-.name-input{
-	position: absolute; /* MIGHT STOP JUDDERING NOW!!! +++++++++++++ */
-}
+
 
 
 /*
 .player-score{
-	background-color: grey;
-	float: right;
+background-color: grey;
+float: right;
 }
 */
 
@@ -99,6 +100,128 @@
 
 /*
 .name-input{
-	margin-left: 50px;
+margin-left: 50px;
 }
 */
+/* +++++++++++++++++++++++++++++++++END OF NEW CODE FROM TEST ++++++++++++++++++++++++++++++++++++*/
+
+.replay-button-container {
+	/*background-color: yellow;*/
+	/*margin: auto;*/
+	margin-top: 0px; 
+}
+
+
+input[type="text"]{
+    background: rgba(0, 0, 0, 0);
+    border: none;
+	outline: none;
+}
+
+
+
+/*style input and placeholder text */
+.name-input, ::placeholder  {
+	color: #ffffff;
+	
+	font-size: 16px;
+	/*padding: 2px 2px;*/
+
+	
+	box-sizing: border-box;
+	border: 2px solid #555;
+	-webkit-transition: 0.5s;
+	transition: 0.5s;
+	outline: none;
+	
+	border-radius: 4px;
+	width: 110px;
+
+  }
+
+.name-input{
+	/*position: absolute; /* MIGHT STOP JUDDERING NOW!!! +++++++++++++ */
+	float: left;
+	background: rgba(0, 0, 0, 0);
+	/*border: none;*/
+	/*font-family: 'Coming Soon', cursive;*/
+}
+
+::placeholder  {
+	/*font-style: oblique;*/
+}
+
+.name-input:focus {
+	/*border: 2px solid blue;*/
+	/*background-color: grey;
+	font-weight: bold;
+	color: #000000;*/
+
+	/*
+	-webkit-box-shadow: inset 2px 2px 2px 0px #dddddd;
+  	-moz-box-shadow: inset 2px 2px 2px 0px #dddddd;
+	  box-shadow: inset 2px 2px 2px 0px #dddddd;
+	  */
+
+	width: 12em; 
+
+	/*
+	SHOW BUTTON AND ITS TOOLTIP AND MAKE BUTTON ABLE TO BNE CLICKED
+	*/
+}
+
+/* hide placeholder text on focus */
+input:focus::placeholder{
+	color:  rgba(0, 0, 0, 0); /*turn transparent;*/
+}
+
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*
+h1{
+	font-family: 'Coming Soon', cursive;
+	color: white;
+	font-size: 15px;
+}
+*/
+
+
+
+.testDiv2{
+	background-color: yellow;
+	/*float: left;*/
+	/*width: 20%;*/
+	/*position: absolute; stops juddering ++++++++++++++++++++++++++++++++++++++*/ 
+	/*margin: auto;*/
+	display: inline-block;
+}
+
+.testDivContainer{
+	float: left;
+	width: 20%;
+	text-align: center;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+.testA {
+	background-color: green;
+	margin: auto;
+	width: 50%;
+	float: left;
+}
+
+.testB {
+	background-color: red;
+	margin: auto;
+	width: 50%;
+	float: right;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
+/*
+
+https://css-tricks.com/the-current-state-of-styling-scrollbars/
+
+
