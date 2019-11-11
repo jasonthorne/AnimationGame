@@ -19,7 +19,7 @@
 .former-player{
 	/*background-color: yellow;*/
 	width: 60%;  /*]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/
-	margin: auto; /* CENTERS PLAYER INFO ++++++++++++++++++++++++++++++++++++++++++++++++++  turned this off]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]*/ 
+	margin: auto; /* Centers player info*/ 
 	color: #ffffff;
 	/*font-family: 'Coming Soon', cursive; /* ++++++++PROBLEM IS HERE!! */
 	/*font-family: Arial, Helvetica, sans-serif; */
@@ -202,26 +202,15 @@ h1{
 	text-align: center;
 }
 
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-.testA {
-	background-color: green;
-	margin: auto;
-	width: 50%;
-	float: left;
-}
-
-.testB {
-	background-color: red;
-	margin: auto;
-	width: 50%;
-	float: right;
-}
-
-/*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 /*
+//=====================================================
+*/
 
-https://css-tricks.com/the-current-state-of-styling-scrollbars/
 
-
+#players-container2 {
+	background-color: blueviolet;
+	width: 100%;
+	display: grid;
+	overflow: auto;
+}
