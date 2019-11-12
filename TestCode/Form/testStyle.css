@@ -3,7 +3,7 @@
 	background-color: blueviolet;
 	width: 100%;
 	display: grid;
-	overflow: auto;
+	/*overflow: auto;*/
 }
 
 	
@@ -180,7 +180,7 @@ input:focus::placeholder{
 
 
 /*++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-/*
+/*s
 h1{
 	font-family: 'Coming Soon', cursive;
 	color: white;
@@ -211,9 +211,46 @@ h1{
 */
 
 
-#players-container2 {
+.players-container2 {
 	background-color: blueviolet;
 	width: 100%;
 	display: grid;
-	overflow: auto;
+	/*overflow: auto;*/
+	margin: auto;
+}
+
+
+
+/*
+++++++++++++++++++++++++++++++++++++++
+*/
+
+
+.wrapperTest{
+	background-color: yellow;
+	width: 100%;
+	/*display: grid;*/
+	/*overflow: auto;*/
+	margin: auto;
+}
+
+
+.col1{
+
+	width: 20%;
+	float: left;
+
+}
+
+.col2{
+	
+	width: 60%;
+	float: left;
+}
+
+.col3{
+
+	width: 20%;
+	float: left;
+	
 }
