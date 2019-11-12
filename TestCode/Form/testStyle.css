@@ -49,17 +49,22 @@
 	width: 60%;
 	margin: auto;
 	background-color: pink;
+	float: left;
 }
 
 .save-button-container{
 	background-color: green;
 	float: left;
+	width: 20%;
+	/*position: relative;*/
+	text-align: center;
 }
 
 
 .save-button{
 
-	/*margin: 30px;*/
+	
+	width: 50px;
 
 }
 
@@ -217,6 +222,7 @@ h1{
 	display: grid;
 	/*overflow: auto;*/
 	margin: auto;
+	
 }
 
 
@@ -239,7 +245,6 @@ h1{
 
 	width: 20%;
 	float: left;
-
 }
 
 .col2{
@@ -248,9 +253,9 @@ h1{
 	float: left;
 }
 
-.col3{
+.tooltipTEST{
 
 	width: 20%;
 	float: left;
-	
+	text-align: center;
 }
