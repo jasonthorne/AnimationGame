@@ -126,6 +126,11 @@
     }
 
 
-
-
+    
+    testBtn.onclick = function() {
+        console.log("yo");
+       let test = document.getElementById("tooltiptext");
+        test.style.opacity = "0";
+    }
+    
 
