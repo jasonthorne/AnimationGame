@@ -60,10 +60,10 @@
             //////////phpForm.appendChild(playerScore); //add playerScore div to form
 
             //------------------------------------
-            let testDiv = makeElement("div", "testDiv"); 
-            testDiv.appendChild(nameInput); 
-            testDiv.appendChild(playerScore); 
-            phpForm.appendChild(testDiv);
+            let phpDataContainer = makeElement("div", "php-data-container"); //create container for post data
+            phpDataContainer.appendChild(nameInput); //add input field to container
+            phpDataContainer.appendChild(playerScore); //add player score
+            phpForm.appendChild(phpDataContainer); //add container to php form
             //------------------------------------
         
             player.appendChild(phpForm); //add form to player div
@@ -130,7 +130,7 @@
     testBtn.onclick = function() {
         console.log("yo");
        let test = document.getElementById("tooltiptext");
-        test.style.opacity = "0";
+        test.style.opacity = 0;
     }
     
 

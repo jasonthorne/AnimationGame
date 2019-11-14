@@ -45,12 +45,7 @@
 	margin: auto;
 }
 
-.testDiv{
-	width: 60%;
-	margin: auto;
-	background-color: pink;
-	float: left;
-}
+
 
 .save-button-container{
 	background-color: green;
@@ -62,14 +57,15 @@
 
 
 .save-button{
-
-	
 	width: 50px;
-
 }
 
-
-
+.php-data-container{
+	width: 60%;
+	margin: auto;
+	background-color: pink;
+	float: left;
+}
 
 .former-player-name{
 	background-color: red;
@@ -320,4 +316,6 @@ h1{
 	margin-right: 40px; /* added by me */
   }
 
+
+  /*Bouncing text: http://www.css3transition.com/bouncing-text-animation-using-only-css/*/
   

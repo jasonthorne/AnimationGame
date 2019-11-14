@@ -14,7 +14,7 @@
 		<br />
 		<br />
 		<p>Static test:</p>
-		<div class="players-container2">
+		<div id="players-container">
 
 			<div class="former-player">
 				<div class="former-player-name">test name</div>
@@ -27,18 +27,31 @@
 
 			<!---------------------------------------------------------------------------->
 			<div class="current-player">
-				<form class="php-form" method="post" action=testPHP.php" >
+				<form class="php-form" method="post" action="testPHP.php" >
 
+					<div class="current-player-column-1">
 						<div class="save-button-container">
 							<input class="save-button" type="button" value = "yo">
 						</div>
-						<div class="testDiv">
+						<!--<div class="save-tool-tip-container">
+							<span class="save-tool-tip">Test text</span>	
+						</div>-->
+					</div>
+					
+					<div class="current-player-column-2">
+						<div class="php-data-container">
 							<input class="name-input" type="text" placeholder="Enter name">
 							<div class="current-player-score">50</div>
 						</div>
+					</div>
+
+					
+					<div class="current-player-column-3">
 						<div class="col3">
 							yo
 						</div>
+					</div>
+					
 
 				</form>
 			</div>
