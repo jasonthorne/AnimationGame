@@ -264,14 +264,14 @@ h1{
 .col3{
 
 	width: 20%;
-	/*float: left;*/
+	/*float: left;*/ 
 	/*text-align: center;*/
 	background-color: yellow;
 
 
 	/*--------------------*/
 	position: relative;
-  	display: inline-block;
+  	display: inline-block; /*NOT SURE WHY THIS INSTEAD OF FLOAT LEFT */
 	border-bottom: 1px dotted black;
 	/*--------------------*/
 
