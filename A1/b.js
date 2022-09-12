@@ -1,5 +1,5 @@
 
-/*
+
 export class B {
 	
 	constructor(){
@@ -10,7 +10,6 @@ export class B {
 		return this.text + " dawg";
 	}
 }
-*/
 
-export const hello = "Hullo there!";
+//export const hello = "Hullo thedddre you!";
 
