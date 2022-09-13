@@ -1,6 +1,6 @@
 
-import {backgroundCanvas, backgroundImg, backgroundCtx} from "./background.js";
-import {basketCanvas, basketImg, basketCtx} from "./basket.js";
+//import * as background from "./background.js";
+//import {basketCanvas, basketImg, basketCtx} from "./basket.js";
 
 
 

@@ -3,7 +3,7 @@
 import {canvasWidth, canvasHeight} from "./canvas.js"; //import canvas vars
 
 //basket canvas element:
-export const basketCanvas = document.getElementById("basket"); // document.createElement("canvas");
+const basketCanvas = document.getElementById("basket"); //grab element
 basketCanvas.width = canvasWidth; //set width
 basketCanvas.height = canvasHeight; //set height
 
@@ -18,8 +18,17 @@ for (let i=0;i<=11;i++){
 
 
 //basket image:
-export const basketImg = new Image(110, 110);
+const basketImg = new Image(110, 110);
 basketImg.src = "./basket0.png"; //image source 
 
 //basket 2d context:
-export const basketCtx = basketCanvas.getContext("2d");
+const basketCtx = basketCanvas.getContext("2d");
+
+//draw basket:
+export const drawBasket = () =>{
+    basketCtx.drawImage(
+        basketImg, (canvasWidth - basketImg.width) /2, 
+        (canvasHeight - basketImg.height) - 10, 
+        basketImg.width, basketImg.height
+    );
+}
