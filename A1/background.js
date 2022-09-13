@@ -1,27 +1,30 @@
 
-//canvas
-const backgroundCanvas = document.createElement("canvas"); //document.getElementById("test");
+import {canvasWidth, canvasHeight} from "./canvas.js"; //import canvas vars
+import {basketImg, basketCtx} from "./basket.js"; //import basket vars
 
-//maybe create cavas file that returnsa a canvas element with given specs and a passed id +++++++
-backgroundCanvas.height = 640;
-backgroundCanvas.width = 873;
-backgroundCanvas.id = "background";
-backgroundCanvas.className = "layer3"
+//background canvas element:
+export const backgroundCanvas = document.getElementById("background");
+backgroundCanvas.width = canvasWidth; //set width
+backgroundCanvas.height = canvasHeight; //set height
 
+//background image:
+export const backgroundImg = new Image(); 
+backgroundImg.src = "./background.png"; //image source
 
-const backgroundImg = new Image(); //background image
-backgroundImg.src = "./background.png"; //image source 
-
-
-
-var backgroundCtx = backgroundCanvas.getContext("2d");
-
-backgroundImg.onload = function(){
-    backgroundCtx.drawImage(backgroundImg, 0, 0, backgroundCanvas.width, backgroundCanvas.height);  //draw background
+//after background image load:
+backgroundImg.onload = () =>{ //draw background:
+    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasWidth, canvasHeight);
+    basketCtx.drawImage( //then draw basket:
+        basketImg, (canvasWidth - basketImg.width) /2, 
+        (canvasHeight - basketImg.height) - 10, 
+        basketImg.width, basketImg.height);
 }
 
+//background 2d context:
+export const backgroundCtx = backgroundCanvas.getContext("2d");
 
-document.getElementById("test").appendChild(backgroundCanvas);
+////////document.getElementById("canvas-container").appendChild(backgroundCanvas);
+
 
 //export const layers = document.createElement("div"); //create canvas element
 //layers.id = "layers"; //give id

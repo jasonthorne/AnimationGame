@@ -1,0 +1,10 @@
+
+* {
+	box-sizing: border-box; /*include padding & border in width & heights*/
+}
+
+/*default body properties */
+body{
+	margin: 0;
+	font-family: Arial, Helvetica, sans-serif; 
+}
