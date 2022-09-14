@@ -10,6 +10,7 @@
   
 /*canvas layers within container*/
 #canvas-container > canvas {
+	border-radius: 15px;
 	position: absolute;
 	margin: auto;
 	width: 100%;

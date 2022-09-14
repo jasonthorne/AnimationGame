@@ -1,14 +1,11 @@
 
-import {canvasWidth, canvasHeight} from "./canvas.js"; //import canvas vars
-import {drawFirstBasket} from "./basket.js"; //import basket vars
+import {drawBasket} from "./basket.js"; //import basket vars
 
 //background canvas element:
 const backgroundCanvas = document.getElementById("background"); //grab element
-backgroundCanvas.width = canvasWidth; //set width
-backgroundCanvas.height = canvasHeight; //set height
 
 //background image:
-export const backgroundImg = new Image(); 
+const backgroundImg = new Image();
 backgroundImg.src = "./background.png"; //image source
 
 //background 2d context:
@@ -16,7 +13,9 @@ const backgroundCtx = backgroundCanvas.getContext("2d");
 
 //after background image load:
 backgroundImg.onload = () =>{ //draw background:
-    backgroundCtx.drawImage(backgroundImg, 0, 0, canvasWidth, canvasHeight);
-    drawFirstBasket(); //then draw first basket
+    backgroundCtx.drawImage(
+        backgroundImg, 0, 0, backgroundCanvas.width, backgroundCanvas.height);
+    //drawFirstBasket(); //then draw first basket
     //////testDraw();
+    ///drawBasket(0); //then draw basket
 }

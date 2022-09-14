@@ -3,7 +3,6 @@
 import {drawBasket} from "./basket.js";
 //import {canvasWidth, canvasHeight} from "./canvas.js"; //import canvas vars
 
-
 let eventKey = []; //for holding event key values 
 
 //keydown event listener:
@@ -22,9 +21,9 @@ window.addEventListener("keyup", (event) =>{
 let num = 0;
 
 function test(){
-    //console.log(num);
+    console.log(num);
     num++;
-    if (num < 100){
+    if (num < 1000){
         requestAnimationFrame(test);
 
         drawBasket(eventKey); //draw basket
