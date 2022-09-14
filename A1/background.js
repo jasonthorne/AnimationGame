@@ -8,10 +8,10 @@ backgroundCanvas.width = canvasWidth; //set width
 backgroundCanvas.height = canvasHeight; //set height
 
 //background image:
-const backgroundImg = new Image(); 
+export const backgroundImg = new Image(); 
 backgroundImg.src = "./background.png"; //image source
 
-//after background image load:
+//after background image load: //++++++++++++++++++++++++NEEDED???????
 backgroundImg.onload = () =>{ //draw background:
     backgroundCtx.drawImage(backgroundImg, 0, 0, canvasWidth, canvasHeight);
     //drawFirstBasket(); //then draw first basket
@@ -19,4 +19,4 @@ backgroundImg.onload = () =>{ //draw background:
 }
 
 //background 2d context:
-const backgroundCtx = backgroundCanvas.getContext("2d");
+export const backgroundCtx = backgroundCanvas.getContext("2d");

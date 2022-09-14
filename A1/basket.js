@@ -15,7 +15,7 @@ for (let i=0;i<=11;i++){
 }
 
 //basket 2d context:
-const basketCtx = basketCanvas.getContext("2d");
+export const basketCtx = basketCanvas.getContext("2d");
 
 
 export const Basket = {
@@ -51,36 +51,38 @@ export const Basket = {
     yPos: (canvasHeight - basketImgs[0].height) -10, //y pos of basket
     width: basketImgs[0].width, //width of basket
     height: basketImgs[0].height, //height of basket
-    moveLeft: function(){
+    /*moveLeft: function(){
         this.xPos -=25; //decrease x pos of basket 
         if(this.xPos <0){this.xPos = 0;}  //stop at canvas's left edge
     },
     moveRight: function(){
         this.xPos += 25; //increase x pos of basket
         if(this.xPos > (canvasWidth - this.width)){this.xPos = canvasWidth - this.width;} //stop at canvas's right edge
-    }    
+    }*/
+    
+    
         
-    /*move: function(){
-        if (key[37]){ //if left is pressed:
+    move: function(eventKey){
+        //if (eventKey === "ArrowLeft"){ //if left is pressed:
+        if (eventKey["ArrowLeft"]){ //if left was pressed:
             this.xPos -=25; //decrease x pos of basket 
-            
             if(this.xPos <0){this.xPos = 0;}  //stop at canvas's left edge
                
-        }else if (key[39]){ //if right is pressed:
+        //}else if (eventKey === "ArrowRight"){ //if right is pressed:
+        }else if (eventKey["ArrowRight"]){ //if right was pressed:
             this.xPos += 25; //increase x pos of basket
-
-            if(this.xPos > (canvasW - this.width)){ this.xPos = canvasW - this.width; } //stop at canvas's right edge
+            if(this.xPos > (canvasWidth - this.width)){this.xPos = canvasWidth - this.width;} //stop at canvas's right edge
         }
-    }*/
+    }
 
 }
 
 
 export const testDraw = () =>{
 
-    basketCtx.clearRect(0, 0, canvasWidth, canvasHeight); //clear basket canvas
+    //basketCtx.clearRect(0, 0, canvasWidth, canvasHeight); //clear basket canvas
     //////Basket.move(); //move basket
-    basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
+   // basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
 }
 
 export const testMove = () =>{
