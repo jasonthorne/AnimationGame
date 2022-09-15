@@ -28,6 +28,49 @@ const basket = {
     }
 }
 
+class Basket {
+
+	constructor(){
+
+        this.basketImgs = (function(){
+            const images = [];
+            for (let i=0;i<=11;i++){
+                images[i] = new Image(110, 110);
+                images[i].src = './img/baskets/basket' + i.toString() + '.png';}
+            return images;
+        })();
+
+        //this.basketImgs = this.setBasketImgs();
+        //this.img = this.basketImgs[0];
+		//this.canvas = document.getElementById("basket"); //html canvas element
+        this.setBasketImgs();
+       
+    
+	}
+
+    setBasketImgs(){
+        const images = (function(){
+            const images = [];
+            for (let i=0;i<=11;i++){
+                images[i] = new Image(110, 110);
+                images[i].src = './img/baskets/basket' + i.toString() + '.png';}
+            return images;
+        })();
+        
+        //return images;
+        console.log(images);
+        console.log(images[2].src);
+
+        
+    }
+	
+	printTxt(){
+		return this.text + " dawg";
+	}
+}
+
+new Basket();
+
 //basket 2d context:
 const basketCtx = basketCanvas.getContext("2d");
 basketCtx.drawImage(basket.img, basket.xPos, basket.yPos, basket.width, basket.height); //draw basket
