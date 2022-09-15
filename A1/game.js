@@ -1,7 +1,6 @@
 
-//import {testDraw} from "./background.js";
-import {drawBasket} from "./basket.js";
-//import {canvasWidth, canvasHeight} from "./canvas.js"; //import canvas vars
+import {Basket} from "./basket.js";
+
 
 let eventKey = []; //for holding event key values 
 
@@ -43,7 +42,9 @@ const test = () =>{
 
 ///////window.requestAnimationFrame(test);
 
+const basket = new Basket();
 
+let score = 0;
 
 var start = true;     // flags that you want the countdown to start
 var stopIn = 10000;    // how long the timer should run
@@ -73,10 +74,12 @@ const test2 = (timer) =>{
         console.log(stopTime);
         //console.log(Math.floor(timer/1000));
         //////console.log(Math.round(timeTillStop/1000));
-        drawBasket(eventKey); //draw basket
+        //drawBasket(eventKey); //draw basket
+        basket.draw(eventKey);
         requestAnimationFrame(test2); // continue animation until stop 
     }
 }
+
 requestAnimationFrame(test2);  // start the animation
 
 

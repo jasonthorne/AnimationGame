@@ -1,14 +1,9 @@
 
+/*
 //basket canvas element:
 const basketCanvas = document.getElementById("basket"); //grab element
 
 //basket images:
-/*const basketImgs = [];
-for (let i=0;i<=11;i++){
-    basketImgs[i] = new Image(110, 110);
-    basketImgs[i].src = './img/baskets/basket' + i.toString() + '.png';
-}*/
-
 const basketImgs = (function(){
     const imgs = [];
     for (let i=0;i<=11;i++){
@@ -42,10 +37,11 @@ basketCtx.drawImage(basket.img, basket.xPos, basket.yPos, basket.width, basket.h
 
 //draw basket:
 export const drawBasket = (eventKey) =>{
-    basketCtx.clearRect(0, 0, basketCanvas.width, basketCanvas.height); //clear basket canvas
+    basketCanvas.getContext("2d").clearRect(0, 0, basketCanvas.width, basketCanvas.height); //clear basket canvas
     basket.move(eventKey); //move basket
     basketCanvas.getContext("2d").drawImage(basket.img, basket.xPos, basket.yPos, basket.width, basket.height); //draw basket
 }
+*/
 
 //draw basket:
 /*export const drawFirstBasket = () =>{
@@ -56,9 +52,11 @@ export const drawBasket = (eventKey) =>{
     );
 }*/
 
+//basket class:
 export class Basket {
-	
+
 	constructor(){
+        //create properties:
 		this.images = (function(){ //basket images
             const basketImgs = [];
             for (let i=0;i<=11;i++){
@@ -66,13 +64,15 @@ export class Basket {
                 basketImgs[i].src = './img/baskets/basket' + i.toString() + '.png';}
             return basketImgs;
         })();
-        this.canvas = document.getElementById("basket"); //basket canvas
-        this.xPos = (this.canvas.width - this.images[0].width) /2; //x pos of basket
-        this.yPos = (this.canvas.height - this.images[0].height) -10; //y pos of basket
-        this.width = this.images[0].width; //width of basket
-        this.height = this.images[0].height; //height of basket
+        this.currImg = this.images[0]; //current image
+        this.canvas = document.getElementById("basket"); //basket's canvas
+        this.xPos = (this.canvas.width - this.currImg.width) /2; //x pos of basket
+        this.yPos = (this.canvas.height - this.currImg.height) -10; //y pos of basket
+        this.width = this.currImg.width; //width of basket
+        this.height = this.currImg.height; //height of basket
 	}
 
+    //move basket:
     move(eventKey){
         if (eventKey["ArrowLeft"]){ //if left was pressed:
             this.xPos -= 25; //decrease x pos of basket 
@@ -84,31 +84,29 @@ export class Basket {
         }
     }
 
-    getImg(score){ //if score is less than 10, return basket img equal to score:
-        if (score <10){ return this.images[score].src; 
-        }else{ //score is >= 10:
-            if(score%2 == 0){ return this.images[10].src; } //return this img when an even score
-            else{ return this.images[11].src; } //return this img when an odd score
-        }
-    }
-
-    draw(eventKey, score){
-        //clear basket canvas:
+    //draw basket:
+    draw(eventKey){
+        //clear basket's canvas:
         this.canvas.getContext("2d").clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.move(eventKey); //move basket according to event key
         this.canvas.getContext("2d").drawImage( //draw basket
-            this.getImg(score), this.xPos, this.yPos, this.width, this.height); 
+            this.currImg, this.xPos, this.yPos, this.width, this.height); 
+    }
+
+    //update image:
+    updateImg(score){
+        if (score <10){ //if score is less than 10:
+            this.currImg = this.images[score]; //update img equal to score
+        }else{ //score is >= 10:
+            if(score%2 == 0){this.currImg = this.images[10];} //set this img when an even score
+            else{this.currImg = this.images[11];} //set this img when an odd score
+        }
     }
 }
 
-
-/*
- if (score <10){ //if score is less than 10:
-                Basket.img.src = basketImgs[score].src; //update basket img
-                score = "0" + score; //add leading 0
-            }else{ //score is >= 10:
-                if(score%2 == 0){ Basket.img.src = basketImgs[10].src; } //update to this img when an even score
-                else{ Basket.img.src = basketImgs[11].src; } //update to this img when an odd score
-            }
-
-*/
+//darw basket using it's initial properties:
+export const drawInitialBasket = () =>{
+    const basket = new Basket(); //create basket
+    basket.canvas.getContext("2d").drawImage( //draw basket
+    basket.currImg, basket.xPos, basket.yPos, basket.width, basket.height); 
+}
