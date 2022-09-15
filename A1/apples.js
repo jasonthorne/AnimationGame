@@ -1,27 +1,18 @@
-//apple canvas layers:
-const apple1Canvas = document.getElementById("apple1");
-const apple2Canvas = document.getElementById("apple2"); 
-const apple3Canvas = document.getElementById("apple3");
-const apple4Canvas = document.getElementById("apple4");
-const apple5Canvas = document.getElementById("apple5"); 
 
-const apples = [];
+//imports:
+import {Apple} from "./apple.js"; //import apple class
 
-//coordinates for apples:
-const appleCoords = [
-    {xPos: 120, yPos: 176},
-    {xPos: 273, yPos: 132},
-    {xPos: 518, yPos: 231},
-    {xPos: 632, yPos: 119},
-    {xPos: 720, yPos: 188}
+//data for apples:
+const applesData = [
+    {id: "apple1", xPos: 120, yPos: 176},
+    {id: "apple2", xPos: 273, yPos: 132},
+    {id: "apple3", xPos: 518, yPos: 231},
+    {id: "apple4", xPos: 632, yPos: 119},
+    {id: "apple5", xPos: 720, yPos: 188}
 ];
 
-/*
-//////////////////spin through and call get on each element
-var appleCtxs = [
-    apple1Canvas.getContext("2d"), 
-    apple2Canvas.getContext("2d"), 
-    apple3Canvas.getContext("2d"), 
-    apple4Canvas.getContext("2d"), 
-    apple5Canvas.getContext("2d")
-];*/
+//apples made from apple data:
+export const apples = applesData.map((appleData)=>{
+    return new Apple(appleData.id, appleData.xPos, appleData.yPos);
+});
+

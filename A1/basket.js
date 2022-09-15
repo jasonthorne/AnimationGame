@@ -56,13 +56,12 @@ export const drawBasket = (eventKey) =>{
 export class Basket {
 
 	constructor(){
-        //create properties:
-		this.images = (function(){ //basket images
-            const basketImgs = [];
+        this.images = (()=>{ //basket images
+            const images = [];
             for (let i=0;i<=11;i++){
-                basketImgs[i] = new Image(110, 110);
-                basketImgs[i].src = './img/baskets/basket' + i.toString() + '.png';}
-            return basketImgs;
+                images[i] = new Image(110, 110);
+                images[i].src = './img/baskets/basket' + i.toString() + '.png';}
+            return images;
         })();
         this.currImg = this.images[0]; //current image
         this.canvas = document.getElementById("basket"); //basket's canvas
@@ -105,7 +104,7 @@ export class Basket {
 }
 
 //darw basket using it's initial properties:
-export const drawInitialBasket = () =>{
+export const drawInitialBasket = ()=>{
     const basket = new Basket(); //create basket
     basket.canvas.getContext("2d").drawImage( //draw basket
     basket.currImg, basket.xPos, basket.yPos, basket.width, basket.height); 

@@ -1,6 +1,9 @@
 
-import {Basket} from "./basket.js";
-
+//imports:
+//import { backgroundCanvas } from "./background.js";
+import {Basket} from "./basket.js"; //import basket class
+import {apples} from "./apples.js"; //import apples list
+import { Apple } from "./apple.js";
 
 let eventKey = []; //for holding event key values 
 
@@ -22,10 +25,12 @@ let num = 0;
 const test = () =>{
     console.log(num);
     num++;
-    if (num < 1000){
+    if (num < 10){
         requestAnimationFrame(test);
 
-        drawBasket(eventKey); //draw basket
+        /////////drawBasket(eventKey); //draw basket
+
+        testDraw();
 
         //draw background:
         /*backgroundCtx.clearRect(0, 0, canvasWidth, canvasHeight); //clear background canvas
@@ -40,14 +45,19 @@ const test = () =>{
 
 };
 
-///////window.requestAnimationFrame(test);
+///window.requestAnimationFrame(test);
+
+
+
 
 const basket = new Basket();
+const apple = new Apple("apple1", 120,176);
+apple.draw();
 
 let score = 0;
 
 var start = true;     // flags that you want the countdown to start
-var stopIn = 10000;    // how long the timer should run
+var stopIn = 10;    // how long the timer should run
 var stopTime = 0;     // used to hold the stop time
 var stop = false;     // flag to indicate that stop time has been reached
 var timeTillStop = 0; // holds the display time
@@ -71,16 +81,40 @@ const test2 = (timer) =>{
     //console.log(Math.round(timeTillStop % 60000)/1000);
     
     if(!stop){
-        console.log(stopTime);
+        /////console.log(stopTime);
         //console.log(Math.floor(timer/1000));
-        //////console.log(Math.round(timeTillStop/1000));
+        //console.log(Math.round(timeTillStop/1000));
         //drawBasket(eventKey); //draw basket
         basket.draw(eventKey);
+
+        apples.forEach((apple)=>{
+            apple.draw();
+
+            console.log(apple.img.src);
+        });
+        
         requestAnimationFrame(test2); // continue animation until stop 
     }
 }
 
 requestAnimationFrame(test2);  // start the animation
+
+
+
+//================
+/*const testDraw = () =>{
+    //backgroundCanvas.getContext("2d").drawImage.clearRect(0, 0, canvasW, canvasH); //clear background canvas
+    //backgroundCanvas.getContext("2d").drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
+    apple.draw();
+    ////drawBasket(eventKey); //draw basket
+}*/
+
+
+
+//===============
+
+
+
 
 
 
