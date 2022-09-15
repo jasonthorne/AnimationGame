@@ -56,6 +56,7 @@ const test2 = (timer) =>{
 
     if(start){  // do we need to start the timer
         stopTime = timer + stopIn; // yes the set the stoptime
+        console.log(stopTime);
         start = false;             // clear the start flag
     }else{                         // waiting for stop
         if(timer >= stopTime){     // has stop time been reached?
@@ -69,13 +70,14 @@ const test2 = (timer) =>{
     //console.log(Math.round(timeTillStop % 60000)/1000);
     
     if(!stop){
+        console.log(stopTime);
         //console.log(Math.floor(timer/1000));
-        console.log(Math.round(timeTillStop/1000));
+        //////console.log(Math.round(timeTillStop/1000));
         drawBasket(eventKey); //draw basket
         requestAnimationFrame(test2); // continue animation until stop 
     }
 }
-/////////requestAnimationFrame(test2);  // start the animation
+requestAnimationFrame(test2);  // start the animation
 
 
 
