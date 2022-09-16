@@ -12,12 +12,12 @@ const applesData = [
 ];
 
 //apples made from apple data:
-const apples = applesData.map((appleData)=>{
+export const apples = applesData.map((appleData)=>{
     return new Apple(appleData.id, appleData.xPos, appleData.yPos);
 });
 
 //draw apples:
-export const drawApples = ()=>{
+/*export const drawApples = ()=>{
     console.log("ddddddddd");
     apples.forEach((apple)=> apple.draw());
-}
+}*/
