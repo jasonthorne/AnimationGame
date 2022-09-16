@@ -1,7 +1,6 @@
 
-//++++++++++++++++++++++++++++++++++++++++++THis preloading is dumb :P 
- //++++++++++++++++LOOSE ALL CLASSES - NO ONJECTS :P 
-const images = (()=>{ //basket images
+//load basket images:
+const loadedImgs = (()=>{ //basket images
     const images = [];
     for (let i=0;i<=11;i++){
         images[i] = new Image(110, 110);
@@ -13,14 +12,8 @@ const images = (()=>{ //basket images
 export class Basket {
 
 	constructor(){
-        /*this.images = (()=>{ //basket images
-            const images = [];
-            for (let i=0;i<=11;i++){
-                images[i] = new Image(110, 110);
-                images[i].src = './img/baskets/basket' + i.toString() + '.png';}
-            return images;
-        })();*/
-        this.currImg = images[0]; //current image
+        this.images = loadedImgs; //basket images
+        this.currImg = this.images[0]; //current image
         this.canvas = document.getElementById("basket"); //basket's canvas
         this.xPos = (this.canvas.width - this.currImg.width) /2; //x pos of basket
         this.yPos = (this.canvas.height - this.currImg.height) -10; //y pos of basket

@@ -52,7 +52,7 @@ const test = () =>{
 
 
 ////////const apple = new Apple("apple1", 120,176);
-const basket = new Basket();
+///////const basket = new Basket();
 //basket.draw(0);
 drawApples();
 
@@ -87,19 +87,22 @@ const test2 = (timer) =>{
         //console.log(Math.floor(timer/1000));
         //console.log(Math.round(timeTillStop/1000));
         //drawBasket(eventKey); //draw basket
-        basket.draw(eventKey);
+        //basket.draw(eventKey);
+        //basket.draw();
 
         /*apples.forEach((apple)=>{
             apple.draw();
 
             console.log(apple.img.src);
         });*/
+
+        drawApples();
         
         requestAnimationFrame(test2); // continue animation until stop 
     }
 }
 
-//requestAnimationFrame(test2);  // start the animation
+requestAnimationFrame(test2);  // start the animation
 
 
 
