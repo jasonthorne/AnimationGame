@@ -1,6 +1,6 @@
 
 //imports:
-import {Apple} from "./apple.js"; //import apple class
+import {Apple} from './apple.js'; //import apple class
 
 //data for apples:
 const applesData = [
@@ -12,7 +12,12 @@ const applesData = [
 ];
 
 //apples made from apple data:
-export const apples = applesData.map((appleData)=>{
+const apples = applesData.map((appleData)=>{
     return new Apple(appleData.id, appleData.xPos, appleData.yPos);
 });
 
+//draw apples:
+export const drawApples = ()=>{
+    console.log("ddddddddd");
+    apples.forEach((apple)=> apple.draw());
+}

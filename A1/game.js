@@ -1,9 +1,9 @@
 
 //imports:
-//import { backgroundCanvas } from "./background.js";
+//import {draw} from "./background.js";
 import {Basket} from "./basket.js"; //import basket class
-import {apples} from "./apples.js"; //import apples list
-import { Apple } from "./apple.js";
+import {drawApples} from "./apples.js"; //import apples list
+import {Apple} from "./apple.js";
 
 let eventKey = []; //for holding event key values 
 
@@ -50,14 +50,17 @@ const test = () =>{
 
 
 
+
+////////const apple = new Apple("apple1", 120,176);
 const basket = new Basket();
-const apple = new Apple("apple1", 120,176);
-apple.draw();
+//basket.draw(0);
+drawApples();
+
 
 let score = 0;
 
 var start = true;     // flags that you want the countdown to start
-var stopIn = 10;    // how long the timer should run
+var stopIn = 10000;    // how long the timer should run
 var stopTime = 0;     // used to hold the stop time
 var stop = false;     // flag to indicate that stop time has been reached
 var timeTillStop = 0; // holds the display time
@@ -67,7 +70,6 @@ const test2 = (timer) =>{
 
     if(start){  // do we need to start the timer
         stopTime = timer + stopIn; // yes the set the stoptime
-        console.log(stopTime);
         start = false;             // clear the start flag
     }else{                         // waiting for stop
         if(timer >= stopTime){     // has stop time been reached?
@@ -87,17 +89,17 @@ const test2 = (timer) =>{
         //drawBasket(eventKey); //draw basket
         basket.draw(eventKey);
 
-        apples.forEach((apple)=>{
+        /*apples.forEach((apple)=>{
             apple.draw();
 
             console.log(apple.img.src);
-        });
+        });*/
         
         requestAnimationFrame(test2); // continue animation until stop 
     }
 }
 
-requestAnimationFrame(test2);  // start the animation
+//requestAnimationFrame(test2);  // start the animation
 
 
 
