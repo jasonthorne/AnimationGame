@@ -60,7 +60,7 @@ const test2 = (timer) =>{
     if(!stop){
         /////console.log(stopTime);
         //console.log(Math.floor(timer/1000));
-        console.log(Math.round(timeTillStop/1000));
+        ///////console.log(Math.round(timeTillStop/1000));
         
         basket.draw(eventKey);
         apples.forEach((apple)=> apple.draw());
