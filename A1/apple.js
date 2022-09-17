@@ -14,9 +14,28 @@ export class Apple {
         this.width = 60; //width of apple
         this.height = 60; //height of apple
         this.speed = 6; //speed of drop
+
+        /*this.speed = (()=>{ //apple image
+            const test = 6;
+
+            test.addEventListener('change', function (evt) {
+                console.log(" woohoo");
+              
+            });
+
+
+            return test;
+        })();*/
+        /*this.addEventListener(this.speed), function(event) {
+            if(this.speed == -0.023076923076923078){ 
+                console.log("stopped")
+            }
+        });*/
+
+       
+
         this.gravity = 0.1; //gravity force
-        this.bounce = 0.3;; //bounce factor
-        
+        this.bounce = 0.3; //bounce factor
         //this.speed = 0; //++++++++++++++++++++++++++++
         /*this.speed = appleSpeeds.pickElement(); //picks a speed
         this.speeds = [6, 9]; //initial drop speeds 
@@ -25,21 +44,22 @@ export class Apple {
     }
 
     move(){
-
         this.speed += this.gravity; //add gravity to speed
         this.yPos += this.speed; //change y pos according to spped
 
         //if hit bottom of canvas:
-        if (this.yPos >= (this.canvas.height -10) - this.height) {
-            this.yPos = (this.canvas.height -10) - this.height;
-            this.speed = -(this.speed * this.bounce);
-            console.log(this.speed);
+        if (this.yPos >= (this.canvas.height -10) - this.height){
+            this.yPos = (this.canvas.height -10) - this.height;  //position at bottom
+            //this.speed = -(this.speed * this.bounce);
+            this.speed *= -this.bounce; //bounce apple
+            
         }
 
         //if apple has stopped bouncing:
         if(this.speed == -0.023076923076923078){ 
-           console.log("stopped")
-        }  
+           console.log("stopped");
+           this.canvas.getContext("2d").globalAlpha -= 0.0087;
+        }
 
 
         /*
@@ -78,9 +98,3 @@ export class Apple {
 
 
 }
-
-
-
-
-
-
