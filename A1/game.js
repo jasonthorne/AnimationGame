@@ -72,7 +72,7 @@ const test2 = (timer) =>{
     }
 }
 
-//requestAnimationFrame(test2);  // start the animation
+requestAnimationFrame(test2);  // start the animation
 
 const drawImages = ()=>{
     basket.draw(eventKey);
