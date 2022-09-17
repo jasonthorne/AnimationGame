@@ -1,18 +1,15 @@
 
-//load basket images:
-const loadedImgs = (()=>{ //basket images
-    const images = [];
-    for (let i=0;i<=11;i++){
-        images[i] = new Image(110, 110);
-        images[i].src = './img/baskets/basket' + i.toString() + '.png';}
-    return images;
-})();
-
 //basket class:
-export class Basket {
+class Basket {
 
 	constructor(){
-        this.images = loadedImgs; //basket images
+        this.images = (()=>{ //basket images
+            const images = [];
+            for (let i=0;i<=11;i++){
+                images[i] = new Image(110, 110);
+                images[i].src = './img/baskets/basket' + i.toString() + '.png';}
+            return images;
+        })();
         this.currImg = this.images[0]; //current image
         this.canvas = document.getElementById("basket"); //basket's canvas
         this.xPos = (this.canvas.width - this.currImg.width) /2; //x pos of basket
@@ -53,9 +50,5 @@ export class Basket {
     }
 }
 
-//darw basket using it's initial properties:
-export const drawInitialBasket = ()=>{
-    const basket = new Basket(); //create basket
-    basket.canvas.getContext("2d").drawImage( //draw basket
-    basket.currImg, basket.xPos, basket.yPos, basket.width, basket.height); 
-}
+//export a basket:
+export const basket = new Basket(); 

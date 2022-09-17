@@ -1,7 +1,7 @@
 
 //imports:
 //import {draw} from "./background.js";
-import {Basket} from "./basket.js"; //import basket class
+import {basket} from "./basket.js"; //import basket class
 import {apples} from "./apples.js"; //import apples list
 import {Apple} from "./apple.js";
 
@@ -20,39 +20,14 @@ window.addEventListener("keyup", (event) =>{
     eventKey[event.key] = false; //set unpressed key as false 
 });
 
-let num = 0;
 
-const test = () =>{
-    console.log(num);
-    num++;
-    if (num < 10){
-        requestAnimationFrame(test);
-
-        /////////drawBasket(eventKey); //draw basket
-
-        testDraw();
-
-        //draw background:
-        /*backgroundCtx.clearRect(0, 0, canvasWidth, canvasHeight); //clear background canvas
-        backgroundCtx.drawImage(backgroundImg, 0, 0, canvasWidth, canvasHeight);  //draw background*/
-
-        //draw basket:
-        /*basketCtx.clearRect(0, 0, canvasWidth, canvasHeight); //clear basket canvas
-        Basket.move(eventKey); //move basket
-        basketCtx.drawImage(Basket.img, Basket.xPos, Basket.yPos, Basket.width, Basket.height); //draw basket
-        */
-    }
-
-};
-
-///window.requestAnimationFrame(test);
 
 
 
 
 
 ////////const apple = new Apple("apple1", 120,176);
-///////const basket = new Basket();
+//const basket = new Basket();
 //basket.draw(0);
 //drawApples();
 
@@ -60,7 +35,7 @@ const test = () =>{
 let score = 0;
 
 var start = true;     // flags that you want the countdown to start
-var stopIn = 1000;    // how long the timer should run
+var stopIn = 10000;    // how long the timer should run
 var stopTime = 0;     // used to hold the stop time
 var stop = false;     // flag to indicate that stop time has been reached
 var timeTillStop = 0; // holds the display time
@@ -85,52 +60,25 @@ const test2 = (timer) =>{
     if(!stop){
         /////console.log(stopTime);
         //console.log(Math.floor(timer/1000));
-        //console.log(Math.round(timeTillStop/1000));
-        //drawBasket(eventKey); //draw basket
-        //basket.draw(eventKey);
-        //basket.draw();
-
-        /*apples.forEach((apple)=>{
-            apple.draw();
-
-            console.log(apple.img.src);
-        });*/
-
-        ///drawApples();
-
+        console.log(Math.round(timeTillStop/1000));
+        
+        basket.draw(eventKey);
         apples.forEach((apple)=> apple.draw());
+
+        //drawImages();
 
         
         requestAnimationFrame(test2); // continue animation until stop 
     }
 }
 
-requestAnimationFrame(test2);  // start the animation
+//requestAnimationFrame(test2);  // start the animation
 
+const drawImages = ()=>{
+    basket.draw(eventKey);
+    apples.forEach((apple)=> apple.draw());
 
-
-//================
-/*const testDraw = () =>{
-    //backgroundCanvas.getContext("2d").drawImage.clearRect(0, 0, canvasW, canvasH); //clear background canvas
-    //backgroundCanvas.getContext("2d").drawImage(backgroundImg, 0, 0, canvasW, canvasH);  //draw background
-    apple.draw();
-    ////drawBasket(eventKey); //draw basket
-}*/
-
-
-
-//===============
-
-
-
-
-
-
-
-const maxApples = 5; //+++++??????
-
-
-
+};
 
 
 
@@ -149,6 +97,21 @@ export class Game {
 
 //canvas
 
+/*
+let num = 0;
 
+const test = () =>{
+    console.log(num);
+    num++;
+    if (num < 10){
+        requestAnimationFrame(test);
 
+        /////////drawBasket(eventKey); //draw basket
+
+        
+    }
+
+};*/
+
+///window.requestAnimationFrame(test);
 
