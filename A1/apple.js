@@ -52,14 +52,24 @@ export class Apple {
     }
 
     testMethod(passedValArg){
-        const blah = new CustomEvent("custom-event-test",
+        /*const blah = new CustomEvent("custom-event-test",
         {
             detail:{
                 passedValue: passedValArg
             }
         });
 
-        this.canvas.dispatchEvent(blah);
+        this.canvas.dispatchEvent(blah);*/
+
+        this.canvas.dispatchEvent(new CustomEvent("custom-event-test",
+        {
+            detail:{
+                passedValue: passedValArg
+            }
+        }));
+
+
+
     };
 
     //++++++++++++++++++++++++TRIGGER THIS AFTER A TIMER ???????????

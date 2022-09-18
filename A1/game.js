@@ -1,4 +1,16 @@
 
+
+/*
+timer for game itself:
+    controlls basket moving (which needs ot sense apple colisions) & timer
+
+animation timer for each apple: - ANIMATION TIMER
+    controlls waiting time for apple - WAITING TIME
+        which fades in apple
+            THEN allows dropping of apple
+
+*/
+
 //imports:
 //import {draw} from "./background.js";
 import {basket} from "./basket.js"; //import basket class
