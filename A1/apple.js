@@ -1,4 +1,24 @@
 
+/*
+document.getElementById("div").addEventListener("touchstart", touchHandler, false);
+document.getElementById("div").addEventListener("touchmove", touchHandler, false);
+document.getElementById("div").addEventListener("touchend", touchHandler, false);
+
+function touchHandler(e) {
+  if (e.type == "touchstart") {
+    alert("You touched the screen!");
+  } else if (e.type == "touchmove") {
+    alert("You moved your finger!");
+  } else if (e.type == "touchend" || e.type == "touchcancel") {
+    alert("You removed your finger from the screen!");
+  }
+}
+
+*/
+
+
+
+
 //apple class:
 export class Apple {
 
@@ -9,56 +29,58 @@ export class Apple {
             return img;
         })();
         this.canvas = document.getElementById(id); //apple's canvas
+
+        this.canvas.addEventListener("custom-event-test", function(event){
+            this.getContext("2d").globalAlpha = event.detail.passedValue;
+            console.log("hit bottom!");
+        });
+
+
+
         this.xPos = xPos; //x pos of apple
         this.yPos = yPos; //y pos of apple
         this.width = 60; //width of apple
         this.height = 60; //height of apple
         this.speed = 6; //speed of drop
-
-        /*this.speed = (()=>{ //apple image
-            const test = 6;
-
-            test.addEventListener('change', function (evt) {
-                console.log(" woohoo");
-              
-            });
-
-
-            return test;
-        })();*/
-        /*this.addEventListener(this.speed), function(event) {
-            if(this.speed == -0.023076923076923078){ 
-                console.log("stopped")
-            }
-        });*/
-
-       
-
-        this.gravity = 0.1; //gravity force
-        this.bounce = 0.3; //bounce factor
-        //this.speed = 0; //++++++++++++++++++++++++++++
-        /*this.speed = appleSpeeds.pickElement(); //picks a speed
+        this.gravity = 0.2; //gravity force
+        this.bounce = 0.2; //bounce factor
+        //this.speed = appleSpeeds.pickElement(); //picks a speed
         this.speeds = [6, 9]; //initial drop speeds 
         this.pauses = [1000, 2000, 3000, 4000, 5000]; //pause times
-        */
+        this.canScore = true;
+       
     }
 
+    testMethod(passedValArg){
+        const blah = new CustomEvent("custom-event-test",
+        {
+            detail:{
+                passedValue: passedValArg
+            }
+        });
+
+        this.canvas.dispatchEvent(blah);
+    };
+
+    //++++++++++++++++++++++++TRIGGER THIS AFTER A TIMER ???????????
     move(){
         this.speed += this.gravity; //add gravity to speed
-        this.yPos += this.speed; //change y pos according to spped
+        this.yPos += this.speed; //change y pos according to speed
 
         //if hit bottom of canvas:
         if (this.yPos >= (this.canvas.height -10) - this.height){
-            this.yPos = (this.canvas.height -10) - this.height;  //position at bottom
-            //this.speed = -(this.speed * this.bounce);
+            this.canScore = false; //prevent scoring 
+            this.yPos = (this.canvas.height -10) - this.height; //position at bottom
             this.speed *= -this.bounce; //bounce apple
-            
+            ///////console.log(this.speed);
         }
 
         //if apple has stopped bouncing:
-        if(this.speed == -0.023076923076923078){ 
-           console.log("stopped");
-           this.canvas.getContext("2d").globalAlpha -= 0.0087;
+        if(this.speed == -0.03333333333333334){ 
+           //console.log("stopped");
+           //////this.canvas.getContext("2d").globalAlpha -= 0.025;
+           this.testMethod(0);
+
         }
 
 

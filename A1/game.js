@@ -5,7 +5,7 @@ import {basket} from "./basket.js"; //import basket class
 import {apples} from "./apples.js"; //import apples list
 import {Apple} from "./apple.js";
 
-let eventKey = []; //for holding event key values 
+const eventKey = []; //for holding event key values 
 
 //keydown event listener:
 window.addEventListener("keydown", (event) =>{ 
@@ -20,16 +20,6 @@ window.addEventListener("keyup", (event) =>{
     eventKey[event.key] = false; //set unpressed key as false 
 });
 
-
-
-
-
-
-
-////////const apple = new Apple("apple1", 120,176);
-//const basket = new Basket();
-//basket.draw(0);
-//drawApples();
 
 
 let score = 0;
