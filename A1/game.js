@@ -5,7 +5,7 @@ timer for game itself:
     controlls basket moving (which needs ot sense apple colisions) & timer
 
 animation timer for each apple: - ANIMATION TIMER
-    controlls waiting time for apple - WAITING TIME
+    controlls waiting time for apple - WAITING TIMER
         which fades in apple
             THEN allows dropping of apple
 
