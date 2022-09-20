@@ -1,24 +1,4 @@
 
-/*
-document.getElementById("div").addEventListener("touchstart", touchHandler, false);
-document.getElementById("div").addEventListener("touchmove", touchHandler, false);
-document.getElementById("div").addEventListener("touchend", touchHandler, false);
-
-function touchHandler(e) {
-  if (e.type == "touchstart") {
-    alert("You touched the screen!");
-  } else if (e.type == "touchmove") {
-    alert("You moved your finger!");
-  } else if (e.type == "touchend" || e.type == "touchcancel") {
-    alert("You removed your finger from the screen!");
-  }
-}
-
-*/
-
-
-
-
 //apple class:
 export class Apple {
 
@@ -30,10 +10,11 @@ export class Apple {
         })();
         this.canvas = document.getElementById(id); //apple's canvas
 
+        /*
         this.canvas.addEventListener("custom-event-test", function(event){
             this.getContext("2d").globalAlpha = event.detail.passedValue;
             console.log("hit bottom!");
-        });
+        });*/
 
 
 
@@ -48,29 +29,16 @@ export class Apple {
         this.speeds = [6, 9]; //initial drop speeds 
         this.pauses = [1000, 2000, 3000, 4000, 5000]; //pause times
         this.canScore = true;
+        
        
     }
 
+    /*
     testMethod(passedValArg){
-        /*const blah = new CustomEvent("custom-event-test",
-        {
-            detail:{
-                passedValue: passedValArg
-            }
-        });
-
-        this.canvas.dispatchEvent(blah);*/
-
-        this.canvas.dispatchEvent(new CustomEvent("custom-event-test",
-        {
-            detail:{
-                passedValue: passedValArg
-            }
+        this.canvas.dispatchEvent(new CustomEvent("custom-event-test", {
+            detail:{passedValue: passedValArg}
         }));
-
-
-
-    };
+    };*/
 
     //++++++++++++++++++++++++TRIGGER THIS AFTER A TIMER ???????????
     move(){
@@ -92,28 +60,6 @@ export class Apple {
            this.testMethod(0);
 
         }
-
-
-        /*
-        this.gravitySpeed += this.gravity; //increment gravety speed
-        this.yPos += this.ySpeed + this.gravitySpeed //add gravity speed to y pos
-
-        const bottom = (this.canvas.height -10) - this.height
-        if (this.yPos > bottom) {
-            this.yPos = bottom;
-            this.gravitySpeed = -(this.gravitySpeed * this.bounce);
-        }*/
-
-
-        /*
-        this.yPos += 5;
-
-        if(this.yPos >= ((this.canvas.height - 10) - this.height)){  //'canvas height -10' to make level with basket
-            this.canScore = false; //prevent scoring 
-            this.yPos = (this.canvas.height - 10) - this.height; //repostion at bottom of canvas
-            //this.speed *= -this.bounce; //bounce apple
-        }*/
-
     };
 
     //draw apple:
@@ -125,8 +71,42 @@ export class Apple {
             this.img, this.xPos, this.yPos, this.width, this.height); 
     };
 
+    //ready apple:
+    waitToDrop(){
+
+        const test2 = (timer) =>{
+
+            if(start){  // do we need to start the timer
+                stopTime = timer + stopIn; // yes the set the stoptime
+                start = false;             // clear the start flag
+            }else{                         // waiting for stop
+                if(timer >= stopTime){     // has stop time been reached?
+                    stop = true;           // yes the flag to stop
+                }
+            }
+        
+            timeTillStop = stopTime - timer;      // for display of time till stop
+            // log() should be whatever you use to display the time.
+            //log(Math.floor(timeTillStop / 10) );  // to display in 1/100th seconds
+            //console.log(Math.round(timeTillStop % 60000)/1000);
+            
+            if(!stop){
+                /////console.log(stopTime);
+                //console.log(Math.floor(timer/1000));
+                ///////console.log(Math.round(timeTillStop/1000));
+                
+                basket.draw(eventKey);
+                apples.forEach((apple)=> apple.draw());
+        
+                //drawImages();
+        
+                
+                requestAnimationFrame(test2); // continue animation until stop 
+            }
+        }
 
 
+    }
 
 
 }
