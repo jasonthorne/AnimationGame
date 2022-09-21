@@ -40,7 +40,7 @@ export class Apple {
         }));
     };*/
 
-    //++++++++++++++++++++++++TRIGGER THIS AFTER A TIMER ???????????
+    //++++++++++++++++++++++TRIGGER THIS AFTER A TIMER ???????????
     move(){
         this.speed += this.gravity; //add gravity to speed
         this.yPos += this.speed; //change y pos according to speed
