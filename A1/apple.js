@@ -57,7 +57,7 @@ export class Apple {
         if(this.speed == -0.03333333333333334){ 
            //console.log("stopped");
            //////this.canvas.getContext("2d").globalAlpha -= 0.025;
-           this.testMethod(0);
+           ////////this.testMethod(0);
 
         }
     };
@@ -74,6 +74,38 @@ export class Apple {
     //ready apple:
     waitToDrop(){
 
+        const time = 30; //(re)set time
+       
+    
+        let timer = setInterval(function(){ 
+            time--; //reduce time
+            if (time<10){ 
+                time = "0" + time; //add leading 0
+                document.getElementById("timer").style.color = "#ff0000"; //turn red to warn user
+            }
+            if(time<=0){ //timer has run out
+                clearInterval(timer); //clear timer 
+                cancelAnimationFrame(animationFrameRef); //cancel animation
+                showScoreModal(); //show game score modal
+            } 
+            document.getElementById("timer").innerHTML = time; //show new time
+        
+        }, 1000); //run timer every second
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*
         const test2 = (timer) =>{
 
             if(start){  // do we need to start the timer
@@ -103,7 +135,10 @@ export class Apple {
                 
                 requestAnimationFrame(test2); // continue animation until stop 
             }
-        }
+        }*/
+
+
+
 
 
     }
